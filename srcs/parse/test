@@ -1,0 +1,11 @@
+
+cmd to compile sep_cmd_line.c test
+
+gcc -o sep_cmdline sep_cmd_line.c addback_cmdline_node.c append_cmd_node.c cmdline_new_node.c goto_last_node.c ../../TOOLS/libft/*c ../../TOOLS/minishelltools/*.c ../../TOOLS/ft_printf/*.c ../../TOOLS/libtools/*.c ../minishell.h parse.h && rm *.gch && rm ../*gch  
+
+
+------------------------------
+
+cmd to compile sep_in_words.c test
+gcc -g -Werror -Wextra -Wall add*c alloc_parse_struct.c append*c cmdline_new_node.c goto_*.c quote_on.c sep*.c word_new_node.c ../../TOOLS/ft_printf/*.c ../../TOOLS/libft/*.c ../minishell.h parse.h && rm *.gch && rm ../*gch
+gcc -g -Werror -Wextra -Wall add*c alloc_parse_struct.c append*c cmdline_new_node.c goto_*.c quote_on.c sep*.c word_new_node.c ../../TOOLS/ft_printf/*.c ../../TOOLS/libft/*.c ../minishell.h parse.h && rm *.gch && rm ../*gch
