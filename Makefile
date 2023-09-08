@@ -92,6 +92,9 @@ LIBFT				:=	$(LIBFT_PATH)/libft.a
 MAKE_LIBFT			:=	make -C $(LIBFT_PATH)
 LIB_FLAGS			:=	-L $(LIBFT_PATH) -lft -lreadline
 
+# INC
+INC_DIR				:=	./inc/
+
 # SRCS
 SRCS_DIR			:=	./srcs/
 SRCS				:=	\
@@ -109,13 +112,14 @@ DEPS				:=	$(OBJS:.o=.d)
 
 # FLAGS
 CC					:=	cc
-CFLAGS				:=	-Wall -Wextra -Werror
-IFLAGS   	 		:= -I $(INCLUDES)
+CFLAGS				:=	-Wall -Wextra -Werror -g3
+IFLAGS   	 		:=	-I $(INC_DIR)
 
 # BASH FUNCTIONS
 RM					:=	rm -r -f
 MAKEFLAGS   		+= --silent --no-print-directory
 DIR_DUP				=	mkdir -p $(@D)
+
 
 ##########
 # COLORS #
@@ -129,21 +133,38 @@ RESET				:=	\033[0m
 # RECIPES #
 ###########
 
+all: $(NAME)
 
+$(NAME): $(LIBFT) $(OBJS)
+	@echo "[" "$(YELLOW)..$(RESET)" "] | Compiling $(NAME)..."
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIB_FLAGS)
+	@echo "[" "$(GREEN)OK$(RESET)" "] | $(NAME) ready!"
 
+$(BUILD_DIR)/%.o: $(SRCS_DIR)/%.c
+	@$(DIR_DUP)
+	@$(CC) $(CFLAGS) $(IFLAGS) -c -o $@ $<
 
+$(LIBFT):
+	$(MAKE_LIBFT)
 
+-include $(DEPS)
 
+clean:
+	@echo "[" "$(YELLOW)..$(RESET)" "] | Removing object files...$(RESET)"
+	@$(RM) $(BUILD_DIR) $(OBJS) $(DEPS)
+	@$(MAKE_LIBFT) clean
+	@echo "[" "$(GREEN)OK$(RESET)" "] | Object files removed."
 
+fclean:
+	fclean: clean
+	@echo "[" "$(YELLOW)..$(RESET)" "] | Removing binary files...$(RESET)"
+	@$(RM) $(NAME)
+	@$(MAKE_LIBFT) fclean
+	@echo "[" "$(GREEN)OK$(RESET)" "] | Object files removed."
 
+re:
+	fclean
+	make all
+	$(MAKE_LIBFT) re
 
-
-
-
-
-
-
-
-
-
-
+.PHONY: all clean fclean re
