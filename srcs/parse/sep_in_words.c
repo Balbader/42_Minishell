@@ -34,7 +34,7 @@ int	split_in_words(t_cmdlst *cmd_line, char *line)
 		return (FAILURE);
 	while (line[i] && line[i] != '|')
 	{
-printf("here i == %d char == %c\n", i, line[i]);
+		printf("here i == %d char == %c\n", i, line[i]);
 		if (!quote_on(line, i) && ft_isspace((int)line[i]) == 0)
 		{
 			j = i;
