@@ -77,8 +77,23 @@ EXPAND				:=	$(addprefix $(EXEC_DIR), $(EXEC_FILES))
 
 # PARSER FILES
 
-PARSER_DIR			:=	parser/
-PARSER_FILES		:=	parse_input.c
+PARSER_DIR			:=	parse/
+PARSER_FILES		:=	\
+						addback_cmdline_node.c \
+						addback_word_node.c \
+						alloc_parse_struct.c \
+						append_cmd_node.c \
+						append_word_node.c \
+						check_quotes.c \
+						cmdline_new_node.c \
+						cust_getenv.c \
+						goto_last_node.c \
+						goto_last_word.c \
+						parse_input.c \
+						quote_on.c \
+						sep_cmd_line.c \
+						sep_in_words.c \
+						word_new_node.c
 PARSER				:=	$(addprefix $(EXEC_DIR), $(EXEC_FILES))
 
 
@@ -155,15 +170,13 @@ clean:
 	@$(MAKE_LIBFT) clean
 	@echo "[" "$(GREEN)OK$(RESET)" "] | Object files removed."
 
-fclean:
-	fclean: clean
+fclean: clean
 	@echo "[" "$(YELLOW)..$(RESET)" "] | Removing binary files...$(RESET)"
 	@$(RM) $(NAME)
 	@$(MAKE_LIBFT) fclean
 	@echo "[" "$(GREEN)OK$(RESET)" "] | Object files removed."
 
-re:
-	fclean
+re: fclean 
 	make all
 	$(MAKE_LIBFT) re
 
