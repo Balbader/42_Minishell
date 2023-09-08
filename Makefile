@@ -10,4 +10,13 @@
 #                                                                              #
 # **************************************************************************** #
 
+# NAME
+NAME				:=	minishell
+
+# Libft
+LIBFT_PATH			:=	./libft/
+LIBFT				:=	$(LIBFT_PATH)/libft.a
+MAKE_LIBFT			:=	make -C $(LIBFT_PATH)
+LIB_FLAGS			:=	-L $(LIBFT_PATH) -lft -lreadline
+
 
