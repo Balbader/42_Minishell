@@ -13,7 +13,13 @@
 # NAME
 NAME				:=	minishell
 
-# SRCS FILES
+
+##############
+# SRCS FILES #
+##############
+
+# BUILTINS FILES ##############################################################
+
 CD_DIR				:=	cd/
 CD_FILES			:=	cd.c
 CD					:=	$(addprefix $(CD_DIR), $(CD_FILES))
@@ -43,10 +49,85 @@ UNSET_FILES			:=	unset.c
 UNSET				:=	$(addprefix $(UNSET_DIR), $(UNSET_FILES))
 
 
-# Libft
+BUILT_DIR			:=	builtins/
+BUILT_SRCS			:=	\
+						$(CD) \
+						$(ECHO) \
+						$(ENV) \
+						$(EXIT) \
+						$(EXPORT) \
+						$(PWD) \
+						$(UNSET)
+BUILT				:=	$(addprefix $(BUILT_DIR), $(BUILT_SRCS))
+
+
+# EXEC FILES ##################################################################
+
+EXEC_DIR			:=	exec/
+EXEC_FILES			:=	exec_cmd.c
+EXEC				:=	$(addprefix $(EXEC_DIR), $(EXEC_FILES))
+
+
+# EXPAND FILES ################################################################
+
+EXPAND_DIR			:=	expand/
+EXPAND_FILES		:=	exec_cmd.c
+EXPAND				:=	$(addprefix $(EXEC_DIR), $(EXEC_FILES))
+
+
+# PARSER FILES ################################################################
+
+PARSER_DIR			:=	parser/
+PARSER_FILES		:=	parse_input.c
+PARSER				:=	$(addprefix $(EXEC_DIR), $(EXEC_FILES))
+
+
+# LIBFT #######################################################################
+
 LIBFT_PATH			:=	./libft/
 LIBFT				:=	$(LIBFT_PATH)/libft.a
 MAKE_LIBFT			:=	make -C $(LIBFT_PATH)
 LIB_FLAGS			:=	-L $(LIBFT_PATH) -lft -lreadline
+
+
+###############
+# INGREDIENTS #
+###############
+SRCS_DIR			:=	./srcs/
+SRCS				:=	\
+						$(BUILT) \
+						$(EXEC) \
+						$(EXPAND) \
+						$(PARSER) \
+						main.c
+SRCS				:=	$(SRCS:%=$(SRCS_DIR)/%)
+
+BUILD_DIR			:=	.build
+OBJS				:=	$(SRCS:$(SRCS_DIR)/%.c=$(BUILD_DIR)/%.o)
+DEPS				:=	$(OBJS:.o=.d)
+
+CC					:=	cc
+CFLAGS				:=	-Wall -Wextra -Werror
+IFLAGS   	 		:= -I $(INCLUDES)
+RM					:=	rm -r -f
+MAKEFLAGS   		+= --silent --no-print-directory
+DIR_DUP				=	mkdir -p $(@D)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
