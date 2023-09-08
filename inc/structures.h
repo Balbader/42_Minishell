@@ -13,6 +13,8 @@
 #ifndef STRUCTURES_H
 # define STRUCTURES_H
 
+# include <stdbool.h>
+
 enum	e_status
 {
 	SUCCESS = 0,
