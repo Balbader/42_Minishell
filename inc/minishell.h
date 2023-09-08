@@ -31,7 +31,6 @@
 # include <dirent.h>
 # include <string.h>
 # include <termios.h>
-# include <stdbool.h>
 
 /*
 *******************************************************************************
@@ -84,7 +83,7 @@ void	exec_cmd(t_data *in, t_exec *cmd);
 *******************************************************************************
 */
 // env
-int		ft_exec_env(t_cmdlst *cmd, int fd_out, t_env *env);
+int		ft_exec_env(void);
 
 
 
