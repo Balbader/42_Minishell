@@ -152,7 +152,7 @@ all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJS)
 	@echo "[" "$(YELLOW)..$(RESET)" "] | Compiling $(NAME)..."
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIB_FLAGS)
+	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIB_FLAGS)
 	@echo "[" "$(GREEN)OK$(RESET)" "] | $(NAME) ready!"
 
 $(BUILD_DIR)/%.o: $(SRCS_DIR)/%.c
