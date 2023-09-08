@@ -18,7 +18,7 @@ NAME				:=	minishell
 # SRCS FILES #
 ##############
 
-# BUILTINS FILES ##############################################################
+# BUILTINS FILES
 
 CD_DIR				:=	cd/
 CD_FILES			:=	cd.c
@@ -61,38 +61,38 @@ BUILT_SRCS			:=	\
 BUILT				:=	$(addprefix $(BUILT_DIR), $(BUILT_SRCS))
 
 
-# EXEC FILES ##################################################################
+# EXEC FILES
 
 EXEC_DIR			:=	exec/
 EXEC_FILES			:=	exec_cmd.c
 EXEC				:=	$(addprefix $(EXEC_DIR), $(EXEC_FILES))
 
 
-# EXPAND FILES ################################################################
+# EXPAND FILES
 
 EXPAND_DIR			:=	expand/
 EXPAND_FILES		:=	exec_cmd.c
 EXPAND				:=	$(addprefix $(EXEC_DIR), $(EXEC_FILES))
 
 
-# PARSER FILES ################################################################
+# PARSER FILES
 
 PARSER_DIR			:=	parser/
 PARSER_FILES		:=	parse_input.c
 PARSER				:=	$(addprefix $(EXEC_DIR), $(EXEC_FILES))
 
 
-# LIBFT #######################################################################
+###############
+# INGREDIENTS #
+###############
 
+# LIBFT
 LIBFT_PATH			:=	./libft/
 LIBFT				:=	$(LIBFT_PATH)/libft.a
 MAKE_LIBFT			:=	make -C $(LIBFT_PATH)
 LIB_FLAGS			:=	-L $(LIBFT_PATH) -lft -lreadline
 
-
-###############
-# INGREDIENTS #
-###############
+# SRCS
 SRCS_DIR			:=	./srcs/
 SRCS				:=	\
 						$(BUILT) \
@@ -102,16 +102,32 @@ SRCS				:=	\
 						main.c
 SRCS				:=	$(SRCS:%=$(SRCS_DIR)/%)
 
+# BUILD
 BUILD_DIR			:=	.build
 OBJS				:=	$(SRCS:$(SRCS_DIR)/%.c=$(BUILD_DIR)/%.o)
 DEPS				:=	$(OBJS:.o=.d)
 
+# FLAGS
 CC					:=	cc
 CFLAGS				:=	-Wall -Wextra -Werror
 IFLAGS   	 		:= -I $(INCLUDES)
+
+# BASH FUNCTIONS
 RM					:=	rm -r -f
 MAKEFLAGS   		+= --silent --no-print-directory
 DIR_DUP				=	mkdir -p $(@D)
+
+##########
+# COLORS #
+##########
+RED					:=	\033[0;31m
+GREEN				:=	\033[0;32m
+YELLOW				:=	\033[0;33m
+RESET				:=	\033[0m
+
+###########
+# RECIPES #
+###########
 
 
 
