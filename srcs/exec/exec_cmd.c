@@ -1,4 +1,4 @@
-#include "minishell.c"
+#include "minishell.h"
 
 int	init_cmd(t_data *in, t_exec *exec)
 {
