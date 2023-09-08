@@ -20,6 +20,7 @@
 */
 # include "structures.h"
 # include "define.h"
+# include "../libft/includes/libft.h"
 
 # include <readline/readline.h>
 # include <readline/history.h>
