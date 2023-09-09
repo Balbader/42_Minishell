@@ -84,9 +84,10 @@ void		exec_cmd(t_data *in, t_exec *cmd);
 *******************************************************************************
 */
 // env
-int			env_err(char **env, int output_fd);
-int			env_err(char **env, int output_fd);
-void		env_fail(const char *message, char **env);
+int			ft_get_env_len(char **env);
+int			ft_env_err(char **env, int output_fd);
+int			ft_env_err(char **env, int output_fd);
+void		ft_env_fail(const char *message, char **env);
 
 
 
