@@ -27,11 +27,11 @@
 // 	return (i);
 // }
 
-int	exec_env(t_cmdlst *cmd, int fd_out, t_env *env)
+int	ft_exec_env(t_env *env, int fd_out)
 {
 	t_env	*tmp;
 
-	if (!cmd || !env)
+	if (!env)
 		return (ft_putstr_fd("bash: env: env not defined\n", 2),
 			EXIT_FAILURE);
 	tmp = env;
