@@ -17,16 +17,8 @@ int main(int ac, char **av, char **env)
 {
 	(void)ac;
 	(void)av;
-	int i = 0;
 	int env_len = 0;
 
 	env_len = ft_get_env_len(env);
 	printf("env length : %d\n", env_len);
-
-	while (env[i])
-		{
-			printf("env[%d] : %s\n", i, env[i]);
-			++i;
-		}
-	return (0);
 }
