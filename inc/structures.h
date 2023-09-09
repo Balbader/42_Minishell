@@ -51,6 +51,7 @@ typedef struct s_data
 /************************** basil stuff*/
 typedef struct s_env
 {
+	int				id;
 	char			*key;
 	char			*value;
 	struct s_env	*next;

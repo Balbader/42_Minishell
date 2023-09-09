@@ -32,6 +32,7 @@
 # include <dirent.h>
 # include <string.h>
 # include <termios.h>
+# include <stdio.h>
 
 /*
 *******************************************************************************
