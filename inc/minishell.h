@@ -87,13 +87,19 @@ void		exec_cmd(t_data *in, t_exec *cmd);
 int			ft_get_env_len(char **env);
 int			ft_env_err(char **env, int output_fd);
 int			ft_env_err(char **env, int output_fd);
+int			ft_exec_env(t_env *env, int fd_out);
 void		ft_env_fail(const char *message, char **env);
 
 
 
 
 
-
+/*
+*******************************************************************************
+******************************************************************** UTILS
+*******************************************************************************
+*/
+void		ft_free_tabs(char **tab);
 
 
 
