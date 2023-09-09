@@ -88,6 +88,8 @@ int			ft_get_env_len(char **env);
 int			ft_env_err(char **env, int output_fd);
 int			ft_env_err(char **env, int output_fd);
 int			ft_exec_env(t_env *env, int fd_out);
+int			ft_get_key_len(char *str);
+int			ft_get_value_len(char *str);
 void		ft_env_fail(const char *message, char **env);
 
 
