@@ -29,7 +29,10 @@ ECHO_FILES			:=	echo.c
 ECHO				:=	$(addprefix $(ECHO_DIR), $(ECHO_FILES))
 
 ENV_DIR				:=	env/
-ENV_FILES			:=	env.c
+ENV_FILES			:=	\
+						env.c \
+						env_err.c \
+						env_fail.c \
 ENV					:=	$(addprefix $(ENV_DIR), $(ENV_FILES))
 
 EXIT_DIR			:=	exit/
