@@ -64,14 +64,14 @@ BUILT				:=	$(addprefix $(BUILT_DIR), $(BUILT_SRCS))
 # EXEC FILES
 
 EXEC_DIR			:=	exec/
-EXEC_FILES			:=	exec_cmd.c
+EXEC_FILES			:=
 EXEC				:=	$(addprefix $(EXEC_DIR), $(EXEC_FILES))
 
 
 # EXPAND FILES
 
 EXPAND_DIR			:=	expand/
-EXPAND_FILES		:=	exec_cmd.c
+EXPAND_FILES		:=
 EXPAND				:=	$(addprefix $(EXEC_DIR), $(EXEC_FILES))
 
 
