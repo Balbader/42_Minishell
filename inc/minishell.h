@@ -68,15 +68,15 @@ t_token		*word_new_node(char *line, int start, int len);
 */
 
 //DEBUG FUNCTIONS
-void	print_all_words(t_token *cmd_line);
-void	delall(t_data *in);
+void		print_all_words(t_token *cmd_line);
+void		delall(t_data *in);
 
 /*
 *******************************************************************************
 ******************************************************************** EXEC
 *******************************************************************************
 */
-void	exec_cmd(t_data *in, t_exec *cmd);
+void		exec_cmd(t_data *in, t_exec *cmd);
 
 /*
 *******************************************************************************
@@ -84,6 +84,9 @@ void	exec_cmd(t_data *in, t_exec *cmd);
 *******************************************************************************
 */
 // env
+int			env_err(char **env, int output_fd);
+int			env_err(char **env, int output_fd);
+void		env_fail(const char *message, char **env);
 
 
 
