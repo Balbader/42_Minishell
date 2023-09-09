@@ -30,9 +30,11 @@ ECHO				:=	$(addprefix $(ECHO_DIR), $(ECHO_FILES))
 
 ENV_DIR				:=	env/
 ENV_FILES			:=	\
+						ft_convert_env_to_list.c \
 						env.c \
 						env_err.c \
 						env_fail.c \
+						ft_get_env_len.c
 ENV					:=	$(addprefix $(ENV_DIR), $(ENV_FILES))
 
 EXIT_DIR			:=	exit/
