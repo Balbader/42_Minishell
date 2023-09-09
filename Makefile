@@ -31,9 +31,9 @@ ECHO				:=	$(addprefix $(ECHO_DIR), $(ECHO_FILES))
 ENV_DIR				:=	env/
 ENV_FILES			:=	\
 						ft_convert_env_to_list.c \
-						env.c \
-						env_err.c \
-						env_fail.c \
+						ft_env.c \
+						ft_env_err.c \
+						ft_env_fail.c \
 						ft_get_env_len.c
 ENV					:=	$(addprefix $(ENV_DIR), $(ENV_FILES))
 
@@ -101,6 +101,10 @@ PARSER_FILES		:=	\
 						word_new_node.c
 PARSER				:=	$(addprefix $(EXEC_DIR), $(EXEC_FILES))
 
+UTILS_DIR			:=	utils/
+UTILS_FILES			:=	ft_free_tabs.c
+UTILS				:=	$(addprefix $(UTILS_DIR), $(UTILS_FILES))
+
 
 ###############
 # INGREDIENTS #
@@ -122,6 +126,7 @@ SRCS				:=	\
 						$(EXEC) \
 						$(EXPAND) \
 						$(PARSER) \
+						$(UTILS) \
 						main.c
 SRCS				:=	$(SRCS:%=$(SRCS_DIR)/%)
 
