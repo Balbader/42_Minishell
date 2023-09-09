@@ -11,3 +11,9 @@
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+t_env	*ft_convert_env_to_list(char **env)
+{
+	(void)env;
+	return (NULL);
+}
