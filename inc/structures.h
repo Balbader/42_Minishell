@@ -27,6 +27,18 @@ enum	e_start
 	END
 };
 
+enum e_token
+{
+	WORD,
+	FD,
+	LIMITOR,
+	R_IN,
+	HEREDOC,
+	R_OUT,
+	APPEND,
+	PIPE,
+};
+
 typedef struct s_token
 {
 	char			*word;
