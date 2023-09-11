@@ -12,24 +12,23 @@
 
 #include "minishell.h"
 
-char	*ft_copy_key(char *src, char *dest, char stop)
+char	*ft_copy_key(char *key, char *key_cpy, char stop)
 {
 	int	key_len;
 	int	i;
 
-	if (!src)
+	if (!key)
 		return (NULL);
-	key_len = ft_get_key_len(src);
-	printf("key_len : %d\n", key_len);
-	dest = (char *)malloc(sizeof(char) * (key_len + 1));
-	if (!dest)
+	key_len = ft_get_key_len(key);
+	key_cpy = (char *)malloc(sizeof(char) * (key_len + 1));
+	if (!key_cpy)
 		return (NULL);
 	i = 0;
-	while (src[i] != stop)
+	while (key[i] != stop)
 	{
-		dest[i] = src[i];
+		key_cpy[i] = key[i];
 		++i;
 	}
-	dest[i] = '\0';
-	return (dest);
+	key_cpy[i] = '\0';
+	return (key_cpy);
 }
