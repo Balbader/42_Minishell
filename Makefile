@@ -6,7 +6,7 @@
 #    By: baalbade <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/08 10:43:48 by baalbade          #+#    #+#              #
-#    Updated: 2023/09/08 10:43:49 by baalbade         ###   ########.fr        #
+#    Updated: 2023/09/11 17:58:14 by ftuernal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -90,21 +90,21 @@ EXPAND				:=	$(addprefix $(EXEC_DIR), $(EXEC_FILES))
 
 PARSER_DIR			:=	parse/
 PARSER_FILES		:=	\
+						add_all_words_nodes.c \
 						addback_cmdline_node.c \
-						addback_word_node.c \
 						alloc_parse_struct.c \
 						append_cmd_node.c \
-						append_word_node.c \
 						check_quotes.c \
 						cmdline_new_node.c \
+						count_token.c \
 						cust_getenv.c \
 						goto_last_node.c \
-						goto_last_word.c \
 						parse_input.c \
 						quote_on.c \
-						sep_cmd_line.c \
-						sep_in_words.c \
-						word_new_node.c
+						sep_cmdline.c \
+						set_limits.c \
+						split_into_words.c
+						tokenizer.c
 PARSER				:=	$(addprefix $(EXEC_DIR), $(EXEC_FILES))
 
 UTILS_DIR			:=	utils/
