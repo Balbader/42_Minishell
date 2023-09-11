@@ -34,10 +34,10 @@ t_env	*ft_create_env_list(int env_len, t_env *env_lst)
 	head = env_lst;
 	i = 0;
 	while (i < env_len)
-		{
-			env_lst->next = ft_create_env_list(i)
-			++i;
-		}
+	{
+		env_lst->next = ft_create_env_list(i)
+		++i;
+	}
 	return (head);
 }
 
