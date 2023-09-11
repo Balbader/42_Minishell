@@ -12,21 +12,21 @@
 
 #include "minishell.h"
 
-char	*ft_copy_key(char *key, char *key_cpy, char stop)
+char	*ft_copy_key(char *env_elem, char *key_cpy, char stop)
 {
 	int	key_len;
 	int	i;
 
-	if (!key)
+	if (!env_elem)
 		return (NULL);
-	key_len = ft_get_key_len(key);
+	key_len = ft_get_key_len(env_elem);
 	key_cpy = (char *)malloc(sizeof(char) * (key_len + 1));
 	if (!key_cpy)
 		return (NULL);
 	i = 0;
-	while (key[i] != stop)
+	while (env_elem[i] != stop)
 	{
-		key_cpy[i] = key[i];
+		key_cpy[i] = env_elem[i];
 		++i;
 	}
 	key_cpy[i] = '\0';
