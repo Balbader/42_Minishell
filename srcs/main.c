@@ -16,8 +16,12 @@ int main(int ac, char **av, char **env)
 {
 	(void)ac;
 	(void)av;
-	int env_len = 0;
+	char *dest;
 
-	env_len = ft_get_env_len(env);
-	printf("env length : %d\n", env_len);
+	dest = NULL;
+
+	dest = ft_copy_key(env[0], dest, '=');
+	printf("env[0] : %s\n", env[0]);
+	printf("dest : %s\n", dest);
+	return (0);
 }
