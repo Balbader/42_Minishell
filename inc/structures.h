@@ -27,6 +27,7 @@ enum	e_start
 	END
 };
 
+/*
 enum e_token
 {
 	WORD,
@@ -38,6 +39,7 @@ enum e_token
 	APPEND,
 	PIPE,
 };
+*/
 
 typedef struct s_token
 {
