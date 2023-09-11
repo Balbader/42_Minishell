@@ -15,7 +15,7 @@
 int	ft_get_value_len(char *str)
 {
 	int	i;
-	int len;
+	int	len;
 
 	len = 0;
 	i = 0;
