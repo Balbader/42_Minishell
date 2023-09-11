@@ -16,12 +16,11 @@ int main(int ac, char **av, char **env)
 {
 	(void)ac;
 	(void)av;
-	char *dest;
+	char *key_cpy;
 
-	dest = NULL;
-
-	dest = ft_copy_key(env[0], dest, '=');
+	key_cpy = NULL;
+	key_cpy = ft_copy_key(env[0], key_cpy, '=');
 	printf("env[0] : %s\n", env[0]);
-	printf("dest : %s\n", dest);
+	printf("key_cpy : %s\n", key_cpy);
 	return (0);
 }
