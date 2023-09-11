@@ -35,7 +35,7 @@ t_env	*ft_create_env_list(int env_len, t_env *env_lst)
 	i = 0;
 	while (i < env_len)
 	{
-		env_lst->next = ft_create_env_list(i)
+		env_lst->next = ft_create_new_env_node(i);
 		++i;
 	}
 	return (head);
@@ -43,6 +43,8 @@ t_env	*ft_create_env_list(int env_len, t_env *env_lst)
 
 t_env	*ft_assign_env_list(char **env, t_env *env_lst)
 {
+	(void)env;
+	(void)env_lst;
 	return (NULL);
 }
 
