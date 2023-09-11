@@ -78,7 +78,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "f73fa73f2596aaf4",
@@ -155,7 +156,7 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "7a379a5d30e7b9d8",
+  "active": "eff6a869bfe8a946",
   "lastOpenFiles": [
     "To Do.md"
   ]
