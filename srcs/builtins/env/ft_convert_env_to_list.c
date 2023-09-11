@@ -41,6 +41,7 @@ t_env	*ft_create_env_list(int env_len, t_env *env_lst)
 	return (head);
 }
 
+/*
 t_env	*ft_assign_env_list(char **env, t_env *env_lst)
 {
 	(void)env;
@@ -53,3 +54,4 @@ t_env	*ft_convert_env_to_list(char **env)
 	(void)env;
 	return (NULL);
 }
+*/
