@@ -34,9 +34,9 @@ ENV_FILES			:=	\
 						ft_copy_key.c \
 						ft_copy_value.c \
 						ft_create_new_env_node.c \
-						ft_env.c \
 						ft_env_err.c \
 						ft_env_fail.c \
+						ft_exec_env.c \
 						ft_get_env_len.c \
 						ft_get_key_len.c \
 						ft_get_value_len.c
