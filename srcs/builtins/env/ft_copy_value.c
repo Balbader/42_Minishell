@@ -12,10 +12,14 @@
 
 #include "minishell.h"
 
-char	*ft_copy_value(char *value, char *value_cpy, char stop)
+char	*ft_copy_value(char *env, char *value_cpy, char stop)
 {
 	int	value_len;
-	if (!src)
+	int	i;
+
+	if (!value)
 		return (NULL);
+	i = 0;
+	while ()
 	
 }
