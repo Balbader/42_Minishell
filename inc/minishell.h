@@ -92,7 +92,8 @@ int			ft_exec_env(t_env *env, int fd_out);
 int			ft_get_key_len(char *str);
 int			ft_get_value_len(char *str);
 void		ft_env_fail(const char *message, char **env);
-char		*ft_copy_key(char *src, char *dest, char stop);
+char		*ft_copy_key(char *env_elem, char *key_cpy, char stop);
+char		*ft_copy_value(char *env_elem, char *value_cpy);
 
 
 
