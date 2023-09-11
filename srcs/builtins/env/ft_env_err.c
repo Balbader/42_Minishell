@@ -12,7 +12,14 @@
 
 #include "minishell.h"
 
-int	env_err(char **env, int output_fd)
+/*
+ *	in case of err:
+ *	. print err message
+ *	. free **env
+ *	. free *env_lst
+*/
+
+int	env_err(char **env, t_env *env_cpy, int output_fd)
 {
 	(void)output_fd;
 	ft_putstr_fd("bash: export: `", 2);
@@ -27,5 +34,6 @@ int	env_err(char **env, int output_fd)
 	}
 	ft_putstr_fd("': not a valid identifier\n", 2);
 	ft_free_tabs(env);
+	ft_del_env(env_cpy);
 	return (EXIT_FAILURE);
 }

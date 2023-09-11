@@ -12,7 +12,13 @@
 
 #include "minishell.h"
 
-void	env_fail(const char *message, char **env)
+/*
+ * in case of failure
+ * . free **env
+ * . free *env_cpy
+*/
+
+void	ft_env_fail(const char *message, char **env, t_env *env_cpy)
 {
 	int	i;
 
@@ -21,6 +27,7 @@ void	env_fail(const char *message, char **env)
 		free(env[i++]);
 	if (env)
 		free(env);
+	ft_del_env(env_cpy);
 	perror(message);
 	exit(EXIT_FAILURE);
 }

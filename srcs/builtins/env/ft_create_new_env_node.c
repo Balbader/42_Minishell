@@ -12,6 +12,14 @@
 
 #include "minishell.h"
 
+/*
+ * create a new node that holds :
+ * . node id
+ * . Key variable
+ * . value variable
+ * . ptr to next node
+*/
+
 t_env	*ft_create_new_env_node(int id, char *key_cpy, char *value_cpy)
 {
 	t_env	*new_node;

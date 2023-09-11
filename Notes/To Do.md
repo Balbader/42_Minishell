@@ -1,8 +1,6 @@
-. get key length
-. get value length
+Export
 
-. malloc key size to env.key
-. malloc value size to env.value
-
-. copy key to env.key
-. copy value to env.value
+. check av[1]
+. if av[1] == export
+. get len of av[2]
+. 

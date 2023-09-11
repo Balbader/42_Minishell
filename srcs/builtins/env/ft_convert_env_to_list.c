@@ -12,6 +12,11 @@
 
 #include "minishell.h"
 
+/*
+ * Will create a linked list with every env variable
+ * Each variable will be assigned to a node.
+*/
+
 t_env	*ft_convert_env_to_list(int env_len, t_env *env_lst, char **env)
 {
 	t_env	*head;

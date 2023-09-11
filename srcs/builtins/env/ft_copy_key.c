@@ -12,6 +12,11 @@
 
 #include "minishell.h"
 
+/*
+ * Will copy the key section of each env variable to the key variable of
+ * each node of the env_lst.
+*/
+
 char	*ft_copy_key(char *env_elem, char *key_cpy, char stop)
 {
 	int	key_len;

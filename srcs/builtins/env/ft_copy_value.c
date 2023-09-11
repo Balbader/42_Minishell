@@ -12,6 +12,11 @@
 
 #include "minishell.h"
 
+/*
+ * Will copy the value section of each env variable to the value variable of
+ * each node of the env_lst.
+*/
+
 char	*ft_copy_value(char *env_elem, char *value_cpy)
 {
 	int	value_len;

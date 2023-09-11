@@ -8,14 +8,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "b82970e5baa4bcd1",
-            "type": "leaf",
-            "state": {
-              "type": "empty",
-              "state": {}
-            }
-          },
-          {
             "id": "7a379a5d30e7b9d8",
             "type": "leaf",
             "state": {
@@ -27,8 +19,7 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -156,7 +147,7 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "eff6a869bfe8a946",
+  "active": "7a379a5d30e7b9d8",
   "lastOpenFiles": [
     "To Do.md"
   ]
