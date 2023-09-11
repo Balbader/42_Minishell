@@ -6,7 +6,7 @@
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 10:27:24 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/08 10:27:25 by baalbade         ###   ########.fr       */
+/*   Updated: 2023/09/11 17:46:32 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,18 @@
 # define STRUCTURES_H
 
 # include <stdbool.h>
+
+typedef enum	e_type
+{
+	APPEND = 0,
+	HEREDOC,
+	LIMITOR,
+	FD,
+	PIPE,
+	R_IN,
+	R_OUT,
+	WORD
+}				t_type;
 
 enum	e_status
 {
@@ -44,7 +56,7 @@ enum e_token
 typedef struct s_token
 {
 	char			*word;
-	int				type;
+	t_type			type;
 	struct s_token	*next;
 }	t_token;
 
