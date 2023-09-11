@@ -34,6 +34,7 @@ ENV_FILES			:=	\
 						ft_copy_key.c \
 						ft_copy_value.c \
 						ft_create_new_env_node.c \
+						ft_del_env.c \
 						ft_env_err.c \
 						ft_env_fail.c \
 						ft_exec_env.c \
@@ -47,7 +48,7 @@ EXIT_FILES			:=	exit.c
 EXIT				:=	$(addprefix $(EXIT_DIR), $(EXIT_FILES))
 
 EXPORT_DIR			:=	export/
-EXPORT_FILES		:=	export.c
+EXPORT_FILES		:=	ft_exec_export.c
 EXPORT				:=	$(addprefix $(EXPORT_DIR), $(EXPORT_FILES))
 
 PWD_DIR				:=	pwd/
