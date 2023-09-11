@@ -10,14 +10,9 @@
 /* ************************************************************************** */
 
 #include "parse.h"
-
+/*
 int	alloc_parse_struct(t_data *in)
 {
-	in->cmd_line = ft_calloc(1, sizeof(t_cmdlst));
-	if (!in->cmd_line)
-		return (FAILURE);
-	in->cmd_line->line = ft_calloc(1, sizeof(char));
-	if (!in->cmd_line->line)
-		return (FAILURE);
 	return (SUCCESS);
 }
+*/

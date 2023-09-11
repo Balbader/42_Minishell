@@ -6,13 +6,13 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 11:06:12 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/04 12:34:31 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/11 16:03:41 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
 
-t_cmdlst	*goto_last_node(t_cmdlst *ptr)
+t_token	*goto_last_node(t_token *ptr)
 {
 	if (ptr == NULL)
 		return (NULL);

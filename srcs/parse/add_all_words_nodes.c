@@ -1,31 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   append_word_node.c                                 :+:      :+:    :+:   */
+/*   add_all_words_nodes.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/05 12:06:21 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/06 11:45:14 by ftuernal         ###   ########.fr       */
+/*   Created: 2023/09/07 12:09:33 by ftuernal          #+#    #+#             */
+/*   Updated: 2023/09/11 17:18:41 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
 
-int	append_word_node(t_cmdlst *cmd_line, const char *line, int start, int len)
+t_token	*add_all_words_nodes( char **tab)
 {
-	t_token	*new_node;
+	t_token	*cmd_line;
+	int		i;
 
-	if (!cmd_line->words->word)
+	i = 0;
+	while (tab[i])
 	{
-		free(cmd_line->words->word);
-		cmd_line->words->word = ft_substr(line, start, len);
-		cmd_line->words->next = NULL;
-		return (SUCCESS);
+		if (i == 0)
+		{
+			cmd_line = cmdline_new_node(tab[0]);
+			if (!cmd_line)
+				return (NULL);
+		}
+		else
+			if (append_cmd_node(cmd_line, tab[i]) == FAILURE)
+				return (NULL);
+		if (!cmd_line)
+			return (NULL);
+		i++;
 	}
-	new_node = word_new_node((char *)line, start, len);
-	if (!new_node)
-		return (FAILURE);
-	addback_word_node(&cmd_line->words, new_node);
-	return (SUCCESS);
+	return (cmd_line);
 }

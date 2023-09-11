@@ -6,25 +6,21 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 10:38:53 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/04 12:16:46 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/11 17:03:43 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
 
-t_cmdlst	*cmdline_new_node(char *input, int start, int len)
+t_token	*cmdline_new_node(char *input)
 {
-	t_cmdlst	*new;
+	t_token	*new;
 
-	new = malloc(sizeof(t_cmdlst));
+	new = malloc(sizeof(t_token));
 	if (!new)
 		return (0);
-	new->line = ft_substr(input, start, len);
-	if (!new->line)
-	{
-		free(new);
-		return (NULL);
-	}
+	new->word = input;
 	new->next = NULL;
+//	free(input);
 	return (new);
 }
