@@ -22,6 +22,6 @@ int main(int ac, char **av, char **env)
 	env_len = ft_get_env_len(env);
 	env_list = NULL;
 	env_list = ft_convert_env_to_list(env_len, env_list, env);
-	ft_exec_env(env_list, 2);
+	ft_exec_env(env_list, 1);
 	return (0);
 }
