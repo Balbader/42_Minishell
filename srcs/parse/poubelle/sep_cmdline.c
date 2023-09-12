@@ -6,11 +6,50 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 10:18:45 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/11 16:46:39 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/12 10:50:39 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
+
+int	set_start_word(char *line, int i)
+{
+	int	start;
+
+	start = i;
+	while (ft_isspace(line[i]) == 1)
+	{
+		i++;
+		start++;
+	}
+	return (start);
+}
+
+int	set_end_word(char *line, int start)
+{
+	if (line[start] == 0)
+		return (0);
+	if (ft_strchr("<|>&", line[start]) != 0)
+	{
+		start++;
+		if ((line[start - 1] != '|' && line[start - 1] != '&')
+			&& line[start] == '<')
+			start ++;
+		else if ((line[start - 1] != '|' && line[start - 1] != '&')
+			&& line[start] == '>')
+			start++;
+		return (start);
+	}
+	while (line[start])
+	{
+		if ((line[start] == ' ' && quote_on(line, start) == false)
+			|| (ft_strchr("<|>&", line[start]) != 0 
+			&& quote_on(line, start) == false))
+			break ;
+		start++;
+	}
+	return (start);
+}
 
 char **sep_cmdline(char *line)
 {
@@ -41,28 +80,3 @@ char **sep_cmdline(char *line)
 	tab[j] = NULL;
 	return (tab);
 }
-/*
-int	sep_cmdline(char ***tab, char *line, int (*set_start)(char *))
-{
-	int	lim[2];
-
-	lim[START] = set_start(line);
-	lim[END] = set_end_word(line, lim[START]);
-	if (lim[END] > 0)
-	{
-		if (sep_cmdline(tab, line + lim[END], set_start(line)) == FAILURE)
-			return (FAILURE);
-		(*tab)[idx] = ft_substr(line, lim[START], lim[END] - lim[START]);
-		if (!(*tab)[idx])
-			return (FAILURE);
-	}
-	else if (lim[END] == 0)
-	{
-		(*tab) = (char **)malloc(sizeof(char *) * (idx + 1));
-		if (!(*tab))
-			return (FAILURE);
-		(*tab)[idx] = NULL;
-	}
-	return (SUCCESS);
-}
-*/
