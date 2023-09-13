@@ -94,7 +94,7 @@ PARSER_FILES		:=	\
 						parse_input.c \
 						quote_utils.c \
 						split_into_words.c \
-						tokenizer.c
+						tokenizer.c \
 						word_node_utils.c
 PARSER				:=	$(addprefix $(EXEC_DIR), $(EXEC_FILES))
 
