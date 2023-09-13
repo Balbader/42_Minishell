@@ -18,13 +18,13 @@
 typedef enum	e_type
 {
 	APPEND = 0,
-	HEREDOC,
-	LIMITOR,
-	FD,
-	PIPE,
-	R_IN,
-	R_OUT,
-	WORD
+	HEREDOC, //anything after <<
+	LIMITOR, //anything after >>
+	FD, // anithing after > or <
+	PIPE, // '|'
+	R_IN, // <
+	R_OUT, // >
+	WORD // anything else
 }				t_type;
 
 enum	e_status
@@ -55,8 +55,12 @@ enum e_token
 
 typedef struct s_token
 {
+	// string that represent a section of the initial input to be 
+	// executed by the appropriate builtin
 	char			*word;
+
 	t_type			type;
+
 	struct s_token	*next;
 }	t_token;
 
