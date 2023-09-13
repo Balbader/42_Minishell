@@ -86,6 +86,9 @@ t_env		*ft_convert_env_to_list(int env_len, t_env *env_lst, char **env);
 void		ft_env_fail(const char *message, char **env, t_env *env_cpy);
 void        ft_del_env(t_env *env);
 
+// export
+t_env		*ft_exec_export(t_data *data);
+
 /*
 *******************************************************************************
 ******************************************************************** UTILS
