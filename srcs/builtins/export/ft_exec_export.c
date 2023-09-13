@@ -14,5 +14,9 @@
 
 t_env *ft_exec_export(t_data *data)
 {
-	return ()
+	static t_env *new_env;
+
+	new_env = NULL;
+	new_env = data->env;
+	return (new_env);
 }
