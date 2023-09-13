@@ -12,4 +12,7 @@
 
 #include "minishell.h"
 
-
+t_env *ft_exec_export(t_data *data)
+{
+	return ()
+}
