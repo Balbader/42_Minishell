@@ -1,7 +1,5 @@
 Export
-case : export (no args)
+case : export with arg
 . get env
-. sort env in aphabetical order
-. strjoin "declare -x "  + variable
-. do it for all variables
-. print all to console
+. add arg to end of list
+. return new lst
