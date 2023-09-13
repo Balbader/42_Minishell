@@ -12,11 +12,13 @@
 
 #include "minishell.h"
 
-t_env *ft_exec_export(t_data *data)
+// t_env *ft_exec_export(t_data *data)
+t_env *ft_exec_export(char *to_add, t_env *env)
 {
-	static t_env *new_env;
+	t_env	*new_lst;
+	t_env	*new_head;
 
-	new_env = NULL;
-	new_env = data->env;
-	return (new_env);
+	new_lst = env;
+	new_head = new_lst;
+	return (new_lst);
 }
