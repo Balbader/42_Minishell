@@ -70,14 +70,6 @@ typedef struct s_exec
 	char	*path;
 }	t_exec;
 
-typedef struct s_data
-{
-	char	*input;
-	t_token	*cmd_line;
-	t_env	*env;
-	bool	subject_flag;
-}	t_data;
-
 /************************** basil stuff*/
 typedef struct s_env
 {
@@ -86,6 +78,13 @@ typedef struct s_env
 	char			*value;
 	struct s_env	*next;
 }	t_env;
+
+typedef struct s_data
+{
+	char	*input;
+	t_token	*cmd_line;
+	t_env	*env;
+}	t_data;
 
 /*
 function(t_list *list)
