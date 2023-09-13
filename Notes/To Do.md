@@ -1,6 +1,7 @@
 Export
-
-. check av[1]
-. if av[1] == export
-. get len of av[2]
-. 
+case : export (no args)
+. get env
+. sort env in aphabetical order
+. strjoin "declare -x "  + variable
+. do it for all variables
+. print all to console

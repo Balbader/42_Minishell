@@ -129,6 +129,16 @@
                 "file": "To Do.md"
               }
             }
+          },
+          {
+            "id": "f335663fd76ecf97",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency"
+              }
+            }
           }
         ]
       }
