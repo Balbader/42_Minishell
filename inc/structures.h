@@ -74,8 +74,8 @@ typedef struct s_data
 {
 	char	*input;
 	t_token	*cmd_line;
-	char	**env;
-	bool	subgect_flag;
+	t_env	*env;
+	bool	subject_flag;
 }	t_data;
 
 /************************** basil stuff*/
