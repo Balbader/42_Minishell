@@ -82,11 +82,4 @@ typedef struct s_data
 	t_env	*env;
 }	t_data;
 
-/*
-function(t_list *list)
-{
-	t_env env = (t_env)list->content;
-}
-*/
-
 #endif // !STRUCTURES_H
