@@ -51,12 +51,8 @@ void	replace_var_by_value(char **ptr)
 		*ptr += 1;
 	}
 	else
-	{
-		env = get_env();
-		new_str = replace_by_env_value(*ptr, env);
-	}
-	*ptr = new_str;
-	free(new_str);
+	{}
+	env = get_env();
 }
 
 char	*expand_var(char *word)
