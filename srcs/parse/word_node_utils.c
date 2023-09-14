@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 11:04:07 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/12 11:04:10 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/13 15:49:22 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,13 @@ t_token	*cmdline_new_node(char *input)
 	new->next = NULL;
 //	free(input);
 	return (new);
+}
+
+void	add_cmdline_node_after(t_token *new_node, t_token *prev)
+{
+	t_token	*tmp;
+
+	tmp = prev->next;
+	prev->next = new_node;
+	new_node->next = tmp;
 }

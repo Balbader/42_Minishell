@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cust_getenv.c                                      :+:      :+:    :+:   */
+/*   sigval_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/31 13:40:38 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/08/31 13:40:40 by ftuernal         ###   ########.fr       */
+/*   Created: 2023/09/14 14:58:10 by ftuernal          #+#    #+#             */
+/*   Updated: 2023/09/14 15:58:57 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parse.h"
+#include ""
 
-int	cust_getenv(t_data *in, char **env)
+int	read_sigval(void)
 {
-	in->env = super_strdup(env);
-	if (in->env == 0)
-		return (manage_err(ENV, in, NULL));
-	return (0);
-	//replace by environnement management
+	return (sigval);
 }
+
+int	set_sigval(int new_sig)
+{
+	return (sigval = new_sig);
+}
+
+int	catch_sigval()
+{}

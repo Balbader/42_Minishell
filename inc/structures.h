@@ -6,7 +6,7 @@
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 10:27:24 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/11 17:46:32 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/13 15:34:43 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,16 @@
 
 typedef enum	e_type
 {
-	APPEND = 0,
-	HEREDOC, //anything after <<
-	LIMITOR, //anything after >>
-	FD, // anithing after > or <
+	APPEND = 0, // >>
+	HEREDOC, // <<
+	LIMITOR, //anything after a HEREDOC
+	FD, //anything after > or <
 	PIPE, // '|'
 	R_IN, // <
 	R_OUT, // >
-	WORD // anything else
+	WORD, // anything else
+	DQUOTE, //in expand if word is in ""
+	SQUOTE //in expand if word is in ''
 }				t_type;
 
 enum	e_status
@@ -38,20 +40,6 @@ enum	e_start
 	START = 0,
 	END
 };
-
-/*
-enum e_token
-{
-	WORD,
-	FD,
-	LIMITOR,
-	R_IN,
-	HEREDOC,
-	R_OUT,
-	APPEND,
-	PIPE,
-};
-*/
 
 typedef struct s_token
 {
