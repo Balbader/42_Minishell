@@ -29,14 +29,14 @@ t_env	*ft_convert_env_to_list(int env_len, t_env *env_lst, char **env)
 	value = NULL;
 	key = ft_copy_key(env[0], key, '=');
 	value = ft_copy_value(env[0], value);
-	env_lst = ft_create_new_env_node(0, key, value);
+	env_lst = ft_create_new_env_node(key, value);
 	head = env_lst;
 	i = 1;
 	while (i <= env_len)
 	{
 		key = ft_copy_key(env[i], key, '=');
 		value = ft_copy_value(env[i], value);
-		env_lst->next = ft_create_new_env_node(i, key, value);
+		env_lst->next = ft_create_new_env_node(key, value);
 		env_lst = env_lst->next;
 		++i;
 	}
