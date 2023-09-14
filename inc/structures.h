@@ -55,12 +55,8 @@ enum e_token
 
 typedef struct s_token
 {
-	// string that represent a section of the initial input to be 
-	// executed by the appropriate builtin
 	char			*word;
-
 	t_type			type;
-
 	struct s_token	*next;
 }	t_token;
 
