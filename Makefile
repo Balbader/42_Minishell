@@ -49,10 +49,10 @@ EXIT				:=	$(addprefix $(EXIT_DIR), $(EXIT_FILES))
 
 EXPORT_DIR			:=	export/
 EXPORT_FILES		:=	\
+						ft_add_many_args.c \
+						ft_add_var_to_env.c \
 						ft_convert_char_to_node.c \
-						ft_exec_export.c \
-						ft_export_many_args.c \
-						ft_export_var_to_env.c
+						ft_exec_export.c
 EXPORT				:=	$(addprefix $(EXPORT_DIR), $(EXPORT_FILES))
 
 PWD_DIR				:=	pwd/
