@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   expand_var.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/14 13:23:33 by ftuernal          #+#    #+#             */
+/*   Updated: 2023/09/14 13:23:35 by ftuernal         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "expand.h"
 
 char	*join_all_str(char **split)
@@ -28,7 +40,7 @@ char	*replace_by_last_ret(char *word)
 	if (!new_str)
 		return (NULL);
 	new_str = ft_strcpy(word + 1);
-	last_ret = get_last_ret_val();
+	last_ret = read_sigval();
 	ascii_ret = ft_itoa(last_ret);
 	if (!ascii_ret)
 		return (free(new_str), NULL);
@@ -37,9 +49,29 @@ char	*replace_by_last_ret(char *word)
 	return (new_str);
 }
 
+char	*replace_by_env_value(char *word)
+{
+	t_env	*current;
+	char	*new_str;
+
+	current = env;
+	while (current != NULL)
+	{
+		if (ft_strncmp(word, current->key, ft_strlen(env->key) == 0))
+			break ;
+		current = current->next;
+	}
+	new_str = ft_calloc(ft_strlen(word) - ft_strlen(env->key), sizeof(char));
+	if (!new_str)
+		return (NULL);
+	new_str = ft_strcpy(word + ft_strlen(env->key));
+	if (current)
+		new_str = join_free(current->key, new_str, new_str);
+	return (new_str);
+}
+
 void	replace_var_by_value(char **ptr)
 {
-	t_env	*env;
 	char	*new_str;
 	int		i;
 
@@ -51,10 +83,7 @@ void	replace_var_by_value(char **ptr)
 		*ptr += 1;
 	}
 	else
-	{
-		env = get_env();
-		new_str = replace_by_env_value(*ptr, env);
-	}
+		new_str = replace_by_env_value(*ptr);
 	*ptr = new_str;
 	free(new_str);
 }
