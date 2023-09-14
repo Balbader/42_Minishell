@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 14:58:11 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/12 16:56:07 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/14 14:32:20 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	expand(t_data *in)
 			(ft_strchr(ptr->word, '\"') || ft_strchr(ptr->word, '\'')))
 			ret = expand_quote_word(ptr, ptr->word);
 		else if ((ptr->token == WORD || ptr->token == FD))
-			ret = expand_simple_word(ptr, ptr->word);
+			ret = expand_noquote_word(ptr, ptr->word);
 		if (ret == FAILURE)
 			return (FAILURE);
 		ptr = ptr->next;

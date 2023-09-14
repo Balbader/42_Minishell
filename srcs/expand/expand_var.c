@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 13:23:33 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/14 13:23:35 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/14 14:24:10 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,8 @@ char	*expand_var(char *word)
 	char	**split;
 	char	*expand_word;
 
+	if (ft_strchr(word, "$") == 0)
+		return (word);
 	split = ft_split(word, '$');
 	if (!split)
 		return (0);
