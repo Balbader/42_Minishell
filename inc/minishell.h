@@ -87,6 +87,7 @@ void		ft_env_fail(const char *message, char **env, t_env *env_cpy);
 void        ft_del_env(t_env *env);
 
 // export
+int			ft_get_token_len(t_token *token);
 t_env 		*ft_exec_export(char *new_last, t_env *env);
 t_env		*ft_export_var_to_env(char *new_last, t_env *env);
 t_env		*ft_convert_char_to_node(char *new_last);
