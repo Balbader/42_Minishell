@@ -15,7 +15,7 @@
 // t_env *ft_exec_export(t_data *data)
 t_env *ft_exec_export(char *to_add, t_env *env)
 {
-	t_env	*new_lst;
+	t_env	*new_ls
 	t_env	*new_head;
 
 	new_lst = env;
