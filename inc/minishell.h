@@ -82,7 +82,7 @@ int			ft_get_value_len(char *str);
 char		*ft_copy_key(char *env_elem, char *key_cpy, char stop);
 char		*ft_copy_value(char *env_elem, char *value_cpy);
 t_env		*ft_create_new_env_node(char *key_cpy, char *value_cpy);
-t_env		*ft_convert_env_to_list(int env_len, t_env *env_lst, char **env);
+t_env		*ft_convert_env_to_list(t_env *env_lst, char **env);
 void		ft_env_fail(const char *message, char **env, t_env *env_cpy);
 void        ft_del_env(t_env *env);
 
