@@ -14,19 +14,20 @@
 
 /*
  * create a new node that holds :
- * . node id
+ * . env variable
  * . Key variable
  * . value variable
  * . ptr to next node
 */
 
-t_env	*ft_create_new_env_node(char *key_cpy, char *value_cpy)
+t_env	*ft_create_new_env_node(char *var_cpy, char *key_cpy, char *value_cpy)
 {
 	t_env	*new_node;
 
 	new_node = (t_env *)malloc(sizeof(t_env));
 	if (!new_node)
 		return (NULL);
+	new_node->var = var_cpy;
 	new_node->key = key_cpy;
 	new_node->value = value_cpy;
 	new_node->next = NULL;

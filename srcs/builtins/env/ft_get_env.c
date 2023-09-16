@@ -58,12 +58,12 @@ static t_env	*ft_create_env(char **env)
 	while (*env)
 	{
 		while (lst)
-			{
-				tmp = lst;
-				lst = lst->next;
-				free(tmp->var);
-				free(tmp);
-			}
+		{
+			tmp = lst;
+			lst = lst->next;
+			free(tmp->var);
+			free(tmp);
+		}
 		return (NULL);
 	}
 	++env;

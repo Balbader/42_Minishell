@@ -16,6 +16,7 @@ int	ft_get_token_len(t_token *token)
 {
 	int	count;
 
+	count = 0;
 	while (token)
 	{
 		++count;
