@@ -69,11 +69,16 @@ typedef struct s_exec
 /************************** basil stuff*/
 typedef struct s_env
 {
-	int				id;
-	char			*key;
-	char			*value;
+	char			*var;
 	struct s_env	*next;
 }	t_env;
+
+// typedef struct s_env
+// {
+// 	char			*key;
+// 	char			*value;
+// 	struct s_env	*next;
+// }	t_env;
 
 typedef struct s_data
 {
