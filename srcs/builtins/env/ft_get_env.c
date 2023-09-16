@@ -12,6 +12,7 @@
 
 #include "minishell.h"
 
+/*
 static t_env	*ft_get_last_node(t_env *lst)
 {
 	while(lst)
@@ -67,7 +68,9 @@ static t_env	*ft_create_env(char **env)
 		return (NULL);
 	}
 	++env;
+	return (lst);
 }
+*/
 
 static t_env	*ft_env_del_one(t_env *env, char *to_del)
 {
@@ -79,7 +82,7 @@ static t_env	*ft_env_del_one(t_env *env, char *to_del)
 	prev = env;
 	while (env)
 	{
-		if (ft_compare_before_equal(env->var, to_del))
+		if (ft_compare_before_equals(env->var, to_del))
 		{
 			next = env->next;
 			free(env->var);
@@ -96,12 +99,15 @@ static t_env	*ft_env_del_one(t_env *env, char *to_del)
 t_env	**ft_get_env(char **env, char *to_add, char *to_del)
 {
 	static t_env	*list;
+	int				env_len;
 
+	env_len = ft_get_env_len(env);
 	list = NULL;
 	if (env)
-		list = ft_convert_env_to_list(&list, env);
+		list = ft_convert_env_to_list(env_len, list, env);
 	else if (to_add)
-		ft_add_var_to_env(to_add, &list);
+		ft_add_var_to_env(to_add, list);
 	else if (to_del)
-		ft_env_del_one(to_del, &list);
+		ft_env_del_one(list, to_del);
+	return (&list);
 }

@@ -12,4 +12,18 @@
 
 #include "minishell.h"
 
-
+int	ft_compare_before_equals(char *env, char *find)
+{
+	if (!find)
+		return (false);
+	if (!find)
+		return (false);
+	while (*find && *env && *env != '=' && *find != '=' && *env == *find)
+	{
+		env++;
+		find++;
+	}
+	if (*env == '=' && (!*find || *find == '='))
+		return (true);
+	return (false);
+}
