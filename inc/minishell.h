@@ -80,11 +80,13 @@ int			ft_env_err(char **env, t_env *env_cpy, int output_fd);
 int			ft_exec_env(t_env *env, int fd_out);
 int			ft_get_key_len(char *str);
 int			ft_get_value_len(char *str);
+int			ft_compare_before_equals(char *env, char *find);
 char		*ft_copy_key(char *env_elem, char *key_cpy, char stop);
 char		*ft_copy_value(char *env_elem, char *value_cpy);
 char		*ft_copy_var(char *original, char *cpy);
 t_env		*ft_create_new_env_node(char *var_cpy, char *key_cpy, char *value_cpy);
 t_env		*ft_convert_env_to_list(int env_len, t_env *env_lst, char **env);
+t_env		**ft_get_env(char **env, char *to_add, char *to_del);
 void		ft_env_fail(const char *message, char **env, t_env *env_cpy);
 void        ft_del_env(t_env *env);
 
