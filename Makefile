@@ -40,7 +40,8 @@ ENV_FILES			:=	\
 						ft_exec_env.c \
 						ft_get_env_len.c \
 						ft_get_key_len.c \
-						ft_get_value_len.c
+						ft_get_value_len.c \
+						ft_get_var_len.c
 ENV					:=	$(addprefix $(ENV_DIR), $(ENV_FILES))
 
 EXIT_DIR			:=	exit/
