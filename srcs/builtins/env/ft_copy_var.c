@@ -25,10 +25,10 @@ char	*ft_copy_var(char *original, char *cpy)
 		return (NULL);
 	i = 0;
 	while (original[i])
-		{
-			cpy[i] = original[i];
-			++i;
-		}
+	{
+		cpy[i] = original[i];
+		++i;
+	}
 	cpy[i] = '\0';
 	return (cpy);
 }
