@@ -39,6 +39,8 @@ ENV_FILES			:=	\
 						ft_env_err.c \
 						ft_env_fail.c \
 						ft_exec_env.c \
+						ft_get_env.c \
+						ft_get_env_utils.c \
 						ft_get_env_len.c \
 						ft_get_key_len.c \
 						ft_get_value_len.c \
