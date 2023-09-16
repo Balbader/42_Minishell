@@ -17,14 +17,15 @@
  * Each variable will be assigned to a node.
 */
 
-t_env	*ft_convert_env_to_list(int env_len, t_env *env_lst, char **env)
+t_env	*ft_convert_env_to_list(t_env *env_lst, char **env)
 {
 	t_env	*head;
 	char	*key;
 	char	*value;
+	int		env_len;
 	int		i;
 
-	(void)env_len;
+	env_len = ft_get_env_len(env);
 	key = NULL;
 	value = NULL;
 	key = ft_copy_key(env[0], key, '=');
