@@ -12,7 +12,6 @@
 
 #include "minishell.h"
 
-
 t_env	*ft_add_var_to_env(char *new_last, t_env *env)
 {
 	t_env	*new_lst;
