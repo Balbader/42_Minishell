@@ -24,6 +24,7 @@ void	ft_del_env(t_env *env)
 	{
 		tmp = env;
 		env = env->next;
+		free(tmp->var);
 		free(tmp->key);
 		free(tmp->value);
 		free(tmp);
