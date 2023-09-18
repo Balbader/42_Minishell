@@ -50,21 +50,21 @@ int main(int ac, char **av, char **env)
 {
 	(void)ac;
 	(void)av;
-	t_env	*env_list = NULL;
+	t_env	*env_lst = NULL;
 	int		env_len;
 	t_token	*tokens = NULL;
-	int token_len;
+	// int token_len;
 
 	tokens = ft_init_tokens(tokens);
-	token_len = ft_get_token_len(tokens);
-	printf("token_len: %d\n", token_len);
-	for (int i = 0; i < token_len; ++i) {
-		printf("tokens[%d]->word : %s\n", tokens->type, tokens->word);
-		tokens = tokens->next;
-	}
+	// token_len = ft_get_token_len(tokens);
+	// for (int i = 0; i < token_len; ++i) {
+	// 	printf("tokens[%d]->word : %s\n", tokens->type, tokens->word);
+	// 	tokens = tokens->next;
+	// }
 	env_len = ft_get_env_len(env);
-	env_list = *(ft_get_env(env));
-	// ft_exec_env(env_list, 1);
+	env_lit = *(ft_get_env(env));
+	ft_export_many_args(tokens, env_lst);
+	ft_exec_env(env_list, 1);
 	ft_del_env(env_list);
 	return (0);
 }
