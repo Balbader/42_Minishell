@@ -12,6 +12,16 @@
 
 #include "minishell.h"
 
+/*
+ * This function gets the full lenght of the token llist
+ * sent to me from parsing
+ * in case of an export or unset, this allows me to know :
+ * 1. the 1st token = the command to execute -> export or unset
+ * 2. the remaining tokens = 
+ * 		. the number of variable to export or unset
+ * 		. the key/value of each variable to export or unset
+*/
+
 int	ft_get_token_len(t_token *token)
 {
 	int	count;
