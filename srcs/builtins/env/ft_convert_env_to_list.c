@@ -31,7 +31,7 @@ t_env	*ft_convert_env_to_list(int env_len, t_env *env_lst, char **env)
 	i = 1;
 	while (i <= env_len)
 	{
-		var = ft_copy_var(env[0], var);
+		var = ft_copy_var(env[i], var);
 		key = ft_copy_key(env[i], key, '=');
 		value = ft_copy_value(env[i], value);
 		env_lst->next = ft_create_new_env_node(var, key, value);
