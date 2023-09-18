@@ -12,6 +12,13 @@
 
 #include "minishell.h"
 
+/*
+ * new_last = new variable to add to the end of the env list
+ * env = env list that will recieve new_last
+ * this function takes the new_last str and converts it to a node
+ * then adds the new_last node to the env list
+*/
+
 t_env	*ft_add_var_to_env(char *new_last, t_env *env)
 {
 	t_env	*new_lst;
