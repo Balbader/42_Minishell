@@ -23,13 +23,14 @@ int main(int ac, char **av, char **env)
 	(void)av;
 	t_env	*env_list = NULL;
 	int		env_len;
-	t_env	*new_lst = NULL;
+	// t_env	*new_lst = NULL;
 
 	env_len = ft_get_env_len(env);
 	env_list = *(ft_get_env(env, 0, 0));
-	new_lst = ft_add_var_to_env("mimi=balou", env_list);
-	new_lst = ft_add_var_to_env("balou=mimi", env_list);
-	ft_exec_env(new_lst, 1);
+	// new_lst = ft_add_var_to_env("mimi=balou", env_list);
+	// new_lst = ft_add_var_to_env("balou=mimi", env_list);
+	// ft_exec_env(new_lst, 1);
+	ft_exec_env(env_list, 1);
 	ft_del_env(env_list);
 	return (0);
 }
