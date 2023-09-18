@@ -12,6 +12,16 @@
 
 #include "minishell.h"
 
+/*
+ * new_last = the new variable to add to the env lst
+ * new_last is recieved under a str format
+ * this function will convert the str to a node that will be manipulated
+ * based on the command recieved.
+ * var = the full str in its initial state
+ * key = the part of the new_last str BEFORE the "="
+ * value = the part of the new_last str AFTER the "="
+*/
+
 t_env	*ft_convert_char_to_node(char *new_last)
 {
 	char	*var;
