@@ -26,14 +26,13 @@ t_env	*ft_export_many_args(t_token *token, t_env *env)
 {
 	(void)token;
 	(void)env;
-	// t_env	*new_env;
-	// t_env	*new_head;
-	// // int	token_count;
-	// // int	i;
+	t_env	*new_env;
+	t_env	*new_head;
+	int	token_len;
+	int	i;
 
-	// new_env = env;
-	// new_head = NULL;
-	// new_head = ft_export_var_to_env(token->word, new_env);
-	// return (new_head);
-	return (NULL);
+	new_env = env;
+	new_head = NULL;
+	new_head = ft_export_var_to_env(token->word, new_env);
+	return (new_head);
 }
