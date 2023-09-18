@@ -17,20 +17,59 @@
 
 #include "minishell.h"
 
+t_token	*ft_create_token(char *arg, int i)
+{
+	t_token	*token;
+
+	token = NULL;
+	token = (t_token *)malloc(sizeof(t_token));
+	if (!token)
+		return (NULL);
+	token->word = arg;
+	token->type = i;
+	token->next = NULL;
+	return (token);
+}
+
+t_token	*ft_init_tokens(t_token *token)
+{
+	t_token	*head= NULL;
+	char	test = 'a';
+	int i;
+
+	i = 0;
+	token = ft_create_token("export", i);
+	head = token;
+	++i;
+	while (i < 6)
+	{
+		token->next = ft_create_token("test", i);
+		token = token->next;
+		++i;
+	}
+	return (head);
+}
+
 int main(int ac, char **av, char **env)
 {
 	(void)ac;
 	(void)av;
 	t_env	*env_list = NULL;
 	int		env_len;
-	// t_env	*new_lst = NULL;
+	t_token	*tokens = NULL;
+	int token_len;
 
+	tokens = ft_init_tokens(tokens);
+	token_len = ft_get_token_len(tokens);
+	printf("token_len: %d\n", token_len);
+	for (int i = 0; i < token_len; ++i) {
+		printf("tokens[%d]->word : %s\n", tokens->type, tokens->word);
+		tokens = tokens->next;
+	}
 	env_len = ft_get_env_len(env);
 	env_list = *(ft_get_env(env, 0, 0));
-	// new_lst = ft_add_var_to_env("mimi=balou", env_list);
-	// new_lst = ft_add_var_to_env("balou=mimi", env_list);
 	// ft_exec_env(new_lst, 1);
-	ft_exec_env(env_list, 1);
+	// ft_exec_env(env_list, 1);
 	ft_del_env(env_list);
 	return (0);
 }
