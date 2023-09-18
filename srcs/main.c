@@ -34,19 +34,15 @@ t_token	*ft_create_token(char *arg, int i)
 t_token	*ft_init_tokens(t_token *token)
 {
 	t_token	*head= NULL;
-	char	test = 'a';
-	int i;
 
-	i = 0;
-	token = ft_create_token("export", i);
+	token = ft_create_token("export", 0);
 	head = token;
-	++i;
-	while (i < 6)
-	{
-		token->next = ft_create_token("test", i);
-		token = token->next;
-		++i;
-	}
+	token->next = ft_create_token("key=1", 1);
+	token = token->next;
+	token->next = ft_create_token("key=2", 2);
+	token = token->next;
+	token->next = ft_create_token("key=3", 3);
+	token = token->next;
 	return (head);
 }
 
@@ -67,8 +63,7 @@ int main(int ac, char **av, char **env)
 		tokens = tokens->next;
 	}
 	env_len = ft_get_env_len(env);
-	env_list = *(ft_get_env(env, 0, 0));
-	// ft_exec_env(new_lst, 1);
+	env_list = *(ft_get_env(env));
 	// ft_exec_env(env_list, 1);
 	ft_del_env(env_list);
 	return (0);
