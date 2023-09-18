@@ -6,11 +6,11 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 11:51:09 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/12 10:52:51 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/18 18:51:33 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parse.h"
+#include "minishell.h"
 
 t_token	*add_all_words_nodes( char **tab)
 {
@@ -86,6 +86,7 @@ char **sep_cmdline(char *line)
 
 	i = 0;
 	count = count_token(line);
+printf("print count == %d print line = %s\n", count, line);
 	tab = ft_calloc(count + 1, sizeof(char *));
 	if (!tab)
 		return (0);
@@ -105,17 +106,17 @@ char **sep_cmdline(char *line)
 	return (tab);
 }
 
-int	split_into_words(t_data *in)
+int	split_into_words(t_token *cmd_line, char *input)
 {
 	char	**tab;
 
-	tab = sep_cmdline(in->input);
+	tab = sep_cmdline(input);
 	if (!tab)
 		return (FAILURE);
-	in->cmd_line = add_all_words_nodes(tab);
+	cmd_line = add_all_words_nodes(tab);
 	free(tab);
-	if (in->cmd_line)
-		tokenizer(in->cmd_line);
+	if (cmd_line)
+		tokenizer(cmd_line);
 	else
 		return (FAILURE);
 	return (SUCCESS);

@@ -1,4 +1,16 @@
-#include "parse.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   count_token.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/18 14:11:00 by ftuernal          #+#    #+#             */
+/*   Updated: 2023/09/18 18:14:08 by ftuernal         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "minishell.h"
 
 int	count_token(char *line)
 {
@@ -18,7 +30,7 @@ int	count_token(char *line)
 //printf("string == %s start == %d end == %d\n", line + start, start, end);
 		count++;
 	}
-	return (count + 1);
+	return (count);
 }
 /*
 int	main(void)

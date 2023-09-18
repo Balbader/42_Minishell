@@ -1,4 +1,4 @@
-#include "parse.h"
+#include "minishell.h"
 
 void	print_all_words(t_token *cmd_line)
 {
@@ -12,15 +12,15 @@ void	print_all_words(t_token *cmd_line)
 	}
 }
 
-void	delall(t_data *in)
+void	delall(t_token *cmd_line)
 {
 	t_token	*ptr;
 
-	while (in->cmd_line != NULL)
+	while (cmd_line != NULL)
 	{
-		free(in->cmd_line->word);
-		ptr = in->cmd_line;
-		in->cmd_line = in->cmd_line->next;
+		free(cmd_line->word);
+		ptr = cmd_line;
+		cmd_line = cmd_line->next;
 		free(ptr);
 	}
 }
@@ -29,25 +29,25 @@ int	main(int ac, char **av)
 {
 	(void)ac;
 	(void)av;
-	t_data	*in;
+	char	*input;
+	t_token **cmd_line;
 	int	split;
 
+	cmd_line = ft_calloc(1, sizeof(t_token));
 	printf("----------------TEST SPLIT WORDS----------------\n");
-	in = ft_calloc(1, sizeof(t_data));
 	while (1)
 	{
-		in->input = readline("");
-		split = split_into_words(in);
+		input = readline("");
+		split = split_into_words(*cmd_line, input);
 		printf("SPLIT_INTO_WORDS RETURNS == %d\n", split);
-		print_all_words(in->cmd_line);
-		delall(in);
-		if (ft_strncmp("STOP", in->input, 4) == 0)
+		print_all_words(*cmd_line);
+		delall(*cmd_line);
+		if (ft_strncmp("STOP", input, 4) == 0)
 			break ;
-		free(in->input);
+		free(input);
 	}
-	free(in->input);
+	free(input);
 	printf("--------------END TEST SPLIT WORDS--------------\n\n");
-	free(in);
 //	print_all_tokens(in->cmd_line);
 
 	return (0);

@@ -1,91 +1,43 @@
-#this makefile is intended to compile sources to test parse and expand sources
+# Generic Makefile for compiling sources with cc
 
-TARGET		= ./print
+# Compiler and flags
+CC = cc
+CFLAGS = -g3 -Werror -Wextra -Wall -I$(INC_DIR) -DREADLINE
 
-PARSEDIR	= parse/
-PARSEFILES	= \
-				count_token.c \
-				parse_input.c \
-				quote_utils.c \
-				split_into_words.c \
-				tokenizer.c \
-				word_node_utils.c \
-				print_parser.c
-PARSE		= $(addprefix $(PARSEDIR), $(PARSEFILES))
+# Directories
+SRC_DIRS = parse expand builtins/env utils
+OBJ_DIR = ./obj
+INC_DIR = ../inc
+LIB_DIR = ../libft
 
-EXPANDIR	= expand/
-EXPANDFILES	= \
-				expand.c \
-				expand_words.c \
-				expand_var.c \
-				quote_remove.c
-EXPAND		= $(addprefix $(EXPANDIR), $(EXPANDFILES))
+# Source files (add your source files here)
+SRCS = $(foreach dir,$(SRC_DIRS),$(wildcard $(dir)/*.c))
 
-ENV_DIR		= builtins/env/
-ENVFILES	= \
-				ft_convert_env_to_list.c \
-				ft_copy_key.c \
-				ft_copy_value.c \
-				ft_create_new_env_node.c \
-				ft_del_env.c \
-				ft_env_err.c \
-				ft_env_fail.c \
-				ft_get_env_len.c \
-				ft_get_key_len.c \
-				ft_get_value_len.c
-ENV			= $(addprefix $(ENV_DIR), $(ENVFILES))
+# Object files (automatically generated from source files)
+OBJS = $(patsubst %.c, $(OBJ_DIR)/%.o, $(notdir $(SRCS)))
 
-UTILDIR		= utils/
-UTILFILES	= \
-				ft_free_tabs.c
-UTILS		=
+# Target binary
+TARGET = my_program
 
-LIBFTPATH	= ./libft/
-LIBFT 		= $(LIBFTPATH)/libft.a
-MAKE_LIBFT	= make -C $(LIBFTPATH)
-LIBFLAGS	= -L $(LIBFTPATH) -lft -lreadline
+LIBS = -lft -lreadline
+LIB_DIRS = -L$(LIB_DIR)
 
-INCDIR		= ../inc/
-
-SRCS		= \
-				$(PARSE) \
-				$(EXPAND) \
-				$(ENV) \
-				$(UTILS) \
-				main_test.c
-
-BUILD_DIR	= 
-OBJS		= $(SRCS:$(SRCS_DIR)/%.c=$(BUILD_DIR)/%.o)
-DEPS		= $(OBJS:.o=.d)
-
-CC			= cc
-CFLAGS		= -g3 -Wall -Wextra -Werror
-IFLAGS		= -I $(INC_DIR)
-
+# Targets
 all: $(TARGET)
 
-$(TARGET): $(LIBFT) $(OBJS)
-	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) LIB_FLAGS$()
+$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) $(LIB_DIRS) $(LIBS) -o $@
 
-$(BUILD_DIR)/%o: $(SRCS_DIR)%.c
-	mkdir -p $(@D)
-	$(CC) $(CFLAGS) $(IFLAGS) -c -o $@ $<
-
-$(LIBFT):
-	$(MAKE_LIBFT)
-
--include $(DEPS)
+$(OBJ_DIR)/%.o: $(SRCS)
+	@mkdir -p $(@D)
+	$(CC) $(CFLAGS) -I$(INC_DIR) -c $(filter %/$*.c,$(SRCS)) -o $@
 
 clean:
-	@rm -rf $(BUILD_DIR) $(OBJS) $(DEPS)
-	@$(MAKE_LIBFT) clean
+	@rm -rf $(OBJ_DIR) $(TARGET)
 
-fclean: clean
-	@rm -rf $(TARGET)
-	@$(MAKE_LIBFT) fclean
+re:	clean all
 
-re: fclean
-	make all
-	$(MAKE_LIBFT) re
+lib:
+	@$(MAKE) -C $(LIB_DIR)
 
-.PHONY: all clean fclean re
+.PHONY: all clean re lib

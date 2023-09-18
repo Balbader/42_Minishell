@@ -1,4 +1,16 @@
-#include "parse.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   tokenizer.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/18 14:12:22 by ftuernal          #+#    #+#             */
+/*   Updated: 2023/09/18 14:33:06 by ftuernal         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "minishell.h"
 
 int	add_large_token(char *word, int last_token)
 {
@@ -37,7 +49,7 @@ void	tokenizer(t_token *cmd_line)
 	current = cmd_line;
 	while (current != NULL)
 	{
-		current->token = add_token(cmd_line->word, last_token);
+		current->type = add_token(cmd_line->word, last_token);
 		last_token = add_token(cmd_line->word, last_token);
 		current = current->next;
 	}

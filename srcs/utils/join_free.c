@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sigval_utils.c                                     :+:      :+:    :+:   */
+/*   join_free.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/14 14:58:10 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/18 16:52:06 by ftuernal         ###   ########.fr       */
+/*   Created: 2023/09/18 15:21:07 by ftuernal          #+#    #+#             */
+/*   Updated: 2023/09/18 15:21:08 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-#define WRITE 42
-
-int	set_sigval(int new_sig)
+char	*join_free(char *s1, char *s2, char *ptr)
 {
-	static int	sigval = -42;
+	char	*join;
 
-	if (sigval == WRITE)
-		sigval = new_sig;
-	return (sigval);
+	join = ft_strjoin(s1, s2);
+	if (!join)
+		return (NULL);
+	free(ptr);
+	return (join);
 }

@@ -6,11 +6,11 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 11:04:07 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/13 15:49:22 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/18 14:12:57 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parse.h"
+#include "minishell.h"
 
 t_token	*goto_last_node(t_token *ptr)
 {

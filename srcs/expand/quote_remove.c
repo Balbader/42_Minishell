@@ -6,11 +6,11 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:59:34 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/13 11:15:02 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/18 14:35:02 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "expand.h"
+#include "minishell.h"
 
 t_quote	set_quote_type(char quote)
 {

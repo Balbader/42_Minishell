@@ -6,28 +6,19 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 14:48:01 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/07 18:03:41 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/18 14:14:56 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parse.h"
+#include "minishell.h"
 
 //objective is to separate meaningfull chunks to pass i tto the exec module
-int	parse_input(t_data *in/*, char **env*/)
+int	parse_input(t_token *cmd_line, char *input)
 {
-//	if (alloc_parse_struct(in) == FAILURE)
-//		return (FAILURE);
-	if (!check_quotes(in->input))
-	{
-		in->subject_flag = false;
-		return (QUOTE);
-	}
-// separate in a chained list cmd_line then tokens that will be taken by exec part of the program
-// then separate each cmd_line into words
-	if (split_into_words(in) == FAILURE)
+	if (!check_quotes(input))
 		return (FAILURE);
-//	if (cust_getenv(in, env) != 0)
-//		return (ENV);
+	if (split_into_words(cmd_line, input) == FAILURE)
+		return (FAILURE);
 	return (SUCCESS);
 	//add functions for "" management and redirections
 }
