@@ -112,7 +112,9 @@ PARSER_FILES		:=	\
 PARSER				:=	$(addprefix $(EXEC_DIR), $(EXEC_FILES))
 
 UTILS_DIR			:=	utils/
-UTILS_FILES			:=	ft_free_tabs.c
+UTILS_FILES			:=	\
+						ft_del_tokens.c \
+						ft_free_tabs.c
 UTILS				:=	$(addprefix $(UTILS_DIR), $(UTILS_FILES))
 
 
