@@ -97,10 +97,10 @@ void        ft_del_env(t_env *env);
 int			ft_compare_keys(char *key, char *key_cpy);
 int			ft_get_token_len(t_token *token);
 int			ft_does_key_exist(char *token_word, t_env *env);
+void		ft_export_many_args(t_token *token, t_env **env);
+void		ft_export_var_to_env(char *new_last, t_env **env);
 t_env		*ft_convert_char_to_node(char *new_last);
 t_env 		*ft_exec_export(char *new_last, t_env *env);
-t_env		*ft_export_many_args(t_token *token, t_env *env);
-void		*ft_export_var_to_env(char *new_last, t_env *env);
 
 // -----------------------------------------------------------------------unset
 void		ft_remove_node(t_env *node, t_env **env);
