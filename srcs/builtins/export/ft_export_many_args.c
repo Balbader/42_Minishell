@@ -19,19 +19,15 @@
  * only if all the variable are different.
 */
 
-t_env	*ft_export_many_args(t_token *token, t_env *env)
+void	ft_export_many_args(t_token *token, t_env **env)
 {
 	t_env	*new_env;
-	t_env	*new_head;
 
-	new_head = NULL;
-	new_env = env;
-	new_head = new_env;
+	new_env = *env;
 	token = token->next;
 	while (token)
 	{
-		new_env = ft_export_var_to_env(token->word, new_env);
+		ft_export_var_to_env(token->word, &new_env);
 		token = token->next;
 	}
-	return (new_head);
 }
