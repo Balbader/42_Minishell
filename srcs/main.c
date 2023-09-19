@@ -49,17 +49,16 @@ int main(int ac, char **av, char **env)
 	int		env_len;
 	t_token	*tokens = NULL;
 	t_token	*new_token = NULL;
-	int		does_exist = 0;
 
 	tokens = ft_init_tokens(tokens);
 	env_len = ft_get_env_len(env);
 	env_lst = *(ft_get_env(env));
+	new_token = ft_create_token("key=4", 4);
 
 	ft_export_many_args(tokens, env_lst);
-	// ft_exec_env(env_lst, 1);
+	ft_exec_env(env_lst, 1);
 
-	new_token = ft_create_token("key=4", 4);
-	// printf("%s\n", new_token->word);
+	int		does_exist = 0;
 	does_exist = ft_does_key_exist(new_token->word, env_lst);
 	printf("does exist : %d\n", does_exist);
 	ft_del_env(env_lst);
