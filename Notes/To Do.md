@@ -7,4 +7,4 @@ check cases:
 	+ if the are the same -> replace old token value by new
 	+ if different -> add back
 
-+ 
++ 1. fct that checks if the incoming key does exist in the env
