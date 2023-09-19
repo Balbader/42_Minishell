@@ -6,7 +6,7 @@
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 10:27:24 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/13 15:34:43 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/19 11:32:13 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,14 @@ typedef enum	e_type
 	R_IN, // <
 	R_OUT, // >
 	WORD, // anything else
-	DQUOTE, //in expand if word is in ""
-	SQUOTE //in expand if word is in ''
 }				t_type;
+
+typedef enum	e_quote
+{
+	NOQUOTE = 0,
+	SQUOTE,
+	DQUOTE
+}				t_quote;
 
 enum	e_status
 {
@@ -43,12 +48,8 @@ enum	e_start
 
 typedef struct s_token
 {
-	// string that represent a section of the initial input to be 
-	// executed by the appropriate builtin
 	char			*word;
-
 	t_type			type;
-
 	struct s_token	*next;
 }	t_token;
 

@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 11:51:09 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/18 18:51:33 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/19 11:25:44 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,6 @@ char **sep_cmdline(char *line)
 
 	i = 0;
 	count = count_token(line);
-printf("print count == %d print line = %s\n", count, line);
 	tab = ft_calloc(count + 1, sizeof(char *));
 	if (!tab)
 		return (0);
@@ -106,17 +105,17 @@ printf("print count == %d print line = %s\n", count, line);
 	return (tab);
 }
 
-int	split_into_words(t_token *cmd_line, char *input)
+int	split_into_words(t_data *in)
 {
 	char	**tab;
 
-	tab = sep_cmdline(input);
+	tab = sep_cmdline(in->input);
 	if (!tab)
 		return (FAILURE);
-	cmd_line = add_all_words_nodes(tab);
+	in->cmd_line = add_all_words_nodes(tab);
 	free(tab);
-	if (cmd_line)
-		tokenizer(cmd_line);
+	if (in->cmd_line)
+		tokenizer(in->cmd_line);
 	else
 		return (FAILURE);
 	return (SUCCESS);

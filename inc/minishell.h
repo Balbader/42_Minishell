@@ -6,7 +6,7 @@
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 10:27:19 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/18 16:22:56 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/19 11:37:00 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,20 +39,20 @@
 ******************************************************************** PARSER
 *******************************************************************************
 */
-t_token		*add_all_words_nodes(char **tab);
+t_token		*add_all_words_nodes( char **tab);
 void		addback_cmdline_node(t_token **cmd_line, t_token *new);
 int			append_cmd_node(t_token *cmd_line, char *line);
 bool		check_quotes(char *input);
 int			count_token(char *line);
-void    	delall(t_token *cmd_line);
+void		delall(t_data *in);
 t_token		*cmdline_new_node(char *input);
 t_token		*goto_last_node(t_token *ptr);
-int			parse_input(t_token *cmd_line, char *input);
+int			parse_input(t_data *in);
 bool		quote_on(const char *input, int index);
 char 		**sep_cmdline(char *line);
 int 		set_end_word(char *line, int start);
 int 		set_start_word(char *line, int i);
-int			split_into_words(t_token *cmd_line, char *input);
+int			split_into_words(t_data *in);
 void	    tokenizer(t_token *cmd_line);
 
 //DEBUG FUNCTIONS

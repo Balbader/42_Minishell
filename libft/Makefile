@@ -6,7 +6,7 @@
 #    By: baalbade <baalbade@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/08 16:33:38 by baalbade          #+#    #+#              #
-#    Updated: 2022/12/08 16:33:42 by baalbade         ###   ########.fr        #
+#    Updated: 2023/09/18 14:31:38 by ftuernal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,8 +29,8 @@ CTYPE_FILES		=	ft_isalnum.c \
 					ft_isupper.c \
 					ft_tolower.c \
 					ft_toupper.c \
-					ft_isprint.c
-
+					ft_isprint.c \
+					ft_isspace.c
 CTYPE			=	$(addprefix $(CTYPE_DIR), $(CTYPE_FILES))
 
 

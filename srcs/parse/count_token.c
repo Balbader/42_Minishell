@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 14:11:00 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/18 18:14:08 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/19 12:06:55 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,3 @@ int	count_token(char *line)
 	}
 	return (count);
 }
-/*
-int	main(void)
-{
-	char	*line = "coucou \"ca va \" \"| \"la fete |>";
-//	char	*line = " | > << >>| <<<|";
-//	printf("line == %s\n", line);
-//	char	*line = "\"file\".c";
-	printf("%d\n", count_token(line));
-	return (0);
-}
-*/
