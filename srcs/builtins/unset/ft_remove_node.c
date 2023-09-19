@@ -12,6 +12,11 @@
 
 #include "minishell.h"
 
+/*
+ * Need to change that function in order to remove the node targeted by the 
+ * variable argument withing the node to delete.
+*/
+
 void	ft_remove_node(t_env *node, t_env **env)
 {
 	t_env	*cur;
