@@ -15,14 +15,21 @@
 int	ft_compare_keys(char *key, char *key_cpy)
 {
 	int	i;
+	int	j;
 
 	i = 0;
+	j = 0;
 	// if (!key || !key_cpy)
 	// {
-	// 	printf("There is a problem with one of the keys.\n");
-	// 	return(0);
+	// 	printf("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
+	// 	printf("!!!!!!!!!!!!!!!There is a problem with one of the keys.!!!!!!!!!!!!!!!\n");
+	// 	printf("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
+	// 	return (0);
 	// }
-	while (key[i] == key_cpy[i] && key[i] && key_cpy[i])
+	while (key[i] == key_cpy[j] && key[i] && key_cpy[j])
+	{
 		++i;
-	return (key[i] - key_cpy[i]);
+		++j;
+	}
+	return (key[i] - key_cpy[j]);
 }

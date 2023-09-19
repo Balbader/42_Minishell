@@ -28,11 +28,11 @@ int	ft_does_key_exist(char *token_word, t_env *env)
 	token_key_cpy = NULL;
 	tmp_env = env;
 	token_key_cpy = ft_copy_key(token_word, token_key_cpy, '=');
-	while (tmp_env)
+	while (tmp_env->next)
 		{
-			// printf("token_key_cpy : %s\n", token_key_cpy);
-			printf("tmp_env->key : %s\n", tmp_env->key);
-			if (ft_compare_keys(token_key_cpy, tmp_env->key) == 0)
+			if (ft_compare_keys(token_key_cpy, tmp_env->key) == 1)
+				tmp_env = tmp_env->next;
+			else if (ft_compare_keys(token_key_cpy, tmp_env->key) == 0)
 				return (1);
 			tmp_env = tmp_env->next;
 		}
