@@ -67,7 +67,9 @@ PWD_FILES			:=	pwd.c
 PWD					:=	$(addprefix $(PWD_DIR), $(PWD_FILES))
 
 UNSET_DIR			:=	unset/
-UNSET_FILES			:=	unset.c
+UNSET_FILES			:=	\
+						ft_remove_node.c \
+						unset.c
 UNSET				:=	$(addprefix $(UNSET_DIR), $(UNSET_FILES))
 
 
