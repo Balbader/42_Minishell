@@ -55,7 +55,7 @@ int main(int ac, char **av, char **env)
 	env_lst = *(ft_get_env(env));
 	new_token = ft_create_token("key=4", 4);
 
-	ft_export_many_args(tokens, env_lst);
+	ft_export_many_args(tokens, &env_lst);
 	ft_exec_env(env_lst, 1);
 
 	int		does_exist = 0;

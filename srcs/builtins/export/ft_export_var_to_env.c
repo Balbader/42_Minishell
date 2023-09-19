@@ -31,7 +31,7 @@ void	ft_export_var_to_env(char *new_last, t_env **env)
 		new_lst = new_lst->next;
 	to_add = (t_env *)malloc(sizeof(t_env));
 	if (!to_add)
-		return  (NULL);
+		return ;
 	to_add = ft_convert_char_to_node(new_last);
 	new_lst->next = to_add;
 }
