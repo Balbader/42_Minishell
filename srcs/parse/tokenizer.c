@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 14:12:22 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/19 12:08:07 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/19 15:55:52 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,7 @@ int	add_large_token(char *word, int last_token)
 
 int	add_token(char *word, int last_token)
 {
-	if (ft_strlen(word) > 1)
-		return (add_large_token(word, last_token));
-	else
+	if (ft_strlen(word) == 1)
 	{
 		if (*word == '|')
 			return (PIPE);
@@ -39,7 +37,7 @@ int	add_token(char *word, int last_token)
 		else if (*word == '>')
 			return (R_OUT);
 	}
-	return (-42);
+	return (add_large_token(word, last_token));
 }
 
 void	tokenizer(t_token *cmd_line)

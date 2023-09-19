@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 11:51:09 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/19 14:14:29 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/19 17:11:06 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,14 @@ int	set_end_word_2(char *line, int start)
 	while (line[start])
 	{
 		if (quote_on(line, start) == true 
-			&& (quote_on(line, start + 1) == false || line[start + 1] == '\0'))
+			&& (quote_on(line, start + 1) == false))
 		{
-			start += 2;
+			start += 1;
 			break ;
 		}
-		else if (quote_on(line, start) == false 
-			&& ft_strchr("\'\"", line[start + 1]) != 0)
+		else if ((quote_on(line, start) == false 
+			&& ft_strchr("\'\"", line[start + 1]) != 0) || 
+			(quote_on(line, start) == false && ft_isspace(line[start + 1])))
 		{
 			start += 1;
 			break ;
@@ -71,7 +72,7 @@ int	set_end_word_2(char *line, int start)
 			break ;
 		start++;
 	}
-	if (start < (int)ft_strlen(line) && ft_isspace(line[start] == 1))
+	if (start < (int)ft_strlen(line) && ft_isspace(line[start]))
 		start += 1;
 	return (start);
 }

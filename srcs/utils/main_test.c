@@ -54,6 +54,7 @@ int	main(int ac, char **av)
 	(void)av;
 	t_data	*in;
 	int	split;
+	int	expanded;
 
 	printf("----------------TEST SPLIT WORDS----------------\n");
 	in = ft_calloc(1, sizeof(t_data));
@@ -63,6 +64,11 @@ int	main(int ac, char **av)
 		split = split_into_words(in);
 		printf("SPLIT_INTO_WORDS RETURNS == %d\n", split);
 		print_all_words(in->cmd_line);
+	printf("--------------END TEST SPLIT WORDS--------------\n\n");
+		expanded = expand(in->cmd_line);
+		printf("EXPAND RETURNS == %d\n", expanded);
+		print_all_words(in->cmd_line);
+	printf("--------------END TEST EXPAND--------------\n\n");
 		delall(in);
 		if (ft_strncmp("STOP", in->input, 4) == 0)
 			break ;

@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 13:46:28 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/18 15:17:39 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/19 14:35:05 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ void	substitute_word(t_token *cmd_line, char *substitute)
 {
 	free(cmd_line->word);
 	cmd_line->word = NULL;
-	cmd_line->word = substitute;
+	cmd_line->word = ft_strdup(substitute);
+	free(substitute);
 }
 
 int	expand_quote_word(t_token *cmd_line, char *word)
@@ -37,7 +38,7 @@ int	expand_quote_word(t_token *cmd_line, char *word)
 	}
 	else
 		substitute_word(cmd_line, tmp);
-	return (free(tmp), SUCCESS);
+	return (SUCCESS);
 }
 
 int	expand_noquote_word(t_token *cmd_line, char *word)
