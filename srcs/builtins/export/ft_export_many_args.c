@@ -13,13 +13,10 @@
 #include "minishell.h"
 
 /*
- * starting form token[1]:
- * . extract the str from the token
- * . split the str into key & value
- * . create new node 
- * . add key & value to new node
- * . add  new node to end of env
- * . return env after adding all tokens
+ * this function will take the token linked list sent by parsing
+ * the first token (node) = the command to be executed will be by passed
+ * the remaining word (arg) of each token will be added to env
+ * only if all the variable are different.
 */
 
 t_env	*ft_export_many_args(t_token *token, t_env *env)
