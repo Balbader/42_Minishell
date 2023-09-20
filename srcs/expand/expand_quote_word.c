@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 13:46:28 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/19 14:35:05 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/20 10:25:53 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,6 @@ int	expand_noquote_word(t_token *cmd_line, char *word)
 	else
 		return (SUCCESS);
 	substitute_word(cmd_line, tmp);
-	free(tmp);
+	//free(tmp);
 	return (SUCCESS);
 }

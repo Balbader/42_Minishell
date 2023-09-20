@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 13:23:33 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/18 17:48:22 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/20 12:00:11 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,21 +32,21 @@ char	*replace_by_last_ret(char *word)
 
 char	*replace_by_env_value(char *word)
 {
-	t_env	**current;
+	t_env	*current;
 	char	*new_str;
 
-	current = get_env(0);
-	while ((*current) != NULL)
+	current = *get_env(0);
+	while (current != NULL)
 	{
-		if (ft_strncmp(word, (*current)->key, ft_strlen((*current)->key)) == 0)
+		if (ft_strncmp(word, current->key, ft_strlen(current->key)) == 0)
 			break ;
-		(*current) = (*current)->next;
+		current = current->next;
 	}
-	new_str = ft_strdup(word + ft_strlen((*current)->key));
+	new_str = ft_strdup(word + ft_strlen(current->key));
 	if (!new_str)
 		return (NULL);
-	if ((*current))
-		new_str = join_free((*current)->value, new_str, new_str);
+	if (current)
+		new_str = join_free(current->value, new_str, new_str);
 	return (new_str);
 }
 

@@ -6,7 +6,7 @@
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 10:27:19 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/19 11:37:00 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/20 11:54:42 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,8 +122,8 @@ int 		set_sigval(int new_sig);
 
 
 
-
-
+//DEBUG
+int ft_printenv(t_env *env);
 
 
 

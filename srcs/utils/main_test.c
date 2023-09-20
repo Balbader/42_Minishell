@@ -48,16 +48,20 @@ void	delall(t_data *in)
 	}
 }
 
-int	main(int ac, char **av)
+int	main(int ac, char **av, char **envp)
 {
 	(void)ac;
 	(void)av;
 	t_data	*in;
 	int	split;
 	int	expanded;
+	t_env	*env;
 
 	printf("----------------TEST SPLIT WORDS----------------\n");
 	in = ft_calloc(1, sizeof(t_data));
+	env = NULL;
+	env = *get_env(envp);
+//	ft_printenv(env);
 	while (1)
 	{
 		in->input = readline("");
@@ -77,6 +81,6 @@ int	main(int ac, char **av)
 	free(in->input);
 	printf("--------------END TEST SPLIT WORDS--------------\n\n");
 	free(in);
-
+	ft_del_env(env);
 	return (0);
 }

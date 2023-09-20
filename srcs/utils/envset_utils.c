@@ -1,6 +1,90 @@
 #include "minishell.h"
 
-static t_env	*env_create(char **env)
+#include "minishell.h"
+
+int ft_printenv(t_env *env)
+{
+    t_env *tmp;
+
+    if (!env)
+        return (FAILURE);
+    tmp = env;
+    while (tmp)
+    {
+        printf("coucou, key = %p value = %p\n", tmp->key, tmp->value);
+        if (tmp->value != NULL)
+        {
+            printf("KEY = %s\n", tmp->key);
+            printf("VALUE = %s\n", tmp->value);
+        }
+        tmp = tmp->next;
+    }
+    return (SUCCESS);
+}
+
+t_env *env_create(char **env)
+{
+    t_env *env_list = NULL;
+    t_env *head = NULL;
+    int env_len = ft_get_env_len(env);
+    char *key = NULL;
+    char *value = NULL;
+    int i = 0;
+
+    while (i < env_len)
+    {
+        key = ft_copy_key(env[i], key, '=');
+        value = ft_copy_value(env[i], value);
+        if (i == 0)
+        {
+            env_list = ft_create_new_env_node(0, key, value);
+            head = env_list;
+        }
+        else
+        {
+            env_list->next = ft_create_new_env_node(i, key, value);
+            env_list = env_list->next;
+        }
+        i++;
+    }
+    return head; 
+}
+
+t_env **get_env(char **env)
+{
+    static t_env *env_list = NULL;
+
+    if (env_list == NULL && env != NULL)
+    {
+        env_list = env_create(env);
+    }
+    return &env_list;
+}
+
+
+
+/*
+int	ft_printenv(t_env *env)
+{
+	t_env	*tmp;
+
+	if (!env)
+		return (FAILURE);
+	tmp = env;
+	while (tmp)
+	{
+printf("coucou, key = %p value = %p\n", tmp->key, tmp->value);
+		if (tmp->value != NULL)
+		{
+			printf("KEY = %s\n", tmp->key);
+			printf("VALUE = %s\n", tmp->value);
+		}
+		tmp = tmp->next;
+	}
+	return (SUCCESS);
+}
+
+ t_env	*env_create(char **env)
 {
 	t_env	*env_list;
 	t_env	*head;
@@ -9,21 +93,19 @@ static t_env	*env_create(char **env)
 	char	*value;
 	int		i;
 
-	env_list = ft_calloc(1, sizeof(t_env));
-	if (!env_list)
-		return (NULL);
 	key = NULL;
 	value = NULL;
-	key = ft_copy_key(env[0], key, '=');
-	value = ft_copy_value(env[0], value);
-	env_list = ft_create_new_env_node(0, key, value);
 	env_len = ft_get_env_len(env);
-	head = env_list;
-	i = 1;
+	i = 0;
 	while (i <= env_len)
 	{
 		key = ft_copy_key(env[i], key, '=');
 		value = ft_copy_value(env[i], value);
+		if (i == 0)
+		{
+			env_list = ft_create_new_env_node(0, key, value);
+			head = env_list;
+		}
 		env_list->next = ft_create_new_env_node(i, key, value);
 		env_list = env_list->next;
 		i++;
@@ -37,5 +119,6 @@ t_env	**get_env(char **env)
 
 	if (env != NULL)
 		env_list = env_create(env);
-	return (&env_list);
+	return (env_list);
 }
+*/
