@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 13:23:33 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/20 12:00:11 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/20 15:57:08 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,31 @@ char	*replace_by_last_ret(char *word)
 	return (new_str);
 }
 
+char	*dup_word_without_envkey(char *word)
+{
+	char	*new_word;
+	int		i;
+	int		j;
+	int		new_word_len;
+
+	i = 0;
+	while (word[i] && ft_isspace(word[i]) == 0)
+		i++;
+	new_word_len = ft_strlen(word) - i;
+	new_word = ft_calloc(new_word_len + 1, sizeof(char));
+	if (!new_word)
+		return (NULL);
+	j = 0;
+	while (word[i])
+	{
+		new_word[j] = word[i];
+		j++;
+		i++;
+	}
+	new_word[j] = '\0';
+	return (new_word);
+}
+
 char	*replace_by_env_value(char *word)
 {
 	t_env	*current;
@@ -38,11 +63,11 @@ char	*replace_by_env_value(char *word)
 	current = *get_env(0);
 	while (current != NULL)
 	{
-		if (ft_strncmp(word, current->key, ft_strlen(current->key)) == 0)
+		if (ft_strncmp(word, current->key, ft_strlen(current->key) - 1) == 0)
 			break ;
 		current = current->next;
 	}
-	new_str = ft_strdup(word + ft_strlen(current->key));
+	new_str = dup_word_without_envkey(word);
 	if (!new_str)
 		return (NULL);
 	if (current)
@@ -50,25 +75,54 @@ char	*replace_by_env_value(char *word)
 	return (new_str);
 }
 
-void	replace_var_by_value(char **ptr)
+char	*replace_var_by_value(char *ptr)
 {
 	char	*new_str;
 	int		i;
 
 	i = 0;
-	if ((*ptr)[i] == '?')
+	if (ptr[i] == '?')
 	{
-		new_str = replace_by_last_ret(*ptr);
+		new_str = replace_by_last_ret(ptr);
 		if (!new_str)
-			return ;
-		*ptr += 1;
+			return (NULL);
+		ptr += 1;
 	}
 	else
-		new_str = replace_by_env_value(*ptr);
-	*ptr = new_str;
-	free(new_str);
+		new_str = replace_by_env_value(ptr);
+	return (new_str);
 }
 
+char	*expand_var(char *word)
+{
+	int		i;
+	char	**split;
+	char	**new_word;
+	char	*join_word;
+
+	if (ft_strchr(word, '$') == 0)
+		return (word);
+	split = ft_split(word, '$');
+	if (!split)
+		return (NULL);
+	new_word = ft_calloc(get_tab_len(split) + 1, sizeof(char *));
+	if (!new_word)
+return (NULL);
+i = -1;
+	while (split[++i])
+	{
+		if (ft_isspace((*split)[i]) != 0)
+			new_word[i] = ft_strjoin("$", split[i]);
+		else if (ft_isspace((*split)[i]) == 0)
+			new_word[i] = replace_var_by_value(split[i]);
+		if (!new_word[i])
+			return (free_2_tabs(new_word, split), NULL);
+	}
+	join_word = join_all_str(new_word);
+	return (free_2_tabs(new_word, split), join_word);
+}
+
+/*
 char	*expand_var(char *word)
 {
 	int		i;
@@ -93,5 +147,7 @@ char	*expand_var(char *word)
 			replace_var_by_value(&split[i]);
 	}
 	expand_word = join_all_str(split);
-	return (ft_free_tabs(split), expand_word);
+//	ft_free_tabs(split);
+	return (expand_word);
 }
+*/

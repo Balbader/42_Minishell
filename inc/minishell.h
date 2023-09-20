@@ -6,7 +6,7 @@
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 10:27:19 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/20 11:54:42 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/20 15:53:18 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ char		*expand_var(char *word);
 char		*quote_remove(char *str);
 char		*replace_by_env_value(char *word);
 char		*replace_by_last_ret(char *word);
-void		replace_var_by_value(char **ptr);
+char		*replace_var_by_value(char *ptr);
 t_quote		set_quote_type(char quote);
 void		substitute_word(t_token *cmd_line, char *substitute);
 
@@ -111,7 +111,9 @@ void        ft_del_env(t_env *env);
 *******************************************************************************
 */
 void		ft_free_tabs(char **tab);
+void    	free_2_tabs(char **s1, char **s2);
 t_env		**get_env(char **env);
+int 		get_tab_len(char **tab);
 char		*join_all_str(char **split);
 char		*join_free(char *s1, char *s2, char *ptr);
 int 		read_sigval(void);

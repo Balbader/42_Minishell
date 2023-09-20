@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 13:46:28 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/20 10:25:53 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/20 16:04:32 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ int	expand_quote_word(t_token *cmd_line, char *word)
 		if (!dollarfree_str)
 			return (free(tmp), FAILURE);
 		substitute_word(cmd_line, dollarfree_str);
-		free(dollarfree_str);
 	}
 	else
-		substitute_word(cmd_line, tmp);
+		return (substitute_word(cmd_line, tmp), SUCCESS);
+	free(tmp);
 	return (SUCCESS);
 }
 
@@ -54,6 +54,5 @@ int	expand_noquote_word(t_token *cmd_line, char *word)
 	else
 		return (SUCCESS);
 	substitute_word(cmd_line, tmp);
-	//free(tmp);
 	return (SUCCESS);
 }

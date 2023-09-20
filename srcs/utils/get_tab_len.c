@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   join_free.c                                        :+:      :+:    :+:   */
+/*   get_tab_len.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/18 15:21:07 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/20 15:18:48 by ftuernal         ###   ########.fr       */
+/*   Created: 2023/09/20 15:49:53 by ftuernal          #+#    #+#             */
+/*   Updated: 2023/09/20 15:49:55 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*join_free(char *s1, char *s2, char *ptr)
+int	get_tab_len(char **tab)
 {
-	char	*join;
+	int	i;
 
-//printf("s1 = %p | s2 = %p ptr = %p\n", s1, s2, ptr);
-	join = ft_strjoin(s1, s2);
-	if (!join)
-		return (NULL);
-	free(ptr);
-	return (join);
+	i = 0;
+	while (tab[i])
+		i++;
+	return (i);
 }
