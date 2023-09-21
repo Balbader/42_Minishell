@@ -6,7 +6,7 @@
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 10:27:19 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/20 15:53:18 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/21 15:12:29 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,11 +114,10 @@ void		ft_free_tabs(char **tab);
 void    	free_2_tabs(char **s1, char **s2);
 t_env		**get_env(char **env);
 int 		get_tab_len(char **tab);
+void		heredoc_sig(int sig);
 char		*join_all_str(char **split);
 char		*join_free(char *s1, char *s2, char *ptr);
-int 		read_sigval(void);
-int 		set_sigval(int new_sig);
-
+void		siginit(int type);
 
 
 
@@ -126,6 +125,7 @@ int 		set_sigval(int new_sig);
 
 //DEBUG
 int ft_printenv(t_env *env);
+int 		set_sigval(int new_sig);
 
 
 

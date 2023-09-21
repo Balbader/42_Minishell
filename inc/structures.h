@@ -6,7 +6,7 @@
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 10:27:24 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/19 11:32:13 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/21 17:05:49 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,13 @@ typedef struct s_token
 	struct s_token	*next;
 }	t_token;
 
+/*
 typedef struct s_exec
 {
 	char	**cmd;
 	char	*path;
 }	t_exec;
-
+*/
 typedef struct s_data
 {
 	char	*input;
