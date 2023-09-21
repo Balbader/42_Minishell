@@ -1,7 +1,18 @@
-#include "minishell.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   envset_utils.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/21 10:54:52 by ftuernal          #+#    #+#             */
+/*   Updated: 2023/09/21 10:55:08 by ftuernal         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "minishell.h"
 
+//debug function
 int ft_printenv(t_env *env)
 {
     t_env *tmp;
@@ -47,7 +58,7 @@ t_env *env_create(char **env)
         }
         i++;
     }
-    return head; 
+    return (head); 
 }
 
 t_env **get_env(char **env)
@@ -58,7 +69,7 @@ t_env **get_env(char **env)
     {
         env_list = env_create(env);
     }
-    return &env_list;
+    return (&env_list);
 }
 
 

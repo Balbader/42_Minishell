@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 13:23:33 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/20 15:57:08 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/21 11:18:35 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,11 +107,11 @@ char	*expand_var(char *word)
 		return (NULL);
 	new_word = ft_calloc(get_tab_len(split) + 1, sizeof(char *));
 	if (!new_word)
-return (NULL);
-i = -1;
+		return (NULL);
+	i = -1;
 	while (split[++i])
 	{
-		if (ft_isspace((*split)[i]) != 0)
+		if (ft_isspace((*split)[i]) != 0 || (*split)[i] == '\0')
 			new_word[i] = ft_strjoin("$", split[i]);
 		else if (ft_isspace((*split)[i]) == 0)
 			new_word[i] = replace_var_by_value(split[i]);
