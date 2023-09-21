@@ -10,13 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "minishell.h"
+
 void	ft_del_tokens(t_token *tokens)
 {
 	t_token	*tmp;
 
+	tmp = tokens;
+
 	while (tmp)
 	{
-		tmp = tokens;
 		tokens = tokens->next;
 		free(tmp->word);
 		free(tmp->type);
