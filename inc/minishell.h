@@ -112,6 +112,7 @@ void		ft_remove_node(t_env *node, t_env **env);
 *******************************************************************************
 */
 void		ft_free_tabs(char **tab);
+void		ft_del_tokens(t_token *tokens);
 
 
 
