@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_add_var_to_env.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/08 10:31:52 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/08 10:31:53 by baalbade         ###   ########.fr       */
+/*   Created: 2023/09/23 13:13:45 by baalbade          #+#    #+#             */
+/*   Updated: 2023/09/23 13:13:47 by baalbade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int main(int ac, char **av, char **env)
+void	ft_add_var_to_env(char *var, t_env **env)
 {
-	(void)ac;
-	(void)av;
-	t_env	*env_lst = NULL;
-	int		env_len;
-	char	*new_lst = "NAME=basil";
-	// char	*replace = "NAME=mimi";
+	t_env	*cur;
+	t_env	*new;
+	int		var_len;
 
-	env_len = ft_get_env_len(env);
-	env_lst = *(ft_get_env(env));
-	ft_add_var_to_env(new_lst, &env_lst);
-	ft_exec_env(env_lst, 1);
-	// ft_find_and_replace(replace, &env_lst);
-	ft_exec_env(env_lst, 1);
-	ft_del_env(env_lst);
-	return (0);
+	if (!env || !var)
+		return ;
+	var_len = ft_get_var_len(var);
+	new = NULL;
+	new = ft_convert_char_to_node(var);
+	cur = *env;
+	while (cur->next)
+		cur = cur->next;
+	cur->next = new;
 }

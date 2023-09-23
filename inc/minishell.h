@@ -92,6 +92,7 @@ t_env		*ft_convert_env_to_list(int env_len, t_env *env_lst, char **env);
 t_env		**ft_get_env(char **env);
 void		ft_env_fail(const char *message, char **env, t_env *env_cpy);
 void        ft_del_env(t_env *env);
+void		ft_add_var_to_env(char *var, t_env **env);
 
 // ----------------------------------------------------------------------export
 int			ft_compare_keys(char *key, char *key_cpy);
