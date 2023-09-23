@@ -91,10 +91,9 @@ char		**ft_convert_to_tab(t_env *env);
 void		ft_env_fail(const char *message, char **env, t_env *env_cpy);
 void        ft_del_env(t_env *env);
 void		ft_add_var_to_env(char *var, t_env **env);
-t_env		*ft_del_var_in_env(t_env *to_del, t_env *env);
-// t_env		**ft_del_var_in_env(t_env *to_del, t_env **env);
-// void		ft_del_var_in_env(t_env *to_del, t_env **env);
-t_env		*ft_create_new_env_node(char *var_cpy, char *key_cpy, char *value_cpy);
+t_env		*ft_del_var_in_env(char *to_del, t_env **env);
+t_env		*ft_create_new_env_node(char *var_cpy, char *key_cpy,
+					char *value_cpy);
 t_env		*ft_convert_env_to_list(int env_len, t_env *env_lst, char **env);
 t_env		**ft_get_env(char **env);
 t_env		*ft_get_node(char *var, t_env *env);
