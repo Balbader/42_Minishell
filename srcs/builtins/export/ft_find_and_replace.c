@@ -21,19 +21,25 @@
 */
 
 
-void	ft_find_and_replace(char *to_find, t_env *env)
+void	ft_find_and_replace(char *to_find, t_env **env)
 {
 	t_env	*new_var;
 	t_env	*cur;
+	// int		new_val_len;
 
 	cur = NULL;
 	new_var = NULL;
 	new_var = ft_convert_char_to_node(to_find);
-	cur = env;
+	cur = *env;
 	while (cur)
 	{
 		if (ft_strcmp(cur->key, new_var->key) == 0)
-			cur->value = new_var->value;
+		{
+			printf("new_var->key : %s\n", new_var->key);
+			printf("new_var->value : %s\n", new_var->value);
+			printf("cur->key : %s\n", cur->key);
+			printf("cur->value : %s\n", cur->value);
+		}
 		cur = cur->next;
 	}
 }
