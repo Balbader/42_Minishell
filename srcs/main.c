@@ -35,7 +35,7 @@ int main(int ac, char **av, char **env)
 	ft_exec_env(env_lst, 1);
 	printf("\n\n\n");
 
-	ft_del_var_in_env(to_del, &env_lst);
+	env_lst = ft_del_var_in_env(to_del, env_lst);
 	ft_exec_env(env_lst, 1);
 
 	ft_del_env(env_lst);
