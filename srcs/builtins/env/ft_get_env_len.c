@@ -12,6 +12,10 @@
 
 #include "minishell.h"
 
+/*
+ * returns the total amount of elements is a 2D array
+*/
+
 int	ft_get_env_len(char **env)
 {
 	int	i;

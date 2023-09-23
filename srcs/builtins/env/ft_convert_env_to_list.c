@@ -12,6 +12,14 @@
 
 #include "minishell.h"
 
+/*
+ * . creates a linked list
+ * . Takes **env and copies for each element of **env:
+ * 		. env[i] to node->var
+ * 		. the key part of env[i] to node->key
+ * 		. the value part of env[i] to node->value
+*/
+
 t_env	*ft_convert_env_to_list(int env_len, t_env *env_lst, char **env)
 {
 	t_env	*head;
