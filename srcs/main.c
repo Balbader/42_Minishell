@@ -17,16 +17,27 @@ int main(int ac, char **av, char **env)
 	(void)ac;
 	(void)av;
 	t_env	*env_lst = NULL;
-	int		env_len;
 	char	*new_lst = "NAME=basil";
+	t_env	*to_del = NULL;
 	// char	*replace = "NAME=mimi";
 
-	env_len = ft_get_env_len(env);
+	to_del = ft_convert_char_to_node(new_lst);
+	printf("to_del->key : %s\n", to_del->key);
+	printf("to_del->value : %s\n", to_del->value);
+	printf("to_del->var : %s\n", to_del->var);
+	printf("\n\n\n");
+
 	env_lst = *(ft_get_env(env));
+	ft_exec_env(env_lst, 1);
+	printf("\n\n\n");
+
 	ft_add_var_to_env(new_lst, &env_lst);
 	ft_exec_env(env_lst, 1);
-	// ft_find_and_replace(replace, &env_lst);
+	printf("\n\n\n");
+
+	ft_del_var_in_env(to_del, &env_lst);
 	ft_exec_env(env_lst, 1);
+
 	ft_del_env(env_lst);
 	return (0);
 }
