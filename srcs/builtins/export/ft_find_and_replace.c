@@ -31,7 +31,7 @@ void	ft_find_and_replace(char *to_find, t_env **env)
 	new_var = NULL;
 	new_var = ft_convert_char_to_node(to_find);
 	cur = *env;
-	while (cur)
+	while (cur->next != NULL)
 	{
 		if (ft_strcmp(cur->key, new_var->key) == 0)
 		{
@@ -39,6 +39,7 @@ void	ft_find_and_replace(char *to_find, t_env **env)
 			printf("new_var->value : %s\n", new_var->value);
 			printf("cur->key : %s\n", cur->key);
 			printf("cur->value : %s\n", cur->value);
+			printf("\n\n\n");
 		}
 		cur = cur->next;
 	}
