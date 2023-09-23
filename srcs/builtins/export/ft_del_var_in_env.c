@@ -13,9 +13,22 @@
 #include "minishell.h"
 
 
-t_env	*ft_del_var_in_env(t_env *to_del, t_env *env)
+t_env	*ft_del_var_in_env(char *to_del, t_env **env)
 {
-	(void)to_del;
-	(void)env;
-	return (NULL);
+	t_env	*head;
+	t_env	*cur;
+
+	cur = (*env);
+	head = cur;
+	while (cur)
+	{
+		if (ft_strncmp(cur->var, to_del, '=') == 0)
+		{
+			printf("********They are the same*******\n");
+			cur = cur->next;
+			return (head);
+		}
+		cur = cur->next;
+	}
+	return (head);
 }
