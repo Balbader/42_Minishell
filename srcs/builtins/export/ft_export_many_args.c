@@ -27,7 +27,7 @@ void	ft_export_many_args(t_token *token, t_env **env)
 	token = token->next;
 	while (token)
 	{
-		ft_export_var_to_env(token->word, &new_env);
+		ft_add_var_to_env(token->word, &new_env);
 		token = token->next;
 	}
 }
