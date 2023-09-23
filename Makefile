@@ -30,6 +30,7 @@ ECHO				:=	$(addprefix $(ECHO_DIR), $(ECHO_FILES))
 
 ENV_DIR				:=	env/
 ENV_FILES			:=	\
+						ft_add_var_to_env.c \
 						ft_convert_env_to_list.c \
 						ft_copy_key.c \
 						ft_copy_value.c \
