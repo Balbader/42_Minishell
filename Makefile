@@ -30,7 +30,6 @@ ECHO				:=	$(addprefix $(ECHO_DIR), $(ECHO_FILES))
 
 ENV_DIR				:=	env/
 ENV_FILES			:=	\
-						ft_add_var_to_env.c \
 						ft_convert_env_to_list.c \
 						ft_convert_to_tab.c \
 						ft_copy_key.c \
@@ -38,7 +37,6 @@ ENV_FILES			:=	\
 						ft_copy_var.c \
 						ft_create_new_env_node.c \
 						ft_del_env.c \
-						ft_del_var_in_env.c \
 						ft_env_err.c \
 						ft_env_fail.c \
 						ft_exec_env.c \
@@ -57,7 +55,9 @@ EXIT				:=	$(addprefix $(EXIT_DIR), $(EXIT_FILES))
 
 EXPORT_DIR			:=	export/
 EXPORT_FILES		:=	\
+						ft_add_var_to_env.c \
 						ft_convert_char_to_node.c \
+						ft_del_var_in_env.c \
 						ft_exec_export.c \
 						ft_export_many_args.c \
 						ft_find_and_replace.c \
