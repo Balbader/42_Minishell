@@ -18,9 +18,13 @@ int main(int ac, char **av, char **env)
 	(void)av;
 	t_env	*env_lst = NULL;
 	int		env_len;
+	char	*new_lst = "NAME=basil";
+
 
 	env_len = ft_get_env_len(env);
 	env_lst = *(ft_get_env(env));
+	ft_export_var_to_env(new_lst, &env_lst);
+	free(new_lst);
 	ft_exec_env(env_lst, 1);
 	ft_del_env(env_lst);
 	return (0);
