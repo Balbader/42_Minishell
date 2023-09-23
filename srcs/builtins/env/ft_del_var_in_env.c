@@ -13,19 +13,9 @@
 #include "minishell.h"
 
 
-void	ft_del_var_in_env(t_env *to_del, t_env **env)
+t_env	*ft_del_var_in_env(t_env *to_del, t_env *env)
 {
-	t_env	*cur;
-
-	if (!(*env))
-		return ;
-	cur = *env;
-	while (cur != to_del && cur->next && cur->next != to_del)
-		cur = cur->next;
-	if (cur != to_del && !cur->next)
-		return ;
-	if (cur == to_del)
-		*env = cur->next;
-	else
-		cur->next = cur->next;
+	(void)to_del;
+	(void)env;
+	return (NULL);
 }
