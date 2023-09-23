@@ -16,13 +16,13 @@ void	ft_del_tokens(t_token *tokens)
 {
 	t_token	*tmp;
 
-	tmp = tokens;
 
-	while (tmp)
+	while (tokens)
 	{
+		tmp = tokens;
 		tokens = tokens->next;
 		free(tmp->word);
-		free(tmp->type);
+		// free(tmp->type);
 		free(tmp);
 	}
 }
