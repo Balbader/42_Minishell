@@ -113,7 +113,12 @@ int			ft_check_n_flag(char *input);
 int			ft_exec_echo(t_token *token, int fd);
 
 // --------------------------------------------------------------------------cd
-void		ft_replace_pwd(void);
+int			ft_exec_cd(t_token *token, int in, int out);
+int			ft_get_token_len(t_token *token);
+void		ft_change_working_directory(void);
+void		ft_create_working_directory(void);
+void		ft_get_cd_path(char **path);
+void		ft_replace_working_directory(void);
 
 /*
 *******************************************************************************
