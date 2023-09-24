@@ -27,16 +27,16 @@ char	*ft_find_value(char *var)
 		return (NULL);
 	env = *ft_get_all_env();
 	while (env)
+	{
+		if (ft_compare_keys(env->var, var))
 		{
-			if (ft_compare_keys(env->var, var))
-			{
-				tmp = env->var;
-				while (*tmp != '=')
-					++tmp;
+			tmp = env->var;
+			while (*tmp != '=')
 				++tmp;
-				return (tmp);
-			}
-			env = env->next;
+			++tmp;
+			return (tmp);
 		}
+		env = env->next;
+	}
 	return (NULL);
 }
