@@ -38,4 +38,8 @@ verif_flag_n : ft_check_n_flag.c
 builtins_echo : ft_exec_echo.c
 
 ## CD
-pwd_old_pwd : ft_replace_pwd.c
+pwd_old_pwd : ft_replace_working_directory.c
+create_pwd : ft_create_working_directory.c
+cd_less : ft_change_working_directory.c
+find_in_cdpath : ft_get_cd_path.c
+len_cd_arg : ft_get_token_len.c
