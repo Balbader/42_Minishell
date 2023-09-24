@@ -21,13 +21,13 @@ t_env	*ft_create_env_list(char **env)
 	tmp = NULL;
 	while (*env)
 	{
-		if (!ft_add_var_to_env(*lst, *env))
+		if (!ft_add_var_to_env(lst, *env))
 		{
 			while (lst)
 			{
 				tmp = lst;
 				lst = lst->next;
-				free(tmp->env);
+				free(tmp->var);
 				free(tmp);
 			}
 			return (NULL);
