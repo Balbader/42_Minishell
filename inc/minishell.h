@@ -88,7 +88,7 @@ char		**ft_convert_env_to_tab(t_env *env);
 char		*ft_find_value(char *var);
 void		ft_add_to_env(char *to_add);
 void		ft_del_from_env(char *to_del);
-void		ft_del_env(t_env *env);
+void		ft_del_env(void);
 void		ft_init_env(int ac, char **av, char **env);
 void		ft_modif_shlvl(void);
 t_env		*ft_add_var_to_env(t_env *env, char *to_add);
@@ -119,6 +119,10 @@ void		ft_change_working_directory(void);
 void		ft_create_working_directory(void);
 void		ft_get_cd_path(char **path);
 void		ft_replace_working_directory(void);
+
+// ------------------------------------------------------------------------exit
+int			ft_print_exit_error(t_data *data, char *var);
+char		*ft_remove_quotes(char *var);
 
 /*
 *******************************************************************************

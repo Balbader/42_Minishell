@@ -80,7 +80,8 @@ typedef struct s_data
 {
 	char	*input;
 	t_token	*cmd_line;
-	t_env	*env;
+	char	**env;
+	bool	subgect_flag;
 }	t_data;
 
 #endif // !STRUCTURES_H
