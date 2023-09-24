@@ -28,3 +28,11 @@ trim_before_egals : ft_get_key.c
 var_exist : ft_does_value_exist.c
 move_after_equals : ft_check_cpy.c
 builtins_export : ft_exec_export.c
+
+## Unset
+verif_unset : ft_check_var_to_unset.c
+builtins_unset : ft_exec_unset.c
+
+## Echo
+verif_flag_n : ft_check_n_flag.c
+builtins_echo : ft_exec_echo.c
