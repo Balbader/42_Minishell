@@ -53,7 +53,9 @@ ENV_FILES			:=	\
 ENV					:=	$(addprefix $(ENV_DIR), $(ENV_FILES))
 
 EXIT_DIR			:=	exit/
-EXIT_FILES			:=	exit.c
+EXIT_FILES			:=	\
+						ft_print_exit_error.c \
+						ft_remove_quotes.c \
 EXIT				:=	$(addprefix $(EXIT_DIR), $(EXIT_FILES))
 
 EXPORT_DIR			:=	export/
