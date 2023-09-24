@@ -1,9 +1,1 @@
-# export
-
-cases:
-
-. if key doesn't exist 
-	add key to env_lst
-. if key does exist
-	change value of existing key
-
+. Check in utils folder the error files : should I use the error files in catineau?
