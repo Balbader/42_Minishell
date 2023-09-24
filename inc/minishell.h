@@ -77,11 +77,22 @@ void		exec_cmd(t_data *in, t_exec *cmd);
 */
 
 // -------------------------------------------------------------------------env
+int			ft_compare_keys(char *key, char *to_find);
+int 		ft_get_env_len(t_env *env);
+char		**ft_convert_env_to_tab(t_env *env);
+void		ft_init_env(int ac, char **av, char **env);
+void		ft_add_to_env(char *to_add);
+void		ft_del_from_env(char *to_del);
+void		ft_del_env(t_env *env);
+t_env		*ft_add_var_to_env(t_env **env, char *to_add);
+t_env		*ft_create_env_list(char **env);
+t_env		*ft_del_node(t_env *env, char *to_del);
+t_env		*ft_get_last_env(t_env *env);
+t_env		**ft_get_env(char **env);
+t_env		**ft_get_all_env(void);
 
 // ----------------------------------------------------------------------export
-int			ft_compare_keys(char *key, char *key_cpy);
 int			ft_get_token_len(t_token *token);
-// int			ft_does_key_exist(char *token_word, t_env *env);
 void		ft_export_many_args(t_token *token, t_env **env);
 void		ft_export_var_to_env(char *new_last, t_env **env);
 void		ft_find_and_replace(char *to_find, t_env **env);
