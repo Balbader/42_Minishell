@@ -12,6 +12,15 @@
 
 #include "minishell.h"
 
+/*
+ * if no token : returns "\n"
+ * check for -n flag
+ * runs through tokens
+ * if there is a variable to be printed to the console, will print the variable
+ * to the console and move to the next token
+ * once it reaches the end, will print "\n"
+*/
+
 int	ft_exec_echo(t_token *token, int fd)
 {
 	int	end_line;
