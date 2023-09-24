@@ -30,23 +30,18 @@ ECHO				:=	$(addprefix $(ECHO_DIR), $(ECHO_FILES))
 
 ENV_DIR				:=	env/
 ENV_FILES			:=	\
-						ft_convert_env_to_list.c \
-						ft_convert_to_tab.c \
-						ft_copy_key.c \
-						ft_copy_value.c \
-						ft_copy_var.c \
-						ft_create_new_env_node.c \
+						ft_add_var_to_env.c \
+						ft_compare_keys.c \
+						ft_convert_env_to_tab.c \
+						ft_create_env_list.c \
 						ft_del_env.c \
-						ft_env_err.c \
-						ft_env_fail.c \
-						ft_exec_env.c \
+						ft_del_node.c \
+						ft_find_value.c \
 						ft_get_env.c \
-						ft_get_env_utils.c \
 						ft_get_env_len.c \
-						ft_get_key_len.c \
-						ft_get_node.c \
-						ft_get_value_len.c \
-						ft_get_var_len.c
+						ft_get_env_utils.c \
+						ft_get_last_env.c \
+						ft_modif_shlvl.c
 ENV					:=	$(addprefix $(ENV_DIR), $(ENV_FILES))
 
 EXIT_DIR			:=	exit/
