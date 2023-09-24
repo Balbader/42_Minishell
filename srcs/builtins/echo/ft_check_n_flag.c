@@ -16,7 +16,7 @@ int	ft_check_n_flag(char *input)
 {
 	if (!*input)
 		return (true);
-	while (*input
+	while (*input)
 	{
 		if (*input != '-' && *input != 'n' && *input != ' ')
 			return (false);
