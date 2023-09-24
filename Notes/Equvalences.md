@@ -36,3 +36,6 @@ builtins_unset : ft_exec_unset.c
 ## Echo
 verif_flag_n : ft_check_n_flag.c
 builtins_echo : ft_exec_echo.c
+
+## CD
+pwd_old_pwd : ft_replace_pwd.c
