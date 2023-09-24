@@ -56,7 +56,7 @@ enum e_token
 typedef struct s_token
 {
 	char			*word;
-	t_type			type;
+	t_type			type; // why not use an int ???
 	struct s_token	*next;
 }	t_token;
 
