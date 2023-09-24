@@ -25,13 +25,13 @@ int	ft_exec_echo(t_token *token, int fd)
 		token = token->next;
 	}
 	while (token)
-		{
-			if (token->word)
-				ft_putstr_fd(fd, token->word);
-			token = token->next;
-			if (token)
-				write(fd, " ", 1);
-		}
+	{
+		if (token->word)
+			ft_putstr_fd(fd, token->word);
+		token = token->next;
+		if (token)
+			write(fd, " ", 1);
+	}
 	if (end_line)
 		write(fd, "\n", 1);
 	return (g_error = 0, true);
