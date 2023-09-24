@@ -50,12 +50,10 @@ EXIT				:=	$(addprefix $(EXIT_DIR), $(EXIT_FILES))
 
 EXPORT_DIR			:=	export/
 EXPORT_FILES		:=	\
-						ft_convert_char_to_node.c \
-						ft_del_var_in_env.c \
-						ft_exec_export.c \
-						ft_export_many_args.c \
-						ft_find_and_replace.c \
-						ft_get_token_len.c
+						ft_check_cpy.c \
+						ft_does_value_exist.c \
+						ft_get_key.c \
+						ft_get_key_len.c
 EXPORT				:=	$(addprefix $(EXPORT_DIR), $(EXPORT_FILES))
 
 PWD_DIR				:=	pwd/
