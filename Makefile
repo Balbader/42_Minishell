@@ -22,7 +22,12 @@ NAME				:=	minishell
 
 CD_DIR				:=	cd/
 CD_FILES			:=	\
-						ft_replace_pwd.c \
+						ft_change_working_directory.c \
+						ft_create_working_directory.c \
+						ft_exec_cd.c \
+						ft_get_cd_path.c \
+						ft_get_token_len.c \
+						ft_replace_working_directory.c
 CD					:=	$(addprefix $(CD_DIR), $(CD_FILES))
 
 ECHO_DIR			:=	echo/
