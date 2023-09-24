@@ -28,7 +28,7 @@ char	*ft_find_value(char *var)
 	env = *ft_get_all_env();
 	while (env)
 		{
-			if (ft_compare_key(env->var, var))
+			if (ft_compare_keys(env->var, var))
 			{
 				tmp = env->var;
 				while (*tmp != '=')
