@@ -16,8 +16,8 @@ int	ft_compare_keys(char *key, char *to_find)
 {
 	if (!to_find)
 		return (false);
-	while (*to_find && *key && *key != '=' &&
-		*to_find != '=' && *key == *to_find)
+	while (*to_find && *key && *key != '='
+		&& *to_find != '=' && *key == *to_find)
 	{
 		++key;
 		++to_find;
