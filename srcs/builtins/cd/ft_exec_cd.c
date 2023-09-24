@@ -28,7 +28,7 @@ int	ft_exec_cd(t_token *token, int in, int out)
 		ft_change_working_directory();
 	else
 	{
-		ft_get_cd_path(&token->word)  ;
+		ft_get_cd_path(&token->word);
 		if (chdir(token->word) == -1)
 		{
 			g_error = 1;
