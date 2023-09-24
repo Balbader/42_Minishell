@@ -23,7 +23,7 @@ t_env	*ft_add_var_to_env(t_env *env, char *to_add)
 			return (NULL);
 		env->next = NULL;
 		env->var = ft_strdup(to_add);
-		return (env->var);
+		return (env);
 	}
 	else
 	{
@@ -32,7 +32,7 @@ t_env	*ft_add_var_to_env(t_env *env, char *to_add)
 			return (NULL);
 	}
 	ft_get_last_env(env)->next = new;
-	new->env = ft_strdup(to_add);
+	new->var = ft_strdup(to_add);
 	new->next = NULL;
 	return (new);
 }
