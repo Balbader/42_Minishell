@@ -43,3 +43,6 @@ create_pwd : ft_create_working_directory.c
 cd_less : ft_change_working_directory.c
 find_in_cdpath : ft_get_cd_path.c
 len_cd_arg : ft_get_token_len.c
+
+## Exit
+revove_quotes : ft_remove_quotes.c
