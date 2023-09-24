@@ -16,10 +16,13 @@
  * This function is called in main.c in order to free env_lst.
 */
 
-void	ft_del_env(t_env *env)
+void	ft_del_env(void)
 {
+	t_env	*env;
 	t_env	*tmp;
 
+	tmp = NULL;
+	env = *ft_get_all_env();
 	while (env)
 	{
 		tmp = env;
