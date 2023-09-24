@@ -94,12 +94,6 @@ t_env		**ft_get_env(char **env, char *to_add, char *to_del);
 t_env		**ft_get_all_env(void);
 
 // ----------------------------------------------------------------------export
-int			ft_get_token_len(t_token *token);
-void		ft_export_many_args(t_token *token, t_env **env);
-void		ft_export_var_to_env(char *new_last, t_env **env);
-void		ft_find_and_replace(char *to_find, t_env **env);
-t_env		*ft_convert_char_to_node(char *new_last);
-t_env 		*ft_exec_export(char *new_last, t_env *env);
 
 // -----------------------------------------------------------------------unset
 void		ft_remove_node(t_env *node, t_env **env);
