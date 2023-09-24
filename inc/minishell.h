@@ -105,8 +105,12 @@ char		*ft_get_key(char *var);
 void		ft_does_value_exist(char *var);
 
 // -----------------------------------------------------------------------unset
-void		ft_remove_node(t_env *node, t_env **env);
+int			ft_check_var_to_unset(char *var);
+int			ft_exec_unset(t_token *token);
 
+// ------------------------------------------------------------------------echo
+int			ft_check_n_flag(char *input);
+int			ft_exec_echo(t_token *token, int fd);
 
 /*
 *******************************************************************************
