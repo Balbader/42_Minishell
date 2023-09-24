@@ -12,6 +12,10 @@
 
 #include "minishell.h"
 
+/*
+ * checks if the -n flag has been added to the echo cmd
+*/
+
 int	ft_check_n_flag(char *input)
 {
 	if (!*input)
