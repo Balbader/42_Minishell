@@ -25,7 +25,9 @@ CD_FILES			:=	cd.c
 CD					:=	$(addprefix $(CD_DIR), $(CD_FILES))
 
 ECHO_DIR			:=	echo/
-ECHO_FILES			:=	echo.c
+ECHO_FILES			:=	\
+						ft_check_n_flag.c \
+						ft_exec_echo.c
 ECHO				:=	$(addprefix $(ECHO_DIR), $(ECHO_FILES))
 
 ENV_DIR				:=	env/
@@ -62,8 +64,8 @@ PWD					:=	$(addprefix $(PWD_DIR), $(PWD_FILES))
 
 UNSET_DIR			:=	unset/
 UNSET_FILES			:=	\
-						ft_remove_node.c \
-						unset.c
+						ft_check_var_to_unset.c \
+						ft_exec_unset.c
 UNSET				:=	$(addprefix $(UNSET_DIR), $(UNSET_FILES))
 
 
