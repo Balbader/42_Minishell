@@ -17,7 +17,7 @@ int	ft_get_token_len(t_token *token)
 	int	i;
 
 	if (!token)
-		return(0);
+		return (0);
 	i = 0;
 	while (token)
 	{
@@ -25,5 +25,4 @@ int	ft_get_token_len(t_token *token)
 		token = token->next;
 	}
 	return (i);
-	
 }
