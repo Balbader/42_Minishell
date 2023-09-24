@@ -80,15 +80,17 @@ void		exec_cmd(t_data *in, t_exec *cmd);
 int			ft_compare_keys(char *key, char *to_find);
 int 		ft_get_env_len(t_env *env);
 char		**ft_convert_env_to_tab(t_env *env);
-void		ft_init_env(int ac, char **av, char **env);
+char		*ft_find_value(char *var);
 void		ft_add_to_env(char *to_add);
 void		ft_del_from_env(char *to_del);
 void		ft_del_env(t_env *env);
-t_env		*ft_add_var_to_env(t_env **env, char *to_add);
+void		ft_init_env(int ac, char **av, char **env);
+void		ft_modif_shlvl(void);
+t_env		*ft_add_var_to_env(t_env *env, char *to_add);
 t_env		*ft_create_env_list(char **env);
 t_env		*ft_del_node(t_env *env, char *to_del);
 t_env		*ft_get_last_env(t_env *env);
-t_env		**ft_get_env(char **env);
+t_env		**ft_get_env(char **env, char *to_add, char *to_del);
 t_env		**ft_get_all_env(void);
 
 // ----------------------------------------------------------------------export
