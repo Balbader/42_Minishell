@@ -15,12 +15,12 @@
 int	ft_exec_unset(t_token *token)
 {
 	while (token)
-		{
-			if (!ft_check_var_to_unset(token->word))
-				error_unset(token->word);
-			else
-				ft_del_from_env(token->word);
-			token = token->next;
-		}
+	{
+		if (!ft_check_var_to_unset(token->word))
+			error_unset(token->word);
+		else
+			ft_del_from_env(token->word);
+		token = token->next;
+	}
 	return (g_error = 0, true);
 }
