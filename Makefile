@@ -21,7 +21,8 @@ NAME				:=	minishell
 # BUILTINS FILES
 
 CD_DIR				:=	cd/
-CD_FILES			:=	cd.c
+CD_FILES			:=	\
+						ft_replace_pwd.c \
 CD					:=	$(addprefix $(CD_DIR), $(CD_FILES))
 
 ECHO_DIR			:=	echo/
