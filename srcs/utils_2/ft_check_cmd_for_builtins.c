@@ -23,6 +23,6 @@ char	*ft_check_cmd_for_builtins(char *path, char *cmd)
 		return (ft_strdup(cmd));
 	}
 	if (!path)
-		return (error_cmd(cmd), path);
+		return (ft_print_cmd_error(cmd), path);
 	return (path);
 }
