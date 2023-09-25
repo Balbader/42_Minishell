@@ -35,7 +35,7 @@ char	*ft_remove_quotes(char *var)
 	while (*var)
 	{
 		if (*var != '\'' && *var != '"')
-			tmp += ((*tmp = *s, 1));
+			tmp += ((*tmp = *var, 1));
 		++var;
 	}
 	return (no_quotes);
