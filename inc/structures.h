@@ -55,12 +55,8 @@ enum e_token
 
 typedef struct s_token
 {
-	// string that represent a section of the initial input to be 
-	// executed by the appropriate builtin
 	char			*word;
-
-	t_type			type;
-
+	t_type			type; // why not use an int ???
 	struct s_token	*next;
 }	t_token;
 
@@ -70,6 +66,16 @@ typedef struct s_exec
 	char	*path;
 }	t_exec;
 
+/************************** basil stuff*/
+
+typedef struct s_env
+{
+	char			*var;
+	char			*key;
+	char			*value;
+	struct s_env	*next;
+}	t_env;
+
 typedef struct s_data
 {
 	char	*input;
@@ -77,21 +83,5 @@ typedef struct s_data
 	char	**env;
 	bool	subgect_flag;
 }	t_data;
-
-/************************** basil stuff*/
-typedef struct s_env
-{
-	int				id;
-	char			*key;
-	char			*value;
-	struct s_env	*next;
-}	t_env;
-
-/*
-function(t_list *list)
-{
-	t_env env = (t_env)list->content;
-}
-*/
 
 #endif // !STRUCTURES_H

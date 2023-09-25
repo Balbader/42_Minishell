@@ -1,26 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_env_len.c                                   :+:      :+:    :+:   */
+/*   ft_add_var_to_env.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/24 10:54:12 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/24 10:55:13 by baalbade         ###   ########.fr       */
+/*   Created: 2023/09/24 10:23:14 by baalbade          #+#    #+#             */
+/*   Updated: 2023/09/24 10:23:15 by baalbade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_get_env_len(t_env *env)
+t_env	*ft_add_var_to_env(t_env *env, char *to_add)
 {
-	int	i;
+	t_env	*new;
 
-	i = 0;
-	while (env)
+	if (!env)
 	{
-		++i;
-		env = env->next;
+		env = (t_env *)malloc(sizeof(t_env));
+		if (!env)
+			return (NULL);
+		env->next = NULL;
+		env->var = ft_strdup(to_add);
+		return (env);
 	}
-	return (i);
+	else
+	{
+		new = (t_env *)malloc(sizeof(t_env));
+		if (!new)
+			return (NULL);
+	}
+	ft_get_last_env(env)->next = new;
+	new->var = ft_strdup(to_add);
+	new->next = NULL;
+	return (new);
 }

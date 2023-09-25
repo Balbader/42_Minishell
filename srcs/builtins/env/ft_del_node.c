@@ -1,27 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_key_len.c                                   :+:      :+:    :+:   */
+/*   ft_del_node.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/09 13:36:06 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/09 13:36:08 by baalbade         ###   ########.fr       */
+/*   Created: 2023/09/24 10:36:29 by baalbade          #+#    #+#             */
+/*   Updated: 2023/09/24 10:36:30 by baalbade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_get_key_len(char *str)
+t_env	*ft_del_node(t_env *env, char *to_del)
 {
-	int	i;
+	t_env	*prev;
+	t_env	*start;
+	t_env	*next;
 
-	i = 0;
-	while (str[i])
+	start = env;
+	prev = env;
+	while (env)
 	{
-		if (str[i] == '=')
-			return (i);
-		++i;
+		if (ft_compare_keys(env->var, to_del))
+		{
+			next = env->next;
+			free(env->var);
+			free(env);
+			prev->next = next;
+			break ;
+		}
+		prev = env;
+		env = env->next;
 	}
-	return (i);
+	return (start);
 }

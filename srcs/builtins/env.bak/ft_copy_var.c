@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_create_new_env_node.c                           :+:      :+:    :+:   */
+/*   ft_copy_var.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 09:51:09 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/11 09:51:12 by baalbade         ###   ########.fr       */
+/*   Created: 2023/09/16 09:55:32 by baalbade          #+#    #+#             */
+/*   Updated: 2023/09/16 09:55:34 by baalbade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/*
- * create a new node that holds :
- * . node id
- * . Key variable
- * . value variable
- * . ptr to next node
-*/
-
-t_env	*ft_create_new_env_node(int id, char *key_cpy, char *value_cpy)
+char	*ft_copy_var(char *original, char *cpy)
 {
-	t_env	*new_node;
+	int	var_len;
+	int	i;
 
-	new_node = (t_env *)malloc(sizeof(t_env));
-	if (!new_node)
+	if (!original)
 		return (NULL);
-	new_node->id = id;
-	new_node->key = key_cpy;
-	new_node->value = value_cpy;
-	new_node->next = NULL;
-	return (new_node);
+	var_len = ft_get_var_len(original);
+	cpy = (char *)malloc(sizeof(char) * (var_len + 1));
+	if (!cpy)
+		return (NULL);
+	i = 0;
+	while (original[i])
+	{
+		cpy[i] = original[i];
+		++i;
+	}
+	cpy[i] = '\0';
+	return (cpy);
 }

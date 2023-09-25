@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_env_len.c                                   :+:      :+:    :+:   */
+/*   ft_del_var_in_env.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/24 10:54:12 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/24 10:55:13 by baalbade         ###   ########.fr       */
+/*   Created: 2023/09/23 13:27:14 by baalbade          #+#    #+#             */
+/*   Updated: 2023/09/23 13:27:16 by baalbade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_get_env_len(t_env *env)
-{
-	int	i;
 
-	i = 0;
-	while (env)
+t_env	*ft_del_var_in_env(char *to_del, t_env **env)
+{
+	t_env	*head;
+	t_env	*cur;
+
+	cur = (*env);
+	head = cur;
+	while (cur)
 	{
-		++i;
-		env = env->next;
+		if (ft_strncmp(cur->var, to_del, '=') == 0)
+		{
+			printf("********They are the same*******\n");
+			cur = cur->next;
+			return (head);
+		}
+		cur = cur->next;
 	}
-	return (i);
+	return (head);
 }
