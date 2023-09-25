@@ -83,6 +83,7 @@ void		exec_cmd(t_data *in, t_exec *cmd);
 */
 
 // -------------------------------------------------------------------------env
+int			ft_exec_env(int fd);
 int			ft_compare_keys(char *key, char *to_find);
 int 		ft_get_env_len(t_env *env);
 char		**ft_convert_env_to_tab(t_env *env);
@@ -123,6 +124,9 @@ int			ft_get_key_len(char *var);
 char		*ft_get_key(char *var);
 void		ft_does_value_exist(char *var);
 
+// -------------------------------------------------------------------------pwd
+int			ft_exec_pwd(int fd);
+
 // -----------------------------------------------------------------------unset
 int			ft_check_var_to_unset(char *var);
 int			ft_exec_unset(t_token *token);
@@ -132,9 +136,16 @@ int			ft_exec_unset(t_token *token);
 *********************************************************************** UTILS_2
 *******************************************************************************
 */
+int			ft_print_error_msg(char *msg);
+int			ft_get_env_len(char **env);
 char		*ft_check_cmd_for_builtins(char *path, char *cmd);
 void		ft_free_tabs(char **tab);
 void		ft_del_tokens(t_token *tokens);
+void		ft_print_cmd_error(char *cmd);
+void		ft_print_sig_error(void);
+void		ft_print_export_error(char *err);
+void		ft_print_unset_error(char *err);
+void		ft_print_redir_error(char *file);
 
 
 
