@@ -15,10 +15,10 @@
 int	ft_exec_env(int fd)
 {
 	t_env	*env;
-	env = ft_get_all_env();
+	env = *ft_get_all_env();
 	while (env)
 	{
-		ft_putstr_fd(fd, env->var);
+		ft_putstr_fd(env->var, fd);
 		write(fd, "\n", 1);
 		env = env->next;
 	}

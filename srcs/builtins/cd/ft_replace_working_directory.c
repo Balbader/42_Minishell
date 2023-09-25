@@ -23,7 +23,7 @@ void	ft_replace_working_directory(void)
 	o_wd = ft_find_value("PWD");
 	wd = getcwd(NULL, 0);
 	if (!wd)
-		return (g_error = 127, (void)error_msg("getcwd fail\n"));
+		return (g_error = 127, (void)ft_print_error_msg("getcwd fail\n"));
 	tmp = wd;
 	wd = ft_strjoin(cur_pwd, wd);
 	free(tmp);

@@ -12,10 +12,6 @@
 
 #include "minishell.h"
 
-/*
- * TO DO : check "ft_strjoin_add_slash"
-*/
-
 void	ft_get_cd_path(char **path)
 {
 	char	*cdpath;
@@ -27,7 +23,7 @@ void	ft_get_cd_path(char **path)
 	if (cdpath[ft_strlen(cdpath)] == '/' || *cdpath == '/')
 		cdpath = ft_strjoin(cdpath, *path);
 	else
-		cdpath = ft_strjoin_add_slash(cdpath, *path);
+		cdpath = ft_add_slash(cdpath, *path);
 	free(*path);
 	*path = cdpath;
 	fd = open(*path, O_DIRECTORY);

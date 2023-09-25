@@ -36,7 +36,7 @@ int	ft_exec_echo(t_token *token, int fd)
 	while (token)
 	{
 		if (token->word)
-			ft_putstr_fd(fd, token->word);
+			ft_putstr_fd(token->word, fd);
 		token = token->next;
 		if (token)
 			write(fd, " ", 1);
