@@ -56,6 +56,7 @@ EXIT_DIR			:=	exit/
 EXIT_FILES			:=	\
 						ft_print_exit_error.c \
 						ft_remove_quotes.c \
+						ft_str_is_digit.c
 EXIT				:=	$(addprefix $(EXIT_DIR), $(EXIT_FILES))
 
 EXPORT_DIR			:=	export/
@@ -65,10 +66,6 @@ EXPORT_FILES		:=	\
 						ft_get_key.c \
 						ft_get_key_len.c
 EXPORT				:=	$(addprefix $(EXPORT_DIR), $(EXPORT_FILES))
-
-PWD_DIR				:=	pwd/
-PWD_FILES			:=	pwd.c
-PWD					:=	$(addprefix $(PWD_DIR), $(PWD_FILES))
 
 UNSET_DIR			:=	unset/
 UNSET_FILES			:=	\
@@ -84,7 +81,6 @@ BUILT_SRCS			:=	\
 						$(ENV) \
 						$(EXIT) \
 						$(EXPORT) \
-						$(PWD) \
 						$(UNSET)
 BUILT				:=	$(addprefix $(BUILT_DIR), $(BUILT_SRCS))
 
@@ -115,11 +111,12 @@ PARSER_FILES		:=	\
 						word_node_utils.c
 PARSER				:=	$(addprefix $(EXEC_DIR), $(EXEC_FILES))
 
-UTILS_DIR			:=	utils/
-UTILS_FILES			:=	\
+UTILS_2_DIR			:=	utils_2/
+UTILS_2_FILES		:=	\
+						ft_check_cmd_for_builtins.c \
 						ft_del_tokens.c \
 						ft_free_tabs.c
-UTILS				:=	$(addprefix $(UTILS_DIR), $(UTILS_FILES))
+UTILS_2				:=	$(addprefix $(UTILS_DIR), $(UTILS_FILES))
 
 
 ###############
@@ -142,7 +139,7 @@ SRCS				:=	\
 						$(EXEC) \
 						$(EXPAND) \
 						$(PARSER) \
-						$(UTILS) \
+						$(UTILS_2) \
 						main.c
 SRCS				:=	$(SRCS:%=$(SRCS_DIR)/%)
 
