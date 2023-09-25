@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exec.c                                             :+:      :+:    :+:   */
+/*   exec_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/22 11:40:06 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/25 15:46:20 by ftuernal         ###   ########.fr       */
+/*   Created: 2023/09/25 16:49:15 by ftuernal          #+#    #+#             */
+/*   Updated: 2023/09/25 16:50:39 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	exec(t_data *in)
+char	**convert_arg_to_tab(t_token *arg)
 {
-	in->cmd = NULL;
-	
-	if (exec_new_node_alloc(&in->cmd) == FAILURE)
-		return (FAILURE);
-	if (exec_list_create(&in->cmd, expand_cmdline) == FAILURE)
-		return (FAILURE);
-	execute(in->cmd);
+	char	**cmd_tab;
+	int		arg_len;
+	t_token	*head;
+	int		i;
+
+	arg_len = get_execarg_len(arg);
+	cmd_tab = ft_calloc(arg_len + 1, sizeof(char *));
+	if (!cmd_tab)
+		return (NULL);
+	head = arg;
+	i = -1;
+	while (head != NULL && ++i < arg_len)
+		cmd_tab[i] = ft_strdup(arg->word);
+	cmd_tab[i] = NULL;
+	return (cmd_tab);
 }

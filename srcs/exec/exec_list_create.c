@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 16:52:56 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/22 12:21:10 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/25 15:32:13 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 //exec_list
 
-int	exec_node_alloc(t_cmd **cmd)
+int	exec_new_node_alloc(t_cmd **cmd)
 {
 	t_cmd	*tmp;
 
@@ -27,57 +27,34 @@ int	exec_node_alloc(t_cmd **cmd)
 	tmp->fd[IN] = STDIN_FILENO;
 	tmp->fd[OUT] = STDOUT_FILENO;
 	tmp->pid = 0;
-	if (*cmd != 0)
-// addback cmd_node
-	else
-		*cmd = tmp;
-	return (SUCCESS);
-}
-/*
-	struct s_exec
-	{
-		t_node	*arg;
-		t_node	*red;
-		int		fd[2];
-		int		pid;
-		s_exec	*next;
-	}
-	les structures d'execution sont delimitees par les pipes.
-	whenever you encounter a pipe you close the actual node and create a new
-*/
-
-int	exec_list_create(t_cmd **exec_cmdline, t_token *expand_cmdline)
-{
-	t_token	*head;
-
-	head = expand_cmdline;
-	while (expand_cmdline != 0)
-	{
-		if (expand_cmdline->type == WORD)
-		{
-			
-		}
-	}
-	expand_cmdline = head;
+	addback_exec_node(cmd, tmp);
 	return (SUCCESS);
 }
 
-/*
-t_cmd	**exec_list_create(t_token *cmd_list)
+int	exec_list_create(t_cmd **cmd, t_token *expand_cmdline)
 {
 	t_token	*ptr;
-	t_cmd	*cmd;
+	t_cmd	*head;
+	int		ret;
 
-	cmd = NULL;
-	if (!cmd)
-		return (NULL);
-	ptr = cmd_list;
+	ptr = expand_cmdline;
+	head = *cmd;
 	while (ptr != NULL)
 	{
-		if (ptr->type == WORD)
+		if (ptr->type == PIPE)
 		{
-			cmd = add_cmd_wordnode(&cmd, *cmd_list);
-			
+			if (exec_new_node_alloc(cmd) == FAILURE)
+				return (FAILURE);
+			cmd = cmd->next;
+		}
+		else if (ptr->type == WORD)
+			ret = append_arg_node(cmd, ptr) == FAILURE;
+		else
+			ret = append_rdir_node(cmd, ptr) == FAILURE;
+		if (!cmd || ret == FAILURE)
+			return (FAILURE);
+		ptr = ptr->next;
 	}
+	cmd = head;
+	return (SUCCESS);
 }
-*/
