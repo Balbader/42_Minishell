@@ -120,6 +120,7 @@ char		*ft_remove_quotes(char *var);
 // ----------------------------------------------------------------------export
 int			ft_check_cpy(char **cpy);
 int			ft_get_key_len(char *var);
+int			ft_exec_export(t_token *token);
 char		*ft_get_key(char *var);
 void		ft_does_value_exist(char *var);
 
