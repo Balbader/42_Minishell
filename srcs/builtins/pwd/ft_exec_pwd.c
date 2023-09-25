@@ -18,8 +18,8 @@ int	ft_exec_pwd(int fd)
 
 	wd = getcwd(NULL,0);
 	if (!wd)
-		return (g_error = 127, error_msg("getcwd fail\n"), true);
-	ft_putstr_fd(fd, wd);
+		return (g_error = 127, ft_print_error_msg("getcwd fail\n"), true);
+	ft_putstr_fd(wd, fd);
 	write(fd, "\n", 1);
 	free(wd);
 	return (g_error = 0, true);

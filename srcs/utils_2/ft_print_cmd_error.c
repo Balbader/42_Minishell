@@ -15,7 +15,7 @@
 void	ft_print_cmd_error(char *cmd)
 {
 	g_error = 127;
-	ft_putstr_fd(STDERR_FILENO, "Minishell :");
-	ft_putstr_fd(STDERR_FILENO, cmd);
-	ft_putstr_fd(STDERR_FILENO, ERROR_CMD);
+	ft_putstr_fd("Minishell :", STDERR_FILENO);
+	ft_putstr_fd(cmd, STDERR_FILENO);
+	ft_putstr_fd(ERROR_CMD, STDERR_FILENO);
 }

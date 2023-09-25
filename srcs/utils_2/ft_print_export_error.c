@@ -15,9 +15,9 @@
 void	ft_print_export_error(char *err)
 {
 	g_error = 1;
-	ft_putstr_fd(STDERR_FILENO, ERROR_EXP_START);
-	ft_putstr_fd(STDERR_FILENO, "`");
-	ft_putstr_fd(STDERR_FILENO, err);
-	ft_putstr_fd(STDERR_FILENO, "'");
-	ft_putstr_fd(STDERR_FILENO, ERROR_EXP_END);
+	ft_putstr_fd(ERROR_EXP_START, STDERR_FILENO);
+	ft_putstr_fd("`", STDERR_FILENO);
+	ft_putstr_fd(err, STDERR_FILENO);
+	ft_putstr_fd("'", STDERR_FILENO);
+	ft_putstr_fd(ERROR_EXP_END, STDERR_FILENO);
 }

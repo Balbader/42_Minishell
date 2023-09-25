@@ -18,7 +18,7 @@ int	ft_print_exit_error(t_cmd *cmd, char *var)
 	rl_clear_history();
 	ft_putstr_fd("Minishell: exit: ", STDERR_FILENO);
 	ft_putstr_fd(var, STDERR_FILENO);
-	free_cmd(cmd);
+	ft_free_cmd(cmd);
 	ft_putstr_fd(" : numeric argument required\n", STDERR_FILENO);
 	return (2);
 }

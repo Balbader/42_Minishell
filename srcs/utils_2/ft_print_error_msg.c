@@ -14,6 +14,6 @@
 
 int	ft_print_error_msg(char *msg)
 {
-	ft_putstr_fd(STDERR_FILENO, msg);
+	ft_putstr_fd(msg, STDERR_FILENO);
 	return (false);
 }

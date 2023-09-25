@@ -25,7 +25,7 @@ int	ft_exec_export(t_token *token)
 		if (!ft_strchr(token->word, '='))
 			return (true);
 		if (ft_isdigit(*cpy) || token->word[0] == '=')
-			return (g_error = 1, error_export(cpy), true);
+			return (g_error = 1, ft_print_export_error(cpy), true);
 		if (!ft_check_cpy(&cpy))
 			return (true);
 		cpy = ft_strdup(cpy);

@@ -15,9 +15,9 @@
 void	ft_print_unset_error(char *err)
 {
 	g_error = 1;
-	ft_putstr_fd(STDERR_FILENO, "Minishell : unset:");
-	ft_putstr_fd(STDERR_FILENO, "`");
-	ft_putstr_fd(STDERR_FILENO, err);
-	ft_putstr_fd(STDERR_FILENO, "'");
-	ft_putstr_fd(STDERR_FILENO, ": not a valid identifier\n");
+	ft_putstr_fd("Minishell : unset:", STDERR_FILENO);
+	ft_putstr_fd("`", STDERR_FILENO);
+	ft_putstr_fd(err, STDERR_FILENO);
+	ft_putstr_fd("'", STDERR_FILENO);
+	ft_putstr_fd(": not a valid identifier\n", STDERR_FILENO);
 }

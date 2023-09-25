@@ -18,9 +18,18 @@ int	ft_run_builtins(char *path, t_cmd *cmd)
 
 	exec = false;
 	if (ft_strcmp(path, "echo"))
-		exec = ft_exec_echo(cmd->args->next, cmd->fd[OUT]);
+		exec = ft_exec_echo(cmd->args->next, cmd->fd[1]);
 	else if (ft_strcmp(path, "cd"))
-		exec = ft_exec_cd(cmd->args->next, cmd->fd[IN], cmd->fd[OUT]);
+		exec = ft_exec_cd(cmd->args->next, cmd->fd[0], cmd->fd[1]);
 	else if (ft_strcmp(path, "pwd"))
-		exec = ft_exec_pwd(cmd->fd[OUT]);
+		exec = ft_exec_pwd(cmd->fd[1]);
+	else if (ft_strcmp(path, "export"))
+		exec = ft_exec_export(cmd->args->next);
+	else if (ft_strcmp(path, "unset"))
+		exec = ft_exec_unset(cmd->args->next);
+	else if (ft_strcmp(path, "env"))
+		exec = ft_exec_env(cmd->fd[1]);
+	else if (ft_strcmp(path, "exit"))
+		exec = ft_exec_exit(cmd->args->next, cmd);
+	return (exec);
 }
