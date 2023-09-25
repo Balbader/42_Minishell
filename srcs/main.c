@@ -12,7 +12,7 @@
 
 #include "minishell.h"
 
-int	g_error;
+int g_error;
 
 int main(int ac, char **av, char **env)
 {
