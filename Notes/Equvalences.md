@@ -20,9 +20,9 @@ delone_env :  ft_del_from_env (ft_get_env_utils.c)
 ft_getall_env : ft_get_all_env (ft_get_env_utils.c)
 
 ft_delall_env : ft_del_env.c
-
 modif_shlvl : ft_modif_shlvl.c
 
+builtins_env : ft_exec_env.c
 ## Export
 trim_end_value : ft_get_key_len.c
 trim_before_egals : ft_get_key.c
@@ -38,6 +38,8 @@ builtins_unset : ft_exec_unset.c
 verif_flag_n : ft_check_n_flag.c
 builtins_echo : ft_exec_echo.c
 
+## PWD
+builtins_pwd : ft_exec_pwd.c
 ## CD
 pwd_old_pwd : ft_replace_working_directory.c
 create_pwd : ft_create_working_directory.c
@@ -54,3 +56,11 @@ builtins_exit : ft_exec_exit.c
 
 # Utils_2
 check_is_not_builtins : ft_check_cmd_for_builtins
+check_builtins : ft_run_builtins.c
+error_cmd : ft_print_cmd_error.c
+error_sig : ft_print_sig_error.c
+error_export : ft_print_export_error.c
+error_unset : ft_print_unset_error.c
+error_msg : ft_print_error_msg.c
+error_redir : ft_print_redir_error.c
+ft_strlen_tab : ft_get_env_len.c
