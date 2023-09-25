@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_env_len.c                                   :+:      :+:    :+:   */
+/*   ft_convert_env_to_tab.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/24 10:54:12 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/24 10:55:13 by baalbade         ###   ########.fr       */
+/*   Created: 2023/09/24 10:52:31 by baalbade          #+#    #+#             */
+/*   Updated: 2023/09/24 10:56:24 by baalbade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_get_env_len(t_env *env)
+char	**ft_convert_env_to_tab(t_env *env)
 {
-	int	i;
+	char	**start;
+	char	**tab;
+	int		len;
 
-	i = 0;
+	len = ft_get_env_len(env);
+	tab = (char **)malloc(sizeof(char *) * (len + 1));
+	if (!tab)
+		return (NULL);
+	tab[len] = NULL;
+	start = tab;
 	while (env)
 	{
-		++i;
+		*tab = ft_strdup(env->var);
+		++tab;
 		env = env->next;
 	}
-	return (i);
+	return (start);
 }

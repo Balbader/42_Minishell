@@ -6,7 +6,7 @@
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 10:27:19 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/21 15:12:29 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/25 12:19:59 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,17 @@
 # include <stdio.h>
 
 /*
+ *********************************************************************** GLOBAL
+*/
+extern int	g_error;
+
+/*
 *******************************************************************************
-******************************************************************** PARSER
+************************************************************************ PARSER
 *******************************************************************************
 */
-t_token		*add_all_words_nodes( char **tab);
+
+t_token		*add_all_words_nodes(char **tab);
 void		addback_cmdline_node(t_token **cmd_line, t_token *new);
 int			append_cmd_node(t_token *cmd_line, char *line);
 bool		check_quotes(char *input);
@@ -78,39 +84,68 @@ void		substitute_word(t_token *cmd_line, char *substitute);
 
 /*
 *******************************************************************************
-******************************************************************** EXEC
+************************************************************************** EXEC
 *******************************************************************************
 */
 void		exec_cmd(t_data *in, t_exec *cmd);
 
+
 /*
 *******************************************************************************
-******************************************************************** BUILTINS
+********************************************************************** BUILTINS
 *******************************************************************************
 */
-// env
-int			ft_get_env_len(char **env);
-int			ft_env_err(char **env, t_env *env_cpy, int output_fd);
-int			ft_exec_env(t_env *env, int fd_out);
-int			ft_get_key_len(char *str);
-int			ft_get_value_len(char *str);
-char		*ft_copy_key(char *env_elem, char *key_cpy, char stop);
-char		*ft_copy_value(char *env_elem, char *value_cpy);
-void		ft_env_fail(const char *message, char **env);
-t_env		*ft_create_new_env_node(int id, char *key_cpy, char *value_cpy);
-t_env		*ft_convert_env_to_list(int env_len, t_env *env_lst, char **env);
-void		ft_env_fail(const char *message, char **env);
-void        ft_del_env(t_env *env);
 
+// -------------------------------------------------------------------------env
+int			ft_compare_keys(char *key, char *to_find);
+int 		ft_get_env_len(t_env *env);
+char		**ft_convert_env_to_tab(t_env *env);
+char		*ft_find_value(char *var);
+void		ft_add_to_env(char *to_add);
+void		ft_del_from_env(char *to_del);
+void		ft_del_env(void);
+void		ft_init_env(int ac, char **av, char **env);
+void		ft_modif_shlvl(void);
+t_env		*ft_add_var_to_env(t_env *env, char *to_add);
+t_env		*ft_create_env_list(char **env);
+t_env		*ft_del_node(t_env *env, char *to_del);
+t_env		*ft_get_last_env(t_env *env);
+t_env		**ft_get_env(char **env, char *to_add, char *to_del);
+t_env		**ft_get_all_env(void);
 
+// ----------------------------------------------------------------------export
+int			ft_check_cpy(char **cpy);
+int			ft_get_key_len(char *var);
+char		*ft_get_key(char *var);
+void		ft_does_value_exist(char *var);
 
+// -----------------------------------------------------------------------unset
+int			ft_check_var_to_unset(char *var);
+int			ft_exec_unset(t_token *token);
+
+// ------------------------------------------------------------------------echo
+int			ft_check_n_flag(char *input);
+int			ft_exec_echo(t_token *token, int fd);
+
+// --------------------------------------------------------------------------cd
+int			ft_exec_cd(t_token *token, int in, int out);
+int			ft_get_token_len(t_token *token);
+void		ft_change_working_directory(void);
+void		ft_create_working_directory(void);
+void		ft_get_cd_path(char **path);
+void		ft_replace_working_directory(void);
+
+// ------------------------------------------------------------------------exit
+int			ft_print_exit_error(t_data *data, char *var);
+char		*ft_remove_quotes(char *var);
 
 /*
 *******************************************************************************
-******************************************************************** UTILS
+************************************************************************* UTILS
 *******************************************************************************
 */
 void		ft_free_tabs(char **tab);
+void		ft_del_tokens(t_token *tokens);
 void    	free_2_tabs(char **s1, char **s2);
 t_env		**get_env(char **env);
 int 		get_tab_len(char **tab);
@@ -118,10 +153,6 @@ void		heredoc_sig(int sig);
 char		*join_all_str(char **split);
 char		*join_free(char *s1, char *s2, char *ptr);
 void		siginit(int type);
-
-
-
-
 
 //DEBUG
 int ft_printenv(t_env *env);

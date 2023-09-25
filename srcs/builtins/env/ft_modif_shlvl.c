@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_env_len.c                                   :+:      :+:    :+:   */
+/*   ft_modif_shlvl.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/24 10:54:12 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/24 10:55:13 by baalbade         ###   ########.fr       */
+/*   Created: 2023/09/24 11:14:18 by baalbade          #+#    #+#             */
+/*   Updated: 2023/09/24 11:14:20 by baalbade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_get_env_len(t_env *env)
+void	ft_modif_shlvl(void)
 {
-	int	i;
+	static const char	str[7] = "SHLVL=\0";
+	char				*shlvl;
+	char				*tmp;
+	int					lvl;
 
-	i = 0;
-	while (env)
-	{
-		++i;
-		env = env->next;
-	}
-	return (i);
+	shlvl = ft_find_value("SHLVL");
+	if (!shlvl)
+		return ;
+	lvl = ft_atoi(shlvl);
+	ft_del_from_env("SHLVL");
+	++lvl;
+	tmp = ft_itoa(lvl);
+	shlvl = ft_strjoin(str, tmp);
+	free(tmp);
+	ft_add_to_env(shlvl);
+	free(shlvl);
 }

@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_env_len.c                                   :+:      :+:    :+:   */
+/*   ft_create_working_directory.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/24 10:54:12 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/24 10:55:13 by baalbade         ###   ########.fr       */
+/*   Created: 2023/09/24 15:05:51 by baalbade          #+#    #+#             */
+/*   Updated: 2023/09/24 15:05:52 by baalbade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_get_env_len(t_env *env)
+void	ft_create_working_directory(void)
 {
-	int	i;
+	static const char	pwd[5] = "PWD=\0";
+	char				*wd;
+	char				*tmp;
 
-	i = 0;
-	while (env)
-	{
-		++i;
-		env = env->next;
-	}
-	return (i);
+	wd = getcwd(NULL, 0);
+	tmp = wd;
+	wd = ft_strjoin(pwd, wd);
+	free(tmp);
+	ft_add_to_env(wd);
+	free(wd);
 }

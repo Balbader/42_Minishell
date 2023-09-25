@@ -1,26 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_env_len.c                                   :+:      :+:    :+:   */
+/*   ft_create_env_list.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/24 10:54:12 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/24 10:55:13 by baalbade         ###   ########.fr       */
+/*   Created: 2023/09/24 10:29:52 by baalbade          #+#    #+#             */
+/*   Updated: 2023/09/24 10:29:54 by baalbade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_get_env_len(t_env *env)
+t_env	*ft_create_env_list(char **env)
 {
-	int	i;
+	t_env	*lst;
+	t_env	*tmp;
 
-	i = 0;
-	while (env)
+	lst = NULL;
+	tmp = NULL;
+	while (*env)
 	{
-		++i;
-		env = env->next;
+		if (!ft_add_var_to_env(lst, *env))
+		{
+			while (lst)
+			{
+				tmp = lst;
+				lst = lst->next;
+				free(tmp->var);
+				free(tmp);
+			}
+			return (NULL);
+		}
+		++env;
 	}
-	return (i);
+	return (lst);
 }

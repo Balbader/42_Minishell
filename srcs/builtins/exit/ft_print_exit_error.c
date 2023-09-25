@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_env_len.c                                   :+:      :+:    :+:   */
+/*   ft_print_exit_error.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/24 10:54:12 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/24 10:55:13 by baalbade         ###   ########.fr       */
+/*   Created: 2023/09/24 16:09:54 by baalbade          #+#    #+#             */
+/*   Updated: 2023/09/24 16:09:55 by baalbade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_get_env_len(t_env *env)
+int	ft_print_exit_error(t_data *data, char *var)
 {
-	int	i;
-
-	i = 0;
-	while (env)
-	{
-		++i;
-		env = env->next;
-	}
-	return (i);
+	ft_del_env();
+	rl_clear_history();
+	ft_putstr_fd(STDERR_FILENO, "Minishell: exit: ");
+	ft_putstr_fd(STDERR_FILENO, var);
+	free_cmd(cmd);
+	ft_putstr_fd(STDERR_FILENO, " : numeric argument required\n");
+	return (2);
 }

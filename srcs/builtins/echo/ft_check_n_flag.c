@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_env_len.c                                   :+:      :+:    :+:   */
+/*   ft_check_n_flag.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/24 10:54:12 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/24 10:55:13 by baalbade         ###   ########.fr       */
+/*   Created: 2023/09/24 14:13:39 by baalbade          #+#    #+#             */
+/*   Updated: 2023/09/24 14:13:40 by baalbade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_get_env_len(t_env *env)
-{
-	int	i;
+/*
+ * checks if the -n flag has been added to the echo cmd
+*/
 
-	i = 0;
-	while (env)
+int	ft_check_n_flag(char *input)
+{
+	if (!*input)
+		return (true);
+	while (*input)
 	{
-		++i;
-		env = env->next;
+		if (*input != '-' && *input != 'n' && *input != ' ')
+			return (false);
+		++input;
 	}
-	return (i);
+	return (true);
 }

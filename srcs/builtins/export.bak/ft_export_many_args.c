@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_del_env.c                                       :+:      :+:    :+:   */
+/*   ft_export_many_args.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 14:59:03 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/25 12:27:49 by ftuernal         ###   ########.fr       */
+/*   Created: 2023/09/18 09:53:09 by baalbade          #+#    #+#             */
+/*   Updated: 2023/09/18 09:53:10 by baalbade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 /*
- * This function is called in main.c in order to free env_lst.
+ * this function will take the token linked list sent by parsing
+ * the first token (node) = the command to be executed will be by passed
+ * the remaining word (arg) of each token will be added to env
+ * only if all the variable are different.
 */
 
-void	ft_del_env(void)
+void	ft_export_many_args(t_token *token, t_env **env)
 {
-	t_env	*env;
-	t_env	*tmp;
+	t_env	*new_env;
 
-	tmp = NULL;
-	env = *ft_get_all_env();
-	while (env)
+	new_env = *env;
+	token = token->next;
+	while (token)
 	{
-		tmp = env;
-		env = env->next;
-		free(tmp->var);
-		free(tmp->key);
-		free(tmp->value);
-		free(tmp);
+		ft_add_var_to_env(token->word, &new_env);
+		token = token->next;
 	}
 }

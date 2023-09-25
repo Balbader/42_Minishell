@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_env_len.c                                   :+:      :+:    :+:   */
+/*   ft_change_working_directory.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/24 10:54:12 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/24 10:55:13 by baalbade         ###   ########.fr       */
+/*   Created: 2023/09/24 15:18:01 by baalbade          #+#    #+#             */
+/*   Updated: 2023/09/24 15:18:03 by baalbade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_get_env_len(t_env *env)
+void	ft_change_working_directory(void)
 {
-	int	i;
+	char	*wd;
 
-	i = 0;
-	while (env)
+	wd = ft_find_value("OLDPWD");
+	if (!wd)
 	{
-		++i;
-		env = env->next;
+		g_error = 1;
+		printf("minishell: cd: OLDPWD not set\n");
 	}
-	return (i);
+	else
+	{
+		chdir(wd);
+		ft_putstr_fd(STDOUT_FILENO, wd);
+		write(STDOUT_FILENO, "\n", 1);
+		ft_replace_working_directory();
+	}
 }

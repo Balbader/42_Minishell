@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_env_len.c                                   :+:      :+:    :+:   */
+/*   ft_del_tokens.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/24 10:54:12 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/24 10:55:13 by baalbade         ###   ########.fr       */
+/*   Created: 2023/09/19 16:34:46 by baalbade          #+#    #+#             */
+/*   Updated: 2023/09/19 16:34:48 by baalbade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_get_env_len(t_env *env)
+void	ft_del_tokens(t_token *tokens)
 {
-	int	i;
+	t_token	*tmp;
 
-	i = 0;
-	while (env)
+
+	while (tokens)
 	{
-		++i;
-		env = env->next;
+		tmp = tokens;
+		tokens = tokens->next;
+		free(tmp->word);
+		// free(tmp->type);
+		free(tmp);
 	}
-	return (i);
 }

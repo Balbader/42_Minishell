@@ -1,26 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_env_len.c                                   :+:      :+:    :+:   */
+/*   ft_get_key.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/24 10:54:12 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/24 10:55:13 by baalbade         ###   ########.fr       */
+/*   Created: 2023/09/24 13:06:07 by baalbade          #+#    #+#             */
+/*   Updated: 2023/09/24 13:06:09 by baalbade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_get_env_len(t_env *env)
-{
-	int	i;
+/*
+ * . runs through var
+ * . get the length of key in var
+ * . malloc space to key_cpy
+ * . copy key portion of var to key_cpy
+ * . return key_cpy
+*/
 
+char	*ft_get_key(char *var)
+{
+	char	*key_cpy;
+	int		key_len;
+	int		i;
+
+	key_cpy = NULL;
+	key_len = ft_get_key_len(var);
+	key_cpy = (char *)malloc(sizeof(char) * (key_len + 1));
+	if (!key_cpy)
+		return (NULL);
 	i = 0;
-	while (env)
+	while (i < key_len)
 	{
+		key_cpy[i] = var[i];
 		++i;
-		env = env->next;
 	}
-	return (i);
+	key_cpy[i] = '\0';
+	return (key_cpy);
 }

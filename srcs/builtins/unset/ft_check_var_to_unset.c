@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_env_len.c                                   :+:      :+:    :+:   */
+/*   ft_check_var_to_unset.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/24 10:54:12 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/24 10:55:13 by baalbade         ###   ########.fr       */
+/*   Created: 2023/09/24 14:05:22 by baalbade          #+#    #+#             */
+/*   Updated: 2023/09/24 14:05:24 by baalbade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_get_env_len(t_env *env)
+int	ft_check_var_to_unset(char *var)
 {
-	int	i;
-
-	i = 0;
-	while (env)
+	while (*var)
 	{
-		++i;
-		env = env->next;
+		if (!ft_is_alpha(*var) && !ft_isdigit(*var) && *var != '_')
+			return (false);
+		++var;
 	}
-	return (i);
+	return (true);
 }

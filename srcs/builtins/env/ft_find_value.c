@@ -1,26 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_env_len.c                                   :+:      :+:    :+:   */
+/*   ft_find_value.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/24 10:54:12 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/24 10:55:13 by baalbade         ###   ########.fr       */
+/*   Created: 2023/09/24 12:06:32 by baalbade          #+#    #+#             */
+/*   Updated: 2023/09/24 12:06:34 by baalbade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_get_env_len(t_env *env)
+/*
+ * Searches the value of the givev var in env
+ * if found, returns a pointer to the begining of tha value which is the string
+ * starting after the '=' character.
+ * if not found, returns NULL;
+*/
+char	*ft_find_value(char *var)
 {
-	int	i;
+	t_env	*env;
+	char	*tmp;
 
-	i = 0;
+	if (!var)
+		return (NULL);
+	env = *ft_get_all_env();
 	while (env)
 	{
-		++i;
+		if (ft_compare_keys(env->var, var))
+		{
+			tmp = env->var;
+			while (*tmp != '=')
+				++tmp;
+			++tmp;
+			return (tmp);
+		}
 		env = env->next;
 	}
-	return (i);
+	return (NULL);
 }

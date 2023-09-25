@@ -116,6 +116,7 @@ STDLIB			=	$(addprefix $(STDLIB_DIR), $(STDLIB_FILES))
 STRING_DIR		=	string/
 STRING_FILES	=	ft_split.c \
 					ft_strchr.c \
+					ft_strcmp.c \
 					ft_strcpy.c \
 					ft_strdup.c \
 					ft_striteri.c \

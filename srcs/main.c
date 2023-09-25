@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 13:34:07 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/21 15:26:42 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/25 12:25:07 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ int	display_prompt(t_data *in, t_exec *exec, char **env)
 		exec_cmd(in, exec);
 		add_history(in->input);
 		rl_on_new_line();
-		free(in->input);
+	:x
+	free(in->input);
 	}
 	return (SUCCESS);
 }
@@ -44,6 +45,7 @@ int	main(int ac, char **av, char **env)
 	siginit(false);
 	if (display_prompt(in) != SUCCESS)
 		ft_putstr_fd("Something wrong happened forcing Minishell to stop!\n");
+	
 	ft_printf("Minishell stopped normally\n");
 	return (0);
 }
