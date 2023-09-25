@@ -55,7 +55,7 @@ ENV					:=	$(addprefix $(ENV_DIR), $(ENV_FILES))
 
 EXIT_DIR			:=	exit/
 EXIT_FILES			:=	\
-						ft_print_exit_error.c \
+						ft_exec_exit.c \
 						ft_remove_quotes.c \
 						ft_str_is_digit.c
 EXIT				:=	$(addprefix $(EXIT_DIR), $(EXIT_FILES))
@@ -118,11 +118,15 @@ PARSER				:=	$(addprefix $(EXEC_DIR), $(EXEC_FILES))
 
 UTILS_2_DIR			:=	utils_2/
 UTILS_2_FILES		:=	\
+						ft_add_slash.c \
 						ft_check_cmd_for_builtins.c \
 						ft_del_tokens.c \
+						ft_free_cmd.c \
 						ft_free_tabs.c \
+						ft_get_tab_len.c \
 						ft_print_cmd_error.c \
 						ft_print_error_msg.c \
+						ft_print_exit_error.c \
 						ft_print_export_error.c \
 						ft_print_redir_error.c \
 						ft_print_sig_error.c \
