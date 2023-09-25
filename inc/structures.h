@@ -6,7 +6,7 @@
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 10:27:24 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/21 17:05:49 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/25 11:42:36 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,15 @@ typedef struct s_data
 	char	**env;
 	bool	subgect_flag;
 }	t_data;
+
+typedef struct	s_cmd
+{
+	t_token	*args;
+	t_token	*rdir;
+	int		fd[2]; //for the fuction pipe()
+	int		pid; //for the function fork()
+	s_cmd	*next;
+}			t_cmd;
 
 /************************** basil stuff*/
 typedef struct s_env
