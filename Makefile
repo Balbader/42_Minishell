@@ -44,6 +44,7 @@ ENV_FILES			:=	\
 						ft_create_env_list.c \
 						ft_del_env.c \
 						ft_del_node.c \
+						ft_exec_env.c \
 						ft_find_value.c \
 						ft_get_env.c \
 						ft_get_env_len.c \
@@ -66,6 +67,10 @@ EXPORT_FILES		:=	\
 						ft_get_key.c \
 						ft_get_key_len.c
 EXPORT				:=	$(addprefix $(EXPORT_DIR), $(EXPORT_FILES))
+
+PWD_DIR				:=	pwd/
+PWD_FILES			:=	ft_exec_pwd.c
+PWD					:=	$(addprefix $(PWD_DIR), $(PWD_FILES))
 
 UNSET_DIR			:=	unset/
 UNSET_FILES			:=	\
@@ -115,7 +120,14 @@ UTILS_2_DIR			:=	utils_2/
 UTILS_2_FILES		:=	\
 						ft_check_cmd_for_builtins.c \
 						ft_del_tokens.c \
-						ft_free_tabs.c
+						ft_free_tabs.c \
+						ft_print_cmd_error.c \
+						ft_print_error_msg.c \
+						ft_print_export_error.c \
+						ft_print_redir_error.c \
+						ft_print_sig_error.c \
+						ft_print_unset_error.c \
+						ft_run_builtins.c
 UTILS_2				:=	$(addprefix $(UTILS_DIR), $(UTILS_FILES))
 
 
