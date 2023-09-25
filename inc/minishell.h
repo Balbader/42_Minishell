@@ -114,7 +114,6 @@ int			ft_exec_echo(t_token *token, int fd);
 
 // ------------------------------------------------------------------------exit
 int			ft_exec_exit(t_token *token, t_cmd *cmd);
-int			ft_print_exit_error(t_data *data, char *var);
 int			ft_str_is_digit(char **str);
 char		*ft_remove_quotes(char *var);
 
@@ -137,40 +136,17 @@ int			ft_exec_unset(t_token *token);
 *******************************************************************************
 */
 int			ft_print_error_msg(char *msg);
-int			ft_get_env_len(char **env);
+int			ft_get_tab_len(char **tab);
+char		*ft_add_slash(char const *s1, char const *s2);
 char		*ft_check_cmd_for_builtins(char *path, char *cmd);
+void		ft_free_cmd(t_cmd *cmd);
 void		ft_free_tabs(char **tab);
 void		ft_del_tokens(t_token *tokens);
 void		ft_print_cmd_error(char *cmd);
 void		ft_print_sig_error(void);
 void		ft_print_export_error(char *err);
+int			ft_print_exit_error(t_cmd *cmd, char *var);
 void		ft_print_unset_error(char *err);
 void		ft_print_redir_error(char *file);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 #endif // !MINISHELL_H
