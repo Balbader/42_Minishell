@@ -1,6 +1,7 @@
 
 # fcatineau ===> Balbader
 
+# Builtins
 ## Env
 len_tab : ft_get_env_len.c
 env_to_tab : ft_convert_env_to_tab.c
@@ -45,4 +46,11 @@ find_in_cdpath : ft_get_cd_path.c
 len_cd_arg : ft_get_token_len.c
 
 ## Exit
+error_exit : ft_print_exit_error.c
 revove_quotes : ft_remove_quotes.c
+str_is_digit : ft_str_is_digit
+len_list : ft_get_token_list
+builtins_exit : ft_exec_exit.c
+
+# Utils_2
+check_is_not_builtins : ft_check_cmd_for_builtins
