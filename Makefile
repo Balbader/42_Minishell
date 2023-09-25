@@ -121,6 +121,7 @@ UTILS_2_FILES		:=	\
 						ft_add_slash.c \
 						ft_check_cmd_for_builtins.c \
 						ft_del_tokens.c \
+						ft_delete_all.c \
 						ft_free_cmd.c \
 						ft_free_tabs.c \
 						ft_get_tab_len.c \
@@ -132,7 +133,7 @@ UTILS_2_FILES		:=	\
 						ft_print_sig_error.c \
 						ft_print_unset_error.c \
 						ft_run_builtins.c
-UTILS_2				:=	$(addprefix $(UTILS_DIR), $(UTILS_FILES))
+UTILS_2				:=	$(addprefix $(UTILS_2_DIR), $(UTILS_2_FILES))
 
 
 ###############
