@@ -14,15 +14,13 @@
 
 int	ft_get_tab_len(char **tab)
 {
-	char	*tmp;
-	int		i;
+	int	i;
 
 	i = 0;
-	tmp = *tab;
-	while (tmp)
+	while (*tab)
 	{
-		++i;
-		tmp = tmp->next;
+		i++;
+		tab++;
 	}
 	return (i);
 }
