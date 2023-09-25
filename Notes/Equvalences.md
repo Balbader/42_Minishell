@@ -48,7 +48,6 @@ find_in_cdpath : ft_get_cd_path.c
 len_cd_arg : ft_get_token_len.c
 
 ## Exit
-error_exit : ft_print_exit_error.c
 revove_quotes : ft_remove_quotes.c
 str_is_digit : ft_str_is_digit
 len_list : ft_get_token_list
@@ -59,8 +58,10 @@ check_is_not_builtins : ft_check_cmd_for_builtins
 check_builtins : ft_run_builtins.c
 error_cmd : ft_print_cmd_error.c
 error_sig : ft_print_sig_error.c
+error_exit : ft_print_exit_error.c
 error_export : ft_print_export_error.c
 error_unset : ft_print_unset_error.c
 error_msg : ft_print_error_msg.c
 error_redir : ft_print_redir_error.c
 ft_strlen_tab : ft_get_env_len.c
+delall : ft_delete_all.c
