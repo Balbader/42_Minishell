@@ -24,6 +24,7 @@
 
 # include <readline/readline.h>
 # include <readline/history.h>
+# include <unistd.h>
 # include <errno.h>
 # include <signal.h>
 # include <sys/types.h>
