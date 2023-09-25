@@ -17,7 +17,7 @@ int	ft_exec_unset(t_token *token)
 	while (token)
 	{
 		if (!ft_check_var_to_unset(token->word))
-			error_unset(token->word);
+			ft_print_unset_error(token->word);
 		else
 			ft_del_from_env(token->word);
 		token = token->next;

@@ -16,7 +16,7 @@ int	ft_check_var_to_unset(char *var)
 {
 	while (*var)
 	{
-		if (!ft_is_alpha(*var) && !ft_isdigit(*var) && *var != '_')
+		if (!ft_isalpha(*var) && !ft_isdigit(*var) && *var != '_')
 			return (false);
 		++var;
 	}
