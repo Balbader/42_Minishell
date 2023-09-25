@@ -64,6 +64,7 @@ EXPORT_DIR			:=	export/
 EXPORT_FILES		:=	\
 						ft_check_cpy.c \
 						ft_does_value_exist.c \
+						ft_exec_export.c \
 						ft_get_key.c \
 						ft_get_key_len.c
 EXPORT				:=	$(addprefix $(EXPORT_DIR), $(EXPORT_FILES))
@@ -86,6 +87,7 @@ BUILT_SRCS			:=	\
 						$(ENV) \
 						$(EXIT) \
 						$(EXPORT) \
+						$(PWD) \
 						$(UNSET)
 BUILT				:=	$(addprefix $(BUILT_DIR), $(BUILT_SRCS))
 
