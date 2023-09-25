@@ -18,14 +18,14 @@ void	ft_free_cmd(t_cmd *cmd)
 
 	while (cmd)
 	{
-		if (cmd->arg)
-			delall(&cmd->arg);
-		if (cmd->red)
-			delall(&cmd->red);
-		if (cmd->fd[IN] != 0)
-			close(cmd->fd[IN]);
-		if (cmd->fd[OUT] != 1)
-			close(cmd->fd[OUT]);
+		if (cmd->args)
+			ft_delete_all(&cmd->args);
+		if (cmd->rdir)
+			ft_delete_all(&cmd->rdir);
+		if (cmd->fd[0] != 0)
+			close(cmd->fd[0]);
+		if (cmd->fd[1] != 1)
+			close(cmd->fd[1]);
 		bis = cmd;
 		cmd = bis->next;
 		free(bis);
