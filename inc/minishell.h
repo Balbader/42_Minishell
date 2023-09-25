@@ -99,6 +99,24 @@ t_env		*ft_get_last_env(t_env *env);
 t_env		**ft_get_env(char **env, char *to_add, char *to_del);
 t_env		**ft_get_all_env(void);
 
+// --------------------------------------------------------------------------cd
+int			ft_exec_cd(t_token *token, int in, int out);
+int			ft_get_token_len(t_token *token);
+void		ft_change_working_directory(void);
+void		ft_create_working_directory(void);
+void		ft_get_cd_path(char **path);
+void		ft_replace_working_directory(void);
+
+// ------------------------------------------------------------------------echo
+int			ft_check_n_flag(char *input);
+int			ft_exec_echo(t_token *token, int fd);
+
+// ------------------------------------------------------------------------exit
+int			ft_exec_exit(t_token *token, t_cmd *cmd);
+int			ft_print_exit_error(t_data *data, char *var);
+int			ft_str_is_digit(char **str);
+char		*ft_remove_quotes(char *var);
+
 // ----------------------------------------------------------------------export
 int			ft_check_cpy(char **cpy);
 int			ft_get_key_len(char *var);
@@ -109,27 +127,12 @@ void		ft_does_value_exist(char *var);
 int			ft_check_var_to_unset(char *var);
 int			ft_exec_unset(t_token *token);
 
-// ------------------------------------------------------------------------echo
-int			ft_check_n_flag(char *input);
-int			ft_exec_echo(t_token *token, int fd);
-
-// --------------------------------------------------------------------------cd
-int			ft_exec_cd(t_token *token, int in, int out);
-int			ft_get_token_len(t_token *token);
-void		ft_change_working_directory(void);
-void		ft_create_working_directory(void);
-void		ft_get_cd_path(char **path);
-void		ft_replace_working_directory(void);
-
-// ------------------------------------------------------------------------exit
-int			ft_print_exit_error(t_data *data, char *var);
-char		*ft_remove_quotes(char *var);
-
 /*
 *******************************************************************************
-************************************************************************* UTILS
+*********************************************************************** UTILS_2
 *******************************************************************************
 */
+char		*ft_check_cmd_for_builtins(char *path, char *cmd);
 void		ft_free_tabs(char **tab);
 void		ft_del_tokens(t_token *tokens);
 

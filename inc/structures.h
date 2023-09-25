@@ -84,4 +84,13 @@ typedef struct s_data
 	bool	subgect_flag;
 }	t_data;
 
+typedef struct s_cmd
+{
+    t_token 		*args;
+    t_token 		*rdir;
+    int 			fd[2]; //for the fuction pipe()
+    int				pid; //for the function fork()
+    struct s_cmd	*next;
+}            t_cmd;
+
 #endif // !STRUCTURES_H
