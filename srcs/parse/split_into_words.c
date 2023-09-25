@@ -6,11 +6,11 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 11:51:09 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/12 10:52:51 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/19 17:11:06 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parse.h"
+#include "minishell.h"
 
 t_token	*add_all_words_nodes( char **tab)
 {
@@ -49,6 +49,34 @@ int	set_start_word(char *line, int i)
 	return (start);
 }
 
+int	set_end_word_2(char *line, int start)
+{
+	while (line[start])
+	{
+		if (quote_on(line, start) == true 
+			&& (quote_on(line, start + 1) == false))
+		{
+			start += 1;
+			break ;
+		}
+		else if ((quote_on(line, start) == false 
+			&& ft_strchr("\'\"", line[start + 1]) != 0) || 
+			(quote_on(line, start) == false && ft_isspace(line[start + 1])))
+		{
+			start += 1;
+			break ;
+		}
+		else if ((line[start] == ' ' && quote_on(line, start) == false)
+			|| (ft_strchr("<|>&", line[start]) != 0
+			&& quote_on(line, start) == false))
+			break ;
+		start++;
+	}
+	if (start < (int)ft_strlen(line) && ft_isspace(line[start]))
+		start += 1;
+	return (start);
+}
+
 int	set_end_word(char *line, int start)
 {
 	if (line[start] == 0)
@@ -64,14 +92,7 @@ int	set_end_word(char *line, int start)
 			start++;
 		return (start);
 	}
-	while (line[start])
-	{
-		if ((line[start] == ' ' && quote_on(line, start) == false)
-			|| (ft_strchr("<|>&", line[start]) != 0 
-			&& quote_on(line, start) == false))
-			break ;
-		start++;
-	}
+	start = set_end_word_2(line, start);
 	return (start);
 }
 

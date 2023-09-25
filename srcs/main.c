@@ -3,26 +3,49 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/08 10:31:52 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/08 10:31:53 by baalbade         ###   ########.fr       */
+/*   Created: 2023/08/29 13:34:07 by ftuernal          #+#    #+#             */
+/*   Updated: 2023/09/25 12:25:07 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int main(int ac, char **av, char **env)
-{
-	(void)ac;
-	(void)av;
-	t_env	*env_lst = NULL;
-	char	*new_lst = "NAME=basil";
+int	global_err;
 
-	env_lst = *(ft_get_env(env));
-	ft_add_var_to_env(new_lst, &env_lst);
-	env_lst = ft_del_var_in_env(new_lst, &env_lst);
-	ft_exec_env(env_lst, 1);
-	ft_del_env(env_lst);
+int	display_prompt(t_data *in, t_exec *exec, char **env)
+{
+	while (1) //replace by signal management
+	{
+		ft_putstr_fd("$> ", 1);
+		in->input = readline("");
+		if (parse_input(in, env) != 0)
+			return (free(in->input), 2);//replace by exec_err_msg to avoid quitting program
+		if (ft_strncmp(in->input, "STOP", 4) == 0)
+			break ;
+		exec_cmd(in, exec);
+		add_history(in->input);
+		rl_on_new_line();
+	:x
+	free(in->input);
+	}
+	return (SUCCESS);
+}
+
+int	main(int ac, char **av, char **env)
+{
+	t_data	in;
+
+	in = NULL;
+	(void) av;
+	if (ac != 1)
+		return (0);
+	init_env(env);
+	siginit(false);
+	if (display_prompt(in) != SUCCESS)
+		ft_putstr_fd("Something wrong happened forcing Minishell to stop!\n");
+	
+	ft_printf("Minishell stopped normally\n");
 	return (0);
 }

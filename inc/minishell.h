@@ -6,7 +6,7 @@
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 10:27:19 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/11 17:48:16 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/25 12:19:59 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,15 +47,13 @@ extern int	g_error;
 
 t_token		*add_all_words_nodes(char **tab);
 void		addback_cmdline_node(t_token **cmd_line, t_token *new);
-int			alloc_parse_struct(t_data *in);
 int			append_cmd_node(t_token *cmd_line, char *line);
 bool		check_quotes(char *input);
 int			count_token(char *line);
-void		del_all_nodes(t_data *in);
+void		delall(t_data *in);
 t_token		*cmdline_new_node(char *input);
-int			cust_getenv(t_data *in, char **env);
 t_token		*goto_last_node(t_token *ptr);
-int			parse_input(t_data *in/*, char **env*/);
+int			parse_input(t_data *in);
 bool		quote_on(const char *input, int index);
 char 		**sep_cmdline(char *line);
 int 		set_end_word(char *line, int start);
@@ -65,7 +63,24 @@ void	    tokenizer(t_token *cmd_line);
 
 //DEBUG FUNCTIONS
 void		print_all_words(t_token *cmd_line);
-void		delall(t_data *in);
+//void		delall(t_data *in);
+
+
+/*
+*******************************************************************************
+******************************************************************** EXPANDER
+*******************************************************************************
+*/
+int			expand(t_token *cmd_line);
+int			expand_noquote_word(t_token *cmd_line, char *word);
+int			expand_quote_word(t_token *cmd_line, char *word);
+char		*expand_var(char *word);
+char		*quote_remove(char *str);
+char		*replace_by_env_value(char *word);
+char		*replace_by_last_ret(char *word);
+char		*replace_var_by_value(char *ptr);
+t_quote		set_quote_type(char quote);
+void		substitute_word(t_token *cmd_line, char *substitute);
 
 /*
 *******************************************************************************
@@ -131,13 +146,17 @@ char		*ft_remove_quotes(char *var);
 */
 void		ft_free_tabs(char **tab);
 void		ft_del_tokens(t_token *tokens);
+void    	free_2_tabs(char **s1, char **s2);
+t_env		**get_env(char **env);
+int 		get_tab_len(char **tab);
+void		heredoc_sig(int sig);
+char		*join_all_str(char **split);
+char		*join_free(char *s1, char *s2, char *ptr);
+void		siginit(int type);
 
-
-
-
-
-
-
+//DEBUG
+int ft_printenv(t_env *env);
+int 		set_sigval(int new_sig);
 
 
 

@@ -6,11 +6,11 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 10:58:03 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/12 10:58:06 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/18 14:11:44 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parse.h"
+#include "minishell.h"
 
 //This function screens inputs for having correctly closed quotes
 bool	check_quotes(char *input)
