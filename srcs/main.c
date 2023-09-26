@@ -18,13 +18,17 @@ int main(int ac, char **av, char **env)
 {
 	(void)ac;
 	(void)av;
-	t_env	*env_lst = NULL;
-	char	*new_lst = "NAME=basil";
+	// ft_init_env(ac, av, env);
+	t_env	*env_lst;
 
+	env_lst = NULL;
 	env_lst = *(ft_get_env(env, NULL, NULL));
-	ft_add_var_to_env(env_lst, new_lst);
-	env_lst = ft_del_node(env_lst, new_lst);
-	ft_exec_env(1);
+	while (env_lst)
+	{
+		printf("%s\n", env_lst->var);
+		env_lst = env_lst->next;
+	}
+	ft_free_all_env(env_lst);
 	ft_del_env();
-	return (0);
+	return (g_error);
 }
