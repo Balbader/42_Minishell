@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_env_len.c                                   :+:      :+:    :+:   */
+/*   ft_delete_all.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/09 11:44:38 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/09 11:44:40 by baalbade         ###   ########.fr       */
+/*   Created: 2023/09/25 18:27:18 by baalbade          #+#    #+#             */
+/*   Updated: 2023/09/25 18:27:20 by baalbade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/*
- * returns the total amount of elements is a 2D array
-*/
-
-int	ft_get_env_len(char **env)
+t_token	*ft_delete_all(t_token **node)
 {
-	int	i;
+	t_token	*tmp;
 
-	i = 0;
-	while (env[i])
-		++i;
-	return (i);
+	while ((*node))
+	{
+		tmp = (*node);
+		free((*node)->word);
+		(*node) = (*node)->next;
+		free(tmp);
+	}
+	node = NULL;
+	return (NULL);
 }

@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_env.c                                       :+:      :+:    :+:   */
+/*   ft_print_redir_error.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/16 07:36:56 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/16 07:36:57 by baalbade         ###   ########.fr       */
+/*   Created: 2023/09/25 16:55:01 by baalbade          #+#    #+#             */
+/*   Updated: 2023/09/25 16:55:03 by baalbade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_env	**ft_get_env(char **env)
+void	ft_print_redir_error(char *file)
 {
-	static t_env	*list;
-	int				env_len;
-
-	env_len = ft_get_env_len(env);
-	list = NULL;
-	if (env)
-		list = ft_convert_env_to_list(env_len, list, env);
-	else
-		return (NULL);
-	return (&list);
+	write(STDERR_FILENO, "minishell : ", 13);
+	write(STDERR_FILENO, file, ft_strlen(file));
+	write(STDERR_FILENO, ": ", 2);
+	write(STDERR_FILENO, ERROR_RED, ft_strlen(ERROR_RED));
+	g_error = 1;
 }

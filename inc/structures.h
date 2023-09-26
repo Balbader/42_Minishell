@@ -96,5 +96,6 @@ typedef struct s_env
 	char			*value;
 	struct s_env	*next;
 }	t_env;
+>>>>>>> main
 
 #endif // !STRUCTURES_H

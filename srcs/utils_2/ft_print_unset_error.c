@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_add_var_to_env.c                                :+:      :+:    :+:   */
+/*   ft_print_unset_error.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/23 13:13:45 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/23 13:13:47 by baalbade         ###   ########.fr       */
+/*   Created: 2023/09/25 16:40:57 by baalbade          #+#    #+#             */
+/*   Updated: 2023/09/25 16:40:58 by baalbade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	ft_add_var_to_env(char *var, t_env **env)
+void	ft_print_unset_error(char *err)
 {
-	t_env	*cur;
-	t_env	*new;
-	int		var_len;
-
-	if (!env || !var)
-		return ;
-	var_len = ft_get_var_len(var);
-	new = NULL;
-	new = ft_convert_char_to_node(var);
-	cur = *env;
-	while (cur->next)
-		cur = cur->next;
-	cur->next = new;
+	g_error = 1;
+	ft_putstr_fd("Minishell : unset:", STDERR_FILENO);
+	ft_putstr_fd("`", STDERR_FILENO);
+	ft_putstr_fd(err, STDERR_FILENO);
+	ft_putstr_fd("'", STDERR_FILENO);
+	ft_putstr_fd(": not a valid identifier\n", STDERR_FILENO);
 }

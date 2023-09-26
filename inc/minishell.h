@@ -24,6 +24,7 @@
 
 # include <readline/readline.h>
 # include <readline/history.h>
+# include <unistd.h>
 # include <errno.h>
 # include <signal.h>
 # include <sys/types.h>
@@ -97,35 +98,23 @@ void		exec_cmd(t_data *in, t_exec *cmd);
 */
 
 // -------------------------------------------------------------------------env
+int			ft_exec_env(int fd);
 int			ft_compare_keys(char *key, char *to_find);
 int 		ft_get_env_len(t_env *env);
 char		**ft_convert_env_to_tab(t_env *env);
 char		*ft_find_value(char *var);
+char		*ft_add_var_to_env(t_env **env, char *add);
 void		ft_add_to_env(char *to_add);
 void		ft_del_from_env(char *to_del);
 void		ft_del_env(void);
 void		ft_init_env(int ac, char **av, char **env);
 void		ft_modif_shlvl(void);
-t_env		*ft_add_var_to_env(t_env *env, char *to_add);
 t_env		*ft_create_env_list(char **env);
 t_env		*ft_del_node(t_env *env, char *to_del);
 t_env		*ft_get_last_env(t_env *env);
+t_env		**ft_get_all_env(void);
 t_env		**ft_get_env(char **env, char *to_add, char *to_del);
 t_env		**ft_get_all_env(void);
-
-// ----------------------------------------------------------------------export
-int			ft_check_cpy(char **cpy);
-int			ft_get_key_len(char *var);
-char		*ft_get_key(char *var);
-void		ft_does_value_exist(char *var);
-
-// -----------------------------------------------------------------------unset
-int			ft_check_var_to_unset(char *var);
-int			ft_exec_unset(t_token *token);
-
-// ------------------------------------------------------------------------echo
-int			ft_check_n_flag(char *input);
-int			ft_exec_echo(t_token *token, int fd);
 
 // --------------------------------------------------------------------------cd
 int			ft_exec_cd(t_token *token, int in, int out);
@@ -135,17 +124,61 @@ void		ft_create_working_directory(void);
 void		ft_get_cd_path(char **path);
 void		ft_replace_working_directory(void);
 
+// ------------------------------------------------------------------------echo
+int			ft_check_n_flag(char *input);
+int			ft_exec_echo(t_token *token, int fd);
+
 // ------------------------------------------------------------------------exit
-int			ft_print_exit_error(t_data *data, char *var);
+int			ft_exec_exit(t_token *token, t_cmd *cmd);
+int			ft_str_is_digit(char **str);
 char		*ft_remove_quotes(char *var);
+
+// ----------------------------------------------------------------------export
+int			ft_check_cpy(char **cpy);
+int			ft_get_key_len(char *var);
+int			ft_exec_export(t_token *token);
+char		*ft_get_key(char *var);
+void		ft_does_value_exist(char *var);
+
+// -------------------------------------------------------------------------pwd
+int			ft_exec_pwd(int fd);
+
+// -----------------------------------------------------------------------unset
+int			ft_check_var_to_unset(char *var);
+int			ft_exec_unset(t_token *token);
 
 /*
 *******************************************************************************
-************************************************************************* UTILS
+************************************************************************ SIGNAL
 *******************************************************************************
 */
+void		ft_handle_signal(int sig);
+void		ft_init_signal(int type);
+void		ft_sig_heredoc(int sig);
+
+/*
+*******************************************************************************
+*********************************************************************** UTILS_2
+*******************************************************************************
+*/
+int			ft_print_error_msg(char *msg);
+int			ft_get_tab_len(char **tab);
+char		*ft_add_slash(char const *s1, char const *s2);
+char		*ft_check_cmd_for_builtins(char *path, char *cmd);
+void		ft_free_all_env(t_env *env);
+void		ft_free_cmd(t_cmd *cmd);
 void		ft_free_tabs(char **tab);
 void		ft_del_tokens(t_token *tokens);
+<<<<<<< HEAD
+t_token		*ft_delete_all(t_token **node);
+void		ft_print_cmd_error(char *cmd);
+void		ft_print_sig_error(void);
+void		ft_print_export_error(char *err);
+int			ft_print_error_msg(char *msg);
+int			ft_print_exit_error(t_cmd *cmd, char *var);
+void		ft_print_unset_error(char *err);
+void		ft_print_redir_error(char *file);
+=======
 void    	free_2_tabs(char **s1, char **s2);
 t_env		**get_env(char **env);
 int 		get_tab_len(char **tab);
@@ -176,5 +209,6 @@ int 		set_sigval(int new_sig);
 
 
 
+>>>>>>> main
 
 #endif // !MINISHELL_H

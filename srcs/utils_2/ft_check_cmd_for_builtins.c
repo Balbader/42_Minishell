@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_var_len.c                                   :+:      :+:    :+:   */
+/*   ft_check_cmd_for_builtins.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/16 09:53:09 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/16 09:53:12 by baalbade         ###   ########.fr       */
+/*   Created: 2023/09/25 14:57:55 by baalbade          #+#    #+#             */
+/*   Updated: 2023/09/25 14:57:57 by baalbade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_get_var_len(char *var)
+char	*ft_check_cmd_for_builtins(char *path, char *cmd)
 {
-	int	i;
-
-	i = 0;
-	while (var[i])
-		++i;
-	return (i);
+	if (ft_strcmp(cmd, "export") || ft_strcmp(cmd, "cd") || ft_strcmp(cmd, "pwd")
+		|| ft_strcmp(cmd, "echo") || ft_strcmp(cmd, "unset")
+		|| ft_strcmp(cmd, "exit") || ft_strcmp(cmd, "env"))
+	{
+		if (path)
+			free(path);
+		return (ft_strdup(cmd));
+	}
+	if (!path)
+		return (ft_print_cmd_error(cmd), path);
+	return (path);
 }

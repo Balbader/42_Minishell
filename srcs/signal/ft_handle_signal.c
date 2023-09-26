@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_env_fail.c                                      :+:      :+:    :+:   */
+/*   ft_handle_signal.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/09 11:44:27 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/09 11:44:29 by baalbade         ###   ########.fr       */
+/*   Created: 2023/09/26 12:32:59 by baalbade          #+#    #+#             */
+/*   Updated: 2023/09/26 12:33:10 by baalbade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/*
- * in case of failure
- * . free **env
- * . free *env_cpy
-*/
-
-void	ft_env_fail(const char *message, char **env, t_env *env_cpy)
+void	ft_handle_signal(int sig)
 {
-	int	i;
-
-	i = 0;
-	while (env && env[i])
-		free(env[i++]);
-	if (env)
-		free(env);
-	ft_del_env(env_cpy);
-	perror(message);
-	exit(EXIT_FAILURE);
+	if (sig == SEGQUIT)
+		return ;
+	if (sig == SEGINT)
+	{
+		g_error = 130;
+		write(STDOUT_FILENO, "\n", 1);
+		rl_replace_line("", 1);
+		rl_on_new_line();
+		rl_redisplay();
+	}
 }

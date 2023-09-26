@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_exit_error.c                              :+:      :+:    :+:   */
+/*   ft_init_signal.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/24 16:09:54 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/24 16:09:55 by baalbade         ###   ########.fr       */
+/*   Created: 2023/09/26 12:37:27 by baalbade          #+#    #+#             */
+/*   Updated: 2023/09/26 12:37:29 by baalbade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_print_exit_error(t_data *data, char *var)
+void	ft_init_signal(int type)
 {
-	ft_del_env();
-	rl_clear_history();
-	ft_putstr_fd(STDERR_FILENO, "Minishell: exit: ");
-	ft_putstr_fd(STDERR_FILENO, var);
-	free_cmd(cmd);
-	ft_putstr_fd(STDERR_FILENO, " : numeric argument required\n");
-	return (2);
+	if (!type)
+	{
+		signal(SIGINT, &ft_handle_signal);
+		signal(SIGQUIT, SIG_IGN);
+	}
+	else if (type)
+	{
+		signal(SIGINT, SIG_DFL);
+		signal(SIGQUIT, SIG_DFL);
+	}
 }

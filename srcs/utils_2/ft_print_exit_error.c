@@ -1,36 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_convert_to_tab.c                                :+:      :+:    :+:   */
+/*   ft_print_exit_error.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/23 13:39:45 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/23 13:39:47 by baalbade         ###   ########.fr       */
+/*   Created: 2023/09/24 16:09:54 by baalbade          #+#    #+#             */
+/*   Updated: 2023/09/24 16:09:55 by baalbade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	**ft_convert_to_tab(t_env *env)
+int	ft_print_exit_error(t_cmd *cmd, char *var)
 {
-	t_env	*cur;
-	char	**tab;
-	int		len;
-
-	len = 0;
-	cur = env;
-	while (cur && ++len)
-		cur = cur->next;
-	tab = (char **)malloc(sizeof(char *) * (len + 1));
-	if (!tab)
-		return (NULL);
-	len = 0;
-	while (env)
-	{
-		tab[len++] = env->var;
-		env = env->next;
-	}
-	tab[len] = NULL;
-	return (tab);
+	ft_del_env();
+	rl_clear_history();
+	ft_putstr_fd("Minishell: exit: ", STDERR_FILENO);
+	ft_putstr_fd(var, STDERR_FILENO);
+	ft_free_cmd(cmd);
+	ft_putstr_fd(" : numeric argument required\n", STDERR_FILENO);
+	return (2);
 }

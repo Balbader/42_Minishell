@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_value_len.c                                 :+:      :+:    :+:   */
+/*   ft_str_is_digit.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/09 13:36:13 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/09 13:36:15 by baalbade         ###   ########.fr       */
+/*   Created: 2023/09/25 14:27:36 by baalbade          #+#    #+#             */
+/*   Updated: 2023/09/25 14:27:39 by baalbade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_get_value_len(char *str)
+int	ft_str_is_digit(char **str)
 {
-	int	i;
-	int	len;
+	int		tr;
+	char	*tmp;
 
-	len = 0;
-	i = 0;
-	while (str[i] != '=')
-		++i;
-	if (str[i] == '=')
-		++i;
-	while (str[i])
+	tr = false;
+	tmp = *str;
+	*str = ft_remove_quotes(*str);
+	free(tmp);
+	tmp = *str;
+	while (*tmp)
 	{
-		++len;
-		++i;
+		if (ft_isdigit(*tmp))
+			tr = true;
+		++tmp;
 	}
-	return (len);
+	if (!tr)
+		return (false);
+	return (true);
 }

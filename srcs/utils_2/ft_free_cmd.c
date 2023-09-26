@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_del_env.c                                       :+:      :+:    :+:   */
+/*   ft_free_cmd.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 14:59:03 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/11 14:59:05 by baalbade         ###   ########.fr       */
+/*   Created: 2023/09/25 18:01:02 by baalbade          #+#    #+#             */
+/*   Updated: 2023/09/25 18:01:04 by baalbade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/*
- * This function is called in main.c in order to free env_lst.
-*/
-
-void	ft_del_env(t_env *env)
+void	ft_free_cmd(t_cmd *cmd)
 {
-	t_env	*tmp;
+	t_cmd	*bis;
 
-	while (env)
+	while (cmd)
 	{
-		tmp = env;
-		env = env->next;
-		free(tmp->var);
-		free(tmp->key);
-		free(tmp->value);
-		free(tmp);
+		if (cmd->args)
+			ft_delete_all(&cmd->args);
+		if (cmd->rdir)
+			ft_delete_all(&cmd->rdir);
+		if (cmd->fd[0] != 0)
+			close(cmd->fd[0]);
+		if (cmd->fd[1] != 1)
+			close(cmd->fd[1]);
+		bis = cmd;
+		cmd = bis->next;
+		free(bis);
 	}
 }

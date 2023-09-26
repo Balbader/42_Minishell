@@ -12,27 +12,27 @@
 
 #include "minishell.h"
 
-t_env	*ft_add_var_to_env(t_env *env, char *to_add)
+char	*ft_add_var_to_env(t_env **env, char *add)
 {
 	t_env	*new;
 
-	if (!env)
+	if (!(*env))
 	{
-		env = (t_env *)malloc(sizeof(t_env));
-		if (!env)
+		(*env) = malloc(sizeof(t_env));
+		if (!(*env))
 			return (NULL);
-		env->next = NULL;
-		env->var = ft_strdup(to_add);
-		return (env);
+		(*env)->next = NULL;
+		(*env)->var = ft_strdup(add);
+		return ((*env)->var);
 	}
 	else
 	{
-		new = (t_env *)malloc(sizeof(t_env));
+		new = malloc(sizeof(t_env));
 		if (!new)
 			return (NULL);
 	}
-	ft_get_last_env(env)->next = new;
-	new->var = ft_strdup(to_add);
+	ft_get_last_env(*env)->next = new;
+	new->var = ft_strdup(add);
 	new->next = NULL;
-	return (new);
+	return (new->var);
 }

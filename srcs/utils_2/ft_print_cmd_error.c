@@ -1,39 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_env_err.c                                       :+:      :+:    :+:   */
+/*   ft_print_cmd_error.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/09 11:44:17 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/09 11:44:19 by baalbade         ###   ########.fr       */
+/*   Created: 2023/09/25 15:52:27 by baalbade          #+#    #+#             */
+/*   Updated: 2023/09/25 15:52:29 by baalbade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/*
- *	in case of err:
- *	. print err message
- *	. free **env
- *	. free *env_lst
-*/
-
-int	env_err(char **env, t_env *env_cpy, int output_fd)
+void	ft_print_cmd_error(char *cmd)
 {
-	(void)output_fd;
-	ft_putstr_fd("bash: export: `", 2);
-	if (env[0])
-	{
-		ft_putstr_fd(env[0], 2);
-		if (env[1])
-		{
-			ft_putstr_fd("=", 2);
-			ft_putstr_fd(env[1], 2);
-		}
-	}
-	ft_putstr_fd("': not a valid identifier\n", 2);
-	ft_free_tabs(env);
-	ft_del_env(env_cpy);
-	return (EXIT_FAILURE);
+	g_error = 127;
+	ft_putstr_fd("Minishell :", STDERR_FILENO);
+	ft_putstr_fd(cmd, STDERR_FILENO);
+	ft_putstr_fd(ERROR_CMD, STDERR_FILENO);
 }

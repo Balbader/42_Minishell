@@ -1,35 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_create_new_env_node.c                           :+:      :+:    :+:   */
+/*   ft_print_sig_error.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 09:51:09 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/20 10:35:50 by ftuernal         ###   ########.fr       */
+/*   Created: 2023/09/25 15:55:14 by baalbade          #+#    #+#             */
+/*   Updated: 2023/09/25 15:55:15 by baalbade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/*
- * create a new node that holds :
- * . env variable
- * . Key variable
- * . value variable
- * . ptr to next node
-*/
-
-t_env	*ft_create_new_env_node(char *var_cpy, char *key_cpy, char *value_cpy)
+void	ft_print_sig_error(void)
 {
-	t_env	*new_node;
-
-	new_node = (t_env *)malloc(sizeof(t_env));
-	if (!new_node)
-		return (NULL);
-	new_node->var = var_cpy;
-	new_node->key = key_cpy;
-	new_node->value = value_cpy;
-	new_node->next = NULL;
-	return (new_node);
+	if (g_error == 128 + SIGTERM)
+		ft_putstr_fd("Terminated\n", STDERR_FILENO);
+	else if (g_error == 128 + SIGSEGV)
+		ft_putstr_fd("Segmentation fault (core dumped)\n", STDERR_FILENO);
+	else if (g_error == 128 + SIGQUIT)
+		ft_putstr_fd("Quit (core dumped)\n", STDERR_FILENO);
+	else if (g_error == 128 + SIGABRT)
+		ft_putstr_fd("Aborted (core dumped)\n", STDERR_FILENO);
 }
