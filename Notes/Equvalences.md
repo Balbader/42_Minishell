@@ -10,6 +10,7 @@ ft_push_add_back : ft_add_var_to_env.c
 ft_env_create : ft_create_env_list.c
 ft_env_delone : ft_del_node.c
 ft_env : ft_get_env.c
+getall_env : ft_get_all_env.c
 
 ft_compare_before_equals : ft_compare_keys.c
 ft_env_value : ft_find_value.c
