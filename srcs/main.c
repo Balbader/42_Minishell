@@ -48,5 +48,4 @@ int	main(int ac, char **av, char **env)
 	
 	ft_printf("Minishell stopped normally\n");
 	return (0);
->>>>>>> main
 }
