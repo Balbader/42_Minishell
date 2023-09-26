@@ -3,33 +3,50 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/08 10:31:52 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/08 10:31:53 by baalbade         ###   ########.fr       */
+/*   Created: 2023/08/29 13:34:07 by ftuernal          #+#    #+#             */
+/*   Updated: 2023/09/25 12:25:07 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int g_error;
+int	global_err;
 
-int main(int ac, char **av, char **env)
+int	display_prompt(t_data *in, t_exec *exec, char **env)
 {
-	(void)ac;
-	(void)av;
-	t_env	*env_lst;
-	t_env	*head;
-
-	env_lst = NULL;
-	env_lst = ft_create_env_list(env);
-	head = env_lst;
-	while (env_lst)
+	while (1) //replace by signal management
 	{
-		printf("env->var : %s\n", env_lst->var);
-		env_lst = env_lst->next;
+		ft_putstr_fd("$> ", 1);
+		in->input = readline("");
+		if (parse_input(in, env) != 0)
+			return (free(in->input), 2);//replace by exec_err_msg to avoid quitting program
+		if (ft_strncmp(in->input, "STOP", 4) == 0)
+			break ;
+		exec_cmd(in, exec);
+		add_history(in->input);
+		rl_on_new_line();
+	:x
+	free(in->input);
 	}
-	env_lst = head;
-	ft_free_all_env(env_lst);
-	return (g_error);
+	return (SUCCESS);
+}
+
+int	main(int ac, char **av, char **env)
+{
+	t_data	in;
+
+	in = NULL;
+	(void) av;
+	if (ac != 1)
+		return (0);
+	init_env(env);
+	siginit(false);
+	if (display_prompt(in) != SUCCESS)
+		ft_putstr_fd("Something wrong happened forcing Minishell to stop!\n");
+	
+	ft_printf("Minishell stopped normally\n");
+	return (0);
+>>>>>>> main
 }

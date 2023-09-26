@@ -6,12 +6,11 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 14:48:01 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/07 18:03:41 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/19 11:30:00 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parse.h"
-
+#include "minishell.h"
 //objective is to separate meaningfull chunks to pass i tto the exec module
 int	parse_input(t_data *in/*, char **env*/)
 {
@@ -19,8 +18,7 @@ int	parse_input(t_data *in/*, char **env*/)
 //		return (FAILURE);
 	if (!check_quotes(in->input))
 	{
-		in->subject_flag = false;
-		return (QUOTE);
+		return (FAILURE);
 	}
 // separate in a chained list cmd_line then tokens that will be taken by exec part of the program
 // then separate each cmd_line into words
@@ -31,3 +29,4 @@ int	parse_input(t_data *in/*, char **env*/)
 	return (SUCCESS);
 	//add functions for "" management and redirections
 }
+

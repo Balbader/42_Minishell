@@ -6,7 +6,7 @@
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 10:27:24 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/11 17:46:32 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/25 12:23:01 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,22 @@
 
 typedef enum	e_type
 {
-	APPEND = 0,
-	HEREDOC, //anything after <<
-	LIMITOR, //anything after >>
-	FD, // anithing after > or <
+	APPEND = 0, // >>
+	HEREDOC, // <<
+	LIMITOR, //anything after a HEREDOC
+	FD, //anything after > or <
 	PIPE, // '|'
 	R_IN, // <
 	R_OUT, // >
-	WORD // anything else
+	WORD, // anything else
 }				t_type;
+
+typedef enum	e_quote
+{
+	NOQUOTE = 0,
+	SQUOTE,
+	DQUOTE
+}				t_quote;
 
 enum	e_status
 {
@@ -39,20 +46,6 @@ enum	e_start
 	END
 };
 
-/*
-enum e_token
-{
-	WORD,
-	FD,
-	LIMITOR,
-	R_IN,
-	HEREDOC,
-	R_OUT,
-	APPEND,
-	PIPE,
-};
-*/
-
 typedef struct s_token
 {
 	char			*word;
@@ -60,11 +53,13 @@ typedef struct s_token
 	struct s_token	*next;
 }	t_token;
 
+/*
 typedef struct s_exec
 {
 	char	**cmd;
 	char	*path;
 }	t_exec;
+*/
 
 /************************** basil stuff*/
 
@@ -84,13 +79,23 @@ typedef struct s_data
 	bool	subgect_flag;
 }	t_data;
 
-typedef struct s_cmd
+typedef struct	s_cmd
 {
-    t_token 		*args;
-    t_token 		*rdir;
-    int 			fd[2]; //for the fuction pipe()
-    int				pid; //for the function fork()
-    struct s_cmd	*next;
-}            t_cmd;
+	t_token	*args;
+	t_token	*rdir;
+	int		fd[2]; //for the fuction pipe()
+	int		pid; //for the function fork()
+	s_cmd	*next;
+}			t_cmd;
+
+/************************** basil stuff*/
+typedef struct s_env
+{
+	int				id;
+	char			*key;
+	char			*value;
+	struct s_env	*next;
+}	t_env;
+>>>>>>> main
 
 #endif // !STRUCTURES_H

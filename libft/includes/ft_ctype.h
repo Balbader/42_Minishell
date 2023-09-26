@@ -6,7 +6,7 @@
 /*   By: baalbade <baalbade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 14:09:15 by baalbade          #+#    #+#             */
-/*   Updated: 2022/12/04 14:52:16 by baalbade         ###   ########.fr       */
+/*   Updated: 2023/09/18 14:29:32 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ int		ft_isupper(int c);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
 int		ft_isprint(int c);
+int		ft_isspace(int c);
 
 #endif

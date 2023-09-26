@@ -1,0 +1,22 @@
+# Compiled object files
+*.o
+
+# Executable files
+a.out
+*.exe
+
+# Ignore editor/IDE specific files
+*.swp
+*.swo
+*.swn
+*.sublime-workspace
+*.vscode-workspace
+
+# Visual Studio Code specific
+.vscode/
+
+# Ignore backup and temporary files
+*~
+\#*
+.DS_Store
+Thumbs.db
