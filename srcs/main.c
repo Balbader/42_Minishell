@@ -22,13 +22,14 @@ int main(int ac, char **av, char **env)
 	t_env	*env_lst;
 
 	env_lst = NULL;
-	env_lst = *(ft_get_env(env, NULL, NULL));
+	// env_lst = *(ft_get_env(env, NULL, NULL));
+	env_lst = ft_create_env_list(env);
 	while (env_lst)
 	{
 		printf("%s\n", env_lst->var);
 		env_lst = env_lst->next;
 	}
 	ft_free_all_env(env_lst);
-	ft_del_env();
+	// ft_del_env();
 	return (g_error);
 }
