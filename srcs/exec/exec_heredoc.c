@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 11:38:36 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/26 16:57:51 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/26 19:06:04 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,46 @@ void	exec_heredoc_failure(int fd_save)
 	g_error = 130;
 }
 
-int	heredoc_no_expand()
-{}
+int	heredoc_no_expand(t_token *rdir)
+{
+	char	*limit;
+	char	*line;
+	int		fd;
+
+	limit = NULL;
+	fd = create_heredoc(1);
+	if (fd < 0)
+		return (perror(limit), fd);
+	if (rdir->next->type == LIMITOR)
+		limit = rdir->next->word;
+	while (1)
+	{
+		line = readline("");
+		if (line == NULL || ft_strcmp(line, limit))
+	}
+}
 
 int	heredoc_expand()
 {}
 
-int	create_heredoc();
+int	create_heredoc(int type)
+{
+	int	fd_ret;
+
+	if (type)
+	{
+		fd_ret = open("/tmp/.heredoc", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+		if (fd_ret < 0)
+			fd_ret = open(".heredoc", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	}
+	else
+	{
+		fd_ret = open("/tmp/.heredoc", O_RDONLY | O_CREAT, 0644);
+		if (fd_ret < 0)
+			fd_ret = open(".heredoc", O_RDONLY | O_CREAT, 0644);
+	}
+	return (fd_ret);
+}
 
 int	exec_rdir_heredoc(t_cmd *cmd)
 {
