@@ -19,10 +19,8 @@ void	ft_free_all_env(t_env *env)
 	while (env)
 	{
 		tmp = env;
-		env = env->next;
 		free(tmp->var);
-		free(tmp->key);
-		free(tmp->value);
+		env = env->next;
 		free(tmp);
 	}
 }
