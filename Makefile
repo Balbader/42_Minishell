@@ -118,6 +118,13 @@ PARSER_FILES		:=	\
 						word_node_utils.c
 PARSER				:=	$(addprefix $(EXEC_DIR), $(EXEC_FILES))
 
+SIG_DIR				:=	signal/
+SIG_FILES			:=	\
+						ft_handle_signal.c \
+						ft_init_signal.c \
+						ft_sig_heredoc.c
+SIG					:=	$(addprefix $(SIG_DIR), $(SIG_FILES))
+
 UTILS_2_DIR			:=	utils_2/
 UTILS_2_FILES		:=	\
 						ft_add_slash.c \
