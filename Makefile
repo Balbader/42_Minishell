@@ -124,6 +124,7 @@ UTILS_2_FILES		:=	\
 						ft_check_cmd_for_builtins.c \
 						ft_del_tokens.c \
 						ft_delete_all.c \
+						ft_free_all_env.c \
 						ft_free_cmd.c \
 						ft_free_tabs.c \
 						ft_get_tab_len.c \
