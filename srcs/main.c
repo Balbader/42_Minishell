@@ -18,18 +18,18 @@ int main(int ac, char **av, char **env)
 {
 	(void)ac;
 	(void)av;
-	// ft_init_env(ac, av, env);
 	t_env	*env_lst;
+	t_env	*head;
 
 	env_lst = NULL;
-	// env_lst = *(ft_get_env(env, NULL, NULL));
 	env_lst = ft_create_env_list(env);
+	head = env_lst;
 	while (env_lst)
 	{
-		printf("%s\n", env_lst->var);
+		printf("env->var : %s\n", env_lst->var);
 		env_lst = env_lst->next;
 	}
+	env_lst = head;
 	ft_free_all_env(env_lst);
-	// ft_del_env();
 	return (g_error);
 }
