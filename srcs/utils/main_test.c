@@ -73,6 +73,10 @@ int	main(int ac, char **av, char **envp)
 		printf("EXPAND RETURNS == %d\n", expanded);
 		print_all_words(in->cmd_line);
 	printf("--------------END TEST EXPAND--------------\n\n");
+	printf("\n\n\n");
+	printf("--------------EXEC testing-----------------\n");
+	print_cmd_nodes();
+	printf("--------------END TEST EXPAND--------------\n\n");
 		delall(in);
 		if (ft_strncmp("STOP", in->input, 4) == 0)
 			break ;

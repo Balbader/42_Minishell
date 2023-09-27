@@ -6,13 +6,12 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 10:58:03 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/26 15:53:57 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/27 15:18:00 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-//This function screens inputs for having correctly closed quotes
 bool	check_quotes(char *input)
 {
 	bool	singl_open;

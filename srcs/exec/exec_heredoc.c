@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 11:38:36 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/26 19:06:04 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/27 10:29:40 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,46 @@ int	heredoc_no_expand(t_token *rdir)
 		limit = rdir->next->word;
 	while (1)
 	{
-		line = readline("");
-		if (line == NULL || ft_strcmp(line, limit))
+		line = readline("heredoc >");
+		if (line == NULL || !limit)
+			break ;
+		if (ft_strcmp(limit, line) == 0)
+			break ;
+		ft_putstr_fd(line, fd);
+		ft_putstr_fd("\n", fd);
+		free(line);
 	}
+	return (free(limit), fd);
 }
 
-int	heredoc_expand()
-{}
+int	heredoc_expand(t_token *rdir)
+{
+	char	*limit;
+	char	*line;
+	int		fd;
+
+	fd = create_heredoc(1);
+	limit = NULL;
+	if (fd < 0)
+		return (perror(limit), fd);
+	if (rdir->next->type == LIMITOR)
+		limit = rdir->next->word;
+	while (1)
+	{
+		line = readline("heredoc >");
+		if (line == 0)
+			break ;
+		if (ft_strcmp(line, limit) != 0)
+			break ;
+		if (ft_strchr(line, '$') != 0)
+			line = expand_heredoc_var(line);
+		if (line)
+			ft_putstr_fd(line, fd);
+		write(fd, "\n", 1);
+		free(line);
+	}
+	return (fd);
+}
 
 int	create_heredoc(int type)
 {

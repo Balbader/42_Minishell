@@ -5,7 +5,7 @@ CC = cc
 CFLAGS = -g3 -Werror -Wextra -Wall -I$(INC_DIR) -DREADLINE
 
 # Directories
-SRC_DIRS = parse expand builtins/env utils
+SRC_DIRS = parse expand utils exec
 OBJ_DIR = ./obj
 INC_DIR = ../inc
 LIB_DIR = ../libft
