@@ -6,7 +6,7 @@
 #    By: baalbade <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/08 10:43:48 by baalbade          #+#    #+#              #
-#    Updated: 2023/09/12 11:10:25 by ftuernal         ###   ########.fr        #
+#    Updated: 2023/09/28 14:42:44 by ftuernal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -140,6 +140,8 @@ SIG					:=	$(addprefix $(SIG_DIR), $(SIG_FILES))
 
 UTILS_DIR			:=	utils/
 UTILS_FILES			:=	\
+						dump_add.c \
+						dump_del.c \
 						free_2_str.c \
 						ft_add_slash.c \
 						ft_check_cmd_for_builtins.c \
@@ -160,6 +162,7 @@ UTILS_FILES			:=	\
 						ft_run_builtins.c \
 						get_tab_len.c \
 						join_free.c \
+						loop_joinf.c \
 						quote_utils.c
 UTILS				:=	$(addprefix $(UTILS_DIR), $(UTILS_FILES))
 

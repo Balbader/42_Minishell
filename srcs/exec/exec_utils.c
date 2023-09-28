@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 16:49:15 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/27 10:32:10 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/28 14:25:37 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	**convert_arg_to_tab(t_token *arg)
 	t_token	*head;
 	int		i;
 
-	arg_len = get_execarg_len(arg);
+	arg_len = get_arg_len(arg);
 	cmd_tab = ft_calloc(arg_len + 1, sizeof(char *));
 	if (!cmd_tab)
 		return (NULL);

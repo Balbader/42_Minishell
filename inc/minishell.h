@@ -6,7 +6,7 @@
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 10:27:19 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/28 13:51:02 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/28 14:40:36 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ int			exec_rdir_rin(t_cmd *cmd);
 int			exec_rdir_rout(t_cmd *cmd);
 char		*expand_heredoc_var(char *line);
 int			ft_strcmp(char *s1, char *s2);
-int			get_execarglen(t_token *arg);
+int 		get_arg_len(t_token *arg);
 t_cmd		*goto_exec_last_node(t_cmd *head);
 int			heredoc_expand(t_token *rdir);
 int			heredoc_no_expand(t_token *rdir);
@@ -209,14 +209,17 @@ void		ft_sig_heredoc(int sig);
 *********************************************************************** UTILS_2
 *******************************************************************************
 */
-int			ft_get_tab_len(char **tab);
-int 		get_tab_len(char **tab);
+void    	add_str_to_dump(char **paths, t_list *dump);
+void    	dump_add(void *content, t_list *garbage);
+void    	dump_del(t_list *garbage);
 char		*ft_add_slash(char const *s1, char const *s2);
 char		*ft_check_cmd_for_builtins(char *path, char *cmd);
+void		ft_del_tokens(t_token *tokens);
+t_token		*ft_delete_all(t_token **node);
 void		ft_free_all_env(t_env *env);
 void		ft_free_cmd(t_cmd *cmd);
 void		ft_free_tabs(char **tab);
-void		ft_del_tokens(t_token *tokens);
+int			ft_get_tab_len(char **tab);
 char		*ft_join_all_str(char **split);
 
 int			ft_print_error_msg(char *msg);
@@ -228,13 +231,13 @@ void		ft_print_unset_error(char *err);
 void		ft_print_redir_error(char *file);
 
 void    	free_2_tabs(char **s1, char **s2);
-void		siginit(int type);
+t_env		**get_env(char **env);
+int 		get_tab_len(char **tab);
 void		heredoc_sig(int sig);
 int			is_quote(char c);
 int			is_quote_heredoc(t_token *rdir);
 char		*join_free(char *s1, char *s2, char *ptr);
-t_env		**get_env(char **env);
-t_token		*ft_delete_all(t_token **node);
+char    	**loop_joinf(char **split_path, char *charset);
 
 //DEBUG
 int ft_printenv(t_env *env);
