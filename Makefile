@@ -117,11 +117,10 @@ PARSER_DIR			:=	parse/
 PARSER_FILES		:=	\
 						count_token.c \
 						parse_input.c \
-						quote_utils.c \
 						split_into_words.c \
 						tokenizer.c \
 						word_node_utils.c
-PARSER				:=	$(addprefix $(EXEC_DIR), $(EXEC_FILES))
+PARSER				:=	$(addprefix $(PARSER_DIR), $(PARSER_FILES))
 
 SIG_DIR				:=	signal/
 SIG_FILES			:=	\
@@ -130,8 +129,8 @@ SIG_FILES			:=	\
 						ft_sig_heredoc.c
 SIG					:=	$(addprefix $(SIG_DIR), $(SIG_FILES))
 
-UTILS_2_DIR			:=	utils_2/
-UTILS_2_FILES		:=	\
+UTILS_DIR			:=	utils/
+UTILS_FILES		:=	\
 						ft_add_slash.c \
 						ft_check_cmd_for_builtins.c \
 						ft_del_tokens.c \
@@ -147,8 +146,9 @@ UTILS_2_FILES		:=	\
 						ft_print_redir_error.c \
 						ft_print_sig_error.c \
 						ft_print_unset_error.c \
+						quote_utils.c \
 						ft_run_builtins.c
-UTILS_2				:=	$(addprefix $(UTILS_2_DIR), $(UTILS_2_FILES))
+UTILS				:=	$(addprefix $(UTILS_DIR), $(UTILS_FILES))
 
 
 ###############
@@ -171,7 +171,7 @@ SRCS				:=	\
 						$(EXEC) \
 						$(EXPAND) \
 						$(PARSER) \
-						$(UTILS_2) \
+						$(UTILS) \
 						main.c
 SRCS				:=	$(SRCS:%=$(SRCS_DIR)/%)
 
