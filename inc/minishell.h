@@ -6,7 +6,7 @@
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 10:27:19 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/28 14:40:36 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/28 16:34:22 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,6 +200,7 @@ int			ft_exec_unset(t_token *token);
 ************************************************************************ SIGNAL
 *******************************************************************************
 */
+void    	error_signal(void);
 void		ft_handle_signal(int sig);
 void		ft_init_signal(int type);
 void		ft_sig_heredoc(int sig);
@@ -221,7 +222,7 @@ void		ft_free_cmd(t_cmd *cmd);
 void		ft_free_tabs(char **tab);
 int			ft_get_tab_len(char **tab);
 char		*ft_join_all_str(char **split);
-
+int 		ft_run_builtins(char *path, t_cmd *cmd);
 int			ft_print_error_msg(char *msg);
 int			ft_print_exit_error(t_cmd *cmd, char *var);
 void		ft_print_cmd_error(char *cmd);

@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 11:20:50 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/27 11:44:41 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/28 16:34:55 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,11 @@ void	do_child_wait(int pid)
 
 	waitpid(pid, &wait, 0);
 	if (WIFEXITED(wait))
+		g_error = WEXITSTATUS(wait);
+	else if (WIFSIGNALED(wait))
 	{
 		g_error = 128 + WTERMSIG(wait);
-		error_sig();
+		error_signal();
 	}
 }
 
@@ -51,13 +53,13 @@ void	do_process(t_cmd *cmd)
 		signal(SIGINT, SIG_IGN);//replace by actual fnction
 		if (cmd->pid > 0)
 			do_child_wait(cmd->pid);
-		init_signal(false);
+		ft_init_signal(false);
 		ptr = cmd;
 		cmd = cmd->next;
-		if (!ptr->arg)
-			close_fd(ptr);
-		free_token_list(ptr->arg);
-		free_token_list(ptr->rdir);
+		if (!ptr->args)
+			close_fdtab(ptr);
+		ft_del_tokens(ptr->args);
+		ft_del_tokens(ptr->rdir);
 		free(ptr);
 	}
 }
@@ -82,7 +84,7 @@ void	lauch_execution(t_cmd *cmd)
 			if (ret == FAILURE)
 				error_found = true;
 		}
-		if (!error_found && cmd->arg && !exec_builtins(cmd->arg->word, cmd))
+		if (!error_found && cmd->args && !ft_run_builtins(cmd->args->word, cmd))
 			exec_fork(cmd, head);
 		close_fdtab(cmd);
 		cmd = cmd->next;

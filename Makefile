@@ -6,7 +6,7 @@
 #    By: baalbade <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/08 10:43:48 by baalbade          #+#    #+#              #
-#    Updated: 2023/09/28 14:42:44 by ftuernal         ###   ########.fr        #
+#    Updated: 2023/09/28 15:13:38 by ftuernal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -133,6 +133,7 @@ PARSER				:=	$(addprefix $(PARSER_DIR), $(PARSER_FILES))
 
 SIG_DIR				:=	signal/
 SIG_FILES			:=	\
+						error_signal.c \
 						ft_handle_signal.c \
 						ft_init_signal.c \
 						ft_sig_heredoc.c

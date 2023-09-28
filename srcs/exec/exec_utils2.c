@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 10:33:13 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/28 14:28:16 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/28 15:17:59 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ void	rm_command_node(t_cmd **head, t_cmd *rm_node)
 
 	if (head == NULL || rm_node == NULL)
 		return ;
-	if (*head = rm_node)
+	if (*head == rm_node)
 	{
-		head = rm_node->next;
+		*head = rm_node->next;
 		free(rm_node);
 		return ;
 	}

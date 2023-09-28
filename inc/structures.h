@@ -6,7 +6,7 @@
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 10:27:24 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/28 14:22:09 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/28 16:37:35 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ enum	e_fd
 typedef struct s_token
 {
 	char			*word;
-	t_type			type; // why not use an int ???
+	t_type			type;
 	struct s_token	*next;
 }	t_token;
 
@@ -74,7 +74,7 @@ typedef struct	s_cmd
 	t_token			*rdir;
 	int				fd[2]; //for the fuction pipe()
 	int				pid; //for the function fork()
-	struct s_cm	*next;
+	struct s_cmd	*next;
 }				t_cmd;
 
 typedef struct s_data

@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 17:04:24 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/28 14:32:46 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/28 16:38:32 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	**loop_joinf(char **split_path, char *charset)
 	int		i;
 
 	i = 0;
-	join_path = ft_calloc(get_len(split_path) + 1, sizeof(char *));
+	join_path = ft_calloc(get_tab_len(split_path) + 1, sizeof(char *));
 	dump = ft_calloc(1, sizeof(t_list));
 	dump_add(split_path, dump);
 	while (split_path[i] != 0)

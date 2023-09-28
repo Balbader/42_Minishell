@@ -1,38 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dump_add.c                                         :+:      :+:    :+:   */
+/*   error_signal.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/13 17:15:12 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/28 16:35:19 by ftuernal         ###   ########.fr       */
+/*   Created: 2023/09/28 15:10:07 by ftuernal          #+#    #+#             */
+/*   Updated: 2023/09/28 15:10:09 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	dump_add(void *content, t_list *garbage)
+void	error_signal(void)
 {
-	t_list	*new;
-
-	new = ft_lstnew(content);
-	if (!new)
-		return ;
-	ft_lstadd_back(&garbage, new);
+	if (g_error == 128 + SIGTERM)
+		ft_putstr_fd("Terminated\n", STDERR_FILENO);
+	else if (g_error == 128 + SIGSEGV)
+		ft_putstr_fd("Segmentation fault. (core dumped)\n", STDERR_FILENO);
+	else if (g_error == 128 + SIGQUIT)
+		ft_putstr_fd("Quit. (core dumped)\n", STDERR_FILENO);
+	else if (g_error == 128 + SIGABRT)
+		ft_putstr_fd("Abort. (core dumped)\n", STDERR_FILENO);
 }
-
-void	add_str_to_dump(char **paths, t_list *dump)
-{
-	int		i;
-
-	i = 0;
-	dump_add(paths, dump);
-	while (paths[i] != 0)
-	{
-		dump_add(paths[i], dump);
-		i++;
-	}
-	dump_add(paths[i], dump);
-}
-
