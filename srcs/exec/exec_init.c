@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exec_list_create.c                                 :+:      :+:    :+:   */
+/*   exec_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 16:52:56 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/25 15:32:13 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/28 14:17:56 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ int	exec_new_node_alloc(t_cmd **cmd)
 	tmp = ft_calloc(1, sizeof(t_cmd));
 	if (!tmp)
 		return (FAILURE);
-	tmp->arg = NULL;
-	tmp->red = NULL;
+	tmp->args = NULL;
+	tmp->rdir = NULL;
 	tmp->next = NULL;
 	tmp->fd[IN] = STDIN_FILENO;
 	tmp->fd[OUT] = STDOUT_FILENO;
 	tmp->pid = 0;
-	addback_exec_node(cmd, tmp);
+	addback_exec_node(*cmd, tmp);
 	return (SUCCESS);
 }
 
@@ -45,16 +45,16 @@ int	exec_list_create(t_cmd **cmd, t_token *expand_cmdline)
 		{
 			if (exec_new_node_alloc(cmd) == FAILURE)
 				return (FAILURE);
-			cmd = cmd->next;
+			*cmd = (*cmd)->next;
 		}
 		else if (ptr->type == WORD)
-			ret = append_arg_node(cmd, ptr) == FAILURE;
+			ret = append_arg_node(*cmd, ptr) == FAILURE;
 		else
-			ret = append_rdir_node(cmd, ptr) == FAILURE;
-		if (!cmd || ret == FAILURE)
+			ret = append_rdir_node(*cmd, ptr) == FAILURE;
+		if (!(*cmd) || ret == FAILURE)
 			return (FAILURE);
 		ptr = ptr->next;
 	}
-	cmd = head;
+	*cmd = head;
 	return (SUCCESS);
 }

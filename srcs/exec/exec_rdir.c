@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 10:59:47 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/26 11:19:59 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/28 14:23:26 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	exec_rdir_rin(t_cmd *cmd)
 	char	*name;
 
 	if (!cmd->rdir->next)
-		//return error management return ()
+		ft_print_error_msg(ERROR_RED);
 	name = cmd->rdir->next->word;
 	fd = open(name, O_RDONLY);
 	if (fd < 0)
@@ -26,7 +26,7 @@ int	exec_rdir_rin(t_cmd *cmd)
 		perror(name);
 		return (FAILURE);
 	}
-	if (cdm->fd[IN] != 0)
+	if (cmd->fd[IN] != 0)
 	{
 		dup2(fd, cmd->fd[IN]);
 		close(cmd->fd[IN]);
@@ -41,7 +41,7 @@ int	exec_rdir_rout(t_cmd *cmd)
 	char	*name;
 
 	if (!cmd->rdir->next)
-		//return error management return ()
+		ft_print_error_msg(ERROR_RED);
 	name = cmd->rdir->next->word;
 	fd = open(name, O_WRONLY | O_TRUNC | O_CREAT, 0644);
 	if (fd < 0)
@@ -49,7 +49,7 @@ int	exec_rdir_rout(t_cmd *cmd)
 		perror(name);
 		return (FAILURE);
 	}
-	if (cdm->fd[OUT] != 0)
+	if (cmd->fd[OUT] != 0)
 	{
 		dup2(fd, cmd->fd[OUT]);
 		close(cmd->fd[OUT]);

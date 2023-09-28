@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 11:38:36 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/27 10:29:40 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/28 14:07:42 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	exec_heredoc_failure(int fd_save)
 {
 	dup2(fd_save, 0);
-	init_signal(false);
-	close(save);
+	ft_init_signal(false);
+	close(fd_save);
 	write(STDOUT_FILENO, "\n", 1);
 	g_error = 130;
 }
@@ -100,7 +100,7 @@ int	exec_rdir_heredoc(t_cmd *cmd)
 	int	fd_save;
 	int	fd;
 
-	save = dup(STDIN_FILENO);
+	fd_save = dup(STDIN_FILENO);
 	if (is_quote_heredoc(cmd->rdir) == true)
 		fd = heredoc_no_expand(cmd->rdir);
 	else
@@ -110,8 +110,8 @@ int	exec_rdir_heredoc(t_cmd *cmd)
 	close(fd);
 	if (g_error == 128)
 		return (exec_heredoc_failure(fd_save), FAILURE);
-	close(save);
-	init_signal(false);
+	close(fd_save);
+	ft_init_signal(false);
 	fd = create_heredoc(0);
 	if (cmd->fd[IN] != STDIN_FILENO)
 	{

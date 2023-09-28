@@ -6,7 +6,7 @@
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 10:27:24 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/28 12:32:23 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/28 14:22:09 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,16 +59,6 @@ typedef struct s_token
 	struct s_token	*next;
 }	t_token;
 
-/*
-typedef struct s_exec
-{
-	char	**cmd;
-	char	*path;
-}	t_exec;
-*/
-
-/************************** basil stuff*/
-
 typedef struct s_env
 {
 	char			*var;
@@ -84,7 +74,7 @@ typedef struct	s_cmd
 	t_token			*rdir;
 	int				fd[2]; //for the fuction pipe()
 	int				pid; //for the function fork()
-	struct s_cmd	*next;
+	struct s_cm	*next;
 }				t_cmd;
 
 typedef struct s_data

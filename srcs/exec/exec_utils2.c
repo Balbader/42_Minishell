@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 10:33:13 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/27 10:37:26 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/28 13:47:45 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,25 @@ int	ft_strcmp(char *s1, char *s2)
 	while (s1[i] && s2[i] && s1[i] == s2[i])
 		i++;
 	return (s1[i] - s2[i]);
+}
+
+void	rm_command_node(t_cmd **head, t_cmd *rm_node)
+{
+	t_cmd	*current;
+
+	if (head == NULL || rm_node == NULL)
+		return ;
+	if (*head = rm_node)
+	{
+		head = rm_node->next;
+		free(rm_node);
+		return ;
+	}
+	current = *head;
+	while (current->next != NULL && current->next != rm_node)
+		current = current->next;
+	if (current->next == NULL)
+		return ;
+	current->next = rm_node->next;
+	free(rm_node);	
 }

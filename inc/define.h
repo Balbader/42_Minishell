@@ -6,7 +6,7 @@
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 10:27:13 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/08 10:27:16 by baalbade         ###   ########.fr       */
+/*   Updated: 2023/09/28 13:55:47 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,5 @@
 # define ERROR_POINT "Minishell: .: filename argument required\n"
 # define ERROR_DOUBLE_POINT "..: command not found\n"
 # define ERROR_POINT_SLASH "Minishell: ./: Is a directory\n"
-
+# define ERROR_FORK "Minishell: fork() function error\n"
 #endif // !DEFINE_H

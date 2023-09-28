@@ -6,19 +6,19 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 14:54:04 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/25 16:52:00 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/28 14:20:05 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	append_arg_node(t_cmd *cmd, t_token *expand_cmdline)
+int	append_args_node(t_cmd *cmd, t_token *expand_cmdline)
 {
 	t_token	*last;
 
-	if (append_cmd_node(cmd->arg, expand_cmdline->word) == FAILURE)
+	if (append_cmd_node(cmd->args, expand_cmdline->word) == FAILURE)
 		return (FAILURE);
-	last = goto_last_node(cmd->arg);
+	last = goto_last_node(cmd->args);
 	last->type = expand_cmdline->type;
 	return (SUCCESS);
 }
@@ -29,7 +29,7 @@ int	append_rdir_node(t_cmd *cmd, t_token *expand_cmdline)
 
 	if (append_cmd_node(cmd->rdir, expand_cmdline->word) == FAILURE)
 		return (FAILURE);
-	last = goto_last_node(cmd->arg);
+	last = goto_last_node(cmd->args);
 	last->type = expand_cmdline->type;
 	return (SUCCESS);
 }
@@ -39,9 +39,9 @@ void	addback_exec_node(t_cmd *cmd, t_cmd *new)
 	t_cmd	*last_ad;
 
 	last_ad = goto_exec_last_node(cmd);
-	if (!*cmd)
+	if (cmd == NULL)
 	{
-		*cmd = new;
+		cmd = new;
 		return ;
 	}
 	last_ad->next = new;
@@ -57,13 +57,13 @@ t_cmd	*goto_exec_last_node(t_cmd *head)
 	return (ptr);
 }
 
-int	get_execarglen(t_token *arg)
+int	get_execargslen(t_token *args)
 {
 	int	i;
 	t_token	*ptr;
 
 	i = 0;
-	ptr = arg;
+	ptr = args;
 	while (ptr != 0)
 	{
 		i++;

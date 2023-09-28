@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 17:43:18 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/25 18:02:21 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/28 14:00:22 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	exec_child(t_cmd *cmd, t_cmd *start)
 	char	**cmd_tab;
 	char	*path;
 
-	cmd_tab = convert_arg_to_tab(cmd->arg);
+	cmd_tab = convert_arg_to_tab(cmd->args);
 	env_tab = ft_convert_env_to_tab(*get_env(0)); 
 	path = init_path(cmd_tab[0], env_tab);
 	if (cmd->fd[IN] != STDIN_FILENO)
@@ -31,10 +31,10 @@ int	exec_child(t_cmd *cmd, t_cmd *start)
 		dup2(cmd->fd[OUT], STDOUT_FILENO);
 		close(cmd->fd[OUT]);
 	}
-	//free cmd struct
+	rm_command_node(&start, cmd);
 	if (path)
 	{
-		siginit(true);//verifier le nom
+		ft_init_signal(true);
 		execve(path, cmd_tab, env_tab);
 	}
 	return (FAILURE);
@@ -49,7 +49,7 @@ void	exec_fork(t_cmd *cmd, t_cmd *start)
 		return ;
 	pid = fork();
 	if (pid == -1)
-		//error fork()
+		ft_print_error_msg(ERROR_FORK);
 	else if (pid == 0)
 		exec_child(cmd, start);
 	else

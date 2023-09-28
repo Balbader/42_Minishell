@@ -6,7 +6,7 @@
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 10:27:19 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/28 12:28:37 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/28 13:51:02 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,6 @@ void		substitute_word(t_token *cmd_line, char *substitute);
 ************************************************************************** EXEC
 *******************************************************************************
 */
-//void		exec_cmd(t_data *in, t_exec *cmd);
 void		addback_exec_node(t_cmd *cmd, t_cmd *new);
 int			append_rdir_node(t_cmd *cmd, t_token *expand_cmdline);
 int			append_arg_node(t_cmd *cmd, t_token *expand_cmdline);
@@ -124,6 +123,7 @@ int			heredoc_expand(t_token *rdir);
 int			heredoc_no_expand(t_token *rdir);
 char		*init_path(char *cmd, char **envp);
 void		launch_execution(t_cmd *cmd);
+void		rm_command_node(t_cmd **head, t_cmd *rm_node);
 
 
 /*
