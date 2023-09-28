@@ -14,9 +14,9 @@
 
 void	ft_handle_signal(int sig)
 {
-	if (sig == SEGQUIT)
+	if (sig == SIGQUIT)
 		return ;
-	if (sig == SEGINT)
+	if (sig == SIGINT)
 	{
 		g_error = 130;
 		write(STDOUT_FILENO, "\n", 1);
