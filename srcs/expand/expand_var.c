@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 13:23:33 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/21 11:18:35 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/28 12:02:36 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*replace_by_last_ret(char *word)
 	new_str = ft_strdup(word + 1);
 	if (!new_str)
 		return (NULL);
-	last_ret = set_sigval(-42);//replace by signal management
+	last_ret = g_error;
 	ascii_ret = ft_itoa(last_ret);
 	if (!ascii_ret)
 		return (free(new_str), NULL);
