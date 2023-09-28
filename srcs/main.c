@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/26 14:56:37 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/26 14:56:38 by baalbade         ###   ########.fr       */
+/*   Created: 2023/08/29 13:34:07 by ftuernal          #+#    #+#             */
+/*   Updated: 2023/09/28 11:12:31 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,43 @@
 
 int	g_error;
 
-int	main(int ac, char **av, char **env)
+int	display_prompt(t_data *in)
 {
-	char	*line;
-
-	line = NULL;
-	ft_init_env(ac, av, env);
-	init_signal(false);
-	while (true)
+	while (1) //replace by signal management
 	{
-		line = readline("Minishell :");
-		if (line == NULL)
-			break ;
-		if (*line)
+		ft_putstr_fd("$> ", 1);
+		in->input = readline("");
+		if (parse_input(in) == SUCCESS)
 		{
-			add_history(line);
-			// shell_split(line);
+			if (expand(in->cmd_line) == SUCCESS)
+				exec(in);
 		}
+		add_history(in->input);
+		rl_on_new_line();//do I need that function to respawn the readline ?
+		free(in->input);//do I need to keep input allocated to get history
 	}
-	ft_del_env();
-	rl_clear_history();
-	write(STDOUT_FILENO, "exit\n", 5);
-	return (g_error);
+	return (SUCCESS);
 }
 
+int	main(int ac, char **av, char **env)
+{
+	t_data	in;
+	t_env	*env_lst;
+
+	in = NULL;
+	env_lst = NULL;
+	(void) av;
+	if (ac != 1)
+		return (0);
+	env_lst = ft_get_env(env, 0, 0);
+	printf("TEST ENV\n");
+	print_env(env_lst);
+	ft_init_signal(false);
+	if (display_prompt(in) != SUCCESS)
+		ft_putstr_fd("Something wrong happened forcing Minishell to stop!\n", 2);
+	ft_del_env();
+	rl_clear_history();
+//delall
+	printf("Minishell stopped normally\n");
+	return (0);
+}
