@@ -133,7 +133,6 @@ PARSER				:=	$(addprefix $(PARSER_DIR), $(PARSER_FILES))
 
 SIG_DIR				:=	signal/
 SIG_FILES			:=	\
-						error_signal.c \
 						ft_handle_signal.c \
 						ft_init_signal.c \
 						ft_sig_heredoc.c
@@ -188,6 +187,7 @@ SRCS				:=	\
 						$(EXEC) \
 						$(EXPAND) \
 						$(PARSER) \
+						$(SIG) \
 						$(UTILS) \
 						main.c
 SRCS				:=	$(SRCS:%=$(SRCS_DIR)/%)
