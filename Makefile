@@ -108,7 +108,7 @@ EXPAND_FILES		:=	\
 						expand_quote_word.c \
 						expand_var.c \
 						quote_remove.c
-EXPAND				:=	$(addprefix $(EXEC_DIR), $(EXEC_FILES))
+EXPAND				:=	$(addprefix $(EXPAND_DIR), $(EXPAND_FILES))
 
 
 # PARSER FILES
