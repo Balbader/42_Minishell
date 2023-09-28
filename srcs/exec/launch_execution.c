@@ -40,7 +40,7 @@ void	do_child_wait(int pid)
 	else if (WIFSIGNALED(wait))
 	{
 		g_error = 128 + WTERMSIG(wait);
-		error_signal();
+		ft_print_sig_error();
 	}
 }
 
