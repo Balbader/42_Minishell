@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 10:58:03 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/27 15:18:00 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/28 11:55:37 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,8 @@ int	is_quote_heredoc(t_token *rdir)
 	ptr = rdir;
 	while (ptr != 0)
 	{
-		if (ptr->type == LIMITOR && ft_strchr("\'\"", ptr->word) == 0)
+		if (ptr->type == LIMITOR 
+			&& ft_strchr(ptr->word, '\'') == 0 && ft_strchr(ptr->word, '\"') == 0)
 			return (false);
 		ptr = ptr->next;
 	}
