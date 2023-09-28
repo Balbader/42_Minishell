@@ -6,7 +6,7 @@
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 10:27:19 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/28 12:17:50 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/28 12:28:37 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ char		**convert_arg_to_tab(t_token *arg);
 void		do_child_wait(int pid);
 void		do_pipe(t_cmd **cmd);
 void		do_process(t_cmd *cmd);
-int			exec(t_data *in);
+void		exec(t_data *in);
 int			exec_child(t_cmd *cmd, t_cmd *start);
 void		exec_fork(t_cmd *cmd, t_cmd *start);
 void		exec_heredoc_failure(int fd_save);
@@ -123,7 +123,7 @@ t_cmd		*goto_exec_last_node(t_cmd *head);
 int			heredoc_expand(t_token *rdir);
 int			heredoc_no_expand(t_token *rdir);
 char		*init_path(char *cmd, char **envp);
-void		lauch_execution(t_cmd *cmd);
+void		launch_execution(t_cmd *cmd);
 
 
 /*

@@ -6,7 +6,7 @@
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 10:27:24 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/28 10:39:32 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/28 12:32:23 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,12 @@ enum	e_start
 {
 	START = 0,
 	END
+};
+
+enum	e_fd
+{
+	IN = 0,
+	OUT
 };
 
 typedef struct s_token
