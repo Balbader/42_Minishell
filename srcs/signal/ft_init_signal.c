@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_del_env.c                                       :+:      :+:    :+:   */
+/*   ft_init_signal.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 14:59:03 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/25 12:27:49 by ftuernal         ###   ########.fr       */
+/*   Created: 2023/09/26 12:37:27 by baalbade          #+#    #+#             */
+/*   Updated: 2023/09/26 12:37:29 by baalbade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/*
- * This function is called in main.c in order to free env_lst.
-*/
-
-void	ft_del_env(void)
+void	ft_init_signal(int type)
 {
-	t_env	*env;
-	t_env	*tmp;
-
-	tmp = NULL;
-	env = *ft_get_all_env();
-	while (env)
+	if (!type)
 	{
-		tmp = env;
-		env = env->next;
-		free(tmp->var);
-		// free(tmp->key);
-		// free(tmp->value);
-		free(tmp);
+		signal(SIGINT, &ft_handle_signal);
+		signal(SIGQUIT, SIG_IGN);
+	}
+	else if (type)
+	{
+		signal(SIGINT, SIG_DFL);
+		signal(SIGQUIT, SIG_DFL);
 	}
 }

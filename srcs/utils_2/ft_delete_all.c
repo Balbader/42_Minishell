@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_del_env.c                                       :+:      :+:    :+:   */
+/*   ft_delete_all.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 14:59:03 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/25 12:27:49 by ftuernal         ###   ########.fr       */
+/*   Created: 2023/09/25 18:27:18 by baalbade          #+#    #+#             */
+/*   Updated: 2023/09/25 18:27:20 by baalbade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/*
- * This function is called in main.c in order to free env_lst.
-*/
-
-void	ft_del_env(void)
+t_token	*ft_delete_all(t_token **node)
 {
-	t_env	*env;
-	t_env	*tmp;
+	t_token	*tmp;
 
-	tmp = NULL;
-	env = *ft_get_all_env();
-	while (env)
+	while ((*node))
 	{
-		tmp = env;
-		env = env->next;
-		free(tmp->var);
-		// free(tmp->key);
-		// free(tmp->value);
+		tmp = (*node);
+		free((*node)->word);
+		(*node) = (*node)->next;
 		free(tmp);
 	}
+	node = NULL;
+	return (NULL);
 }

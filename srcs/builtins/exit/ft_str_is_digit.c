@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_del_env.c                                       :+:      :+:    :+:   */
+/*   ft_str_is_digit.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 14:59:03 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/25 12:27:49 by ftuernal         ###   ########.fr       */
+/*   Created: 2023/09/25 14:27:36 by baalbade          #+#    #+#             */
+/*   Updated: 2023/09/25 14:27:39 by baalbade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/*
- * This function is called in main.c in order to free env_lst.
-*/
-
-void	ft_del_env(void)
+int	ft_str_is_digit(char **str)
 {
-	t_env	*env;
-	t_env	*tmp;
+	int		tr;
+	char	*tmp;
 
-	tmp = NULL;
-	env = *ft_get_all_env();
-	while (env)
+	tr = false;
+	tmp = *str;
+	*str = ft_remove_quotes(*str);
+	free(tmp);
+	tmp = *str;
+	while (*tmp)
 	{
-		tmp = env;
-		env = env->next;
-		free(tmp->var);
-		// free(tmp->key);
-		// free(tmp->value);
-		free(tmp);
+		if (ft_isdigit(*tmp))
+			tr = true;
+		++tmp;
 	}
+	if (!tr)
+		return (false);
+	return (true);
 }

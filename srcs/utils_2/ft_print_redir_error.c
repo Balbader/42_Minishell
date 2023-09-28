@@ -1,35 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_del_env.c                                       :+:      :+:    :+:   */
+/*   ft_print_redir_error.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 14:59:03 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/25 12:27:49 by ftuernal         ###   ########.fr       */
+/*   Created: 2023/09/25 16:55:01 by baalbade          #+#    #+#             */
+/*   Updated: 2023/09/25 16:55:03 by baalbade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/*
- * This function is called in main.c in order to free env_lst.
-*/
-
-void	ft_del_env(void)
+void	ft_print_redir_error(char *file)
 {
-	t_env	*env;
-	t_env	*tmp;
-
-	tmp = NULL;
-	env = *ft_get_all_env();
-	while (env)
-	{
-		tmp = env;
-		env = env->next;
-		free(tmp->var);
-		// free(tmp->key);
-		// free(tmp->value);
-		free(tmp);
-	}
+	write(STDERR_FILENO, "minishell : ", 13);
+	write(STDERR_FILENO, file, ft_strlen(file));
+	write(STDERR_FILENO, ": ", 2);
+	write(STDERR_FILENO, ERROR_RED, ft_strlen(ERROR_RED));
+	g_error = 1;
 }

@@ -6,7 +6,7 @@
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 10:27:19 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/27 15:49:21 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/28 10:38:32 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,14 @@
 # include "../TOOLS/ft_printf/ft_printf.h"
 # include "../TOOLS/minishelltools/minishelltools.h"
 */
+
 # include "structures.h"
 # include "define.h"
 # include "../libft/includes/libft.h"
 
 # include <readline/readline.h>
 # include <readline/history.h>
+# include <unistd.h>
 # include <errno.h>
 # include <signal.h>
 # include <sys/types.h>
@@ -130,23 +132,24 @@ void		lauch_execution(t_cmd *cmd);
 *******************************************************************************
 */
 
-/* -------------------------------------------------------------------------env
+// -------------------------------------------------------------------------env
+int			ft_exec_env(int fd);
 int			ft_compare_keys(char *key, char *to_find);
 int 		ft_get_env_len(t_env *env);
 char		**ft_convert_env_to_tab(t_env *env);
 char		*ft_find_value(char *var);
+char		*ft_add_var_to_env(t_env **env, char *add);
 void		ft_add_to_env(char *to_add);
 void		ft_del_from_env(char *to_del);
 void		ft_del_env(void);
 void		ft_init_env(int ac, char **av, char **env);
 void		ft_modif_shlvl(void);
-t_env		*ft_add_var_to_env(t_env *env, char *to_add);
 t_env		*ft_create_env_list(char **env);
 t_env		*ft_del_node(t_env *env, char *to_del);
 t_env		*ft_get_last_env(t_env *env);
+t_env		**ft_get_all_env(void);
 t_env		**ft_get_env(char **env, char *to_add, char *to_del);
 t_env		**ft_get_all_env(void);
-*/
 // ----------------------------------------------------------------------export
 int			ft_check_cpy(char **cpy);
 int			ft_get_key_len(char *var);
@@ -169,65 +172,72 @@ void		ft_create_working_directory(void);
 void		ft_get_cd_path(char **path);
 void		ft_replace_working_directory(void);
 
+// ------------------------------------------------------------------------echo
+int			ft_check_n_flag(char *input);
+int			ft_exec_echo(t_token *token, int fd);
+
 // ------------------------------------------------------------------------exit
-int			ft_print_exit_error(t_data *data, char *var);
+int			ft_exec_exit(t_token *token, t_cmd *cmd);
+int			ft_str_is_digit(char **str);
 char		*ft_remove_quotes(char *var);
+
+// ----------------------------------------------------------------------export
+int			ft_check_cpy(char **cpy);
+int			ft_get_key_len(char *var);
+int			ft_exec_export(t_token *token);
+char		*ft_get_key(char *var);
+void		ft_does_value_exist(char *var);
+
+// -------------------------------------------------------------------------pwd
+int			ft_exec_pwd(int fd);
+
+// -----------------------------------------------------------------------unset
+int			ft_check_var_to_unset(char *var);
+int			ft_exec_unset(t_token *token);
 
 /*
 *******************************************************************************
-************************************************************************* UTILS
+************************************************************************ SIGNAL
 *******************************************************************************
 */
-void    	display_err(char *err_str);//provisoire
+void		ft_handle_signal(int sig);
+void		ft_init_signal(int type);
+void		ft_sig_heredoc(int sig);
+
+/*
+*******************************************************************************
+*********************************************************************** UTILS_2
+*******************************************************************************
+*/
+int			ft_get_tab_len(char **tab);
+int 		get_tab_len(char **tab);
+char		*ft_add_slash(char const *s1, char const *s2);
+char		*ft_check_cmd_for_builtins(char *path, char *cmd);
+void		ft_free_all_env(t_env *env);
+void		ft_free_cmd(t_cmd *cmd);
 void		ft_free_tabs(char **tab);
 void		ft_del_tokens(t_token *tokens);
+
+int			ft_print_error_msg(char *msg);
+int			ft_print_exit_error(t_cmd *cmd, char *var);
+void		ft_print_cmd_error(char *cmd);
+void		ft_print_sig_error(void);
+void		ft_print_export_error(char *err);
+void		ft_print_unset_error(char *err);
+void		ft_print_redir_error(char *file);
+
 void    	free_2_tabs(char **s1, char **s2);
-t_env		**get_env(char **env);
-int 		get_tab_len(char **tab);
+void		siginit(int type);
 void		heredoc_sig(int sig);
 int			is_quote(char c);
 int			is_quote_heredoc(t_token *rdir);
 char		*join_all_str(char **split);
 char		*join_free(char *s1, char *s2, char *ptr);
-void		siginit(int type);
+t_env		**get_env(char **env);
+t_token		*ft_delete_all(t_token **node);
 
 //DEBUG
 int ft_printenv(t_env *env);
 int 		set_sigval(int new_sig);
-
-//ENV_BAK TO BE ERASED
-char	**ft_convert_to_tab(t_env *env);
-char	*ft_copy_key(char *env_elem, char *key_cpy, char stop);
-char	*ft_copy_value(char *env_elem, char *value_cpy);
-char	*ft_copy_var(char *original, char *cpy);
-t_env	*ft_create_new_env_node(char *var_cpy, char *key_cpy, char *value_cpy);
-void	ft_del_env(t_env *env);
-int	env_err(char **env, t_env *env_cpy, int output_fd);
-void	ft_env_fail(const char *message, char **env, t_env *env_cpy);
-int	ft_exec_env(t_env *env, int fd_out);
-t_env	**ft_get_env(char **env);
-int	ft_get_env_len(char **env);
-int	ft_compare_before_equals(char *env, char *find);
-t_env	*ft_get_node(char *var, t_env *env);
-int	ft_get_value_len(char *str);
-int	ft_get_var_len(char *var);
-t_env	*ft_convert_env_to_list(int env_len, t_env *env_lst, char **env);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 #endif // !MINISHELL_H

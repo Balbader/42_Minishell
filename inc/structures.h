@@ -6,7 +6,7 @@
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 10:27:24 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/27 15:48:22 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/28 10:39:32 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,15 +89,4 @@ typedef struct s_data
 	t_cmd	*cmd;
 	bool	subgect_flag;
 }	t_data;
-
-/************************** basil stuff*/
-/*
-typedef struct s_env
-{
-	int				id;
-	char			*key;
-	char			*value;
-	struct s_env	*next;
-}	t_env;
-*/
 #endif // !STRUCTURES_H

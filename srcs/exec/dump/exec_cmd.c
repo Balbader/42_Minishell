@@ -34,7 +34,5 @@ void	exec_cmd(t_data *in, t_exec *exec)
 			execve(exec->cmd[0], exec->cmd + 1, NULL);
 		else
 			execve(exec->path, exec->cmd, in->env);
-		manage_err(EXEC, in, exec);
-	}
 	wait(NULL);
 }

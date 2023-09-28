@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_del_env.c                                       :+:      :+:    :+:   */
+/*   ft_exec_pwd.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 14:59:03 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/25 12:27:49 by ftuernal         ###   ########.fr       */
+/*   Created: 2023/09/25 15:39:16 by baalbade          #+#    #+#             */
+/*   Updated: 2023/09/25 15:39:18 by baalbade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/*
- * This function is called in main.c in order to free env_lst.
-*/
-
-void	ft_del_env(void)
+int	ft_exec_pwd(int fd)
 {
-	t_env	*env;
-	t_env	*tmp;
+	char	*wd;
 
-	tmp = NULL;
-	env = *ft_get_all_env();
-	while (env)
-	{
-		tmp = env;
-		env = env->next;
-		free(tmp->var);
-		// free(tmp->key);
-		// free(tmp->value);
-		free(tmp);
-	}
+	wd = getcwd(NULL, 0);
+	if (!wd)
+		return (g_error = 127, ft_print_error_msg("getcwd fail\n"), true);
+	ft_putstr_fd(wd, fd);
+	write(fd, "\n", 1);
+	free(wd);
+	return (g_error = 0, true);
 }

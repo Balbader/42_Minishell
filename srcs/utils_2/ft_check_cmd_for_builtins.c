@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_del_env.c                                       :+:      :+:    :+:   */
+/*   ft_check_cmd_for_builtins.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 14:59:03 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/25 12:27:49 by ftuernal         ###   ########.fr       */
+/*   Created: 2023/09/25 14:57:55 by baalbade          #+#    #+#             */
+/*   Updated: 2023/09/25 14:57:57 by baalbade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/*
- * This function is called in main.c in order to free env_lst.
-*/
-
-void	ft_del_env(void)
+char	*ft_check_cmd_for_builtins(char *path, char *cmd)
 {
-	t_env	*env;
-	t_env	*tmp;
-
-	tmp = NULL;
-	env = *ft_get_all_env();
-	while (env)
+	if (ft_strcmp(cmd, "export") || ft_strcmp(cmd, "cd") || ft_strcmp(cmd, "pwd")
+		|| ft_strcmp(cmd, "echo") || ft_strcmp(cmd, "unset")
+		|| ft_strcmp(cmd, "exit") || ft_strcmp(cmd, "env"))
 	{
-		tmp = env;
-		env = env->next;
-		free(tmp->var);
-		// free(tmp->key);
-		// free(tmp->value);
-		free(tmp);
+		if (path)
+			free(path);
+		return (ft_strdup(cmd));
 	}
+	if (!path)
+		return (ft_print_cmd_error(cmd), path);
+	return (path);
 }

@@ -25,7 +25,7 @@ void	ft_change_working_directory(void)
 	else
 	{
 		chdir(wd);
-		ft_putstr_fd(STDOUT_FILENO, wd);
+		ft_putstr_fd(wd, STDOUT_FILENO);
 		write(STDOUT_FILENO, "\n", 1);
 		ft_replace_working_directory();
 	}

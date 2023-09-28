@@ -18,10 +18,10 @@ int	ft_exec_cd(t_token *token, int in, int out)
 
 	wd = NULL;
 	g_error = 0;
-	if (in != STDIN_FILNO || out != STDOUT_FILENO)
+	if (in != STDIN_FILENO || out != STDOUT_FILENO)
 		return (true);
 	if (!token || ft_get_token_len(token) > 1)
-		return (g_error = 1, error_msg(ERROR_ARG_CD), true);
+		return (g_error = 1, ft_print_error_msg(ERROR_ARG_CD), true);
 	if (!ft_find_value("PWD"))
 		ft_create_working_directory();
 	if (ft_strcmp("-", token->word))
