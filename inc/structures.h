@@ -74,7 +74,7 @@ typedef struct s_env
 
 typedef struct	s_cmd
 {
-	t_token			*arg;
+	t_token			*args;
 	t_token			*rdir;
 	int				fd[2]; //for the fuction pipe()
 	int				pid; //for the function fork()
