@@ -6,7 +6,7 @@
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 10:27:19 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/25 12:19:59 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/27 15:49:21 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,16 @@ void		delall(t_data *in);
 t_token		*cmdline_new_node(char *input);
 t_token		*goto_last_node(t_token *ptr);
 int			parse_input(t_data *in);
+int 		parsing_verif(t_token *cmd_line);
 bool		quote_on(const char *input, int index);
 char 		**sep_cmdline(char *line);
 int 		set_end_word(char *line, int start);
 int 		set_start_word(char *line, int i);
 int			split_into_words(t_data *in);
+void		strerr_parsing(char *str);
 void	    tokenizer(t_token *cmd_line);
+int			verif_last_token(t_type last_token, t_type type);
+int			verif_token(t_type type, t_type last_token);
 
 //DEBUG FUNCTIONS
 void		print_all_words(t_token *cmd_line);
@@ -87,7 +91,37 @@ void		substitute_word(t_token *cmd_line, char *substitute);
 ************************************************************************** EXEC
 *******************************************************************************
 */
-void		exec_cmd(t_data *in, t_exec *cmd);
+//void		exec_cmd(t_data *in, t_exec *cmd);
+void		addback_exec_node(t_cmd *cmd, t_cmd *new);
+int			append_rdir_node(t_cmd *cmd, t_token *expand_cmdline);
+int			append_arg_node(t_cmd *cmd, t_token *expand_cmdline);
+void		close_fdtab(t_cmd *cmd);
+char		*copy_path(char **envp);
+int			create_heredoc(int type);
+char		**create_path(char **envp);
+char		**convert_arg_to_tab(t_token *arg);
+void		do_child_wait(int pid);
+void		do_pipe(t_cmd **cmd);
+void		do_process(t_cmd *cmd);
+int			exec(t_data *in);
+int			exec_child(t_cmd *cmd, t_cmd *start);
+void		exec_fork(t_cmd *cmd, t_cmd *start);
+void		exec_heredoc_failure(int fd_save);
+int			exec_list_create(t_cmd **cmd, t_token *expand_cmdline);
+int			exec_new_node_alloc(t_cmd **cmd);
+int			exec_rdir_append(t_cmd *cmd);
+int			exec_rdir(t_cmd *cmd);
+int			exec_rdir_heredoc(t_cmd *cmd);
+int			exec_rdir_rin(t_cmd *cmd);
+int			exec_rdir_rout(t_cmd *cmd);
+char		*expand_heredoc_var(char *line);
+int			ft_strcmp(char *s1, char *s2);
+int			get_execarglen(t_token *arg);
+t_cmd		*goto_exec_last_node(t_cmd *head);
+int			heredoc_expand(t_token *rdir);
+int			heredoc_no_expand(t_token *rdir);
+char		*init_path(char *cmd, char **envp);
+void		lauch_execution(t_cmd *cmd);
 
 
 /*
@@ -96,7 +130,7 @@ void		exec_cmd(t_data *in, t_exec *cmd);
 *******************************************************************************
 */
 
-// -------------------------------------------------------------------------env
+/* -------------------------------------------------------------------------env
 int			ft_compare_keys(char *key, char *to_find);
 int 		ft_get_env_len(t_env *env);
 char		**ft_convert_env_to_tab(t_env *env);
@@ -112,7 +146,7 @@ t_env		*ft_del_node(t_env *env, char *to_del);
 t_env		*ft_get_last_env(t_env *env);
 t_env		**ft_get_env(char **env, char *to_add, char *to_del);
 t_env		**ft_get_all_env(void);
-
+*/
 // ----------------------------------------------------------------------export
 int			ft_check_cpy(char **cpy);
 int			ft_get_key_len(char *var);
@@ -144,12 +178,15 @@ char		*ft_remove_quotes(char *var);
 ************************************************************************* UTILS
 *******************************************************************************
 */
+void    	display_err(char *err_str);//provisoire
 void		ft_free_tabs(char **tab);
 void		ft_del_tokens(t_token *tokens);
 void    	free_2_tabs(char **s1, char **s2);
 t_env		**get_env(char **env);
 int 		get_tab_len(char **tab);
 void		heredoc_sig(int sig);
+int			is_quote(char c);
+int			is_quote_heredoc(t_token *rdir);
 char		*join_all_str(char **split);
 char		*join_free(char *s1, char *s2, char *ptr);
 void		siginit(int type);
@@ -158,7 +195,23 @@ void		siginit(int type);
 int ft_printenv(t_env *env);
 int 		set_sigval(int new_sig);
 
-
+//ENV_BAK TO BE ERASED
+char	**ft_convert_to_tab(t_env *env);
+char	*ft_copy_key(char *env_elem, char *key_cpy, char stop);
+char	*ft_copy_value(char *env_elem, char *value_cpy);
+char	*ft_copy_var(char *original, char *cpy);
+t_env	*ft_create_new_env_node(char *var_cpy, char *key_cpy, char *value_cpy);
+void	ft_del_env(t_env *env);
+int	env_err(char **env, t_env *env_cpy, int output_fd);
+void	ft_env_fail(const char *message, char **env, t_env *env_cpy);
+int	ft_exec_env(t_env *env, int fd_out);
+t_env	**ft_get_env(char **env);
+int	ft_get_env_len(char **env);
+int	ft_compare_before_equals(char *env, char *find);
+t_env	*ft_get_node(char *var, t_env *env);
+int	ft_get_value_len(char *str);
+int	ft_get_var_len(char *var);
+t_env	*ft_convert_env_to_list(int env_len, t_env *env_lst, char **env);
 
 
 
