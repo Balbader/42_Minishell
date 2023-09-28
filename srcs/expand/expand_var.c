@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 13:23:33 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/28 12:02:36 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/28 12:14:44 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ char	*replace_by_env_value(char *word)
 	t_env	*current;
 	char	*new_str;
 
-	current = *get_env(0);
+	current = *ft_get_env(0, 0, 0);
 	while (current != NULL)
 	{
 		if (ft_strncmp(word, current->key, ft_strlen(current->key) - 1) == 0)
@@ -118,36 +118,6 @@ char	*expand_var(char *word)
 		if (!new_word[i])
 			return (free_2_tabs(new_word, split), NULL);
 	}
-	join_word = join_all_str(new_word);
+	join_word = ft_join_all_str(new_word);
 	return (free_2_tabs(new_word, split), join_word);
 }
-
-/*
-char	*expand_var(char *word)
-{
-	int		i;
-	char	**split;
-	char	*expand_word;
-
-	if (ft_strchr(word, '$') == 0)
-		return (word);
-	split = ft_split(word, '$');
-	if (!split)
-		return (0);
-	i = -1;
-	while (split[++i])
-	{
-		if (ft_isspace((*split)[i]) != 0)
-		{
-			split[i] = join_free("$", split[i], split[i]);
-			if (!split[i])
-				return (ft_free_tabs(split), NULL);
-		}
-		else if (ft_isspace((*split)[i]) == 0)
-			replace_var_by_value(&split[i]);
-	}
-	expand_word = join_all_str(split);
-//	ft_free_tabs(split);
-	return (expand_word);
-}
-*/

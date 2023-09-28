@@ -6,7 +6,7 @@
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 10:27:19 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/28 10:38:32 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/28 12:17:50 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -217,6 +217,7 @@ void		ft_free_all_env(t_env *env);
 void		ft_free_cmd(t_cmd *cmd);
 void		ft_free_tabs(char **tab);
 void		ft_del_tokens(t_token *tokens);
+char		*ft_join_all_str(char **split);
 
 int			ft_print_error_msg(char *msg);
 int			ft_print_exit_error(t_cmd *cmd, char *var);
@@ -231,7 +232,6 @@ void		siginit(int type);
 void		heredoc_sig(int sig);
 int			is_quote(char c);
 int			is_quote_heredoc(t_token *rdir);
-char		*join_all_str(char **split);
 char		*join_free(char *s1, char *s2, char *ptr);
 t_env		**get_env(char **env);
 t_token		*ft_delete_all(t_token **node);

@@ -6,13 +6,13 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 14:43:46 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/18 14:43:47 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/28 12:16:19 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*join_all_str(char **split)
+char	*ft_join_all_str(char **split)
 {
 	int		i;
 	char	*joined_str;
