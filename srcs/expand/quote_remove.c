@@ -6,28 +6,11 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:59:34 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/19 17:41:28 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/26 13:52:40 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-t_quote	set_quote_type(char quote)
-{
-	if (quote == '\'')
-		return (SQUOTE);
-	else if (quote == '\"')
-		return (DQUOTE);
-	else
-		return (NOQUOTE);
-}
-
-int		is_quote(char c)
-{
-	if (c == '\'' || c == '\"')
-		return (1);
-	return (0);
-}
 
 char	*quote_remove(char *str)
 {
