@@ -56,7 +56,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -122,7 +122,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "How to.md",
+                "file": "Equvalences.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -139,7 +139,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "How to.md",
+                "file": "Equvalences.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -162,7 +162,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "How to.md"
+                "file": "Equvalences.md"
               }
             }
           },
@@ -193,12 +193,12 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "f5264100be9fba1b",
+  "active": "fd8d70c953a8889c",
   "lastOpenFiles": [
+    "to check.md",
+    "How to.md",
     "Equvalences.md",
     "to do.md",
-    "equivalences",
-    "to check.md",
-    "How to.md"
+    "equivalences"
   ]
 }

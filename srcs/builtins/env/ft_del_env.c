@@ -28,8 +28,8 @@ void	ft_del_env(void)
 		tmp = env;
 		env = env->next;
 		free(tmp->var);
-		free(tmp->key);
-		free(tmp->value);
+		// free(tmp->key);
+		// free(tmp->value);
 		free(tmp);
 	}
 }

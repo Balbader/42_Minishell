@@ -102,7 +102,12 @@ EXEC				:=	$(addprefix $(EXEC_DIR), $(EXEC_FILES))
 # EXPAND FILES
 
 EXPAND_DIR			:=	expand/
-EXPAND_FILES		:=
+EXPAND_FILES		:=	\
+						check_arglist.c \
+						expand.c \
+						expand_quote_word.c \
+						expand_var.c \
+						quote_remove.c
 EXPAND				:=	$(addprefix $(EXEC_DIR), $(EXEC_FILES))
 
 

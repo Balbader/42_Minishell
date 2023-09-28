@@ -3,50 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/29 13:34:07 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/25 12:25:07 by ftuernal         ###   ########.fr       */
+/*   Created: 2023/09/26 14:56:37 by baalbade          #+#    #+#             */
+/*   Updated: 2023/09/26 14:56:38 by baalbade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	global_err;
-
-int	display_prompt(t_data *in, t_exec *exec, char **env)
-{
-	while (1) //replace by signal management
-	{
-		ft_putstr_fd("$> ", 1);
-		in->input = readline("");
-		if (parse_input(in, env) != 0)
-			return (free(in->input), 2);//replace by exec_err_msg to avoid quitting program
-		if (ft_strncmp(in->input, "STOP", 4) == 0)
-			break ;
-		exec_cmd(in, exec);
-		add_history(in->input);
-		rl_on_new_line();
-	:x
-	free(in->input);
-	}
-	return (SUCCESS);
-}
+int	g_error;
 
 int	main(int ac, char **av, char **env)
 {
-	t_data	in;
+	char	*line;
 
-	in = NULL;
-	(void) av;
-	if (ac != 1)
-		return (0);
-	init_env(env);
-	siginit(false);
-	if (display_prompt(in) != SUCCESS)
-		ft_putstr_fd("Something wrong happened forcing Minishell to stop!\n");
-	
-	ft_printf("Minishell stopped normally\n");
-	return (0);
->>>>>>> main
+	line = NULL;
+	ft_init_env(ac, av, env);
+	init_signal(false);
+	while (true)
+	{
+		line = readline("Minishell :");
+		if (line == NULL)
+			break ;
+		if (*line)
+		{
+			add_history(line);
+			// shell_split(line);
+		}
+	}
+	ft_del_env();
+	rl_clear_history();
+	write(STDOUT_FILENO, "exit\n", 5);
+	return (g_error);
 }
+

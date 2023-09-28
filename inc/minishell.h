@@ -18,6 +18,7 @@
 # include "../TOOLS/ft_printf/ft_printf.h"
 # include "../TOOLS/minishelltools/minishelltools.h"
 */
+
 # include "structures.h"
 # include "define.h"
 # include "../libft/includes/libft.h"
@@ -88,7 +89,6 @@ void		substitute_word(t_token *cmd_line, char *substitute);
 ************************************************************************** EXEC
 *******************************************************************************
 */
-void		exec_cmd(t_data *in, t_exec *cmd);
 
 
 /*
@@ -161,54 +161,33 @@ void		ft_sig_heredoc(int sig);
 *********************************************************************** UTILS_2
 *******************************************************************************
 */
-int			ft_print_error_msg(char *msg);
 int			ft_get_tab_len(char **tab);
+int 		get_tab_len(char **tab);
 char		*ft_add_slash(char const *s1, char const *s2);
 char		*ft_check_cmd_for_builtins(char *path, char *cmd);
 void		ft_free_all_env(t_env *env);
 void		ft_free_cmd(t_cmd *cmd);
 void		ft_free_tabs(char **tab);
 void		ft_del_tokens(t_token *tokens);
-<<<<<<< HEAD
-t_token		*ft_delete_all(t_token **node);
+
+int			ft_print_error_msg(char *msg);
+int			ft_print_exit_error(t_cmd *cmd, char *var);
 void		ft_print_cmd_error(char *cmd);
 void		ft_print_sig_error(void);
 void		ft_print_export_error(char *err);
-int			ft_print_error_msg(char *msg);
-int			ft_print_exit_error(t_cmd *cmd, char *var);
 void		ft_print_unset_error(char *err);
 void		ft_print_redir_error(char *file);
-=======
+
 void    	free_2_tabs(char **s1, char **s2);
-t_env		**get_env(char **env);
-int 		get_tab_len(char **tab);
+void		siginit(int type);
 void		heredoc_sig(int sig);
 char		*join_all_str(char **split);
 char		*join_free(char *s1, char *s2, char *ptr);
-void		siginit(int type);
+t_env		**get_env(char **env);
+t_token		*ft_delete_all(t_token **node);
 
 //DEBUG
 int ft_printenv(t_env *env);
 int 		set_sigval(int new_sig);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> main
 
 #endif // !MINISHELL_H
