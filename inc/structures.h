@@ -6,7 +6,7 @@
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 10:27:24 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/25 12:23:01 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/28 10:39:32 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ typedef enum	e_quote
 enum	e_status
 {
 	SUCCESS = 0,
-	FAILURE = -1
+	FAILURE = -42
 };
 
 enum	e_start
@@ -71,21 +71,22 @@ typedef struct s_env
 	struct s_env	*next;
 }	t_env;
 
-typedef struct s_data
-{
-	char	*input;
-	t_token	*cmd_line;
-	char	**env;
-	bool	subgect_flag;
-}	t_data;
 
 typedef struct	s_cmd
 {
-	t_token			*args;
+	t_token			*arg;
 	t_token			*rdir;
 	int				fd[2]; //for the fuction pipe()
 	int				pid; //for the function fork()
 	struct s_cmd	*next;
-}			t_cmd;
+}				t_cmd;
 
+typedef struct s_data
+{
+	char	*input;
+	t_token	*cmd_line;
+	t_env	**env;
+	t_cmd	*cmd;
+	bool	subgect_flag;
+}	t_data;
 #endif // !STRUCTURES_H

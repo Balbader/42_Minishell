@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exec.c                                             :+:      :+:    :+:   */
+/*   exec_utils2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/22 11:40:06 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/27 13:20:33 by ftuernal         ###   ########.fr       */
+/*   Created: 2023/09/27 10:33:13 by ftuernal          #+#    #+#             */
+/*   Updated: 2023/09/27 10:37:26 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	exec(t_data *in)
+int	ft_strcmp(char *s1, char *s2)
 {
-	in->cmd = NULL;
-	
-	if (exec_new_node_alloc(&cmd) == FAILURE)
-		return (FAILURE);
-	if (exec_new_node_alloc(&in->cmd) == FAILURE)
-		return (FAILURE);
-	if (exec_list_create(&in->cmd, expand_cmdline) == FAILURE)
-		return (FAILURE);
-	launch_execution(in->cmd);
+	int	i;
+
+	i = 0;
+	while (s1[i] && s2[i] && s1[i] == s2[i])
+		i++;
+	return (s1[i] - s2[i]);
 }

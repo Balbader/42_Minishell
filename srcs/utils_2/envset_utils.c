@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 10:54:52 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/21 10:55:08 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/27 15:44:41 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int ft_printenv(t_env *env)
     return (SUCCESS);
 }
 
+/*
 t_env *env_create(char **env)
 {
     t_env *env_list = NULL;
@@ -60,16 +61,19 @@ t_env *env_create(char **env)
     }
     return (head); 
 }
+*/
 
 t_env **get_env(char **env)
 {
-    static t_env *env_list = NULL;
+/*    static t_env *env_list = NULL;
 
     if (env_list == NULL && env != NULL)
     {
         env_list = env_create(env);
     }
     return (&env_list);
+*/
+	return (ft_get_env(env));
 }
 
 
