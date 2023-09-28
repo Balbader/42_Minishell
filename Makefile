@@ -95,7 +95,16 @@ BUILT				:=	$(addprefix $(BUILT_DIR), $(BUILT_SRCS))
 # EXEC FILES
 
 EXEC_DIR			:=	exec/
-EXEC_FILES			:=
+EXEC_FILES			:= \
+					   exec.c \
+					   exec_fork.c \
+					   exec_heredoc.c \
+					   exec_init.c \
+					   exec_list_utils.c \
+					   exec_rdir.c \
+					   exec_utils.c \
+					   exec_utils2.c \
+					   launch_execution.c
 EXEC				:=	$(addprefix $(EXEC_DIR), $(EXEC_FILES))
 
 
@@ -140,6 +149,7 @@ UTILS_FILES			:=	\
 						ft_free_cmd.c \
 						ft_free_tabs.c \
 						ft_get_tab_len.c \
+						ft_join_all_str.c \
 						ft_print_cmd_error.c \
 						ft_print_error_msg.c \
 						ft_print_exit_error.c \
