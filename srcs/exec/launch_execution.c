@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 11:20:50 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/28 16:34:55 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/28 16:48:28 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	do_process(t_cmd *cmd)
 	}
 }
 
-void	lauch_execution(t_cmd *cmd)
+void	launch_execution(t_cmd *cmd)
 {
 	t_cmd	*head;
 	bool	error_found;

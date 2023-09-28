@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 17:43:18 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/28 14:00:22 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/28 16:59:25 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	exec_child(t_cmd *cmd, t_cmd *start)
 	char	*path;
 
 	cmd_tab = convert_arg_to_tab(cmd->args);
-	env_tab = ft_convert_env_to_tab(*get_env(0)); 
+	env_tab = ft_convert_env_to_tab(*ft_get_env(0, 0, 0)); 
 	path = init_path(cmd_tab[0], env_tab);
 	if (cmd->fd[IN] != STDIN_FILENO)
 	{
