@@ -130,7 +130,8 @@ SIG_FILES			:=	\
 SIG					:=	$(addprefix $(SIG_DIR), $(SIG_FILES))
 
 UTILS_DIR			:=	utils/
-UTILS_FILES		:=	\
+UTILS_FILES			:=	\
+						free_2_str.c \
 						ft_add_slash.c \
 						ft_check_cmd_for_builtins.c \
 						ft_del_tokens.c \
@@ -146,8 +147,10 @@ UTILS_FILES		:=	\
 						ft_print_redir_error.c \
 						ft_print_sig_error.c \
 						ft_print_unset_error.c \
-						quote_utils.c \
-						ft_run_builtins.c
+						ft_run_builtins.c \
+						get_tab_len.c \
+						join_free.c \
+						quote_utils.c
 UTILS				:=	$(addprefix $(UTILS_DIR), $(UTILS_FILES))
 
 
