@@ -49,7 +49,10 @@ ENV_FILES			:=	\
 						ft_get_env.c \
 						ft_get_env_len.c \
 						ft_get_env_utils.c \
+						ft_get_key_section.c \
 						ft_get_last_env.c \
+						ft_get_value_len.c \
+						ft_get_value_section.c \
 						ft_modif_shlvl.c
 ENV					:=	$(addprefix $(ENV_DIR), $(ENV_FILES))
 
