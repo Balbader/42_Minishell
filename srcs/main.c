@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 13:34:07 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/29 10:12:59 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/29 14:09:30 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,6 @@ int	main(int ac, char **av, char **env)
 		return (0);
 	env_lst = NULL;
 	env_lst = *ft_get_env(env, 0, 0);
-	printf("TEST ENV\n");
-//	print_env(env_lst);
 	ft_init_signal(false);
 	if (display_prompt(in) != SUCCESS)
 		ft_putstr_fd("Something wrong happened forcing Minishell to stop!\n", 2);

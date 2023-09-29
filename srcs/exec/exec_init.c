@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 16:52:56 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/29 14:04:38 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/29 14:20:28 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ int	exec_list_create(t_cmd **cmd, t_token *expand_cmdline)
 		ptr = ptr->next;	
 	}
 	*cmd = head;
+//*--------------------------DEBUG-----------------------*//
+//ft_printenv(*ft_get_env(0, 0, 0));
 print_cmd_nodes(*cmd);
 printf("END OF TEST BEFORE EXEC\n\n\n\n\n");
 	return (SUCCESS);
