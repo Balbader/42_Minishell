@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 11:20:50 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/29 15:24:16 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/29 16:19:39 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	do_process(t_cmd *cmd)
 
 	while (cmd != 0)
 	{
-		signal(SIGINT, SIG_IGN);//replace by actual fnction
+		signal(SIGINT, SIG_IGN);
 		if (cmd->pid > 0)
 			do_child_wait(cmd->pid);
 		ft_init_signal(false);
