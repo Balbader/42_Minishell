@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 14:54:04 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/29 13:36:36 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/29 14:34:13 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	append_rdir_node(t_cmd **cmd, t_token *expand_cmdline)
 		(*cmd)->rdir = cmdline_new_node(expand_cmdline->word);
 	else if (append_cmd_node((*cmd)->rdir, expand_cmdline->word) == FAILURE)
 		return (FAILURE);
-	last = goto_last_node((*cmd)->args);
+	last = goto_last_node((*cmd)->rdir);
 	last->type = expand_cmdline->type;
 	return (SUCCESS);
 }
