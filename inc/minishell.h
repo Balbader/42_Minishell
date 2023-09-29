@@ -6,7 +6,7 @@
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 10:27:19 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/28 16:53:55 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/29 13:58:36 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,8 @@ void		substitute_word(t_token *cmd_line, char *substitute);
 *******************************************************************************
 */
 void		addback_exec_node(t_cmd *cmd, t_cmd *new);
-int			append_rdir_node(t_cmd *cmd, t_token *expand_cmdline);
-int			append_args_node(t_cmd *cmd, t_token *expand_cmdline);
+int			append_rdir_node(t_cmd **cmd, t_token *expand_cmdline);
+int			append_args_node(t_cmd **cmd, t_token *expand_cmdline);
 void		close_fdtab(t_cmd *cmd);
 char		*copy_path(char **envp);
 int			create_heredoc(int type);
@@ -245,6 +245,8 @@ char    	**loop_joinf(char **split_path, char *charset);
 
 //DEBUG
 int ft_printenv(t_env *env);
-int 		set_sigval(int new_sig);
+void    print_cmd_nodes(t_cmd *cmd);
+void    print_all_words(t_token *cmd_line);
+char    *str_token(t_type token);
 
 #endif // !MINISHELL_H

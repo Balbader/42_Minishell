@@ -6,7 +6,7 @@
 #    By: baalbade <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/08 10:43:48 by baalbade          #+#    #+#              #
-#    Updated: 2023/09/28 15:13:38 by ftuernal         ###   ########.fr        #
+#    Updated: 2023/09/29 14:01:21 by ftuernal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -143,6 +143,7 @@ SIG					:=	$(addprefix $(SIG_DIR), $(SIG_FILES))
 
 UTILS_DIR			:=	utils/
 UTILS_FILES			:=	\
+						debug_functions.c \
 						dump_add.c \
 						dump_del.c \
 						free_2_str.c \

@@ -6,56 +6,61 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 16:52:56 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/28 17:56:13 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/29 14:04:38 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-//exec_list
-
 int	exec_new_node_alloc(t_cmd **cmd)
 {
-	t_cmd	*tmp;
-
-	tmp = ft_calloc(1, sizeof(t_cmd));
-	if (!tmp)
+	*cmd = ft_calloc(1, sizeof(t_cmd));
+	if (!cmd)
 		return (FAILURE);
-	tmp->args = NULL;
-	tmp->rdir = NULL;
-	tmp->next = NULL;
-	tmp->fd[IN] = STDIN_FILENO;
-	tmp->fd[OUT] = STDOUT_FILENO;
-	tmp->pid = 0;
-	addback_exec_node(*cmd, tmp);
+	(*cmd)->args = NULL;
+	(*cmd)->rdir = NULL;
+	(*cmd)->next = NULL;
+	(*cmd)->fd[IN] = STDIN_FILENO;
+	(*cmd)->fd[OUT] = STDOUT_FILENO;
+	(*cmd)->pid = 0;
+	(*cmd)->next = NULL;
 	return (SUCCESS);
+}
+
+static int	exec_list_args_append(t_cmd **cmd, t_token *ptr)
+{
+	int	ret;
+
+	ret = SUCCESS;
+	if (ptr->type == WORD)
+		ret = append_args_node(cmd, ptr);
+	else
+		ret = append_rdir_node(cmd, ptr);
+	return (ret);
 }
 
 int	exec_list_create(t_cmd **cmd, t_token *expand_cmdline)
 {
 	t_token	*ptr;
 	t_cmd	*head;
-	int		ret;
 
-printf("coucou\n");
 	ptr = expand_cmdline;
 	head = *cmd;
 	while (ptr != NULL)
 	{
 		if (ptr->type == PIPE)
 		{
-			if (exec_new_node_alloc(cmd) == FAILURE)
+			if (exec_new_node_alloc(&(*cmd)->next) == FAILURE)
 				return (FAILURE);
 			*cmd = (*cmd)->next;
 		}
-		else if (ptr->type == WORD)
-			ret = append_args_node(*cmd, ptr);
 		else
-			ret = append_rdir_node(*cmd, ptr);
-		if (!(*cmd) || ret == FAILURE)
-			return (FAILURE);
-		ptr = ptr->next;
+			if (exec_list_args_append(cmd, ptr) == FAILURE)
+				return (FAILURE);
+		ptr = ptr->next;	
 	}
 	*cmd = head;
+print_cmd_nodes(*cmd);
+printf("END OF TEST BEFORE EXEC\n\n\n\n\n");
 	return (SUCCESS);
 }

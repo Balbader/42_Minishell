@@ -6,13 +6,23 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 13:34:07 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/28 11:31:43 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/09/29 10:12:59 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 int	g_error;
+
+static void	init_in(t_data **in)
+{
+	*in = ft_calloc(1, sizeof(t_data));
+	if (!(*in))
+		return ;
+	(*in)->input = NULL;
+	(*in)->cmd_line = NULL;
+	(*in)->cmd = NULL;
+}
 
 int	display_prompt(t_data *in)
 {
@@ -37,11 +47,14 @@ int	main(int ac, char **av, char **env)
 	t_data	*in;
 	t_env	*env_lst;
 
-	in = NULL;
-	env_lst = NULL;
 	(void) av;
 	if (ac != 1)
 		return (0);
+	in = NULL;
+	init_in(&in);
+	if (!in)
+		return (0);
+	env_lst = NULL;
 	env_lst = *ft_get_env(env, 0, 0);
 	printf("TEST ENV\n");
 //	print_env(env_lst);
