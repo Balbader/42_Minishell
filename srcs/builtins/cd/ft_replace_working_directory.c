@@ -30,8 +30,10 @@ void	ft_replace_working_directory(void)
 	o_wd = ft_strjoin(old_pwd, o_wd);
 	ft_del_from_env("OLDPWD");
 	ft_add_to_env(o_wd);
+	// printf("------------------>OLDPWD : %s\n", o_wd);
 	free(o_wd);
 	ft_del_from_env("PWD");
 	ft_add_to_env(wd);
+	// printf("------------------>WD : %s\n", wd);
 	free(wd);
 }
