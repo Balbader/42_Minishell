@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 16:49:15 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/28 14:25:37 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/10/02 11:21:48 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,50 +31,49 @@ char	**convert_arg_to_tab(t_token *arg)
 	return (cmd_tab);
 }
 
-char	*copy_path(char **envp)
+char	*copy_path(void)
 {
-	int		i;
-	char	*path_copy;
+	t_env	*cur_env;
+	t_env	*ptr;
 
-	i = 0;
-	while (envp[i] != 0)
+	cur_env = *ft_get_env(0, 0, 0);
+	if (!cur_env)
+		return (NULL);
+	ptr = cur_env;
+	while (ptr != 0)
 	{
-		if (ft_strncmp(envp[i], "PATH=", 5) == 0)
-		{
-			path_copy = ft_strdup(envp[i] + 5);
-			return (path_copy);
-		}
-		i++;
+		if (ft_strncmp(ptr->key, "PATH", 4) == 0)
+			return (ptr->value);
+		ptr = ptr->next;
 	}
 	return (NULL);
 }
 
-char	**create_path(char **envp)
+char	**create_path(void)
 {
-	char	*strdup_path;
+	char	*path_cpy;
 	char	**split_path;
 	char	**comp_path;
 
-	if (envp == NULL)
+	path_cpy = copy_path();
+	if (!path_cpy)
 	{
-		ft_putstr_fd("envp error\n", 2);
-		exit(127);
+		printf("Error occurred finding path!\n");
+		return (NULL);
 	}
-	strdup_path = copy_path(envp);
-	split_path = ft_split(strdup_path, ':');
+	split_path = ft_split(path_cpy, ':');
 	comp_path = loop_joinf(split_path, "/");
-	free(strdup_path);
 	return (comp_path);
 }
 
-char	*init_path(char *cmd, char **envp)
+char	*init_path(char *cmd)
 {
 	char	**paths;
 	char	*individual_path;
 	t_list	*dump;
 	int		i;
 
-	paths = create_path(envp);
+	paths = create_path();
 	dump = ft_calloc(1, sizeof(t_list));
 	add_str_to_dump(paths, dump);
 	i = 0;
