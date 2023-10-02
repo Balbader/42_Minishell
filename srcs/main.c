@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 13:34:07 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/10/02 13:56:27 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/10/02 18:12:33 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ int	display_prompt(t_data *in)
 			if (expand(in->cmd_line) == SUCCESS)
 				exec(in);
 		}
+		else
+			ft_putstr_fd("\n", 1);
 		add_history(in->input);
 		rl_on_new_line();//do I need that function to respawn the readline ?
 		free(in->input);//do I need to keep input allocated to get history

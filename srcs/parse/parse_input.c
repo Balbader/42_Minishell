@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 14:48:01 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/10/02 13:29:49 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/10/02 18:08:49 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 //objective is to separate meaningfull chunks to pass i tto the exec module
 int	parse_input(t_data *in/*, char **env*/)
 {
-	if (!in->input)
+	if (!in->input || in->input[0] == '\0')
 		return (FAILURE);
 //	if (alloc_parse_struct(in) == FAILURE)
 //		return (FAILURE);
