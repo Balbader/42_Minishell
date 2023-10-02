@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 13:23:33 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/28 12:14:44 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/10/02 18:17:50 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ char	*expand_var(char *word)
 	i = -1;
 	while (split[++i])
 	{
+printf("split = %s\n", split[i]);
 		if (ft_isspace((*split)[i]) != 0 || (*split)[i] == '\0')
 			new_word[i] = ft_strjoin("$", split[i]);
 		else if (ft_isspace((*split)[i]) == 0)

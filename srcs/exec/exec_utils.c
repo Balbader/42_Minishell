@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 16:49:15 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/10/02 18:01:54 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/10/02 18:26:41 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ char	*init_path(char *cmd)
 		i++;
 	}
 	dump_del(dump);
-	return (0);
+	return (cmd);
 }
 
 char	*expand_heredoc_var(char *line)

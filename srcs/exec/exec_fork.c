@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 17:43:18 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/10/02 18:00:30 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/10/02 18:32:35 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,9 @@ int	exec_child(t_cmd *cmd, t_cmd *start)
 	{
 		ft_init_signal(true);
 		execve(path, cmd_tab, env_tab);
+		perror("");
 	}
-	return (FAILURE);
+	return (exit(EXIT_FAILURE), FAILURE);
 }
 
 void	trim_path(t_token **args)
