@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 16:49:15 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/10/02 16:43:21 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/10/02 18:01:54 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,8 @@ char	*init_path(char *cmd)
 	t_list	*dump;
 	int		i;
 
+	if (ft_strchr(cmd, '/') != 0)
+		return (cmd);
 	paths = create_path();
 	dump = ft_calloc(1, sizeof(t_list));
 	add_str_to_dump(paths, dump);
