@@ -6,7 +6,7 @@
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 18:58:40 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/28 18:58:42 by baalbade         ###   ########.fr       */
+/*   Updated: 2023/10/02 11:20:38 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*ft_get_key_section(char *var, char *key)
 	if (!key)
 		return (NULL);
 	i = 0;
-	while (i < key_len - 1)
+	while (i < key_len)
 	{
 		key[i] = var[i];
 		++i;

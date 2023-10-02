@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 16:49:15 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/10/02 11:21:48 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/10/02 14:03:46 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ char	*init_path(char *cmd)
 	t_list	*dump;
 	int		i;
 
+printf("hi path = '%s'\n", cmd);
 	paths = create_path();
 	dump = ft_calloc(1, sizeof(t_list));
 	add_str_to_dump(paths, dump);

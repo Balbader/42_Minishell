@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 13:34:07 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/29 14:09:30 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/10/02 13:56:27 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,12 @@ static void	init_in(t_data **in)
 
 int	display_prompt(t_data *in)
 {
-	while (1) //replace by signal management
+	while (1)
 	{
 		ft_putstr_fd("$> ", 1);
 		in->input = readline("");
+		if (in->input == NULL)
+			break ;
 		if (parse_input(in) == SUCCESS)
 		{
 			if (expand(in->cmd_line) == SUCCESS)

@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 10:58:03 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/28 11:55:37 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/10/02 13:29:08 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ bool	check_quotes(char *input)
 	bool	doubl_open;
 	int		i;
 
+	if (!input)
+		return (false);
 	i = -1;
 	singl_open = false;
 	doubl_open = false;

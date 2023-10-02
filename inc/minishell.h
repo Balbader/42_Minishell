@@ -6,7 +6,7 @@
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 10:27:19 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/29 13:58:36 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/10/02 11:12:05 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,9 +97,9 @@ void		addback_exec_node(t_cmd *cmd, t_cmd *new);
 int			append_rdir_node(t_cmd **cmd, t_token *expand_cmdline);
 int			append_args_node(t_cmd **cmd, t_token *expand_cmdline);
 void		close_fdtab(t_cmd *cmd);
-char		*copy_path(char **envp);
+char		*copy_path(void);
 int			create_heredoc(int type);
-char		**create_path(char **envp);
+char		**create_path(void);
 char		**convert_arg_to_tab(t_token *arg);
 void		do_child_wait(int pid);
 void		do_pipe(t_cmd **cmd);
@@ -121,7 +121,7 @@ int 		get_arg_len(t_token *arg);
 t_cmd		*goto_exec_last_node(t_cmd *head);
 int			heredoc_expand(t_token *rdir);
 int			heredoc_no_expand(t_token *rdir);
-char		*init_path(char *cmd, char **envp);
+char		*init_path(char *cmd);
 void		launch_execution(t_cmd *cmd);
 void		rm_command_node(t_cmd **head, t_cmd *rm_node);
 

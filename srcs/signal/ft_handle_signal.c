@@ -6,7 +6,7 @@
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 12:32:59 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/26 12:33:10 by baalbade         ###   ########.fr       */
+/*   Updated: 2023/10/02 10:06:25 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	ft_handle_signal(int sig)
 	{
 		g_error = 130;
 		write(STDOUT_FILENO, "\n", 1);
+		write(STDOUT_FILENO, "$> ", 3);
 		rl_replace_line("", 1);
 		rl_on_new_line();
 		rl_redisplay();
