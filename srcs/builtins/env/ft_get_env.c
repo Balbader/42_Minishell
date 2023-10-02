@@ -14,13 +14,10 @@
 
 t_env	**ft_get_env(char **env, char *to_add, char *to_del)
 {
-	static t_env	*list;
+	static t_env	*list = NULL;
 
 	if (env)
-	{
-		list = NULL;
 		list = ft_create_env_list(env);
-	}
 	else if (to_add)
 		ft_add_var_to_env(&list, to_add);
 	else if (to_del)
