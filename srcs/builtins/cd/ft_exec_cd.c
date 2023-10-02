@@ -24,7 +24,7 @@ int	ft_exec_cd(t_token *token, int in, int out)
 		return (g_error = 1, ft_print_error_msg(ERROR_ARG_CD), true);
 	if (!ft_find_value("PWD"))
 		ft_create_working_directory();
-	if (ft_strcmp("-", token->word))
+	if (ft_strcmp("-", token->word) == 0)
 		ft_change_working_directory();
 	else
 	{
