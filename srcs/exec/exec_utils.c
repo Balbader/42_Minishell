@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 16:49:15 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/10/02 14:03:46 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/10/02 16:43:21 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,11 @@ char	**convert_arg_to_tab(t_token *arg)
 	head = arg;
 	i = -1;
 	while (head != NULL && ++i < arg_len)
-		cmd_tab[i] = ft_strdup(arg->word);
-	cmd_tab[i] = NULL;
+	{
+		cmd_tab[i] = ft_strdup(head->word);
+		head = head->next;
+	}
+	cmd_tab[i + 1] = NULL;
 	return (cmd_tab);
 }
 
@@ -73,7 +76,6 @@ char	*init_path(char *cmd)
 	t_list	*dump;
 	int		i;
 
-printf("hi path = '%s'\n", cmd);
 	paths = create_path();
 	dump = ft_calloc(1, sizeof(t_list));
 	add_str_to_dump(paths, dump);

@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 17:43:18 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/10/02 14:23:56 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/10/02 16:33:22 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ int	exec_child(t_cmd *cmd, t_cmd *start)
 	if (path)
 	{
 		ft_init_signal(true);
+		printf("%s\n", cmd_tab[0]);
+		printf("%s\n", cmd_tab[1]);
 		execve(path, cmd_tab, env_tab);
 	}
 	return (FAILURE);
