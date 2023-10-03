@@ -164,6 +164,7 @@ UTILS_FILES			:=	\
 						ft_print_sig_error.c \
 						ft_print_unset_error.c \
 						ft_run_builtins.c \
+						ft_strchr_bool.c \
 						get_tab_len.c \
 						join_free.c \
 						loop_joinf.c \
