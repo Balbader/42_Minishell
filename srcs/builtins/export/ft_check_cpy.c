@@ -15,9 +15,9 @@
 int	ft_check_cpy(char **cpy)
 {
 	while (*(*cpy) != '=' && *(*cpy))
-		++(*cpy);
+		(*cpy)++;
 	if (!*(*cpy))
 		return (false);
-	++(*cpy);
+	(*cpy)++;
 	return (true);
 }
