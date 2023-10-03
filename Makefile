@@ -66,6 +66,7 @@ EXIT				:=	$(addprefix $(EXIT_DIR), $(EXIT_FILES))
 EXPORT_DIR			:=	export/
 EXPORT_FILES		:=	\
 						ft_check_cpy.c \
+						ft_copy_key_and_equal.c \
 						ft_does_value_exist.c \
 						ft_exec_export.c \
 						ft_get_key.c \
