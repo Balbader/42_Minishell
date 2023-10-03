@@ -12,7 +12,7 @@
 
 #include "minishell.h"
 
-char	*ft_add_var_to_env(t_env **env, char *add)
+char	*ft_add_var_to_env(t_env **env, char *to_add)
 {
 	t_env	*new;
 
@@ -22,7 +22,7 @@ char	*ft_add_var_to_env(t_env **env, char *add)
 		if (!(*env))
 			return (NULL);
 		(*env)->next = NULL;
-		(*env)->var = ft_strdup(add);
+		(*env)->var = ft_strdup(to_add);
 		(*env)->key = ft_get_key_section((*env)->var, (*env)->key);
 		(*env)->value = ft_get_value_section((*env)->var, (*env)->value);
 		return ((*env)->var);
@@ -34,7 +34,7 @@ char	*ft_add_var_to_env(t_env **env, char *add)
 			return (NULL);
 	}
 	ft_get_last_env(*env)->next = new;
-	new->var = ft_strdup(add);
+	new->var = ft_strdup(to_add);
 	new->key = ft_get_key_section(new->var, new->key);
 	new->value = ft_get_value_section(new->var, new->value);
 	new->next = NULL;
