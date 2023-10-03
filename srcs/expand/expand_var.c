@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 13:23:33 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/10/02 18:17:50 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/10/03 12:02:42 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,15 +93,37 @@ char	*replace_var_by_value(char *ptr)
 	return (new_str);
 }
 
+char	*relace_var_by_value(char *str, int i)
+{
+	
+}
+
 char	*expand_var(char *word)
 {
-	int		i;
+	int		start;
+	int		end;
 	char	**split;
 	char	**new_word;
 	char	*join_word;
 
 	if (ft_strchr(word, '$') == 0)
 		return (word);
+	start = -1;
+	while (word[++start])
+	{
+		if (word[start] == '$')
+		{
+			end = start;
+			while (ft_isspace(word[start] ==))
+		}
+	}
+
+
+
+
+
+
+
 	split = ft_split(word, '$');
 	if (!split)
 		return (NULL);
@@ -111,7 +133,6 @@ char	*expand_var(char *word)
 	i = -1;
 	while (split[++i])
 	{
-printf("split = %s\n", split[i]);
 		if (ft_isspace((*split)[i]) != 0 || (*split)[i] == '\0')
 			new_word[i] = ft_strjoin("$", split[i]);
 		else if (ft_isspace((*split)[i]) == 0)
