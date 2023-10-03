@@ -13,7 +13,7 @@
 #include "minishell.h"
 
 /*
- * Searches the value of the givev var in env
+ * Searches the value of the given var in env
  * if found, returns a pointer to the begining of tha value which is the string
  * starting after the '=' character.
  * if not found, returns NULL;
