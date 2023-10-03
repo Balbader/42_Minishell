@@ -29,7 +29,7 @@ int	ft_exec_export(t_token *token)
 		if (!ft_check_cpy(&cpy))
 			return (true);
 		cpy = ft_strdup(cpy);
-		new_key = ft_get_key(token->word);
+		new_key = ft_copy_key_and_equal(token->word, new_key);
 		free(token->word);
 		ft_does_value_exist(new_key);
 		token->word = ft_strjoin(new_key, cpy);
