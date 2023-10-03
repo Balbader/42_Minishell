@@ -35,7 +35,8 @@ int	ft_exec_export(t_token *token)
 		token->word = ft_strjoin(new_key, cpy);
 		free(new_key);
 		free(cpy);
-		token = (ft_add_to_env(token->word), token->next);
+		token = ft_add_to_env(token->word);
+		token = token->next;
 	}
 	return (true);
 }
