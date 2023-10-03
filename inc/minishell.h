@@ -157,6 +157,7 @@ t_env		**ft_get_all_env(void);
 int			ft_check_cpy(char **cpy);
 int			ft_get_key_len(char *var);
 char		*ft_get_key(char *var);
+char		*ft_copy_key_and_equal(char *var, char *new_key);
 void		ft_does_value_exist(char *var);
 
 // -----------------------------------------------------------------------unset
