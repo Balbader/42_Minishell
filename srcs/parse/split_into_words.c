@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 11:51:09 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/10/04 17:46:09 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/10/04 20:17:12 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,6 @@ int	set_end_word_2(char *line, int start)
 			break ;
 		start++;
 	}
-	if (start < (int)ft_strlen(line) && ft_isspace(line[start]))
-		start += 1;
 	return (start);
 }
 

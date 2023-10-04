@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 17:43:18 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/10/02 18:32:35 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/10/04 20:43:06 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,21 +41,6 @@ int	exec_child(t_cmd *cmd, t_cmd *start)
 	return (exit(EXIT_FAILURE), FAILURE);
 }
 
-void	trim_path(t_token **args)
-{
-	char	*trim_path;
-
-	trim_path = ft_strtrim((*args)->word, " ");
-	if (!trim_path)
-	{
-		ft_putstr_fd("Error with trimming path\n", STDERR_FILENO);
-		return ;
-	}
-	free((*args)->word);
-	(*args)->word = NULL;
-	(*args)->word = trim_path;
-}
-
 void	exec_fork(t_cmd *cmd, t_cmd *start)
 {
 	pid_t	pid;
@@ -63,7 +48,6 @@ void	exec_fork(t_cmd *cmd, t_cmd *start)
 	g_error = 0;
 	if (!cmd)
 		return ;
-	trim_path(&cmd->args);
 	pid = fork();
 	if (pid == -1)
 		ft_print_error_msg(ERROR_FORK);

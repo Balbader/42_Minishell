@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 14:54:04 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/10/03 17:22:41 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/10/04 20:22:47 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int	append_args_node(t_cmd **cmd, t_token *expand_cmdline)
 	rl_clear_history();
 	// close(0);
 	// return (SUCCESS);
-	exit(119);
 	last = goto_last_node((*cmd)->args);
 	last->type = expand_cmdline->type;
 	return (SUCCESS);
