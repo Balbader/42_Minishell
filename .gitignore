@@ -5,7 +5,7 @@
 # Executable files
 a.out
 *.exe
-./minishell
+minishell
 
 # Ignore editor/IDE specific files
 *.swp
