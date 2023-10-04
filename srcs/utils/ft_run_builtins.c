@@ -31,7 +31,10 @@ int	ft_run_builtins(char *path, t_cmd *cmd)
 	else if (ft_strcmp(trim_path, "env") == 0)
 		exec = ft_exec_env(cmd->fd[1]);
 	else if (ft_strcmp(trim_path, "exit") == 0)
+	{
+		free(trim_path);
 		exec = ft_exec_exit(cmd->args->next, cmd);
+	}
 	free(trim_path);
 	return (exec);
 }

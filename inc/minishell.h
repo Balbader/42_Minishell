@@ -52,16 +52,16 @@ void		addback_cmdline_node(t_token **cmd_line, t_token *new);
 int			append_cmd_node(t_token *cmd_line, char *line);
 bool		check_quotes(char *input);
 int			count_token(char *line);
-void		delall(t_data *in);
+// void		delall(t_data *in);
 t_token		*cmdline_new_node(char *input);
 t_token		*goto_last_node(t_token *ptr);
-int			parse_input(t_data *in);
+int			parse_input(char *in);
 int 		parsing_verif(t_token *cmd_line);
 bool		quote_on(const char *input, int index);
 char 		**sep_cmdline(char *line);
 int 		set_end_word(char *line, int start);
 int 		set_start_word(char *line, int i);
-int			split_into_words(t_data *in);
+int			split_into_words(char *in);
 void		strerr_parsing(char *str);
 void	    tokenizer(t_token *cmd_line);
 int			verif_last_token(t_type last_token, t_type type);
@@ -109,12 +109,12 @@ char		**convert_arg_to_tab(t_token *arg);
 void		do_child_wait(int pid);
 void		do_pipe(t_cmd **cmd);
 void		do_process(t_cmd *cmd);
-void		exec(t_data *in);
+void		exec(t_token *in);
 int			exec_child(t_cmd *cmd, t_cmd *start);
 void		exec_fork(t_cmd *cmd, t_cmd *start);
 void		exec_heredoc_failure(int fd_save);
 int			exec_list_create(t_cmd **cmd, t_token *expand_cmdline);
-int			exec_new_node_alloc(t_cmd **cmd);
+int 		exec_new_node_alloc(t_cmd **cmd);
 int			exec_rdir_append(t_cmd *cmd);
 int			exec_rdir(t_cmd *cmd);
 int			exec_rdir_heredoc(t_cmd *cmd);
@@ -129,7 +129,7 @@ int			heredoc_no_expand(t_token *rdir);
 char		*init_path(char *cmd);
 void		launch_execution(t_cmd *cmd);
 void		rm_command_node(t_cmd **head, t_cmd *rm_node);
-
+void		ft_del_t_cmd(t_cmd *cmd);
 
 /*
 *******************************************************************************

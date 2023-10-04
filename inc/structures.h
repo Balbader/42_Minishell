@@ -54,7 +54,6 @@ enum	e_fd
 
 typedef struct s_token
 {
-	struct s_data	*in;
 	char			*word;
 	t_type			type;
 	struct s_token	*next;
@@ -78,12 +77,12 @@ typedef struct	s_cmd
 	struct s_cmd	*next;
 }				t_cmd;
 
-typedef struct s_data
-{
-	char	*input;
-	t_token	*cmd_line;
-	t_env	**env;
-	t_cmd	*cmd;
-	bool	subgect_flag;
-}	t_data;
+// typedef struct s_data
+// {
+// 	char	*input;
+// 	t_token	*cmd_line;
+// 	t_env	**env;
+// 	t_cmd	*cmd;
+// 	bool	subgect_flag;
+// }	t_data;
 #endif // !STRUCTURES_H

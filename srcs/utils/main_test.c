@@ -35,18 +35,18 @@ void	print_all_words(t_token *cmd_line)
 	}
 }
 
-void	delall(t_data *in)
-{
-	t_token	*ptr;
+// void	delall(t_data *in)
+// {
+// 	t_token	*ptr;
 
-	while (in->cmd_line != NULL)
-	{
-		free(in->cmd_line->word);
-		ptr = in->cmd_line;
-		in->cmd_line = in->cmd_line->next;
-		free(ptr);
-	}
-}
+// 	while (in->cmd_line != NULL)
+// 	{
+// 		free(in->cmd_line->word);
+// 		ptr = in->cmd_line;
+// 		in->cmd_line = in->cmd_line->next;
+// 		free(ptr);
+// 	}
+// }
 
 int	main(int ac, char **av, char **envp)
 {

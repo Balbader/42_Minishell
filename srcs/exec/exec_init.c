@@ -27,22 +27,27 @@ int	exec_new_node_alloc(t_cmd **cmd)
 	return (SUCCESS);
 }
 
-static int	exec_list_args_append(t_cmd **cmd, t_token *ptr)
+static void	exec_list_args_append(t_cmd **cmd, t_token *ptr)
 {
-	int	ret;
-
-	ret = SUCCESS;
+	ptr->next = NULL;
 	if (ptr->type == WORD)
-		ret = append_args_node(cmd, ptr);
+		if ((*cmd)->args)
+			goto_last_node((*cmd)->args)->next = ptr;
+		else
+			(*cmd)->args = ptr;
 	else
-		ret = append_rdir_node(cmd, ptr);
-	return (ret);
+		if ((*cmd)->rdir)
+			goto_last_node((*cmd)->rdir)->next = ptr;
+		else
+			(*cmd)->rdir = ptr;
+	return ;
 }
 
 int	exec_list_create(t_cmd **cmd, t_token *expand_cmdline)
 {
 	t_token	*ptr;
 	t_cmd	*head;
+	t_token *tmp;
 
 	ptr = expand_cmdline;
 	head = *cmd;
@@ -50,14 +55,18 @@ int	exec_list_create(t_cmd **cmd, t_token *expand_cmdline)
 	{
 		if (ptr->type == PIPE)
 		{
-			if (exec_new_node_alloc(&(*cmd)->next) == FAILURE)
+			if (exec_new_node_alloc(&(*cmd)->next) == false)
 				return (FAILURE);
 			*cmd = (*cmd)->next;
+			ptr = ptr->next;	
 		}
 		else
-			if (exec_list_args_append(cmd, ptr) == FAILURE)
-				return (FAILURE);
-		ptr = ptr->next;	
+		{
+			tmp = ptr;
+			ptr = ptr->next;
+			exec_list_args_append(cmd, tmp);
+		}
+		
 	}
 	*cmd = head;
 //*--------------------------DEBUG-----------------------*//

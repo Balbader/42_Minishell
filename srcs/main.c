@@ -14,68 +14,56 @@
 
 int	g_error;
 
-void	clear_all(t_data *in)
-{
-	if (in->cmd_line)
-		ft_delete_all(&in->cmd_line);
-	if (in->cmd)
-		ft_free_cmd(in->cmd);
-	if (in->input)
-		free(in->input);
-	free(in);
-}
+// void	clear_all(t_data *in)
+// {
+// 	if (in->cmd_line)
+// 		ft_delete_all(&in->cmd_line);
+// 	if (in->cmd)
+// 		ft_free_cmd(in->cmd);
+// 	if (in->input)
+// 		free(in->input);
+// 	free(in);
+// }
 
-static void	init_in(t_data **in)
+int	display_prompt(void)
 {
-	*in = ft_calloc(1, sizeof(t_data));
-	if (!(*in))
-		return ;
-	(*in)->input = NULL;
-	(*in)->cmd_line = NULL;
-	(*in)->cmd = NULL;
-}
-
-int	display_prompt(t_data *in)
-{
+	char *in;
 	while (1)
 	{
-		ft_putstr_fd("$> ", 1);
-		in->input = readline("");
-		if (in->input == NULL)
+		// ft_putstr_fd("$> ", 1);
+		in = readline("$>");
+		if (in == NULL)
 			break ;
 		if (parse_input(in) == SUCCESS)
-		{
-			if (expand(in->cmd_line) == SUCCESS)
-				exec(in);
-		}
-		else
-			ft_putstr_fd("\n", 1);
-		add_history(in->input);
+			// do nothing // BUG TO FIX
+		
+		// if (parse_input(in) == SUCCESS)
+		// {
+			// if (expand(in->cmd_line) == SUCCESS)
+			// 	exec(in);
+		// }
+		// else
+		// 	ft_putstr_fd("\n", 1);
+		add_history(in);
 		rl_on_new_line();
-		free(in->input);
+		free(in);
 	}
 	return (SUCCESS);
 }
 
 int	main(int ac, char **av, char **env)
 {
-	t_data	*in;
-	t_env	*env_lst;
+	// t_env	*env_lst;
 
 	(void) av;
 	if (ac != 1)
 		return (0);
-	in = NULL;
-	init_in(&in);
-	if (!in)
-		return (0);
-	env_lst = NULL;
-	env_lst = *ft_get_env(env, 0, 0);
+	ft_get_env(env, 0, 0);
 	ft_init_signal(false);
-	if (display_prompt(in) != SUCCESS)
+	if (display_prompt() != SUCCESS)
 		ft_putstr_fd("Something wrong happened forcing Minishell to stop!\n", 2);
 	ft_del_env();
-	clear_all(in);
+	// clear_all(in);
 	rl_clear_history();
 	printf("Minishell stopped normally\n");
 	return (0);

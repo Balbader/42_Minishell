@@ -28,10 +28,12 @@ int	ft_exec_exit(t_token *token, t_cmd *cmd)
 	}
 	if (ft_get_token_len(token) > 1)
 		return (g_error = 1, ft_putstr_fd(ERROR_TO_MANY, STDERR_FILENO), true);
+	printf("%zu\n", sizeof(t_cmd));
 	ft_free_cmd(cmd);
-//	ft_delete_all(&token);
+	// ft_delete_all(&token);
 	ft_del_env();
 	rl_clear_history();
-	exit(exit_value);
+	close(0);
+	// exit(exit_value);// TODO UNCOMMENT THIS
 	return (g_error = 1, true);
 }

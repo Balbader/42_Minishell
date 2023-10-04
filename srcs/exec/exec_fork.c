@@ -31,7 +31,7 @@ int	exec_child(t_cmd *cmd, t_cmd *start)
 		dup2(cmd->fd[OUT], STDOUT_FILENO);
 		close(cmd->fd[OUT]);
 	}
-	(void)start;
+	ft_del_t_cmd(start);
 	if (path)
 	{
 		ft_init_signal(true);

@@ -95,13 +95,13 @@ char	*expand_var(char *word)
 		if (ft_strlen(sep_word[i]) > 1 && sep_word[i][0] == '$')
 			new_word[i] = replace_var_by_value(sep_word[i]);
 		else
-			new_word[i] = sep_word[i];
+			new_word[i] = ft_strdup(sep_word[i]);
 		if (!new_word[i])
 			return (free_2_tabs(new_word, sep_word), NULL);
 	}
 	join_word = ft_join_all_str(new_word);
 	ft_free_tabs(sep_word);
-	ft_free_tabs(new_word);
+	ft_free_tabs(new_word); // BUG care danger
 	return (/*free_2_tabs(new_word, sep_word), */join_word);
 }
 /*

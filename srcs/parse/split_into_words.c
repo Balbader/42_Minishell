@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 11:51:09 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/10/04 17:40:34 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/10/04 17:46:09 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ int	set_start_word(char *line, int i)
 
 int	set_end_word_2(char *line, int start)
 {
-//		printf("start char = %c\n", line[start]);
 	int	flag;
 
 	flag = false;
@@ -70,9 +69,8 @@ int	set_end_word_2(char *line, int start)
 			start += 1;
 			break ;
 		}
-		else if ((line[start] == ' ' && quote_on(line, start) == false)
-			|| (ft_strchr("<|>&", line[start]) != 0
-			&& quote_on(line, start) == false))
+		else if ((line[start] == ' ' && quote_on(line, start) == false) ||
+			(ft_strchr("<|>&", line[start]) != 0 && quote_on(line, start) == false))
 			break ;
 		start++;
 	}
@@ -130,20 +128,21 @@ char **sep_cmdline(char *line)
 	return (tab);
 }
 
-int	split_into_words(t_data *in)
+int	split_into_words(char *in)
 {
 	char	**tab;
-
+	t_token	*token;
 	//in->cmd_line->in = in;
-	tab = sep_cmdline(in->input);
+	tab = sep_cmdline(in);
 //print_tab(tab);
 	if (!tab)
 		return (FAILURE);
-	in->cmd_line = add_all_words_nodes(tab);
+	token = add_all_words_nodes(tab);
+	// ft_free_tabs(tab);
 	free(tab);
-	if (in->cmd_line)
-		tokenizer(in->cmd_line);
-	else
+	if (!token)
 		return (FAILURE);
+	// ft_free_cmd(cmd);
+	tokenizer(token);
 	return (SUCCESS);
 }

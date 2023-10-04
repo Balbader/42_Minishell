@@ -33,6 +33,9 @@ printf("\n------WE'RE IN EXPAND-----\n\n");
 //	if (check_arglist(cmd_line) == FAILURE)
 //		return (FAILURE);
 //	else
+	// ft_del_env();
+	// exit(126);
+	exec(cmd_line);
 printf("\n------WE LEAVE EXPAND-----\n\n");
 	return (SUCCESS);
 }

@@ -12,11 +12,21 @@
 
 #include "minishell.h"
 
-void	exec(t_data *in)
+void	exec(t_token *in)
 {
-	if (exec_new_node_alloc(&in->cmd) == FAILURE)
+	t_cmd *cmd;
+
+	if (exec_new_node_alloc(&cmd) == FAILURE)
 		return ;
-	if (exec_list_create(&in->cmd, in->cmd_line) == FAILURE)
+	if (exec_list_create(&cmd, in) == FAILURE)
 		return ;
-	launch_execution(in->cmd);
+	ft_free_cmd(cmd);
+	// ft_delete_all(&cmd_line);
+	ft_del_env();
+	rl_clear_history();
+	// close(0);
+	// return (SUCCESS);
+	exit(120);
+
+	launch_execution(cmd);
 }

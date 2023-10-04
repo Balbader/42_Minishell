@@ -64,6 +64,24 @@ void	do_process(t_cmd *cmd)
 	}
 }
 
+void	ft_del_t_cmd(t_cmd *cmd)
+{
+	t_cmd *tmp;
+
+	while (cmd)
+	{
+		tmp = cmd->next;
+		ft_del_tokens(cmd->args);
+		ft_del_tokens(cmd->rdir);
+		if (cmd->fd[IN] != STDIN_FILENO)
+			close(cmd->fd[IN]);
+		if (cmd->fd[OUT] != STDOUT_FILENO)
+			close(cmd->fd[OUT]);
+		free(cmd);
+		cmd = tmp;
+	}
+}
+
 void	launch_execution(t_cmd *cmd)
 {
 	t_cmd	*head;
@@ -88,6 +106,7 @@ void	launch_execution(t_cmd *cmd)
 		if (!error_found && cmd->args && !ft_run_builtins(cmd->args->word, cmd))
 			exec_fork(cmd, head);
 		close_fdtab(cmd);
+		// TODO EXIT CODE AND CHECK FD
 		cmd = cmd->next;
 	}
 	do_process(head);

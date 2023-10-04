@@ -12,16 +12,16 @@
 
 #include "minishell.h"
 
-int	parse_input(t_data *in)
+int	parse_input(char *in)
 {
 printf("\n-------WE RE IN PARSING-------------i\n\n");
-	if (!in->input || in->input[0] == '\0')
+	if (*in == '\0')
 		return (FAILURE);
-	if (!check_quotes(in->input))
+	if (!check_quotes(in))
 		return (FAILURE);
 	if (split_into_words(in) == FAILURE)
 		return (FAILURE);
-print_all_words(in->cmd_line);
+// print_all_words(in->cmd_line);
 printf("\n-------WE LEAVE PARSING-------------i\n\n");
 	return (SUCCESS);
 }

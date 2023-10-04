@@ -53,4 +53,5 @@ void	tokenizer(t_token *cmd_line)
 		last_token = add_token(current->word, last_token);
 		current = current->next;
 	}
+	expand(cmd_line);
 }
