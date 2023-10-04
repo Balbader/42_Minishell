@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 10:59:47 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/28 14:23:26 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/10/03 17:14:17 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	exec_rdir_rout(t_cmd *cmd)
 		perror(name);
 		return (FAILURE);
 	}
-	if (cmd->fd[OUT] != 0)
+	if (cmd->fd[OUT] != 1)
 	{
 		dup2(fd, cmd->fd[OUT]);
 		close(cmd->fd[OUT]);
@@ -64,7 +64,7 @@ int	exec_rdir_append(t_cmd *cmd)
 	char	*name;
 
 	if (!cmd->rdir->next)
-		//return error management function REDIRECTION)
+		ft_print_error_msg(ERROR_RED);
 	name = cmd->rdir->next->word;
 	fd = open(name, O_WRONLY | O_APPEND | O_CREAT, 0644);
 	if (fd < 0)
@@ -85,8 +85,6 @@ int	exec_rdir(t_cmd *cmd)
 {
 	t_token	*rdir_save;
 	int		ret;
-
-	ret = SUCCESS;
 	rdir_save = cmd->rdir;
 	while (cmd->rdir != 0)
 	{

@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 11:20:50 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/10/02 18:25:17 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/10/03 17:13:34 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ void	launch_execution(t_cmd *cmd)
 				break ;
 			if (ret == FAILURE)
 				error_found = true;
+			printf("coucou from launch_exec() fd[IN] = %d fd[OUT] = %d \n", cmd->fd[IN], cmd->fd[OUT]);
 		}
 		if (!error_found && cmd->args && !ft_run_builtins(cmd->args->word, cmd))
 			exec_fork(cmd, head);
