@@ -6,7 +6,7 @@
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 10:27:24 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/28 16:37:35 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/10/04 17:35:28 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ enum	e_fd
 
 typedef struct s_token
 {
+	struct s_data	*in;
 	char			*word;
 	t_type			type;
 	struct s_token	*next;

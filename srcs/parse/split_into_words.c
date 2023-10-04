@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 11:51:09 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/19 17:11:06 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/10/04 17:40:34 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,17 +51,21 @@ int	set_start_word(char *line, int i)
 
 int	set_end_word_2(char *line, int start)
 {
+//		printf("start char = %c\n", line[start]);
+	int	flag;
+
+	flag = false;
+	if (line[start] == '\"' || line[start] == '\'')
+		flag = true;
 	while (line[start])
 	{
-		if (quote_on(line, start) == true 
-			&& (quote_on(line, start + 1) == false))
+		if (flag == true && quote_on(line, start + 1) == false)
 		{
 			start += 1;
 			break ;
 		}
-		else if ((quote_on(line, start) == false 
-			&& ft_strchr("\'\"", line[start + 1]) != 0) || 
-			(quote_on(line, start) == false && ft_isspace(line[start + 1])))
+		else if ((flag == false && ft_strchr("\'\"", line[start + 1]) != 0)
+			|| (flag == false && ft_isspace(line[start + 1]) == 1))
 		{
 			start += 1;
 			break ;
@@ -130,7 +134,9 @@ int	split_into_words(t_data *in)
 {
 	char	**tab;
 
+	//in->cmd_line->in = in;
 	tab = sep_cmdline(in->input);
+//print_tab(tab);
 	if (!tab)
 		return (FAILURE);
 	in->cmd_line = add_all_words_nodes(tab);

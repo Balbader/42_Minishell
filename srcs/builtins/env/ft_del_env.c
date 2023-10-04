@@ -6,7 +6,7 @@
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 14:59:03 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/25 12:27:49 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/10/04 16:37:25 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void	ft_del_env(void)
 		tmp = env;
 		env = env->next;
 		free(tmp->var);
-		// free(tmp->key);
-		// free(tmp->value);
+		free(tmp->key);
+		free(tmp->value);
 		free(tmp);
 	}
 }

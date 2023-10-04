@@ -6,27 +6,23 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 14:48:01 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/10/02 18:08:49 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/10/04 17:26:15 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-//objective is to separate meaningfull chunks to pass i tto the exec module
-int	parse_input(t_data *in/*, char **env*/)
+
+int	parse_input(t_data *in)
 {
+printf("\n-------WE RE IN PARSING-------------i\n\n");
 	if (!in->input || in->input[0] == '\0')
 		return (FAILURE);
-//	if (alloc_parse_struct(in) == FAILURE)
-//		return (FAILURE);
 	if (!check_quotes(in->input))
 		return (FAILURE);
-// separate in a chained list cmd_line then tokens that will be taken by exec part of the program
-// then separate each cmd_line into words
 	if (split_into_words(in) == FAILURE)
 		return (FAILURE);
-//	if (cust_getenv(in, env) != 0)
-//		return (ENV);
+print_all_words(in->cmd_line);
+printf("\n-------WE LEAVE PARSING-------------i\n\n");
 	return (SUCCESS);
-	//add functions for "" management and redirections
 }
 

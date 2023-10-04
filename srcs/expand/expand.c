@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 13:52:07 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/10/04 12:32:44 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/10/04 12:49:34 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	expand(t_token *cmd_line)
 
 	ptr = cmd_line;
 printf("\n------WE'RE IN EXPAND-----\n\n");
-print_all_words(cmd_line);
 	while (ptr != NULL)
 	{
 		if ((ptr->type == WORD || ptr->type == FD) && 
