@@ -1,9 +1,11 @@
 # Compiled object files
 *.o
+*.a
 
 # Executable files
 a.out
 *.exe
+./minishell
 
 # Ignore editor/IDE specific files
 *.swp
