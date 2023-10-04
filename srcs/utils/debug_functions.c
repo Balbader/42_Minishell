@@ -66,3 +66,15 @@ printf("-----------TEST ENV----------");
 printf("-------END TEST ENV----------");
 	return (0);
 }
+
+void	print_tab(char **tab)
+{
+	int	i;
+
+	i = 0;
+	while (tab[i])
+	{
+		printf("tab[%d] = |%s|\n", i, tab[i]);
+		i++;
+	}
+}

@@ -6,7 +6,7 @@
 #    By: baalbade <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/08 10:43:48 by baalbade          #+#    #+#              #
-#    Updated: 2023/09/29 14:01:21 by ftuernal         ###   ########.fr        #
+#    Updated: 2023/10/04 11:04:45 by ftuernal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -120,6 +120,7 @@ EXPAND_FILES		:=	\
 						expand.c \
 						expand_quote_word.c \
 						expand_var.c \
+						expand_var_utils.c \
 						quote_remove.c
 EXPAND				:=	$(addprefix $(EXPAND_DIR), $(EXPAND_FILES))
 
