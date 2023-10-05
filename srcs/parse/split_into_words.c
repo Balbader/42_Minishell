@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 11:51:09 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/10/04 20:17:12 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/10/05 09:48:25 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,20 @@ int	set_start_word(char *line, int i)
 
 int	set_end_word_2(char *line, int start)
 {
+	while (line[start])
+	{
+		if (quote_on(line, start) == false
+			&& (line[start] == ' ' || ft_strchr("<|>&", line[start] != 0)))
+			break ;
+		start++;
+	}
+	return (start);
+}
+
+
+/*
+int	set_end_word_2(char *line, int start)
+{
 	int	flag;
 
 	flag = false;
@@ -76,7 +90,7 @@ int	set_end_word_2(char *line, int start)
 	}
 	return (start);
 }
-
+*/
 int	set_end_word(char *line, int start)
 {
 	if (line[start] == 0)

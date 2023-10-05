@@ -6,7 +6,7 @@
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 14:38:59 by baalbade          #+#    #+#             */
-/*   Updated: 2023/10/04 20:41:10 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/10/05 09:01:42 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,9 @@ int	ft_exec_exit(t_token *token, t_cmd *cmd)
 	}
 	if (ft_get_token_len(token) > 1)
 		return (g_error = 1, ft_putstr_fd(ERROR_TO_MANY, STDERR_FILENO), true);
-	//ft_free_cmd(cmd);
-	//ft_del_env();
+	ft_free_cmd(cmd);
+	ft_del_env();
 	rl_clear_history();
-	close(0);
-	// exit(exit_value);// TODO UNCOMMENT THIS
+	exit(exit_value);// TODO UNCOMMENT THIS
 	return (g_error = 1, true);
 }

@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 10:59:47 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/10/03 17:14:17 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/10/05 08:53:29 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ int	exec_rdir(t_cmd *cmd)
 {
 	t_token	*rdir_save;
 	int		ret;
+
 	rdir_save = cmd->rdir;
 	while (cmd->rdir != 0)
 	{

@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 16:52:56 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/29 14:20:28 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/10/05 08:50:11 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	exec_list_create(t_cmd **cmd, t_token *expand_cmdline)
 	{
 		if (ptr->type == PIPE)
 		{
-			if (exec_new_node_alloc(&(*cmd)->next) == false)
+			if (exec_new_node_alloc(&(*cmd)->next) == FAILURE)
 				return (FAILURE);
 			*cmd = (*cmd)->next;
 			ptr = ptr->next;	
@@ -66,7 +66,6 @@ int	exec_list_create(t_cmd **cmd, t_token *expand_cmdline)
 			ptr = ptr->next;
 			exec_list_args_append(cmd, tmp);
 		}
-		
 	}
 	*cmd = head;
 //*--------------------------DEBUG-----------------------*//

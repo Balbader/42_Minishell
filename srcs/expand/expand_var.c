@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 13:23:33 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/10/04 17:32:41 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/10/05 10:46:58 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ char	*expand_var(char *word)
 	int		i;
 
 	if (ft_strchr(word, '$') == 0)
-		return (word);
+		return (ft_strdup(word));
 	sep_word = sep_in_dollar_word(word);
 	if (!sep_word)
 		return (NULL);

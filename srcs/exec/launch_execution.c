@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 11:20:50 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/10/03 17:13:34 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/10/05 08:59:57 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ void	launch_execution(t_cmd *cmd)
 	int		ret;
 
 	head = cmd;
+
 	while (cmd)
 	{
 		error_found = false;
