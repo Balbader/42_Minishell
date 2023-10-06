@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 11:51:09 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/10/05 09:48:25 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/10/06 17:38:31 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,12 +145,11 @@ int	split_into_words(char *in)
 	char	**tab;
 	t_token	*token;
 	//in->cmd_line->in = in;
+
 	tab = sep_cmdline(in);
-//print_tab(tab);
 	if (!tab)
 		return (FAILURE);
 	token = add_all_words_nodes(tab);
-	// ft_free_tabs(tab);
 	free(tab);
 	if (!token)
 		return (FAILURE);

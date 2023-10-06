@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 11:20:50 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/10/05 08:59:57 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/10/06 19:09:33 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	do_process(t_cmd *cmd)
 {
 	t_cmd	*ptr;
 
+	ptr = cmd;
 	while (cmd != 0)
 	{
 		signal(SIGINT, SIG_IGN);
@@ -62,6 +63,7 @@ void	do_process(t_cmd *cmd)
 		ft_del_tokens(ptr->rdir);
 		free(ptr);
 	}
+//ft_del_t_cmd(cmd);
 }
 
 void	ft_del_t_cmd(t_cmd *cmd)
@@ -84,31 +86,32 @@ void	ft_del_t_cmd(t_cmd *cmd)
 
 void	launch_execution(t_cmd *cmd)
 {
-	t_cmd	*head;
+	t_cmd	*ptr;
 	bool	error_found;
 	int		ret;
 
-	head = cmd;
-
-	while (cmd)
+	ptr = cmd;
+	while (ptr)
 	{
 		error_found = false;
-		if (cmd->next)
-			do_pipe(&cmd);
-		if (cmd->rdir != 0)
+		if (ptr->next)
+			do_pipe(&ptr);
+		if (ptr->rdir != 0)
 		{
-			ret = exec_rdir(cmd);
+			ret = exec_rdir(ptr);
 			if (ret == -1)
 				break ;
 			if (ret == FAILURE)
 				error_found = true;
 			printf("coucou from launch_exec() fd[IN] = %d fd[OUT] = %d \n", cmd->fd[IN], cmd->fd[OUT]);
 		}
-		if (!error_found && cmd->args && !ft_run_builtins(cmd->args->word, cmd))
-			exec_fork(cmd, head);
-		close_fdtab(cmd);
-		// TODO EXIT CODE AND CHECK FD
-		cmd = cmd->next;
+		if (!error_found && ptr->args && !ft_run_builtins(ptr->args->word, cmd))
+			exec_fork(ptr, cmd);
+		close_fdtab(ptr);
+		ptr = ptr->next;
 	}
-	do_process(head);
+//ft_del_t_cmd(cmd);
+//ft_del_env();
+//exit(1);
+	do_process(cmd);
 }

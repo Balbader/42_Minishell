@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 13:46:28 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/10/05 11:42:30 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/10/06 16:40:38 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,26 @@ void	substitute_word(t_token *cmd_line, char *substitute)
 	free(substitute);
 }
 
+/*
+int	skip_quote_char(char *str, int i)
+{
+	while (quote_on(str, i) == true)
+		i++;
+	return (i);
+}
+*/
+char	*dup_quote_word(char *word, t_quote qtype)
+{
+	int		lim;
+	char	*quote_word;
 
-/************************************************************************************************
+	lim = 1;
+	while (word[lim] && quote_on(word, lim) == qtype)
+		lim++;
+	quote_word = dup_str_until(word, lim);
+	return (quote_word);
+}
+
 int		count_quote_words(char *word)
 {
 	int		count;
@@ -43,41 +61,31 @@ int		count_quote_words(char *word)
 	return (count);
 }
 
-char	*dup_quote_word(word)
-{
-	int		lim;
-	char	*quote_word;
-
-	lim = 1;
-	while (word[lim] && quote_on(word, lim) == true)
-		lim++;
-	quote_word = dup_str_until(word, lim);
-	return (quote_word);
-}
-
 char	**sep_quote_word(char *word)
 {
-	char	*sep_str;
+	char	**sep_str;
+	t_quote	qflag;
 	int		i;
 	int		j;
 	int		count;
 
-	count = ((i = 0, j = -1, count_quote_words(word)));
+	qflag = quote_on(word, 1);
+	count = ((i = -1, j = 0, count_quote_words(word)));
 	sep_str = ft_calloc(count + 1, sizeof(char *));
 	if (!sep_str)
 		return (NULL);
-	while (++j < count && word[i])
+	while (j < count && word[++i])
 	{
-		while (quote_on(word, i) == false)
-			i++;
-		if (quote_on(word, i) == true)
-			sep_str[j] = ((i += skip_quote_char(word), dup_quote_word(word)));
-		else
-			sep_str[j] = dup_str_until(str, i);
-		if (i >= (int)ft_strlen(str))
-			break ;
-		str += i;
-		i = 0;
+		if (quote_on(word, i + 1) != qflag || word[i + 1] == '\0')
+		{
+			if (qflag == true || (qflag == false && word[i + 1] == 0))
+				i += 1;
+			sep_str[j] = dup_str_until(word, i);
+			qflag = !qflag;
+			if (i < (int)ft_strlen(word))
+				word += i;
+			j = ((i = -1), j + 1);
+		}
 	}
 	return (sep_str);
 }
@@ -87,6 +95,8 @@ char	*expand_quote_var(char *str, t_quote quote_type)
 	char	*sin_quote;
 	char	*var_expand;
 
+	if (quote_type == SQUOTE)
+		return (quote_remove(str));
 	var_expand = expand_var(str);
 	if (var_expand)
 	{
@@ -111,24 +121,25 @@ int	expand_quote_word(t_token *cmd_line, char *word)
 	sep_word = sep_quote_word(word);
 	if (!sep_word)
 		return (FAILURE);
-	sep_exp = ft_calloc(get_len(sep_word) + 1, sizeof(char *));
+print_tab(sep_word);
+	sep_exp = ft_calloc(get_tab_len(sep_word) + 1, sizeof(char *));
 	if (!sep_exp)
 		return (ft_free_tabs(sep_word), FAILURE);
 	i = -1;
 	while (sep_word[++i])
 	{
 		if (set_quote_type(sep_word[i][0]) != SQUOTE)
-			sep_exp[i] = expand_quote_var(sep_word[i]);
+			sep_exp[i] = expand_quote_var(sep_word[i], set_quote_type(sep_word[i][0]));
 		else
 			sep_exp[i] = quote_remove(sep_word[i]);
 		if (!sep_exp[i])
-			return (free_2_tabs(sep_word, sep_exp));
+			return (free_2_tabs(sep_word, sep_exp), FAILURE);
 	}
-	new_word = join_all_str(sep_exp);
+	new_word = ft_join_all_str(sep_exp);
 	free_2_tabs(sep_word, sep_exp);
 	return (substitute_word(cmd_line, new_word), SUCCESS);
-///////////////CORRECTION EXPAND_QUOTE_WORD EN COURS TO BE TESTED TODO TEST THE COMMENTED CODE
-********************************************************************************************/
+}
+/************************************************************************************************
 int	expand_quote_word(t_token *cmd_line, char *word)
 {
 	char	*tmp;
@@ -149,6 +160,7 @@ int	expand_quote_word(t_token *cmd_line, char *word)
 	free(tmp);
 	return (SUCCESS);
 }
+********************************************************************************************/
 
 int	expand_noquote_word(t_token *cmd_line, char *word)
 {

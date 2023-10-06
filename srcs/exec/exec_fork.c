@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 17:43:18 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/10/04 20:43:06 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/10/06 19:02:01 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	exec_child(t_cmd *cmd, t_cmd *start)
 		dup2(cmd->fd[OUT], STDOUT_FILENO);
 		close(cmd->fd[OUT]);
 	}
+//(void)start;
 	ft_del_t_cmd(start);
 	if (path)
 	{
@@ -38,7 +39,7 @@ int	exec_child(t_cmd *cmd, t_cmd *start)
 		execve(path, cmd_tab, env_tab);
 		perror("");
 	}
-	return (exit(EXIT_FAILURE), FAILURE);
+	return (exit(g_error), FAILURE);
 }
 
 void	exec_fork(t_cmd *cmd, t_cmd *start)
@@ -48,6 +49,10 @@ void	exec_fork(t_cmd *cmd, t_cmd *start)
 	g_error = 0;
 	if (!cmd)
 		return ;
+
+//ft_free_cmd(cmd);
+//ft_del_env();
+//exit(127);
 	pid = fork();
 	if (pid == -1)
 		ft_print_error_msg(ERROR_FORK);
@@ -55,4 +60,7 @@ void	exec_fork(t_cmd *cmd, t_cmd *start)
 		exec_child(cmd, start);
 	else
 		cmd->pid = pid;
+//ft_del_t_cmd(start);
+//ft_del_env();
+//exit(127);
 }

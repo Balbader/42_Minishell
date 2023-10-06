@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 10:37:51 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/10/04 11:57:54 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/10/06 15:54:39 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ char	*dup_str_until(char *str, int lim)
 	char	*new_str;
 
 	i = 0;
-	new_str = calloc(lim + 1, sizeof(char));
+	new_str = ft_calloc(lim + 1, sizeof(char));
 	if (!new_str)
 		return (NULL);
 	while (str[i] && i < lim)

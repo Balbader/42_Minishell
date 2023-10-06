@@ -6,7 +6,7 @@
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 10:27:19 by baalbade          #+#    #+#             */
-/*   Updated: 2023/10/04 11:15:01 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/10/06 14:50:12 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,9 @@ void		print_all_words(t_token *cmd_line);
 ******************************************************************** EXPANDER
 *******************************************************************************
 */
+int			count_quote_words(char *word);
 int			dollar_word_count(char *str);
+char		*dup_quote_word(char *word, t_quote qtype);
 char		*dup_str_until(char *str, int lim);
 char		*dup_var_word(char *str);
 int			expand(t_token *cmd_line);
@@ -88,6 +90,7 @@ bool		is_var_char(char c);
 char		*quote_remove(char *str);
 char		*replace_by_env_value(char *word);
 char		*replace_var_by_value(char *ptr);
+char		**sep_quote_wrod(char *word);
 char    	**sep_in_dollar_word(char *str);
 t_quote		set_quote_type(char quote);
 int			skip_var_char(char *str);
