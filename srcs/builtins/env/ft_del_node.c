@@ -26,6 +26,8 @@ t_env	*ft_del_node(t_env *env, char *to_del)
 		{
 			next = env->next;
 			free(env->var);
+			free(env->key);
+			free(env->value);
 			free(env);
 			prev->next = next;
 			break ;

@@ -23,7 +23,7 @@ void	ft_del_env(void)
 
 	tmp = NULL;
 	env = *ft_get_all_env();
-	while (env)
+	while (env->next)
 	{
 		tmp = env;
 		env = env->next;
@@ -32,4 +32,5 @@ void	ft_del_env(void)
 		free(tmp->value);
 		free(tmp);
 	}
+	ft_free_all_env(env);
 }
