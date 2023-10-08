@@ -53,18 +53,20 @@ int	display_prompt(void)
 
 int	main(int ac, char **av, char **env)
 {
-	// t_env	*env_lst;
+	t_env	*env_lst; /* Uncommented this variable in order to assign it the env to free it at program end */
 
 	(void) av;
 	if (ac != 1)
 		return (0);
-	ft_get_env(env, 0, 0);
+	env_lst = *ft_get_env(env, 0, 0); /* Assigned ft_get_env to a list in order to free it once the program is done => unfortunately not working*/
 	ft_init_signal(false);
 	if (display_prompt() != SUCCESS)
 		ft_putstr_fd("Something wrong happened forcing Minishell to stop!\n", 2);
+	ft_free_all_env(env_lst); /* added the ft_free_all_env function to attempt to free the env list => not working */
 	ft_del_env();
 	// clear_all(in);
 	rl_clear_history();
 	printf("Minishell stopped normally\n");
+	exit(1);
 	return (0);
 }
