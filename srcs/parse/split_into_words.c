@@ -150,6 +150,7 @@ int	split_into_words(char *in)
 	if (!tab)
 		return (FAILURE);
 	token = add_all_words_nodes(tab);
+	// ft_free_tabs(tab);
 	free(tab);
 	if (!token)
 		return (FAILURE);
