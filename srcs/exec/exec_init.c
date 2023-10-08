@@ -69,6 +69,6 @@ int	exec_list_create(t_cmd **cmd, t_token *expand_cmdline)
 	}
 	*cmd = head;
 print_cmd_nodes(*cmd);
-printf("END OF TEST BEFORE EXEC\n\n\n\n\n");
+// printf("END OF TEST BEFORE EXEC\n\n\n\n\n");
 	return (SUCCESS);
 }

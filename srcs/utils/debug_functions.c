@@ -30,7 +30,7 @@ void	print_all_words(t_token *cmd_line)
 	while (current != 0)
 	{
 		token = str_token(current->type);
-		printf("''%s'' -------------- token = %s, token %d\n", current->word, token, current->type);
+		// printf("''%s'' -------------- token = %s, token %d\n", current->word, token, current->type);
 		current = current->next;
 	}
 }
@@ -43,7 +43,7 @@ void	print_cmd_nodes(t_cmd *cmd)
 	ptr = cmd;
 	while (ptr != NULL)
 	{
-		printf("-----CMD_NODE[%d]-----\n", i);
+		// printf("-----CMD_NODE[%d]-----\n", i);
 		if (ptr->args)
 			print_all_words(cmd->args);
 		if (ptr->rdir)

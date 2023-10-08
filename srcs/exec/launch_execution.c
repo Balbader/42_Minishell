@@ -103,7 +103,7 @@ void	launch_execution(t_cmd *cmd)
 				break ;
 			if (ret == FAILURE)
 				error_found = true;
-			printf("coucou from launch_exec() fd[IN] = %d fd[OUT] = %d \n", cmd->fd[IN], cmd->fd[OUT]);
+			// printf("coucou from launch_exec() fd[IN] = %d fd[OUT] = %d \n", cmd->fd[IN], cmd->fd[OUT]);
 		}
 		if (!error_found && ptr->args && !ft_run_builtins(ptr->args->word, cmd))
 			exec_fork(ptr, cmd);
