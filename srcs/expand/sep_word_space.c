@@ -118,43 +118,18 @@ char	**sep_word_space(char *str)
 		{
 
 			final[j] = ft_substr(str, tmp, i);
-			printf("final[%d] : |%s|\n", j, final[j]);
 			++j;
-			printf("j : %d\n", j);
 			tmp = i;
-			printf("tmp : %d\n", tmp);
 			++i;
-
-			//==========================================
-
 			while (ft_is_var_char(str[i]) == 1)
 				++i;
 			final[j] = ft_substr(str, tmp, i);
-			printf("final[%d] : |%s|\n", j, final[j]);
 			tmp = i;
-			printf("tmp : %d\n", tmp);
 			++j;
-			printf("j : %d\n", j);
 
 		}
 		++i;
 	}
 	final[j] = "\0";
 	return (final);
-}
-
-int main(void)
-{
-	// char	*str = "$USER        A$ $?   $/";
-	char	*str = "     $USER        A$ $?   $/";
-	char	**tab = NULL;
-	int		wd_count;
-
-	wd_count = ft_get_wd_count(str);
-	printf("wd_count : %d\n", wd_count);
-	tab = sep_word_space(str);
-	for (int i = 0; i <= wd_count; ++i) {
-		printf("tab[%d] : |%s|\n", i, tab[i]);
-	}
-	return (0);
 }
