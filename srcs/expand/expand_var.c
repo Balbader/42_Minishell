@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 13:23:33 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/10/09 16:45:53 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/10/09 18:41:02 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,20 @@ char	*replace_var_by_value(char *ptr)
 
 int	set_dollar_end(char *str, int start)
 {
+	if (str[start] == '$')
+	{
+		start++;
+		if (str[start] == '?')
+			return (start + 1);
+		while (str[start] && 
+			(ft_isalpha(str[start]) || str[start] == '_'))
+			start++;
+	}
+	else
+		while (str[start] && str[start] != '$')
+			start++;
+	return (start);
+/*
 	int	end;
 
 	end = start + 1;
@@ -54,7 +68,7 @@ int	set_dollar_end(char *str, int start)
 		while (str[end] && (str[end] != '_' || ft_isalnum(str[end]) != 0 || str[end] != '?'))
 			end++;
 	}
-	else
+	else if (ft_isalnum(str[start]) != 0 || str[start] == '_')
 	{
 		while (str[end])
 		{
@@ -63,7 +77,11 @@ int	set_dollar_end(char *str, int start)
 			end++;
 		}
 	}
+	else
+		while (ft_isspace(str[end]) != 0)
+			end++;
 	return (end);
+*/
 }
 
 char	**sep_in_dollar_word(char *str)
