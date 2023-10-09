@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 16:49:15 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/10/06 18:44:38 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/10/09 18:55:57 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ char	**create_path(void)
 	path_cpy = copy_path();
 	if (!path_cpy)
 	{
-		printf("Error occurred finding path!\n");
+		ft_putstr_fd("Error occurred finding path!\n", 2);
 		return (NULL);
 	}
 	split_path = ft_split(path_cpy, ':');

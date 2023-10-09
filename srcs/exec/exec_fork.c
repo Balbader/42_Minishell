@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 17:43:18 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/10/09 17:55:56 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/10/09 20:24:54 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,7 @@ void	exec_fork(t_cmd *cmd, t_cmd *start)
 	if (!cmd)
 		return ;
 
-//ft_free_cmd(cmd);
-//ft_del_env();
-//exit(127);
+print_all_words(cmd->args);
 	pid = fork();
 	if (pid == -1)
 		ft_print_error_msg(ERROR_FORK);
@@ -67,7 +65,4 @@ void	exec_fork(t_cmd *cmd, t_cmd *start)
 		exec_child(cmd, start);
 	else
 		cmd->pid = pid;
-//ft_del_t_cmd(start);
-//ft_del_env();
-//exit(127);
 }

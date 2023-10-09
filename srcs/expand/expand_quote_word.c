@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 13:46:28 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/10/09 16:35:44 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/10/09 20:06:58 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,6 @@ void	substitute_word(t_token *cmd_line, char *substitute)
 	free(substitute);
 }
 
-/*
-int	skip_quote_char(char *str, int i)
-{
-	while (quote_on(str, i) == true)
-		i++;
-	return (i);
-}
-*/
 char	*dup_quote_word(char *word, t_quote qtype)
 {
 	int		lim;
@@ -121,7 +113,6 @@ char	**sep_quote_word(char *word)
 			i++;
 		j++;
 	}
-//printf("sep_str[0] = %s | sep_str[1] = %s\n", sep_str[0], sep_str[1]);
 	return (sep_str);
 }
 
@@ -134,7 +125,6 @@ char	*expand_quote_var(char *str, t_quote quote_type)
 	if (quote_type == SQUOTE)
 		return (ft_strtrim(str, "\"\'"));
 	var_expand = expand_var(str);
-printf("var_expanded str = %s\n", var_expand);
 	if (var_expand)
 	{
 		if (quote_type == DQUOTE)
@@ -155,11 +145,9 @@ int	expand_quote_word(t_token *cmd_line, char *word)
 	char	*new_word;
 	int		i;
 
-print_all_words(cmd_line);
 	sep_word = sep_quote_word(word);
 	if (!sep_word)
 		return (FAILURE);
-//print_tab(sep_word);
 	sep_exp = ft_calloc(get_tab_len(sep_word) + 1, sizeof(char *));
 	if (!sep_exp)
 		return (ft_free_tabs(sep_word), FAILURE);
@@ -177,28 +165,6 @@ print_all_words(cmd_line);
 	free_2_tabs(sep_word, sep_exp);
 	return (substitute_word(cmd_line, new_word), SUCCESS);
 }
-/************************************************************************************************
-int	expand_quote_word(t_token *cmd_line, char *word)
-{
-	char	*tmp;
-	char	*dollarfree_str;
-	t_quote	quote_type;
-
-	quote_type = set_quote_type(word[0]);
-	tmp = quote_remove(word);
-	if (quote_type == DQUOTE && ft_strchr(tmp, '$') != 0)
-	{
-		dollarfree_str = expand_var(tmp);
-		if (!dollarfree_str)
-			return (free(tmp), FAILURE);
-		substitute_word(cmd_line, dollarfree_str);
-	}
-	else
-		return (substitute_word(cmd_line, tmp), SUCCESS);
-	free(tmp);
-	return (SUCCESS);
-}
-********************************************************************************************/
 
 int	expand_noquote_word(t_token *cmd_line, char *word)
 {

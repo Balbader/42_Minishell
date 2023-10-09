@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 14:11:00 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/10/04 15:42:42 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/10/09 21:21:06 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,19 @@ int	count_token(char *line)
 	int	end;
 
 	i = 0;
+	start = 0;
 	count = 0;
-	while (i < (int)ft_strlen(line))
+	end = 0;
+	while (i < (int)ft_strlen(line) && line[i])
 	{
 		start = set_start_word(line, i);
 		end = set_end_word(line, start);
-		while (i < end && line[i])
-			i++;
+		i = end;
+		if (line[i + 1] == '\0')
+		{
+			count++;
+			break ;
+		}
 		count++;
 	}
 	return (count);

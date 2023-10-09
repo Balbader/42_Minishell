@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 16:52:56 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/10/06 17:43:49 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/10/09 18:54:11 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,5 @@ int	exec_list_create(t_cmd **cmd, t_token *expand_cmdline)
 		}
 	}
 	*cmd = head;
-print_cmd_nodes(*cmd);
-// printf("END OF TEST BEFORE EXEC\n\n\n\n\n");
 	return (SUCCESS);
 }

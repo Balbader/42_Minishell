@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 11:20:50 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/10/06 19:09:33 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/10/09 18:57:31 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ void	do_process(t_cmd *cmd)
 		ft_del_tokens(ptr->rdir);
 		free(ptr);
 	}
-//ft_del_t_cmd(cmd);
 }
 
 void	ft_del_t_cmd(t_cmd *cmd)
@@ -103,15 +102,11 @@ void	launch_execution(t_cmd *cmd)
 				break ;
 			if (ret == FAILURE)
 				error_found = true;
-			// printf("coucou from launch_exec() fd[IN] = %d fd[OUT] = %d \n", cmd->fd[IN], cmd->fd[OUT]);
 		}
 		if (!error_found && ptr->args && !ft_run_builtins(ptr->args->word, cmd))
 			exec_fork(ptr, cmd);
 		close_fdtab(ptr);
 		ptr = ptr->next;
 	}
-//ft_del_t_cmd(cmd);
-//ft_del_env();
-//exit(1);
 	do_process(cmd);
 }

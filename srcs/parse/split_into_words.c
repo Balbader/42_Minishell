@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 11:51:09 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/10/09 13:28:19 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/10/09 21:24:05 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,36 +61,6 @@ int	set_end_word_2(char *line, int start)
 	return (start);
 }
 
-
-/*
-int	set_end_word_2(char *line, int start)
-{
-	int	flag;
-
-	flag = false;
-	if (line[start] == '\"' || line[start] == '\'')
-		flag = true;
-	while (line[start])
-	{
-		if (flag == true && quote_on(line, start + 1) == false)
-		{
-			start += 1;
-			break ;
-		}
-		else if ((flag == false && ft_strchr("\'\"", line[start + 1]) != 0)
-			|| (flag == false && ft_isspace(line[start + 1]) == 1))
-		{
-			start += 1;
-			break ;
-		}
-		else if ((line[start] == ' ' && quote_on(line, start) == false) ||
-			(ft_strchr("<|>&", line[start]) != 0 && quote_on(line, start) == false))
-			break ;
-		start++;
-	}
-	return (start);
-}
-*/
 int	set_end_word(char *line, int start)
 {
 	if (line[start] == 0)
@@ -125,7 +95,7 @@ char **sep_cmdline(char *line)
 	if (!tab)
 		return (0);
 	j = 0;
-	while (j < count)
+	while (j < count && line[i])
 	{
 		start = set_start_word(line, i);
 		end = set_end_word(line, start);
@@ -144,17 +114,13 @@ int	split_into_words(char *in)
 {
 	char	**tab;
 	t_token	*token;
-	//in->cmd_line->in = in;
-
 	tab = sep_cmdline(in);
 	if (!tab)
 		return (FAILURE);
 	token = add_all_words_nodes(tab);
-	// ft_free_tabs(tab);
 	free(tab);
 	if (!token)
 		return (FAILURE);
-	// ft_free_cmd(cmd);
 	if (tokenizer(token) == FAILURE)
 		return (ft_delete_all(&token), FAILURE);
 	return (SUCCESS);

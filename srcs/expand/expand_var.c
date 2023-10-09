@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 13:23:33 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/10/09 18:41:02 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/10/09 19:57:11 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,29 +59,6 @@ int	set_dollar_end(char *str, int start)
 		while (str[start] && str[start] != '$')
 			start++;
 	return (start);
-/*
-	int	end;
-
-	end = start + 1;
-	if (start == '$')
-	{
-		while (str[end] && (str[end] != '_' || ft_isalnum(str[end]) != 0 || str[end] != '?'))
-			end++;
-	}
-	else if (ft_isalnum(str[start]) != 0 || str[start] == '_')
-	{
-		while (str[end])
-		{
-			if (str[end] == ' ' || str[end] == '$')
-				return (end);
-			end++;
-		}
-	}
-	else
-		while (ft_isspace(str[end]) != 0)
-			end++;
-	return (end);
-*/
 }
 
 char	**sep_in_dollar_word(char *str)
@@ -120,8 +97,6 @@ char	*expand_var(char *word)
 	sep_word = sep_in_dollar_word(word);
 	if (!sep_word)
 		return (NULL);
-printf("SEP DOLLAR TAB ==\n");
-print_tab(sep_word);
 	new_word = ft_calloc(get_tab_len(sep_word) + 1, sizeof(char *));
 	if (!new_word)
 		return (NULL);
