@@ -6,7 +6,7 @@
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 10:27:19 by baalbade          #+#    #+#             */
-/*   Updated: 2023/10/06 14:50:12 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/10/09 15:18:17 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int 		set_end_word(char *line, int start);
 int 		set_start_word(char *line, int i);
 int			split_into_words(char *in);
 void		strerr_parsing(char *str);
-void	    tokenizer(t_token *cmd_line);
+int			tokenizer(t_token *cmd_line);
 int			verif_last_token(t_type last_token, t_type type);
 int			verif_token(t_type type, t_type last_token);
 
@@ -91,7 +91,11 @@ char		*quote_remove(char *str);
 char		*replace_by_env_value(char *word);
 char		*replace_var_by_value(char *ptr);
 char		**sep_quote_wrod(char *word);
+int 		set_dollar_end(char *str, int start);
 char    	**sep_in_dollar_word(char *str);
+int 		set_dollar_start(char *str, int i);
+int 		set_end_qword(char *word, int start);
+int 		set_start_qword(char *word, int i);
 t_quote		set_quote_type(char quote);
 int			skip_var_char(char *str);
 void		substitute_word(t_token *cmd_line, char *substitute);

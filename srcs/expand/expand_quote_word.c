@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 13:46:28 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/10/06 16:40:38 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/10/09 16:35:44 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,32 +61,67 @@ int		count_quote_words(char *word)
 	return (count);
 }
 
+int	set_start_qword(char *word, int i)
+{
+	int	start;
+
+	start = i;
+	while (word[start])
+	{
+		if (quote_on(word, start) == true)
+		{
+			if (quote_on(word, start + 1) == true)
+				return (start + 1);
+		}
+		else if (word[start] != '\"' || word[start] != '\'')
+			break ;
+		start++;
+	}
+	return (start);
+}
+
+int	set_end_qword(char *word, int start)
+{
+	int	end;
+
+	end = start + 1;
+	while (word[end])
+	{
+		if (quote_on(word, end) == true)
+		{
+			if (quote_on(word, end + 1) == false)
+				return (end + 1);
+		}
+		else if (word[end] == '\"' || word[end] == '\'')
+			break ;
+		end++;
+	}
+	return (end);
+}
+
 char	**sep_quote_word(char *word)
 {
+	int		start;
+	int		end;
 	char	**sep_str;
-	t_quote	qflag;
 	int		i;
 	int		j;
-	int		count;
 
-	qflag = quote_on(word, 1);
-	count = ((i = -1, j = 0, count_quote_words(word)));
-	sep_str = ft_calloc(count + 1, sizeof(char *));
+	i = 0;
+	j = 0;
+	sep_str = ft_calloc((count_quote_words(word) + 1), sizeof(char *));
 	if (!sep_str)
 		return (NULL);
-	while (j < count && word[++i])
+	while (j < count_quote_words(word) && word[i])
 	{
-		if (quote_on(word, i + 1) != qflag || word[i + 1] == '\0')
-		{
-			if (qflag == true || (qflag == false && word[i + 1] == 0))
-				i += 1;
-			sep_str[j] = dup_str_until(word, i);
-			qflag = !qflag;
-			if (i < (int)ft_strlen(word))
-				word += i;
-			j = ((i = -1), j + 1);
-		}
+		start = set_start_qword(word, i);
+		end = set_end_qword(word, start);
+		sep_str[j] = ft_substr(word, start, end - start);
+		while (i < end && word[i])
+			i++;
+		j++;
 	}
+//printf("sep_str[0] = %s | sep_str[1] = %s\n", sep_str[0], sep_str[1]);
 	return (sep_str);
 }
 
@@ -95,14 +130,16 @@ char	*expand_quote_var(char *str, t_quote quote_type)
 	char	*sin_quote;
 	char	*var_expand;
 
+
 	if (quote_type == SQUOTE)
-		return (quote_remove(str));
+		return (ft_strtrim(str, "\"\'"));
 	var_expand = expand_var(str);
+printf("var_expanded str = %s\n", var_expand);
 	if (var_expand)
 	{
 		if (quote_type == DQUOTE)
 		{
-			sin_quote = quote_remove(var_expand);
+			sin_quote = ft_strtrim(var_expand, "\'\"");
 			return (free(var_expand), sin_quote);
 		}
 		else
@@ -118,10 +155,11 @@ int	expand_quote_word(t_token *cmd_line, char *word)
 	char	*new_word;
 	int		i;
 
+print_all_words(cmd_line);
 	sep_word = sep_quote_word(word);
 	if (!sep_word)
 		return (FAILURE);
-print_tab(sep_word);
+//print_tab(sep_word);
 	sep_exp = ft_calloc(get_tab_len(sep_word) + 1, sizeof(char *));
 	if (!sep_exp)
 		return (ft_free_tabs(sep_word), FAILURE);

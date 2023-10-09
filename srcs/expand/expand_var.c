@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 13:23:33 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/10/05 10:46:58 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/10/09 16:45:53 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,32 +44,48 @@ char	*replace_var_by_value(char *ptr)
 	return (new_str);
 }
 
+int	set_dollar_end(char *str, int start)
+{
+	int	end;
+
+	end = start + 1;
+	if (start == '$')
+	{
+		while (str[end] && (str[end] != '_' || ft_isalnum(str[end]) != 0 || str[end] != '?'))
+			end++;
+	}
+	else
+	{
+		while (str[end])
+		{
+			if (str[end] == ' ' || str[end] == '$')
+				return (end);
+			end++;
+		}
+	}
+	return (end);
+}
+
 char	**sep_in_dollar_word(char *str)
 {
 	char	**sep_str;
+	int		start;
+	int		end;
 	int		i;
 	int		j;
-	int		count;
 
-	count = ((i = 0, j = -1, dollar_word_count(str)));
-	sep_str = ft_calloc(count + 1, sizeof(char *));
+	i = 0;
+	j = -1;
+	sep_str = ft_calloc(dollar_word_count(str) + 1, sizeof(char *));
 	if (!sep_str)
 		return (NULL);
-	while (str[i] && ++j < count)
+	while (str[i] && ++j < dollar_word_count(str))
 	{
-		while (str[i] != '$' && str[i])
+		start = i;
+		end = set_dollar_end(str, start);
+		sep_str[j] = ft_substr(str, start, end - start);
+		while (i < end && str[i])
 			i++;
-		if (*str == '$')
-		{
-			sep_str[j] = dup_var_word(str);
-			i += skip_var_char(str);
-		}
-		else
-			sep_str[j] = dup_str_until(str, i);
-		if (i >= (int)ft_strlen(str))
-			break ;
-		str += i;
-		i = 0;
 	}
 	return (sep_str);
 }
@@ -86,6 +102,8 @@ char	*expand_var(char *word)
 	sep_word = sep_in_dollar_word(word);
 	if (!sep_word)
 		return (NULL);
+printf("SEP DOLLAR TAB ==\n");
+print_tab(sep_word);
 	new_word = ft_calloc(get_tab_len(sep_word) + 1, sizeof(char *));
 	if (!new_word)
 		return (NULL);
@@ -100,63 +118,5 @@ char	*expand_var(char *word)
 			return (free_2_tabs(new_word, sep_word), NULL);
 	}
 	join_word = ft_join_all_str(new_word);
-	ft_free_tabs(sep_word);
-	ft_free_tabs(new_word); // BUG care danger
-	return (/*free_2_tabs(new_word, sep_word), */join_word);
+	return (free_2_tabs(new_word, sep_word), join_word);
 }
-/*
-char	*expand_var(char *word)
-{
-	int		i;
-	char	**split;
-	char	**new_word;
-	char	*join_word;
-
-	if (ft_strchr(word, '$') == 0)
-		return (word);
-	split = ft_split(word, '$');
-	if (!split)
-		return (NULL);
-	new_word = ft_calloc(get_tab_len(split) + 1, sizeof(char *));
-	if (!new_word)
-		return (NULL);
-	i = -1;
-	while (split[++i])
-	{
-		if (ft_isspace((*split)[i]) != 0 || (*split)[i] == '\0')
-			new_word[i] = ft_strjoin("$", split[i]);
-		else if (ft_isspace((*split)[i]) == 0)
-			new_word[i] = replace_var_by_value(split[i]);
-		if (!new_word[i])
-			return (free_2_tabs(new_word, split), NULL);
-	}
-	join_word = ft_join_all_str(new_word);
-	return (free_2_tabs(new_word, split), join_word);
-}
-*/
-/*
-char	*dup_word_without_envkey(char *word)
-{
-	char	*new_word;
-	int		i;
-	int		j;
-	int		new_word_len;
-
-	i = 0;
-	while (word[i] && ft_isspace(word[i]) == 0)
-		i++;
-	new_word_len = ft_strlen(word) - i;
-	new_word = ft_calloc(new_word_len + 1, sizeof(char));
-	if (!new_word)
-		return (NULL);
-	j = 0;
-	while (word[i])
-	{
-		new_word[j] = word[i];
-		j++;
-		i++;
-	}
-	new_word[j] = '\0';
-	return (new_word);
-}
-*/

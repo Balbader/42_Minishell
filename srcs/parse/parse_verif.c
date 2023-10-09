@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 17:54:29 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/27 15:16:28 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/10/09 13:22:37 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	strerr_parsing(char *str)
 {
 	g_error = 2;
-	display_err(ERROR_PARSING);
+	ft_print_error_msg(ERROR_PARSING);
 	write(STDERR_FILENO, " '", 2);
 	ft_putstr_fd(str, STDERR_FILENO);
 	write(STDERR_FILENO, "'", 1);

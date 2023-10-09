@@ -30,7 +30,7 @@ void	print_all_words(t_token *cmd_line)
 	while (current != 0)
 	{
 		token = str_token(current->type);
-		// printf("''%s'' -------------- token = %s, token %d\n", current->word, token, current->type);
+		 printf("''%s'' -------------- token = %s, token %d\n", current->word, token, current->type);
 		current = current->next;
 	}
 }

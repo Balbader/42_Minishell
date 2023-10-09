@@ -6,7 +6,7 @@
 #    By: baalbade <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/08 10:43:48 by baalbade          #+#    #+#              #
-#    Updated: 2023/10/04 11:04:45 by ftuernal         ###   ########.fr        #
+#    Updated: 2023/10/09 13:20:50 by ftuernal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -131,6 +131,7 @@ PARSER_DIR			:=	parse/
 PARSER_FILES		:=	\
 						count_token.c \
 						parse_input.c \
+						parse_verif.c \
 						split_into_words.c \
 						tokenizer.c \
 						word_node_utils.c

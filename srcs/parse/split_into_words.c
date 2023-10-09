@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 11:51:09 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/10/06 17:38:31 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/10/09 13:28:19 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,6 +155,7 @@ int	split_into_words(char *in)
 	if (!token)
 		return (FAILURE);
 	// ft_free_cmd(cmd);
-	tokenizer(token);
+	if (tokenizer(token) == FAILURE)
+		return (ft_delete_all(&token), FAILURE);
 	return (SUCCESS);
 }
