@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 16:49:15 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/10/10 11:00:35 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/10/10 11:32:18 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ char	**convert_arg_to_tab(t_token *arg)
 		head = head->next;
 	}
 	final_tab = join_all_2str_tabs(cmd_tab);
-	return (final_tab);
+	return (free_big_tab(cmd_tab), final_tab);
 }
 
 char	*copy_path(void)
