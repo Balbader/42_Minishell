@@ -28,6 +28,8 @@ t_env	*ft_create_env_list(char **env)
 				tmp = lst;
 				lst = lst->next;
 				free(tmp->var);
+				free(tmp->key);
+				free(tmp->value);
 				free(tmp);
 			}
 			return (NULL);

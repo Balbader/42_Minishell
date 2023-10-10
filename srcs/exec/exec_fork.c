@@ -17,6 +17,7 @@ static void	free_everything(char *path, char **env_tab, char **cmd_tab)
 	free_2_tabs(env_tab, cmd_tab);
 	free(path);
 	ft_del_env();
+	g_error = 127;
 	perror("");
 }
 

@@ -40,7 +40,7 @@ int	set_end_word_2(char *line, int start)
 int	set_end_word(char *line, int start)
 {
 	if (line[start] == 0)
-		return (0);
+		return (start);
 	if (ft_strchr("<|>&", line[start]) != 0)
 	{
 		start++;

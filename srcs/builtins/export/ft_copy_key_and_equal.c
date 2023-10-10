@@ -32,7 +32,6 @@ char	*ft_copy_key_and_equal(char *var, char *new_key)
 	int	i;
 
 	equal_pos = ft_get_equal_pos(var);
-	printf("equal_pos : %d\n", equal_pos);
 	new_key = (char *)malloc(sizeof(char) * (equal_pos + 1));
 	if (!new_key)
 		return (NULL);
