@@ -27,7 +27,6 @@ void	ft_modif_shlvl(void)
 	++lvl;
 	tmp = ft_itoa(lvl);
 	shlvl = ft_strjoin(str, tmp);
-	printf("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!shlvl : %s\n", shlvl);
 	free(tmp);
 	ft_add_to_env(shlvl);
 	free(shlvl);
