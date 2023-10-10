@@ -6,7 +6,7 @@
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 10:36:29 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/24 10:36:30 by baalbade         ###   ########.fr       */
+/*   Updated: 2023/10/10 18:46:52 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ t_env	*ft_del_node(t_env *env, char *to_del)
 		if (ft_compare_keys(env->var, to_del) && pos == 0)
 		{
 			start = env->next;
+			free(env->var);
+			free(env->key);
+			free(env->value);
 			return (start);
 		}
 		if (ft_compare_keys(env->var, to_del))
