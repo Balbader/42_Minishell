@@ -56,13 +56,27 @@ t_token	*cmdline_new_node(char *input)
 	new->next = NULL;
 	return (new);
 }
-/*
-void	add_cmdline_node_after(t_token *new_node, t_token *prev)
-{
-	t_token	*tmp;
 
-	tmp = prev->next;
-	prev->next = new_node;
-	new_node->next = tmp;
+t_token	*add_all_words_nodes( char **tab)
+{
+	t_token	*cmd_line;
+	int		i;
+
+	i = 0;
+	while (tab[i])
+	{
+		if (i == 0)
+		{
+			cmd_line = cmdline_new_node(tab[0]);
+			if (!cmd_line)
+				return (NULL);
+		}
+		else
+			if (append_cmd_node(cmd_line, tab[i]) == FAILURE)
+				return (NULL);
+		if (!cmd_line)
+			return (NULL);
+		i++;
+	}
+	return (cmd_line);
 }
-*/

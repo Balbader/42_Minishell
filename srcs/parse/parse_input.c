@@ -22,4 +22,3 @@ int	parse_input(char *in)
 		return (FAILURE);
 	return (SUCCESS);
 }
-

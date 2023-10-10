@@ -28,8 +28,8 @@ int	verif_token(t_type type, t_type last_token)
 		return (FAILURE);
 	if ((last_token == R_OUT || last_token == APPEND) && type != FD)
 		return (FAILURE);
-	if (type == PIPE && (last_token == PIPE || last_token  == R_IN
-		|| last_token == APPEND || last_token == HEREDOC))
+	if (type == PIPE && (last_token == PIPE || last_token == R_IN
+			|| last_token == APPEND || last_token == HEREDOC))
 		return (FAILURE);
 	if (type == PIPE && last_token == 42)
 		return (FAILURE);
@@ -38,8 +38,8 @@ int	verif_token(t_type type, t_type last_token)
 
 int	verif_last_token(t_type last_token, t_type type)
 {
-	if ((last_token == PIPE || last_token == R_IN || last_token == R_OUT 
-		|| last_token == APPEND || last_token == HEREDOC) && type == 42)
+	if ((last_token == PIPE || last_token == R_IN || last_token == R_OUT
+			|| last_token == APPEND || last_token == HEREDOC) && type == 42)
 		return (FAILURE);
 	return (SUCCESS);
 }

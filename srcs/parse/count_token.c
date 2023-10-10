@@ -28,15 +28,7 @@ int	count_token(char *line)
 		start = set_start_word(line, i);
 		end = set_end_word(line, start);
 		i = end;
-/*
-		if (!line[i + 1])
-		{
-			count++;
-			break ;
-		}
-*/
 		count++;
 	}
-printf("count_token result = %d\n", count);
 	return (count);
 }

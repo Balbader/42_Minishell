@@ -12,30 +12,6 @@
 
 #include "minishell.h"
 
-t_token	*add_all_words_nodes( char **tab)
-{
-	t_token	*cmd_line;
-	int		i;
-
-	i = 0;
-	while (tab[i])
-	{
-		if (i == 0)
-		{
-			cmd_line = cmdline_new_node(tab[0]);
-			if (!cmd_line)
-				return (NULL);
-		}
-		else
-			if (append_cmd_node(cmd_line, tab[i]) == FAILURE)
-				return (NULL);
-		if (!cmd_line)
-			return (NULL);
-		i++;
-	}
-	return (cmd_line);
-}
-
 int	set_start_word(char *line, int i)
 {
 	int	start;
@@ -80,22 +56,20 @@ int	set_end_word(char *line, int start)
 	return (start);
 }
 
-char **sep_cmdline(char *line)
+char	**sep_cmdline(char *line)
 {
 	int		start;
 	int		end;
 	int		i;
 	int		j;
 	char	**tab;
-	int		count;
 
 	i = 0;
-	count = count_token(line);
-	tab = ft_calloc(count + 1, sizeof(char *));
+	tab = ft_calloc(count_token(line) + 1, sizeof(char *));
 	if (!tab)
 		return (0);
 	j = 0;
-	while (j < count && line[i])
+	while (j < count_token(line) && line[i])
 	{
 		start = set_start_word(line, i);
 		end = set_end_word(line, start);
@@ -114,6 +88,7 @@ int	split_into_words(char *in)
 {
 	char	**tab;
 	t_token	*token;
+
 	tab = sep_cmdline(in);
 	if (!tab)
 		return (FAILURE);
