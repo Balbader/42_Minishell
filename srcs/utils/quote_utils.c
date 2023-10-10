@@ -35,7 +35,7 @@ bool	check_quotes(char *input)
 
 bool	quote_on(const char *input, int index)
 {
-	int	i;
+	int		i;
 	bool	simplq_on;
 	bool	doublq_on;
 
@@ -65,7 +65,7 @@ t_quote	set_quote_type(char quote)
 		return (NOQUOTE);
 }
 
-int		is_quote(char c)
+int	is_quote(char c)
 {
 	if (c == '\'' || c == '\"')
 		return (1);
@@ -79,8 +79,9 @@ int	is_quote_heredoc(t_token *rdir)
 	ptr = rdir;
 	while (ptr != 0)
 	{
-		if (ptr->type == LIMITOR 
-			&& ft_strchr(ptr->word, '\'') == 0 && ft_strchr(ptr->word, '\"') == 0)
+		if (ptr->type == LIMITOR
+			&& ft_strchr(ptr->word, '\'') == 0
+			&& ft_strchr(ptr->word, '\"') == 0)
 			return (false);
 		ptr = ptr->next;
 	}

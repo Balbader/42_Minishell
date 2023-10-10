@@ -35,4 +35,3 @@ void	add_str_to_dump(char **paths, t_list *dump)
 	}
 	dump_add(paths[i], dump);
 }
-

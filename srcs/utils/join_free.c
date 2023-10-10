@@ -16,7 +16,6 @@ char	*join_free(char *s1, char *s2, char *ptr)
 {
 	char	*join;
 
-//printf("s1 = %p | s2 = %p ptr = %p\n", s1, s2, ptr);
 	join = ft_strjoin(s1, s2);
 	if (!join)
 		return (NULL);

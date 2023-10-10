@@ -29,4 +29,3 @@ char	*ft_join_all_str(char **split)
 	}
 	return (joined_str);
 }
-
