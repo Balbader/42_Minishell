@@ -113,7 +113,8 @@ int	exec_rdir_heredoc(t_cmd *cmd)
 	{
 		dup2(fd_save, 0);
 		ft_init_signal(false);
-		return ((close(fd_save), write(STDOUT_FILENO, "\n", 1), g_error = 130, -1));
+		return ((close(fd_save), write(STDOUT_FILENO, "\n", 1),
+				g_error = 130, -1));
 	}
 	fd = ((close(fd_save), ft_init_signal(false), create_heredoc(0)));
 	if (cmd->fd[IN] != STDIN_FILENO)
