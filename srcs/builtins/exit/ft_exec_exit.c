@@ -31,6 +31,6 @@ int	ft_exec_exit(t_token *token, t_cmd *cmd)
 	ft_free_cmd(cmd);
 	ft_del_env();
 	rl_clear_history();
-	exit(exit_value);// TODO UNCOMMENT THIS
+	exit(exit_value);
 	return (g_error = 1, true);
 }

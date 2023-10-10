@@ -37,10 +37,10 @@ char	*ft_copy_key_and_equal(char *var, char *new_key)
 		return (NULL);
 	i = 0;
 	while (i < equal_pos)
-		{
-			new_key[i] = var[i];
-			++i;
-		}
+	{
+		new_key[i] = var[i];
+		++i;
+	}
 	new_key[i] = '\0';
 	return (new_key);
 }

@@ -15,13 +15,13 @@
 char	*ft_get_value_section(char *var, char *value)
 {
 	int	value_len;
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	value_len = ft_get_value_len(var);
 	value = (char *)malloc(sizeof(char) * (value_len + 1));
 	if (!value)
-		return (NULL); 
+		return (NULL);
 	i = ft_get_key_len(var) + 1;
 	j = 0;
 	while (var[i])
