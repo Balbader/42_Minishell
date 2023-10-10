@@ -12,29 +12,6 @@
 
 #include "minishell.h"
 
-/*
-char	**convert_arg_to_tab(t_token *arg)
-{
-	char	**cmd_tab;
-	int		arg_len;
-	t_token	*head;
-	int		i;
-
-	arg_len = get_arg_len(arg);
-	cmd_tab = ft_calloc(arg_len + 1, sizeof(char *));
-	if (!cmd_tab)
-		return (NULL);
-	head = arg;
-	i = -1;
-	while (head != NULL && ++i < arg_len)
-	{
-		cmd_tab[i] = ft_strdup(head->word);
-		head = head->next;
-	}
-	return (cmd_tab);
-}
-*/
-
 char	**join_all_2str_tabs(char ***cmd_tab)
 {
 	char	**final_tab;
@@ -51,6 +28,7 @@ char	**join_all_2str_tabs(char ***cmd_tab)
 		while (cmd_tab[i][++j])
 			final_len++;
 	}
+	printf("---------------------> final_len : %d\n", final_len);
 	final_tab = ft_calloc(final_len + 1, sizeof(char *));
 	if (!final_tab)
 		return (NULL);
@@ -98,6 +76,7 @@ char	**convert_arg_to_tab(t_token *arg)
 	int		i;
 
 	arg_len = get_arg_len(arg);
+	printf("---------------------> arg_len : %d\n", arg_len);
 	cmd_tab = ft_calloc(arg_len + 1, sizeof(char **));
 	if (!cmd_tab)
 		return (NULL);
@@ -153,15 +132,12 @@ char	*init_path(char *cmd)
 {
 	char	**paths;
 	char	*individual_path;
-//	t_list	*dump;
 	int		i;
 
 	if (ft_strchr(cmd, '/') != 0)
 		return (cmd);
 	paths = create_path();
 	individual_path = NULL;
-//	dump = ft_calloc(1, sizeof(t_list));
-//	add_str_to_dump(paths, dump);
 	i = 0;
 	while (paths[i] != 0)
 	{
@@ -173,14 +149,11 @@ char	*init_path(char *cmd)
 		individual_path = ft_strjoin(paths[i], cmd);
 		if (access(individual_path, X_OK) == 0)
 		{
-//			dump_del(dump);
 			return (ft_free_tabs(paths), individual_path);
 		}
-//		dump_add(individual_path, dump);
 		i++;
 	}
-//	dump_del(dump);
-	return (/*cmd*/ft_free_tabs(paths), individual_path);
+	return (ft_free_tabs(paths), individual_path);
 }
 
 char	*expand_heredoc_var(char *line)
