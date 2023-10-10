@@ -108,6 +108,7 @@ EXEC_FILES			:= \
 					   exec_rdir.c \
 					   exec_utils.c \
 					   exec_utils2.c \
+					   exec_utils3.c \
 					   launch_execution.c
 EXEC				:=	$(addprefix $(EXEC_DIR), $(EXEC_FILES))
 
