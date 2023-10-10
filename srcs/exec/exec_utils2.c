@@ -40,7 +40,7 @@ void	rm_command_node(t_cmd **head, t_cmd *rm_node)
 	if (current->next == NULL)
 		return ;
 	current->next = rm_node->next;
-	free(rm_node);	
+	free(rm_node);
 }
 
 int	get_arg_len(t_token *arg)

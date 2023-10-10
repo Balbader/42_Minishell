@@ -16,16 +16,9 @@ int	append_args_node(t_cmd **cmd, t_token *expand_cmdline)
 {
 	t_token	*last;
 
-	// if (!(*cmd)->args)
-	// 	(*cmd)->args = cmdline_new_node(expand_cmdline->word);
-	// else if (append_cmd_node((*cmd)->args, expand_cmdline->word) == FAILURE)
-	// 	return (FAILURE);
 	ft_free_cmd(*cmd);
-	// ft_delete_all(&cmd_line);
 	ft_del_env();
 	rl_clear_history();
-	// close(0);
-	// return (SUCCESS);
 	last = goto_last_node((*cmd)->args);
 	last->type = expand_cmdline->type;
 	return (SUCCESS);
@@ -69,7 +62,7 @@ t_cmd	*goto_exec_last_node(t_cmd *head)
 
 int	get_execargslen(t_token *args)
 {
-	int	i;
+	int		i;
 	t_token	*ptr;
 
 	i = 0;

@@ -31,15 +31,19 @@ static void	exec_list_args_append(t_cmd **cmd, t_token *ptr)
 {
 	ptr->next = NULL;
 	if (ptr->type == WORD)
+	{
 		if ((*cmd)->args)
 			goto_last_node((*cmd)->args)->next = ptr;
 		else
 			(*cmd)->args = ptr;
+	}
 	else
+	{
 		if ((*cmd)->rdir)
 			goto_last_node((*cmd)->rdir)->next = ptr;
 		else
 			(*cmd)->rdir = ptr;
+	}
 	return ;
 }
 
@@ -47,7 +51,7 @@ int	exec_list_create(t_cmd **cmd, t_token *expand_cmdline)
 {
 	t_token	*ptr;
 	t_cmd	*head;
-	t_token *tmp;
+	t_token	*tmp;
 
 	ptr = expand_cmdline;
 	head = *cmd;
@@ -58,7 +62,7 @@ int	exec_list_create(t_cmd **cmd, t_token *expand_cmdline)
 			if (exec_new_node_alloc(&(*cmd)->next) == FAILURE)
 				return (FAILURE);
 			*cmd = (*cmd)->next;
-			ptr = ptr->next;	
+			ptr = ptr->next;
 		}
 		else
 		{
@@ -68,11 +72,5 @@ int	exec_list_create(t_cmd **cmd, t_token *expand_cmdline)
 		}
 	}
 	*cmd = head;
-//printf("CMD FROM EXPAND\n");
-//print_all_words(expand_cmdline);
-//printf("---------------\n");
-//printf("CMD LISTSi AT BEGINING OF EXEC\n");
-//print_cmd_nodes(*cmd);
-//printf("---------------\n");
 	return (SUCCESS);
 }

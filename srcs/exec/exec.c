@@ -14,19 +14,12 @@
 
 void	exec(t_token *in)
 {
-	t_cmd *cmd;
+	t_cmd	*cmd;
 
-print_all_words(in);
+	print_all_words(in);
 	if (exec_new_node_alloc(&cmd) == FAILURE)
 		return ;
 	if (exec_list_create(&cmd, in) == FAILURE)
 		return ;
- //ft_delete_all(&in);
-//	ft_free_cmd(cmd);
-//	ft_del_env();
-//exit(126);
-//	rl_clear_history();
-	// close(0);
-	// return (SUCCESS);
 	launch_execution(cmd);
 }

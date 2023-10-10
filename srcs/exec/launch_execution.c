@@ -65,24 +65,6 @@ void	do_process(t_cmd *cmd)
 	}
 }
 
-void	ft_del_t_cmd(t_cmd *cmd)
-{
-	t_cmd *tmp;
-
-	while (cmd)
-	{
-		tmp = cmd->next;
-		ft_del_tokens(cmd->args);
-		ft_del_tokens(cmd->rdir);
-		if (cmd->fd[IN] != STDIN_FILENO)
-			close(cmd->fd[IN]);
-		if (cmd->fd[OUT] != STDOUT_FILENO)
-			close(cmd->fd[OUT]);
-		free(cmd);
-		cmd = tmp;
-	}
-}
-
 void	launch_execution(t_cmd *cmd)
 {
 	t_cmd	*ptr;
@@ -103,7 +85,6 @@ void	launch_execution(t_cmd *cmd)
 			if (ret == FAILURE)
 				error_found = true;
 		}
-//printf("----- the word sent to exec fork == %s\n", ptr->args->word);
 		if (!error_found && ptr->args && !ft_run_builtins(ptr->args->word, cmd))
 			exec_fork(ptr, cmd);
 		close_fdtab(ptr);
