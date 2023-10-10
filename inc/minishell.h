@@ -52,7 +52,6 @@ void		addback_cmdline_node(t_token **cmd_line, t_token *new);
 int			append_cmd_node(t_token *cmd_line, char *line);
 bool		check_quotes(char *input);
 int			count_token(char *line);
-// void		delall(t_data *in);
 t_token		*cmdline_new_node(char *input);
 t_token		*goto_last_node(t_token *ptr);
 int			parse_input(char *in);
@@ -106,6 +105,9 @@ void		substitute_word(t_token *cmd_line, char *substitute);
 *******************************************************************************
 */
 void		addback_exec_node(t_cmd *cmd, t_cmd *new);
+int			ft_get_cmd_tab_len(char ***tab);
+char		**join_all_2str_tabs(char ***cmd_tab);
+void		free_big_tab(char ***tab);
 int			append_rdir_node(t_cmd **cmd, t_token *expand_cmdline);
 int			append_args_node(t_cmd **cmd, t_token *expand_cmdline);
 void		close_fdtab(t_cmd *cmd);
