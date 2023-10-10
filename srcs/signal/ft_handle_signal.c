@@ -20,7 +20,6 @@ void	ft_handle_signal(int sig)
 	{
 		g_error = 130;
 		write(STDOUT_FILENO, "\n", 1);
-		// write(STDOUT_FILENO, "$> ", 3);
 		rl_replace_line("", 1);
 		rl_on_new_line();
 		rl_redisplay();
