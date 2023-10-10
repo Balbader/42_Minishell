@@ -27,8 +27,8 @@ char	*ft_get_value_section(char *var, char *value)
 	while (var[i])
 	{
 		value[j] = var[i];
-		++j;
-		++i;
+		j++;
+		i++;
 	}
 	value[j] = '\0';
 	return (value);

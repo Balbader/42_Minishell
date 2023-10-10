@@ -27,7 +27,7 @@ char	**ft_convert_env_to_tab(t_env *env)
 	while (env)
 	{
 		*tab = ft_strdup(env->var);
-		++tab;
+		tab++;
 		env = env->next;
 	}
 	return (start);

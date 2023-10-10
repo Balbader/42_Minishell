@@ -20,12 +20,12 @@ int	ft_get_value_len(char *var)
 	val_len = 0;
 	i = 0;
 	while (var[i] != '=')
-		++i;
-	++i;
+		i++;
+	i++;
 	while (var[i])
 	{
-		++val_len;
-		++i;
+		val_len++;
+		i++;
 	}
 	return (val_len);
 }

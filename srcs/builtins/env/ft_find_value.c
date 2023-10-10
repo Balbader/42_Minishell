@@ -32,8 +32,8 @@ char	*ft_find_value(char *var)
 		{
 			tmp = env->var;
 			while (*tmp != '=')
-				++tmp;
-			++tmp;
+				tmp++;
+			tmp++;
 			return (tmp);
 		}
 		env = env->next;

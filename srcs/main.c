@@ -39,11 +39,11 @@ int	main(int ac, char **av, char **env)
 	if (ac != 1)
 		return (0);
 	ft_init_env(ac, av, env);
-	env_lst = *ft_get_env(0, 0, 0);
 	ft_init_signal(false);
 	if (display_prompt() != SUCCESS)
 		ft_putstr_fd("Something wrong happened forcing Minishell to stop!\n",
 			2);
+	env_lst = *ft_get_env(0, 0, 0);
 	ft_free_all_env(env_lst);
 	rl_clear_history();
 	printf("Minishell stopped normally\n");

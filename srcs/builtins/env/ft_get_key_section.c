@@ -25,7 +25,7 @@ char	*ft_get_key_section(char *var, char *key)
 	while (i < key_len)
 	{
 		key[i] = var[i];
-		++i;
+		i++;
 	}
 	key[i] = '\0';
 	return (key);

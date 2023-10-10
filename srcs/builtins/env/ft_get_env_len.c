@@ -19,7 +19,7 @@ int	ft_get_env_len(t_env *env)
 	i = 0;
 	while (env)
 	{
-		++i;
+		i++;
 		env = env->next;
 	}
 	return (i);

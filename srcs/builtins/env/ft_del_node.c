@@ -17,21 +17,30 @@ t_env	*ft_del_node(t_env *env, char *to_del)
 	t_env	*prev;
 	t_env	*start;
 	t_env	*next;
+	int		pos;
 
+	pos = 0;
 	start = env;
 	prev = env;
+	next = NULL;
 	while (env)
 	{
+		if (ft_compare_keys(env->var, to_del) && pos == 0)
+		{
+			start = env->next;
+			return (start);
+		}
 		if (ft_compare_keys(env->var, to_del))
 		{
 			next = env->next;
 			free(env->var);
 			free(env->key);
 			free(env->value);
-			free(env);
 			prev->next = next;
+			free(env);
 			break ;
 		}
+		++pos;
 		prev = env;
 		env = env->next;
 	}

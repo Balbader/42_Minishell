@@ -32,7 +32,7 @@ t_env	*ft_create_env_list(char **env)
 			}
 			return (NULL);
 		}
-		++env;
+		env++;
 	}
 	return (lst);
 }
