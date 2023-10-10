@@ -6,7 +6,7 @@
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 13:01:30 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/20 14:40:43 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/10/10 09:05:14 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,5 @@ void	ft_free_tabs(char **tab)
 	}
 	free(tab[i]);
 	free(tab);
+	tab = NULL;
 }

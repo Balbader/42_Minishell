@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 17:43:18 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/10/09 20:24:54 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/10/10 09:41:56 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	free_everything(char *path, char **env_tab, char **cmd_tab)
 {
-	free_2_tabs(env_tab,cmd_tab);
+	free_2_tabs(env_tab, cmd_tab);
 	free(path);
 	ft_del_env();
 	perror("");

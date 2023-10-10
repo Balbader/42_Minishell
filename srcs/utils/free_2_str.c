@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 15:52:54 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/09/20 15:52:56 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/10/10 09:04:18 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	free_2_tabs(char **s1, char **s2)
 {
-	ft_free_tabs(s1);
-	ft_free_tabs(s2);
+	if (s1)
+		ft_free_tabs(s1);
+	if (s2)
+		ft_free_tabs(s2);
 }

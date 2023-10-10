@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 16:49:15 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/10/09 18:55:57 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/10/10 09:44:02 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,28 +72,34 @@ char	*init_path(char *cmd)
 {
 	char	**paths;
 	char	*individual_path;
-	t_list	*dump;
+//	t_list	*dump;
 	int		i;
 
 	if (ft_strchr(cmd, '/') != 0)
 		return (cmd);
 	paths = create_path();
-	dump = ft_calloc(1, sizeof(t_list));
-	add_str_to_dump(paths, dump);
+	individual_path = NULL;
+//	dump = ft_calloc(1, sizeof(t_list));
+//	add_str_to_dump(paths, dump);
 	i = 0;
 	while (paths[i] != 0)
 	{
+		if (individual_path != NULL)
+		{
+			free(individual_path);
+			individual_path = NULL;
+		}
 		individual_path = ft_strjoin(paths[i], cmd);
 		if (access(individual_path, X_OK) == 0)
 		{
-			dump_del(dump);
-			return (individual_path);
+//			dump_del(dump);
+			return (ft_free_tabs(paths), individual_path);
 		}
-		dump_add(individual_path, dump);
+//		dump_add(individual_path, dump);
 		i++;
 	}
-	dump_del(dump);
-	return (cmd);
+//	dump_del(dump);
+	return (/*cmd*/ft_free_tabs(paths), individual_path);
 }
 
 char	*expand_heredoc_var(char *line)
