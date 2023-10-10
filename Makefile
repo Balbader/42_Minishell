@@ -120,6 +120,7 @@ EXPAND_FILES		:=	\
 						check_arglist.c \
 						expand.c \
 						expand_quote_word.c \
+						expand_quote_word_utils.c \
 						expand_var.c \
 						expand_var_utils.c \
 						quote_remove.c
@@ -147,7 +148,6 @@ SIG					:=	$(addprefix $(SIG_DIR), $(SIG_FILES))
 
 UTILS_DIR			:=	utils/
 UTILS_FILES			:=	\
-						debug_functions.c \
 						dump_add.c \
 						dump_del.c \
 						free_2_str.c \
