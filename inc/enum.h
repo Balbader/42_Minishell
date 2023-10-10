@@ -1,43 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   structures.h                                       :+:      :+:    :+:   */
+/*   enum.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/08 10:27:24 by baalbade          #+#    #+#             */
-/*   Updated: 2023/10/04 17:35:28 by ftuernal         ###   ########.fr       */
+/*   Created: 2023/10/10 13:40:48 by baalbade          #+#    #+#             */
+/*   Updated: 2023/10/10 13:41:18 by baalbade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCTURES_H
-# define STRUCTURES_H
+#ifndef ENUM_H
+# define ENUM_H
 
-# include <stdbool.h>
-# include "enum.h"
-
-typedef struct s_token
+typedef enum e_type
 {
-	char			*word;
-	t_type			type;
-	struct s_token	*next;
-}	t_token;
+	APPEND = 0,
+	HEREDOC,
+	LIMITOR,
+	FD,
+	PIPE,
+	R_IN,
+	R_OUT,
+	WORD,
+}				t_type;
 
-typedef struct s_env
+typedef enum e_quote
 {
-	char			*var;
-	char			*key;
-	char			*value;
-	struct s_env	*next;
-}	t_env;
+	NOQUOTE = 0,
+	SQUOTE,
+	DQUOTE
+}				t_quote;
 
-typedef struct s_cmd
+enum e_status
 {
-	t_token			*args;
-	t_token			*rdir;
-	int				fd[2];
-	int				pid;
-	struct s_cmd	*next;
-}				t_cmd;
+	SUCCESS = 0,
+	FAILURE = -42
+};
 
-#endif // !STRUCTURES_H
+enum e_start
+{
+	START = 0,
+	END
+};
+
+enum e_fd
+{
+	IN = 0,
+	OUT
+};
+
+#endif
