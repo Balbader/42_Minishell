@@ -28,6 +28,7 @@ int	g_error;
 int	display_prompt(void)
 {
 	char *in;
+
 	while (1)
 	{
 		// ft_putstr_fd("$> ", 1);
