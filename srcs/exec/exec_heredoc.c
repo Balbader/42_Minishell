@@ -6,17 +6,17 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 11:38:36 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/10/09 20:19:02 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/10/10 12:44:29 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	exec_heredoc_failure(int fd_save)
+void	exec_heredoc_failure(int sav)
 {
-	dup2(fd_save, 0);
+	dup2(sav, 0);
 	ft_init_signal(false);
-	close(fd_save);
+	close(sav);
 	write(STDOUT_FILENO, "\n", 1);
 	g_error = 130;
 }
@@ -97,10 +97,10 @@ int	create_heredoc(int type)
 
 int	exec_rdir_heredoc(t_cmd *cmd)
 {
-	int	fd_save;
+	int	sav;
 	int	fd;
 
-	fd_save = dup(STDIN_FILENO);
+	sav = dup(STDIN_FILENO);
 	signal(SIGINT, &ft_sig_heredoc);
 	if (is_quote_heredoc(cmd->rdir) == true)
 		fd = heredoc_no_expand(cmd->rdir);
@@ -111,12 +111,11 @@ int	exec_rdir_heredoc(t_cmd *cmd)
 	close(fd);
 	if (g_error == 128)
 	{
-		dup2(fd_save, 0);
+		dup2(sav, 0);
 		ft_init_signal(false);
-		return ((close(fd_save), write(STDOUT_FILENO, "\n", 1),
-				g_error = 130, -1));
+		return ((close(sav), write(STDOUT_FILENO, "\n", 1), g_error = 130, -1));
 	}
-	fd = ((close(fd_save), ft_init_signal(false), create_heredoc(0)));
+	fd = ((close(sav), ft_init_signal(false), create_heredoc(0)));
 	if (cmd->fd[IN] != STDIN_FILENO)
 	{
 		dup2(fd, cmd->fd[IN]);
