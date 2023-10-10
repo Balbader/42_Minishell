@@ -16,7 +16,6 @@ void	exec(t_token *in)
 {
 	t_cmd	*cmd;
 
-	print_all_words(in);
 	if (exec_new_node_alloc(&cmd) == FAILURE)
 		return ;
 	if (exec_list_create(&cmd, in) == FAILURE)

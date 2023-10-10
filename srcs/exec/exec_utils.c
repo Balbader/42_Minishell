@@ -86,7 +86,6 @@ char	**convert_arg_to_tab(t_token *arg)
 	int		i;
 
 	arg_len = get_arg_len(arg);
-	printf("---------------------> arg_len : %d\n", arg_len);
 	cmd_tab = ft_calloc(arg_len + 1, sizeof(char **));
 	if (!cmd_tab)
 		return (NULL);
