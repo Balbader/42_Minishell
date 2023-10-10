@@ -21,8 +21,8 @@ int	expand(t_token *cmd_line)
 	ret = 0;
 	while (ptr != NULL)
 	{
-		if ((ptr->type == WORD || ptr->type == FD) && 
-			(ft_strchr(ptr->word, '\"') || ft_strchr(ptr->word, '\'')))
+		if ((ptr->type == WORD || ptr->type == FD)
+			&& (ft_strchr(ptr->word, '\"') || ft_strchr(ptr->word, '\'')))
 			ret = expand_quote_word(ptr, ptr->word);
 		else if ((ptr->type == WORD || ptr->type == FD))
 			ret = expand_noquote_word(ptr, ptr->word);

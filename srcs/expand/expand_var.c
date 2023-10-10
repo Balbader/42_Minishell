@@ -20,7 +20,8 @@ char	*replace_by_env_value(char *word)
 	current = *ft_get_env(0, 0, 0);
 	while (current != NULL)
 	{
-		if (ft_strncmp(word + 1, current->key, ft_strlen(current->key) - 1) == 0)
+		if (ft_strncmp(word + 1, current->key,
+				ft_strlen(current->key) - 1) == 0)
 			break ;
 		current = current->next;
 	}
@@ -51,8 +52,8 @@ int	set_dollar_end(char *str, int start)
 		start++;
 		if (str[start] == '?')
 			return (start + 1);
-		while (str[start] && 
-			(ft_isalpha(str[start]) || str[start] == '_'))
+		while (str[start]
+			&& (ft_isalpha(str[start]) || str[start] == '_'))
 			start++;
 	}
 	else

@@ -20,77 +20,6 @@ void	substitute_word(t_token *cmd_line, char *substitute)
 	free(substitute);
 }
 
-char	*dup_quote_word(char *word, t_quote qtype)
-{
-	int		lim;
-	char	*quote_word;
-
-	lim = 1;
-	while (word[lim] && quote_on(word, lim) == qtype)
-		lim++;
-	quote_word = dup_str_until(word, lim);
-	return (quote_word);
-}
-
-int		count_quote_words(char *word)
-{
-	int		count;
-	int		i;
-	bool	quote_flag;
-
-	count = 1;
-	i = 0;
-	quote_flag = quote_on(word, i);
-	while (word[i])
-	{
-		if (quote_on(word, i) != quote_flag)
-		{
-			quote_flag = !quote_flag;
-			count++;
-		}
-		i++;
-	}
-	return (count);
-}
-
-int	set_start_qword(char *word, int i)
-{
-	int	start;
-
-	start = i;
-	while (word[start])
-	{
-		if (quote_on(word, start) == true)
-		{
-			if (quote_on(word, start + 1) == true)
-				return (start + 1);
-		}
-		else if (word[start] != '\"' || word[start] != '\'')
-			break ;
-		start++;
-	}
-	return (start);
-}
-
-int	set_end_qword(char *word, int start)
-{
-	int	end;
-
-	end = start + 1;
-	while (word[end])
-	{
-		if (quote_on(word, end) == true)
-		{
-			if (quote_on(word, end + 1) == false)
-				return (end + 1);
-		}
-		else if (word[end] == '\"' || word[end] == '\'')
-			break ;
-		end++;
-	}
-	return (end);
-}
-
 char	**sep_quote_word(char *word)
 {
 	int		start;
@@ -120,7 +49,6 @@ char	*expand_quote_var(char *str, t_quote quote_type)
 {
 	char	*sin_quote;
 	char	*var_expand;
-
 
 	if (quote_type == SQUOTE)
 		return (ft_strtrim(str, "\"\'"));
@@ -155,7 +83,8 @@ int	expand_quote_word(t_token *cmd_line, char *word)
 	while (sep_word[++i])
 	{
 		if (set_quote_type(sep_word[i][0]) != SQUOTE)
-			sep_exp[i] = expand_quote_var(sep_word[i], set_quote_type(sep_word[i][0]));
+			sep_exp[i] = expand_quote_var(sep_word[i],
+					set_quote_type(sep_word[i][0]));
 		else
 			sep_exp[i] = quote_remove(sep_word[i]);
 		if (!sep_exp[i])
