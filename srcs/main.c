@@ -16,7 +16,7 @@ int	g_error;
 
 int	display_prompt(void)
 {
-	char *in;
+	char	*in;
 
 	while (1)
 	{
@@ -33,7 +33,7 @@ int	display_prompt(void)
 
 int	main(int ac, char **av, char **env)
 {
-	 t_env	*env_lst;
+	t_env	*env_lst;
 
 	(void) av;
 	if (ac != 1)
@@ -42,7 +42,8 @@ int	main(int ac, char **av, char **env)
 	env_lst = *ft_get_env(0, 0, 0);
 	ft_init_signal(false);
 	if (display_prompt() != SUCCESS)
-		ft_putstr_fd("Something wrong happened forcing Minishell to stop!\n", 2);
+		ft_putstr_fd("Something wrong happened forcing Minishell to stop!\n",
+			2);
 	ft_free_all_env(env_lst);
 	rl_clear_history();
 	printf("Minishell stopped normally\n");
