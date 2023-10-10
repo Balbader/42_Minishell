@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 17:43:18 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/10/10 09:41:56 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/10/10 10:13:13 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int	exec_child(t_cmd *cmd, t_cmd *start)
 	char	*path;
 
 	cmd_tab = convert_arg_to_tab(cmd->args);
+printf("CMD_TAB JUST BEFORE EXECUTION\n");
+print_tab(cmd_tab);
 	env_tab = ft_convert_env_to_tab(*ft_get_env(0, 0, 0)); 
 	path = init_path(cmd_tab[0]);
 	if (cmd->fd[IN] != STDIN_FILENO)
@@ -56,8 +58,7 @@ void	exec_fork(t_cmd *cmd, t_cmd *start)
 	g_error = 0;
 	if (!cmd)
 		return ;
-
-print_all_words(cmd->args);
+printf("coucou from exec_fork\n");
 	pid = fork();
 	if (pid == -1)
 		ft_print_error_msg(ERROR_FORK);

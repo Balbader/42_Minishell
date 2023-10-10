@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 11:20:50 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/10/09 18:57:31 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/10/10 10:08:07 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ void	launch_execution(t_cmd *cmd)
 			if (ret == FAILURE)
 				error_found = true;
 		}
+//printf("----- the word sent to exec fork == %s\n", ptr->args->word);
 		if (!error_found && ptr->args && !ft_run_builtins(ptr->args->word, cmd))
 			exec_fork(ptr, cmd);
 		close_fdtab(ptr);
