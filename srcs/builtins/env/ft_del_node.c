@@ -12,6 +12,22 @@
 
 #include "minishell.h"
 
+static void	ft_free_env_elem(t_env *env)
+{
+	free(env->var);
+	free(env->key);
+	free(env->value);
+	free(env);
+}
+
+static void	ft_run_second_if(t_env *env, t_env *prev, t_env *next)
+{
+	next = env->next;
+	ft_free_env_elem(env);
+	prev->next = next;
+	// free(env);
+}
+
 t_env	*ft_del_node(t_env *env, char *to_del)
 {
 	t_env	*prev;
@@ -20,27 +36,18 @@ t_env	*ft_del_node(t_env *env, char *to_del)
 	int		pos;
 
 	pos = 0;
-	start = env;
-	prev = env;
-	next = NULL;
+	start = ((prev = env, next = NULL, env));
 	while (env)
 	{
 		if (ft_compare_keys(env->var, to_del) && pos == 0)
 		{
 			start = env->next;
-			free(env->var);
-			free(env->key);
-			free(env->value);
+			ft_free_env_elem(env);
 			return (start);
 		}
 		if (ft_compare_keys(env->var, to_del))
 		{
-			next = env->next;
-			free(env->var);
-			free(env->key);
-			free(env->value);
-			prev->next = next;
-			free(env);
+			ft_run_second_if(env, prev, next);
 			break ;
 		}
 		++pos;
