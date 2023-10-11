@@ -51,13 +51,13 @@ char	*expand_quote_var(char *str, t_quote quote_type)
 	char	*var_expand;
 
 	if (quote_type == SQUOTE)
-		return (ft_strtrim(str, "\"\'"));
+		return (ft_strtrim(str, "\'"));
 	var_expand = expand_var(str);
 	if (var_expand)
 	{
 		if (quote_type == DQUOTE)
 		{
-			sin_quote = ft_strtrim(var_expand, "\'\"");
+			sin_quote = ft_strtrim(var_expand, "\"");
 			return (free(var_expand), sin_quote);
 		}
 		else

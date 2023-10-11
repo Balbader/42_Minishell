@@ -20,8 +20,7 @@ char	*replace_by_env_value(char *word)
 	current = *ft_get_env(0, 0, 0);
 	while (current != NULL)
 	{
-		if (ft_strncmp(word + 1, current->key,
-				ft_strlen(current->key) - 1) == 0)
+		if (ft_strcmp(word + 1, current->key) == 0)
 			break ;
 		current = current->next;
 	}
