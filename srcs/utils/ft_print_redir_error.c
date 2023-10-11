@@ -14,7 +14,7 @@
 
 void	ft_print_redir_error(char *file)
 {
-	write(STDERR_FILENO, "minishell : ", 13);
+	write(STDERR_FILENO, "$> ", 13);
 	write(STDERR_FILENO, file, ft_strlen(file));
 	write(STDERR_FILENO, ": ", 2);
 	write(STDERR_FILENO, ERROR_RED, ft_strlen(ERROR_RED));
