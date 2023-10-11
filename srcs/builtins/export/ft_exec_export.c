@@ -6,7 +6,7 @@
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 13:39:48 by baalbade          #+#    #+#             */
-/*   Updated: 2023/09/24 13:39:49 by baalbade         ###   ########.fr       */
+/*   Updated: 2023/10/11 09:48:12 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_exec_export(t_token *token)
 {
-	char	*new_key;
+	char	*nk;
 	char	*cpy;
 
 	while (token)
@@ -30,12 +30,11 @@ int	ft_exec_export(t_token *token)
 			return (g_error = 1, ft_print_export_error(cpy), true);
 		if (!ft_check_cpy(&cpy))
 			return (true);
-		cpy = ft_strdup(cpy);
-		new_key = ft_copy_key_and_equal(token->word, new_key);
+		cpy = ((nk = ft_copy_key_and_equal(token->word, nk), ft_strdup(cpy)));
 		free(token->word);
-		ft_does_value_exist(new_key);
-		token->word = ft_strjoin(new_key, cpy);
-		free(new_key);
+		ft_does_value_exist(nk);
+		token->word = ft_strjoin(nk, cpy);
+		free(nk);
 		free(cpy);
 		token = ((ft_add_to_env(token->word), token->next));
 	}
