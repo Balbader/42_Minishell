@@ -27,4 +27,5 @@
 # define ERROR_DOUBLE_POINT "..: command not found\n"
 # define ERROR_POINT_SLASH "$> bash: ./: Is a directory\n"
 # define ERROR_FORK "$> bash: fork() function error\n"
+
 #endif // !DEFINE_H
