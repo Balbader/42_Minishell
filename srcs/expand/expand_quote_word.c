@@ -30,6 +30,8 @@ char	**sep_quote_word(char *word)
 
 	i = 0;
 	j = 0;
+	if (word[0] == '$' && (word[1] == '\'' || word[1] == '\"'))
+		word += 1;
 	sep_str = ft_calloc((count_quote_words(word) + 1), sizeof(char *));
 	if (!sep_str)
 		return (NULL);
