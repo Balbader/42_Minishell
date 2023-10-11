@@ -117,7 +117,6 @@ EXEC				:=	$(addprefix $(EXEC_DIR), $(EXEC_FILES))
 
 EXPAND_DIR			:=	expand/
 EXPAND_FILES		:=	\
-						check_arglist.c \
 						expand.c \
 						expand_quote_word.c \
 						expand_quote_word_utils.c \
