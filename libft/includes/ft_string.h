@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strings.h                                       :+:      :+:    :+:   */
+/*   ft_string.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baalbade <baalbade@student.42.fr>          +#+  +:+       +#+        */
+/*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/04 14:04:33 by baalbade          #+#    #+#             */
-/*   Updated: 2022/12/05 10:52:26 by baalbade         ###   ########.fr       */
+/*   Created: 2023/10/11 09:27:34 by baalbade          #+#    #+#             */
+/*   Updated: 2023/10/11 09:27:36 by baalbade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_STRINGS_H
-# define FT_STRINGS_H
+#ifndef FT_STRING_H
+# define FT_STRING_H
 
 # include <stdlib.h>
 # include <stdint.h>
