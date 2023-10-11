@@ -14,11 +14,14 @@
 
 static void	free_everything(char *path, char **env_tab, char **cmd_tab)
 {
+	if (ft_strcmp(cmd_tab[0], "./") == 0)
+		ft_print_error_msg(ERROR_POINT_SLASH);
+	else
+		ft_print_error_msg(ERROR_CMD);
 	free_2_tabs(env_tab, cmd_tab);
 	free(path);
 	ft_del_env();
 	g_error = 127;
-	perror("");
 }
 
 int	exec_child(t_cmd *cmd, t_cmd *start)
