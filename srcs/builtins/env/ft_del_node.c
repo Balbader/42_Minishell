@@ -25,7 +25,6 @@ static void	ft_run_second_if(t_env *env, t_env *prev, t_env *next)
 	next = env->next;
 	ft_free_env_elem(env);
 	prev->next = next;
-	// free(env);
 }
 
 t_env	*ft_del_node(t_env *env, char *to_del)
