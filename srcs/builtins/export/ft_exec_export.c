@@ -16,14 +16,7 @@ int	ft_exec_export(t_token *token)
 {
 	char	*new_key;
 	char	*cpy;
-	// t_token	*tmp;
 
-	// tmp = token;
-	// while (tmp)
-	// {
-	// 	printf("token->word : %s\n", tmp->word);
-	// 	tmp = tmp->next;
-	// }
 	while (token)
 	{
 		if (!token)
@@ -39,7 +32,6 @@ int	ft_exec_export(t_token *token)
 			return (true);
 		cpy = ft_strdup(cpy);
 		new_key = ft_copy_key_and_equal(token->word, new_key);
-		// printf("new_key : %s\n", new_key); 
 		free(token->word);
 		ft_does_value_exist(new_key);
 		token->word = ft_strjoin(new_key, cpy);
